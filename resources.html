@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources | Improve Africa</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <h1><a href="index.html">Improve Africa</a></h1>
+        </div>
+        <nav>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="regions.html">Regions</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="raw-materials.html">Raw Materials</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        <div class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <div class="container">
+        <h1>Resources</h1>
+        <p>Knowledge and tools to help farmers succeed</p>
+      </div>
+    </section>
+
+    <!-- Resources Overview -->
+    <section class="resources-overview">
+      <div class="container">
+        <div class="section-header">
+          <h2>Farmer Resources</h2>
+          <p>Empowering farmers with knowledge, tools, and information</p>
+        </div>
+        <div class="overview-content">
+          <div class="overview-image">
+            <img src="images/resources-hero.jpg" alt="Farmers learning" />
+          </div>
+          <div class="overview-text">
+            <p>
+              At Improve Africa, we believe that knowledge is power. Our
+              resources section is designed to provide farmers with the
+              information, tools, and guidance they need to improve their
+              agricultural practices, increase yields, and build sustainable
+              businesses.
+            </p>
+            <p>
+              From comprehensive farming guides to market reports and success
+              stories, our resources are developed by agricultural experts and
+              tailored to the specific needs and conditions of farming in Ghana.
+              Whether you're a small-scale farmer or managing a large
+              agricultural operation, you'll find valuable resources to help you
+              succeed.
+            </p>
+            <div class="resource-categories">
+              <div class="resource-category">
+                <i class="fas fa-book"></i>
+                <h3>Farming Guides</h3>
+                <p>Step-by-step instructions for various crops</p>
+              </div>
+              <div class="resource-category">
+                <i class="fas fa-chart-line"></i>
+                <h3>Market Reports</h3>
+                <p>Pricing trends and market opportunities</p>
+              </div>
+              <div class="resource-category">
+                <i class="fas fa-user-check"></i>
+                <h3>Success Stories</h3>
+                <p>Learn from successful farmers</p>
+              </div>
+              <div class="resource-category">
+                <i class="fas fa-newspaper"></i>
+                <h3>News & Updates</h3>
+                <p>Latest agricultural developments</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-filter-section">
+      <div class="container">
+        <div class="search-filter-container">
+          <div class="search-box">
+            <input
+              type="text"
+              id="resource-search"
+              placeholder="Search resources..."
+            />
+            <button type="button" class="search-btn" title="Search resources">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div class="filter-options">
+            <div class="filter-group">
+              <label for="resource-category">Category:</label>
+              <select id="resource-category">
+                <option value="all">All Categories</option>
+                <option value="organic-farming">Organic Farming</option>
+                <option value="crop-management">Crop Management</option>
+                <option value="sustainable-practices">
+                  Sustainable Practices
+                </option>
+                <option value="farm-business">Farm Business</option>
+                <option value="soil-health">Soil Health</option>
+                <option value="irrigation">Irrigation</option>
+                <option value="pest-control">Pest Control</option>
+                <option value="technology">Technology</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="resource-format">Format:</label>
+              <select id="resource-format">
+                <option value="all">All Formats</option>
+                <option value="book">Books</option>
+                <option value="pdf">PDFs</option>
+                <option value="article">Articles</option>
+                <option value="video">Videos</option>
+                <option value="podcast">Podcasts</option>
+                <option value="webinar">Webinars</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="resource-region">Region:</label>
+              <select id="resource-region">
+                <option value="all">All Regions</option>
+                <option value="greater-accra">Greater Accra</option>
+                <option value="ashanti">Ashanti</option>
+                <option value="northern">Northern</option>
+                <option value="western">Western</option>
+                <option value="eastern">Eastern</option>
+                <option value="volta">Volta</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books Section -->
+    <section class="books-section" id="books">
+      <div class="container">
+        <div class="section-header">
+          <h2>Books</h2>
+          <p>
+            A curated selection of books related to farming, agriculture, and
+            business development
+          </p>
+        </div>
+        <div class="books-grid">
+          <div class="book-card">
+            <div class="book-image">
+              <img
+                src="images/book-organic-grower.jpg"
+                alt="The New Organic Grower book cover"
+              />
+            </div>
+            <div class="book-content">
+              <h3>The New Organic Grower</h3>
+              <p class="book-author">By Eliot Coleman</p>
+              <p>
+                A comprehensive guide to organic farming principles and
+                techniques. This book covers everything from soil management to
+                crop rotation and pest control for small-scale organic farmers.
+              </p>
+              <div class="book-meta">
+                <span
+                  ><i class="fas fa-tags"></i> Organic Farming, Sustainable
+                  Practices</span
+                >
+              </div>
+              <div class="book-actions">
+                <a href="#" class="btn btn-sm btn-secondary">Download PDF</a>
+                <a href="#" class="btn btn-sm btn-outline">Buy Online</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-image">
+              <img
+                src="images/book-lean-farm.jpg"
+                alt="The Lean Farm book cover"
+              />
+            </div>
+            <div class="book-content">
+              <h3>The Lean Farm</h3>
+              <p class="book-author">By Ben Hartman</p>
+              <p>
+                An essential resource for creating efficient, sustainable
+                farming practices. Learn how to minimize waste, increase
+                profits, and create a more sustainable farm business.
+              </p>
+              <div class="book-meta">
+                <span
+                  ><i class="fas fa-tags"></i> Farm Business, Sustainable
+                  Practices</span
+                >
+              </div>
+              <div class="book-actions">
+                <a href="#" class="btn btn-sm btn-secondary">Download PDF</a>
+                <a href="#" class="btn btn-sm btn-outline">Buy Online</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-image">
+              <img
+                src="images/book-african-farming.jpg"
+                alt="Farming in African Communities book cover"
+              />
+            </div>
+            <div class="book-content">
+              <h3>Farming in African Communities</h3>
+              <p class="book-author">By Dr. Kofi Adu</p>
+              <p>
+                A practical guide to farming in African contexts, with specific
+                focus on climate-appropriate techniques, local crop varieties,
+                and community-based farming approaches.
+              </p>
+              <div class="book-meta">
+                <span
+                  ><i class="fas fa-tags"></i> Crop Management, Community
+                  Farming</span
+                >
+              </div>
+              <div class="book-actions">
+                <a href="#" class="btn btn-sm btn-secondary">Download PDF</a>
+                <a href="#" class="btn btn-sm btn-outline">Buy Online</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="book-card">
+            <div class="book-image">
+              <img
+                src="images/book-farm-business.jpg"
+                alt="Farm Business Management book cover"
+              />
+            </div>
+            <div class="book-content">
+              <h3>Farm Business Management</h3>
+              <p class="book-author">By Sarah Johnson</p>
+              <p>
+                Learn how to run your farm as a successful business. Covers
+                financial planning, marketing, record keeping, and strategies
+                for increasing profitability.
+              </p>
+              <div class="book-meta">
+                <span
+                  ><i class="fas fa-tags"></i> Farm Business, Marketing</span
+                >
+              </div>
+              <div class="book-actions">
+                <a href="#" class="btn btn-sm btn-secondary">Download PDF</a>
+                <a href="#" class="btn btn-sm btn-outline">Buy Online</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Books</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PDFs Section -->
+    <section class="pdfs-section" id="pdfs">
+      <div class="container">
+        <div class="section-header">
+          <h2>PDFs</h2>
+          <p>
+            Downloadable guides and manuals focused on practical agricultural
+            techniques
+          </p>
+        </div>
+        <div class="pdfs-grid">
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Soil Fertility Guide</h3>
+              <p>
+                A comprehensive guide to improving soil health and increasing
+                crop yields. Learn about soil testing, organic amendments, and
+                nutrient management.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: May 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (3.2 MB)</span>
+                <span><i class="fas fa-tags"></i> Soil Health</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Pest Control for Farmers</h3>
+              <p>
+                Effective ways to manage pests in your crops using both organic
+                and conventional methods. Includes identification guides and
+                treatment options.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: June 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (4.5 MB)</span>
+                <span><i class="fas fa-tags"></i> Pest Control</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Water Management Techniques</h3>
+              <p>
+                Learn about efficient irrigation systems, water conservation
+                methods, and rainwater harvesting techniques suitable for
+                different farm sizes.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: July 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (2.8 MB)</span>
+                <span
+                  ><i class="fas fa-tags"></i> Irrigation, Water
+                  Management</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Crop Rotation Planning</h3>
+              <p>
+                A guide to effective crop rotation strategies to improve soil
+                health, reduce pest pressure, and maximize yields over multiple
+                growing seasons.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: April 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (1.9 MB)</span>
+                <span
+                  ><i class="fas fa-tags"></i> Crop Rotation, Sustainable
+                  Practices</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All PDFs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="articles-section" id="articles">
+      <div class="container">
+        <div class="section-header">
+          <h2>Articles</h2>
+          <p>
+            Insightful articles on agricultural best practices, technological
+            advancements, and innovations
+          </p>
+        </div>
+        <div class="articles-grid">
+          <div class="article-card">
+            <div class="article-image">
+              <img
+                src="images/article-irrigation.jpg"
+                alt="Irrigation systems"
+              />
+            </div>
+            <div class="article-content">
+              <h3>Best Practices for Irrigation</h3>
+              <p>
+                Effective irrigation techniques to improve water usage in
+                agriculture. This article covers drip irrigation, sprinkler
+                systems, and timing strategies to maximize efficiency.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: July 15,
+                  2023</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Water Management,
+                  Technology</span
+                >
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-image">
+              <img
+                src="images/article-sustainable.jpg"
+                alt="Sustainable farming"
+              />
+            </div>
+            <div class="article-content">
+              <h3>Sustainable Farming Practices</h3>
+              <p>
+                How sustainable farming can benefit both farmers and the
+                environment. Learn about conservation tillage, cover crops, and
+                integrated pest management.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: June 22,
+                  2023</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Sustainable Practices, Soil
+                  Health</span
+                >
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-image">
+              <img src="images/article-technology.jpg" alt="Farm technology" />
+            </div>
+            <div class="article-content">
+              <h3>Technology in African Agriculture</h3>
+              <p>
+                Exploring how technology is transforming farming in Africa, from
+                mobile apps for market access to drones for crop monitoring and
+                precision agriculture.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: August 5,
+                  2023</span
+                >
+                <span><i class="fas fa-tags"></i> Technology, Innovation</span>
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-image">
+              <img
+                src="images/article-climate.jpg"
+                alt="Climate resilient farming"
+              />
+            </div>
+            <div class="article-content">
+              <h3>Climate-Resilient Farming Strategies</h3>
+              <p>
+                Adapting to changing climate conditions with resilient farming
+                strategies. Learn about drought-resistant crops, water
+                conservation, and diversification.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: May 30, 2023</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Climate Change, Sustainable
+                  Practices</span
+                >
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Articles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section class="videos-section" id="videos">
+      <div class="container">
+        <div class="section-header">
+          <h2>Videos</h2>
+          <p>
+            Visual content for farmers to learn farming techniques and hear from
+            experts
+          </p>
+        </div>
+        <div class="videos-grid">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img
+                src="images/video-first-farm.jpg"
+                alt="Starting your first farm"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>How to Start Your First Farm</h3>
+              <p>
+                A step-by-step guide to getting started in agriculture, covering
+                land selection, initial investments, and first-year planning.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 45 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Farming Techniques, Business
+                  Planning</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img
+                src="images/video-organic.jpg"
+                alt="Organic farming basics"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>Organic Farming Basics</h3>
+              <p>
+                Learn the fundamentals of organic farming from experts,
+                including soil management, natural pest control, and organic
+                certification.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 38 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Organic Farming, Sustainable
+                  Practices</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img
+                src="images/video-equipment.jpg"
+                alt="Agricultural equipment"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>Essential Farm Equipment Guide</h3>
+              <p>
+                An overview of essential equipment for small and medium-sized
+                farms, with tips on selection, maintenance, and cost-effective
+                alternatives.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 52 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Agricultural Equipment, Farm
+                  Management</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="images/video-expert.jpg" alt="Expert interview" />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>Expert Interview: Future of African Agriculture</h3>
+              <p>
+                An in-depth interview with Dr. Kwame Nkrumah, agricultural
+                economist, discussing trends, challenges, and opportunities in
+                African agriculture.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 65 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Expert Interviews, Agricultural
+                  Policy</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Videos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Learning Materials -->
+    <section class="other-materials" id="other-materials">
+      <div class="container">
+        <div class="section-header">
+          <h2>Other Learning Materials</h2>
+          <p>
+            Additional resources, such as podcasts, infographics, and webinars
+          </p>
+        </div>
+        <div class="materials-grid">
+          <div class="material-card podcast">
+            <div class="material-icon">
+              <i class="fas fa-podcast"></i>
+            </div>
+            <div class="material-content">
+              <h3>Podcast: The Future of African Agriculture</h3>
+              <p>
+                Interviews with industry leaders about the future of agriculture
+                in Africa, covering innovation, policy, and market trends.
+              </p>
+              <div class="material-meta">
+                <span><i class="fas fa-headphones"></i> 12 Episodes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Agricultural Policy,
+                  Innovation</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Listen Now</a>
+            </div>
+          </div>
+
+          <div class="material-card webinar">
+            <div class="material-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="material-content">
+              <h3>Webinar: Sustainable Farming for a Growing Africa</h3>
+              <p>
+                A live session with experts discussing sustainable farming
+                techniques, climate adaptation, and food security in Africa.
+              </p>
+              <div class="material-meta">
+                <span><i class="fas fa-calendar"></i> September 15, 2023</span>
+                <span><i class="fas fa-clock"></i> 2:00 PM GMT</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Register Now</a>
+            </div>
+          </div>
+
+          <div class="material-card infographic">
+            <div class="material-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <div class="material-content">
+              <h3>Infographic: Crop Calendar for Ghana</h3>
+              <p>
+                A visual guide to planting and harvesting times for major crops
+                across different regions of Ghana, with climate considerations.
+              </p>
+              <div class="material-meta">
+                <span><i class="fas fa-file"></i> PDF & JPG formats</span>
+                <span
+                  ><i class="fas fa-tags"></i> Crop Management, Planning</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download</a>
+            </div>
+          </div>
+
+          <div class="material-card toolkit">
+            <div class="material-icon">
+              <i class="fas fa-toolbox"></i>
+            </div>
+            <div class="material-content">
+              <h3>Farmer's Financial Toolkit</h3>
+              <p>
+                A collection of spreadsheets, calculators, and templates to help
+                farmers with budgeting, record-keeping, and financial planning.
+              </p>
+              <div class="material-meta">
+                <span
+                  ><i class="fas fa-file-excel"></i> Excel & Google Sheets</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Farm Business, Financial
+                  Management</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download Toolkit</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Materials</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Farming Guides -->
+    <section class="farming-guides" id="farming-guides">
+      <div class="container">
+        <div class="section-header">
+          <h2>Farming Guides</h2>
+          <p>Comprehensive guides for successful farming</p>
+        </div>
+        <div class="guides-grid">
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/maize-farming.jpg" alt="Maize farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Maize Cultivation Guide</h3>
+              <p>
+                A comprehensive guide to growing maize in Ghana, covering soil
+                preparation, planting techniques, pest management, harvesting,
+                and storage.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: June 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (2.5 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/cassava-farming.jpg" alt="Cassava farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Cassava Production Manual</h3>
+              <p>
+                Learn the best practices for cassava cultivation, including
+                variety selection, planting methods, weed control, disease
+                management, and value addition.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: May 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (3.1 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/rice-farming.jpg" alt="Rice farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Rice Farming Handbook</h3>
+              <p>
+                A detailed guide on rice cultivation in both upland and lowland
+                conditions, covering water management, fertilization, pest
+                control, and post-harvest handling.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: July 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (4.2 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/vegetable-farming.jpg" alt="Vegetable farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Vegetable Growing Guide</h3>
+              <p>
+                Learn how to grow various vegetables including tomatoes,
+                peppers, onions, and leafy greens. Covers seedling production,
+                transplanting, irrigation, and organic pest management.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: April 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (3.8 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/cocoa-farming.jpg" alt="Cocoa farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Cocoa Production Manual</h3>
+              <p>
+                A comprehensive guide to cocoa cultivation, covering
+                establishment, maintenance, disease management, harvesting,
+                fermentation, and quality control.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: March 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (5.1 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/livestock-farming.jpg" alt="Livestock farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Small-Scale Livestock Rearing</h3>
+              <p>
+                Guide to raising poultry, goats, and sheep on a small scale.
+                Covers housing, feeding, health management, breeding, and
+                marketing of livestock products.
+              </p>
+              <div class="guide-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Updated: February 2023</span
+                >
+                <span><i class="fas fa-file-pdf"></i> PDF (4.5 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all-guides">
+          <a href="#" class="btn btn-primary">View All Farming Guides</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Reports -->
+    <section class="market-reports" id="market-reports">
+      <div class="container">
+        <div class="section-header">
+          <h2>Market Reports</h2>
+          <p>Stay informed about agricultural markets</p>
+        </div>
+        <div class="reports-content">
+          <div class="reports-intro">
+            <p>
+              Our market reports provide valuable insights into agricultural
+              commodity prices, market trends, and opportunities. These reports
+              are updated regularly to help farmers make informed decisions
+              about what to grow, when to sell, and how to maximize profits.
+            </p>
+          </div>
+          <div class="reports-grid">
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="report-content">
+                <h3>Monthly Commodity Price Report</h3>
+                <p>
+                  Current prices for major agricultural commodities across
+                  different regions of Ghana. Updated monthly.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> August 2023</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">Download Report</a>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="report-content">
+                <h3>Quarterly Market Trends Analysis</h3>
+                <p>
+                  Analysis of price trends, supply and demand dynamics, and
+                  market forecasts for the next quarter.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> Q3 2023</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">Download Report</a>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-globe-africa"></i>
+              </div>
+              <div class="report-content">
+                <h3>Export Market Opportunities</h3>
+                <p>
+                  Information on export opportunities for Ghanaian agricultural
+                  products, including market requirements and potential buyers.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> July 2023</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">Download Report</a>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="report-content">
+                <h3>Crop-Specific Market Reports</h3>
+                <p>
+                  Detailed market information for specific crops including
+                  maize, rice, cassava, cocoa, and vegetables.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> Various Dates</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">View Reports</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-stories" id="success-stories">
+      <div class="container">
+        <div class="section-header">
+          <h2>Success Stories</h2>
+          <p>Learn from farmers who have transformed their operations</p>
+        </div>
+        <div class="stories-grid">
+          <div class="story-card">
+            <div class="story-image">
+              <img src="images/avator a4.jpeg" alt="Farmer portrait" />
+            </div>
+            <div class="story-content">
+              <h3>From Subsistence to Commercial Farming</h3>
+              <p class="story-farmer">Kofi Mensah, Ashanti Region</p>
+              <p>
+                "I used to grow just enough maize to feed my family. After
+                joining Improve Africa's training program and implementing the
+                techniques from their farming guides, I now harvest three times
+                more maize and sell the surplus to Improve Africa at fair
+                prices. My income has doubled, and I've been able to send my
+                children to school."
+              </p>
+              <a href="#" class="btn btn-sm btn-secondary">Read Full Story</a>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-image">
+              <img src="images/avator a5.jpeg" alt="Farmer portrait" />
+            </div>
+            <div class="story-content">
+              <h3>Organic Vegetable Success</h3>
+              <p class="story-farmer">Abena Osei, Eastern Region</p>
+              <p>
+                "I switched to organic vegetable farming using the techniques in
+                Improve Africa's guides. Not only has this reduced my production
+                costs, but I now sell premium organic vegetables to hotels and
+                restaurants through Improve Africa's market connections. My farm
+                is now a model for sustainable agriculture in my community."
+              </p>
+              <a href="#" class="btn btn-sm btn-secondary">Read Full Story</a>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-image">
+              <img src="images/avator a6.jpeg" alt="Farmer portrait" />
+            </div>
+            <div class="story-content">
+              <h3>Rice Farming Transformation</h3>
+              <p class="story-farmer">Kwame Addo, Northern Region</p>
+              <p>
+                "I struggled with low rice yields due to poor water management
+                and traditional methods. After implementing the techniques from
+                Improve Africa's Rice Farming Handbook and receiving support
+                from their field officers, my yield has increased by 70%. I now
+                employ five people from my village during the planting and
+                harvesting seasons."
+              </p>
+              <a href="#" class="btn btn-sm btn-secondary">Read Full Story</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all-stories">
+          <a href="#" class="btn btn-primary">View All Success Stories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- News & Updates -->
+    <section class="news-updates" id="news-updates">
+      <div class="container">
+        <div class="section-header">
+          <h2>News & Updates</h2>
+          <p>Latest agricultural news and developments</p>
+        </div>
+        <div class="news-grid">
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-1.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">15</span>
+                <span class="month">Aug</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>New Drought-Resistant Maize Varieties Released</h3>
+              <p>
+                The Ghana Agricultural Research Institute has released three new
+                drought-resistant maize varieties that can increase yields by up
+                to 30% in dry conditions. Improve Africa will be distributing
+                seeds to farmers in our network.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-2.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">02</span>
+                <span class="month">Aug</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>Government Announces New Agricultural Subsidy Program</h3>
+              <p>
+                The Ministry of Food and Agriculture has announced a new subsidy
+                program for fertilizers and improved seeds. Improve Africa is
+                working with the government to ensure our registered farmers can
+                access these subsidies.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-3.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">25</span>
+                <span class="month">Jul</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>Improve Africa Expands Operations to Volta Region</h3>
+              <p>
+                We are excited to announce the opening of our new regional
+                office in Ho, Volta Region. This expansion will allow us to
+                support more farmers in the eastern part of Ghana with our
+                programs and services.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-4.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">18</span>
+                <span class="month">Jul</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>New Mobile App Feature for Weather Forecasts</h3>
+              <p>
+                Our mobile app now includes a new feature that provides
+                localized weather forecasts for farmers. This will help farmers
+                plan their planting, spraying, and harvesting activities based
+                on accurate weather predictions.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all-news">
+          <a href="#" class="btn btn-primary">View All News</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resource Request -->
+    <section class="resource-request">
+      <div class="container">
+        <div class="section-header">
+          <h2>Request a Resource</h2>
+          <p>Can't find what you're looking for? Let us know!</p>
+        </div>
+        <div class="request-form-container">
+          <form class="request-form">
+            <div class="form-group">
+              <label for="name">Your Name*</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address*</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="resource-type">Resource Type*</label>
+              <select id="resource-type" name="resource-type" required>
+                <option value="">Select an option</option>
+                <option value="farming-guide">Farming Guide</option>
+                <option value="market-report">Market Report</option>
+                <option value="training-material">Training Material</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="request-details">Request Details*</label>
+              <textarea
+                id="request-details"
+                name="request-details"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group full-width">
+              <button type="submit" class="btn btn-primary">
+                Submit Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Join Our Farmer Network</h2>
+        <p>
+          Access all our resources, training programs, and market opportunities
+          by joining the Improve Africa farmer network.
+        </p>
+        <div class="cta-buttons">
+          <a href="raw-materials.html" class="btn btn-primary">Register Now</a>
+          <a href="contact.html" class="btn btn-secondary">Contact Our Team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Improve Africa</h2>
+            <p>Transforming agriculture, empowering communities</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="regions.html">Regions</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="raw-materials.html">Raw Materials</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Programs</h3>
+              <ul>
+                <li>
+                  <a href="programs.html#mentorship">Farmer Mentorship</a>
+                </li>
+                <li><a href="programs.html#youth">Youth Employment</a></li>
+                <li>
+                  <a href="programs.html#education">Agricultural Education</a>
+                </li>
+                <li>
+                  <a href="programs.html#sustainable">Sustainable Farming</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Resources</h3>
+              <ul>
+                <li><a href="#farming-guides">Farming Guides</a></li>
+                <li><a href="#market-reports">Market Reports</a></li>
+                <li><a href="#success-stories">Success Stories</a></li>
+                <li><a href="#news-updates">News & Updates</a></li>
+
+                <li><a href="#books">Books</a></li>
+                <li><a href="#pdfs">PDFs</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#other-materials">Other Materials</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3>Connect With Us</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Improve Africa. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

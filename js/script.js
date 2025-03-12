@@ -3,23 +3,21 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile Navigation Toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const header = document.querySelector('header');
 
     if (hamburger) {
-        hamburger.addEventListener('click', function() {
+        hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
         });
     }
 
-    // Close mobile menu when a nav link is clicked
-    const navItems = document.querySelectorAll('.nav-links a');
-    navItems.forEach(item => {
-        item.addEventListener('click', function() {
-            if (hamburger.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
     });
 
     // Smooth scrolling for anchor links
@@ -41,7 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Sticky header on scroll
-    const header = document.querySelector('header');
     const scrollWatcher = () => {
         if (window.scrollY > 100) {
             header.classList.add('scrolled');
@@ -253,5 +250,364 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (jobExperienceFilter) {
         jobExperienceFilter.addEventListener('change', filterJobs);
+    }
+
+    // Product Search and Filter Functionality
+    const searchInput = document.querySelector('.search-input input');
+    const categorySelect = document.querySelector('.search-input select');
+    const filterCheckboxes = document.querySelectorAll('.search-filters input');
+    const productsGrid = document.querySelector('.products-grid');
+    const loadMoreBtn = document.querySelector('.load-more button');
+
+    let currentPage = 1;
+    const productsPerPage = 6;
+
+    // Additional products data
+    const additionalProducts = [
+        {
+            name: 'Premium Maize',
+            image: 'images/maize.jpg',
+            description: 'High-quality maize from the Ashanti Region',
+            stock: 'in-stock',
+            specs: ['Grade A Quality', 'MOQ: 10 Tons', 'Delivery Available'],
+            category: 'grains',
+            filters: ['organic', 'certified']
+        },
+        {
+            name: 'Organic Cassava',
+            image: 'images/cassava.jpg',
+            description: 'Fresh cassava from Eastern Region farms',
+            stock: 'in-stock',
+            specs: ['Organic Certified', 'MOQ: 5 Tons', 'Same-day Processing'],
+            category: 'roots',
+            filters: ['organic']
+        },
+        {
+            name: 'Palm Oil',
+            image: 'images/palm-oil.jpg',
+            description: 'Pure red palm oil from Western Region',
+            stock: 'limited',
+            specs: ['Premium Grade', 'MOQ: 1000 Liters', 'Export Quality'],
+            category: 'oils',
+            filters: ['certified']
+        }
+    ];
+
+    // Search and filter products
+    function filterProducts() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedCategory = categorySelect.value;
+        const filters = Array.from(filterCheckboxes)
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.name);
+
+        const products = document.querySelectorAll('.product-card');
+        
+        products.forEach(product => {
+            const title = product.querySelector('h3').textContent.toLowerCase();
+            const category = product.dataset.category;
+            const productFilters = product.dataset.filters ? product.dataset.filters.split(',') : [];
+            
+            const matchesSearch = title.includes(searchTerm);
+            const matchesCategory = !selectedCategory || category === selectedCategory;
+            const matchesFilters = filters.length === 0 || filters.every(filter => productFilters.includes(filter));
+            
+            product.style.display = matchesSearch && matchesCategory && matchesFilters ? 'block' : 'none';
+        });
+    }
+
+    // Event listeners for search and filter
+    searchInput.addEventListener('input', filterProducts);
+    categorySelect.addEventListener('change', filterProducts);
+    filterCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', filterProducts);
+    });
+
+    // Load More Products
+    loadMoreBtn.addEventListener('click', () => {
+        currentPage++;
+        loadMoreProducts();
+    });
+
+    function loadMoreProducts() {
+        const fragment = document.createDocumentFragment();
+        
+        additionalProducts.forEach(product => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card';
+            productCard.dataset.category = product.category;
+            productCard.dataset.filters = product.filters.join(',');
+            
+            productCard.innerHTML = `
+                <div class="product-image">
+                    <img src="${product.image}" alt="${product.name}" />
+                    <span class="stock-status ${product.stock}">${product.stock === 'in-stock' ? 'In Stock' : 'Limited Stock'}</span>
+                </div>
+                <div class="product-details">
+                    <h3>${product.name}</h3>
+                    <p>${product.description}</p>
+                    <ul class="product-specs">
+                        ${product.specs.map(spec => `
+                            <li><i class="fas fa-check-circle"></i> ${spec}</li>
+                        `).join('')}
+                    </ul>
+                    <div class="product-actions">
+                        <button class="btn btn-primary">Request Quote</button>
+                        <button class="btn btn-secondary">View Details</button>
+                    </div>
+                </div>
+            `;
+            
+            fragment.appendChild(productCard);
+        });
+        
+        productsGrid.appendChild(fragment);
+        
+        // Hide load more button if no more products
+        if (currentPage >= 2) {
+            loadMoreBtn.style.display = 'none';
+        }
+        
+        // Apply current filters to new products
+        filterProducts();
+        
+        // Initialize event listeners for new product cards
+        initializeProductCardListeners(fragment);
+    }
+
+    function initializeProductCardListeners(container) {
+        container.querySelectorAll('.product-actions button').forEach(button => {
+            button.addEventListener('click', function() {
+                const product = this.closest('.product-card');
+                const productName = product.querySelector('h3').textContent;
+                
+                if (this.classList.contains('btn-primary')) {
+                    showQuoteForm(productName);
+                } else {
+                    showProductDetails(productName);
+                }
+            });
+        });
+    }
+
+    function showQuoteForm(productName) {
+        // Implement quote request form
+        alert(`Request quote for ${productName}`);
+    }
+
+    function showProductDetails(productName) {
+        // Implement product details modal
+        alert(`View details for ${productName}`);
+    }
+
+    // Smooth Scroll for Navigation Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                // Close mobile menu if open
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+
+    // Product Image Lazy Loading
+    const productImages = document.querySelectorAll('.product-image img');
+
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    observer.unobserve(img);
+                }
+            });
+        });
+
+        productImages.forEach(img => {
+            imageObserver.observe(img);
+        });
+    }
+
+    // Live Chat Button
+    const chatButton = document.querySelector('.contact-card button');
+    if (chatButton) {
+        chatButton.addEventListener('click', () => {
+            // Implement chat functionality or redirect to chat service
+            alert('Chat feature coming soon!');
+        });
+    }
+
+    // Form Validation
+    const buyerForm = document.getElementById('buyer-form');
+
+    buyerForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(buyerForm);
+        const data = Object.fromEntries(formData);
+        
+        // Basic validation
+        let isValid = true;
+        const requiredFields = ['company', 'contact', 'email', 'phone', 'business-type', 'location'];
+        
+        requiredFields.forEach(field => {
+            const input = document.getElementById(field);
+            if (!input.value.trim()) {
+                isValid = false;
+                input.classList.add('error');
+            } else {
+                input.classList.remove('error');
+            }
+        });
+        
+        if (isValid) {
+            // Simulate form submission
+            console.log('Form submitted:', data);
+            showSuccessMessage();
+            buyerForm.reset();
+        }
+    });
+
+    function showSuccessMessage() {
+        const message = document.createElement('div');
+        message.className = 'success-message';
+        message.textContent = 'Registration submitted successfully! We will contact you soon.';
+        
+        buyerForm.parentNode.insertBefore(message, buyerForm);
+        
+        setTimeout(() => {
+            message.remove();
+        }, 5000);
+    }
+
+    // Header Scroll Effect
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
+    });
+
+    // Product Listing Form Handling
+    const productListingForm = document.getElementById('product-listing-form');
+    const productImageInput = document.getElementById('product-image');
+
+    if (productListingForm) {
+        // Image preview and validation
+        productImageInput.addEventListener('change', function() {
+            const files = Array.from(this.files);
+            
+            // Validate number of files
+            if (files.length > 3) {
+                alert('Please select a maximum of 3 images');
+                this.value = '';
+                return;
+            }
+            
+            // Validate file sizes
+            const invalidFiles = files.filter(file => file.size > 5 * 1024 * 1024);
+            if (invalidFiles.length > 0) {
+                alert('Some images exceed the 5MB size limit');
+                this.value = '';
+                return;
+            }
+        });
+
+        productListingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Basic form validation
+            let isValid = true;
+            const requiredFields = [
+                'product-name',
+                'product-category',
+                'product-description',
+                'quantity',
+                'unit',
+                'product-location',
+                'seller-name',
+                'seller-phone',
+                'seller-email'
+            ];
+            
+            requiredFields.forEach(field => {
+                const input = document.getElementById(field);
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.classList.add('error');
+                } else {
+                    input.classList.remove('error');
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const certifications = Array.from(document.querySelectorAll('input[name="certification"]:checked'))
+                .map(checkbox => checkbox.value);
+            formData.append('certifications', JSON.stringify(certifications));
+            
+            // Simulate form submission
+            showListingSuccessMessage();
+            this.reset();
+        });
+    }
+
+    function showListingSuccessMessage() {
+        const message = document.createElement('div');
+        message.className = 'success-message';
+        message.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <h3>Product Listing Submitted Successfully!</h3>
+            <p>Our team will review your listing and contact you within 24-48 hours.</p>
+        `;
+        
+        productListingForm.parentNode.insertBefore(message, productListingForm);
+        
+        // Scroll to success message
+        message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        // Remove message after 5 seconds
+        setTimeout(() => {
+            message.remove();
+        }, 5000);
+    }
+
+    // Add Registration Form Toggle
+    const toggleFormBtn = document.querySelector('.toggle-form-btn');
+    const registrationForm = document.querySelector('.registration-form');
+
+    if (toggleFormBtn && registrationForm) {
+        toggleFormBtn.addEventListener('click', () => {
+            registrationForm.classList.toggle('active');
+            toggleFormBtn.textContent = registrationForm.classList.contains('active') ? 'Hide Form' : 'Register Now';
+            
+            // Smooth scroll to form when opening
+            if (registrationForm.classList.contains('active')) {
+                registrationForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     }
 }); 

@@ -108,7 +108,7 @@
                 <option value="spices">Spices</option>
                 <option value="cash-crops">Cash Crops</option>
               </select>
-              <button class="btn btn-primary">
+              <button class="btn btn-primary" style="background-color: #2c7744">
                 <i class="fas fa-search"></i> Search
               </button>
             </div>
@@ -125,6 +125,613 @@
                 <input type="checkbox" name="bulk" />
                 Bulk Available
               </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Authentication Section -->
+    <section
+      id="auth-section"
+      class="authentication"
+      style="background-color: #f8f9fa; padding: 40px 0"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: #1e4d8c">Account Access</h2>
+          <p style="color: #333333">
+            Login or create an account to get started
+          </p>
+        </div>
+
+        <!-- Auth Type Selection -->
+        <div style="max-width: 400px; margin: 0 auto 20px; text-align: center">
+          <div class="auth-type-selector" style="margin-bottom: 20px">
+            <button
+              onclick="switchAuthType('login')"
+              id="login-tab"
+              class="btn"
+              style="
+                margin-right: 10px;
+                background-color: #2c7744;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+              "
+            >
+              Login
+            </button>
+            <button
+              onclick="switchAuthType('signup')"
+              id="signup-tab"
+              class="btn"
+              style="
+                background-color: #1e4d8c;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 4px;
+              "
+            >
+              Sign Up
+            </button>
+          </div>
+          <div class="user-type-selector" style="margin-bottom: 20px">
+            <select
+              id="user-type"
+              onchange="updateAuthForm()"
+              aria-label="Select user type"
+              title="Choose your account type"
+              style="
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+              "
+            >
+              <option value="buyer">Buyer</option>
+              <option value="user">Regular User</option>
+              <option value="staff">Staff Member</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Login Form -->
+        <div
+          id="login-form"
+          class="auth-form"
+          style="
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <form onsubmit="handleLogin(event)">
+            <div class="form-group" style="margin-bottom: 20px">
+              <label
+                for="login-email"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="login-email"
+                required
+                placeholder="Enter your email"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <div class="form-group" style="margin-bottom: 20px">
+              <label
+                for="login-password"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="login-password"
+                required
+                placeholder="Enter your password"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="
+                width: 100%;
+                background-color: #2c7744;
+                padding: 12px;
+                border: none;
+                border-radius: 4px;
+                color: white;
+                cursor: pointer;
+              "
+            >
+              Login
+            </button>
+            <p style="text-align: center; margin-top: 15px">
+              <a href="#" style="color: #1e4d8c; text-decoration: none"
+                >Forgot Password?</a
+              >
+            </p>
+          </form>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div
+          id="signup-form"
+          class="auth-form"
+          style="
+            display: none;
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          "
+        >
+          <form onsubmit="handleSignup(event)">
+            <div class="form-group" style="margin-bottom: 20px">
+              <label
+                for="signup-name"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Full Name</label
+              >
+              <input
+                type="text"
+                id="signup-name"
+                required
+                placeholder="Enter your full name"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <div class="form-group" style="margin-bottom: 20px">
+              <label
+                for="signup-email"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Email</label
+              >
+              <input
+                type="email"
+                id="signup-email"
+                required
+                placeholder="Enter your email"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+              <small
+                id="email-hint"
+                style="color: #666; font-size: 0.85em; display: none"
+                >Must be an @improveafrica.com email for staff accounts</small
+              >
+            </div>
+            <div
+              id="company-field"
+              class="form-group"
+              style="margin-bottom: 20px"
+            >
+              <label
+                for="signup-company"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Company Name</label
+              >
+              <input
+                type="text"
+                id="signup-company"
+                placeholder="Enter your company name"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <div class="form-group" style="margin-bottom: 20px">
+              <label
+                for="signup-password"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="signup-password"
+                required
+                placeholder="Create a password"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <div class="form-group" style="margin-bottom: 20px">
+              <label
+                for="signup-confirm-password"
+                style="display: block; margin-bottom: 8px; color: #333"
+                >Confirm Password</label
+              >
+              <input
+                type="password"
+                id="signup-confirm-password"
+                required
+                placeholder="Confirm your password"
+                style="
+                  width: 100%;
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  border-radius: 4px;
+                "
+              />
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="
+                width: 100%;
+                background-color: #2c7744;
+                padding: 12px;
+                border: none;
+                border-radius: 4px;
+                color: white;
+                cursor: pointer;
+              "
+            >
+              Create Account
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Staff Product Management Section -->
+    <section
+      id="staff-management"
+      class="staff-management staff-only-section"
+      style="display: none; background-color: #f8f9fa; padding: 40px 0"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: #1e4d8c">Staff Product Management</h2>
+          <p style="color: #333333">Update product listings and availability</p>
+        </div>
+        <div class="management-tools" style="margin-top: 20px">
+          <div class="tool-buttons" style="margin-bottom: 20px">
+            <button
+              class="btn btn-primary"
+              style="background-color: #2c7744; margin-right: 10px"
+              onclick="openAddProductForm()"
+            >
+              <i class="fas fa-plus"></i> Add New Product
+            </button>
+            <button
+              class="btn btn-secondary"
+              style="
+                background-color: #1e4d8c;
+                color: white;
+                margin-right: 10px;
+              "
+              onclick="openBulkUpdate()"
+            >
+              <i class="fas fa-upload"></i> Bulk Update
+            </button>
+            <button
+              class="btn btn-secondary"
+              style="background-color: #1e4d8c; color: white"
+              onclick="generateReport()"
+            >
+              <i class="fas fa-file-export"></i> Generate Report
+            </button>
+          </div>
+
+          <!-- Quick Update Panel -->
+          <div
+            class="quick-update-panel"
+            style="
+              background: white;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h3 style="color: #1e4d8c; margin-bottom: 15px">
+              Quick Stock Update
+            </h3>
+            <div
+              class="product-update-grid"
+              style="
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+                gap: 20px;
+              "
+            >
+              <!-- Product Update Card -->
+              <div
+                class="update-card"
+                style="
+                  border: 1px solid #ddd;
+                  padding: 15px;
+                  border-radius: 6px;
+                "
+              >
+                <div
+                  class="product-info"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <img
+                    src="images/cocoa-beans.jpg"
+                    alt="Cocoa Beans"
+                    style="
+                      width: 60px;
+                      height: 60px;
+                      object-fit: cover;
+                      border-radius: 4px;
+                      margin-right: 10px;
+                    "
+                  />
+                  <div>
+                    <h4 style="color: #1e4d8c; margin: 0">
+                      Premium Cocoa Beans
+                    </h4>
+                    <p style="color: #666; margin: 5px 0">
+                      Current Stock: 15 Tons
+                    </p>
+                  </div>
+                </div>
+                <div class="update-controls" style="display: flex; gap: 10px">
+                  <input
+                    type="number"
+                    placeholder="New quantity"
+                    aria-label="New quantity in tons"
+                    style="
+                      flex: 1;
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      border-radius: 4px;
+                    "
+                  />
+                  <select
+                    aria-label="Stock status"
+                    title="Select stock status"
+                    style="
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      border-radius: 4px;
+                    "
+                  >
+                    <option value="in-stock">In Stock</option>
+                    <option value="limited">Limited</option>
+                    <option value="out">Out of Stock</option>
+                  </select>
+                  <button
+                    onclick="updateProduct(1)"
+                    class="btn btn-primary"
+                    style="background-color: #2c7744"
+                    aria-label="Update Cocoa Beans stock"
+                    title="Update stock"
+                  >
+                    <i class="fas fa-sync" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <!-- More Product Update Cards -->
+              <div
+                class="update-card"
+                style="
+                  border: 1px solid #ddd;
+                  padding: 15px;
+                  border-radius: 6px;
+                "
+              >
+                <div
+                  class="product-info"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <img
+                    src="images/cashew.jpg"
+                    alt="Cashew Nuts"
+                    style="
+                      width: 60px;
+                      height: 60px;
+                      object-fit: cover;
+                      border-radius: 4px;
+                      margin-right: 10px;
+                    "
+                  />
+                  <div>
+                    <h4 style="color: #1e4d8c; margin: 0">Raw Cashew Nuts</h4>
+                    <p style="color: #666; margin: 5px 0">
+                      Current Stock: 8 Tons
+                    </p>
+                  </div>
+                </div>
+                <div class="update-controls" style="display: flex; gap: 10px">
+                  <input
+                    type="number"
+                    placeholder="New quantity"
+                    style="
+                      flex: 1;
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      border-radius: 4px;
+                    "
+                  />
+                  <select
+                    aria-label="Stock status"
+                    title="Select stock status"
+                    style="
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      border-radius: 4px;
+                    "
+                  >
+                    <option value="in-stock">In Stock</option>
+                    <option value="limited">Limited</option>
+                    <option value="out">Out of Stock</option>
+                  </select>
+                  <button
+                    onclick="updateProduct(2)"
+                    class="btn btn-primary"
+                    style="background-color: #2c7744"
+                    aria-label="Update Cashew Nuts stock"
+                    title="Update stock"
+                  >
+                    <i class="fas fa-sync"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div
+                class="update-card"
+                style="
+                  border: 1px solid #ddd;
+                  padding: 15px;
+                  border-radius: 6px;
+                "
+              >
+                <div
+                  class="product-info"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                  "
+                >
+                  <img
+                    src="images/shea.jpg"
+                    alt="Shea Nuts"
+                    style="
+                      width: 60px;
+                      height: 60px;
+                      object-fit: cover;
+                      border-radius: 4px;
+                      margin-right: 10px;
+                    "
+                  />
+                  <div>
+                    <h4 style="color: #1e4d8c; margin: 0">Organic Shea Nuts</h4>
+                    <p style="color: #666; margin: 5px 0">
+                      Current Stock: 3 Tons
+                    </p>
+                  </div>
+                </div>
+                <div class="update-controls" style="display: flex; gap: 10px">
+                  <input
+                    type="number"
+                    placeholder="New quantity"
+                    style="
+                      flex: 1;
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      border-radius: 4px;
+                    "
+                  />
+                  <select
+                    aria-label="Stock status"
+                    title="Select stock status"
+                    style="
+                      padding: 8px;
+                      border: 1px solid #ddd;
+                      border-radius: 4px;
+                    "
+                  >
+                    <option value="in-stock">In Stock</option>
+                    <option value="limited">Limited</option>
+                    <option value="out">Out of Stock</option>
+                  </select>
+                  <button
+                    onclick="updateProduct(3)"
+                    class="btn btn-primary"
+                    style="background-color: #2c7744"
+                    aria-label="Update Shea Nuts stock"
+                    title="Update stock"
+                  >
+                    <i class="fas fa-sync"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Activity Log -->
+          <div
+            class="activity-log"
+            style="
+              margin-top: 20px;
+              background: white;
+              padding: 20px;
+              border-radius: 8px;
+              box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <h3 style="color: #1e4d8c; margin-bottom: 15px">Recent Updates</h3>
+            <div
+              class="log-entries"
+              style="max-height: 200px; overflow-y: auto"
+            >
+              <div
+                class="log-entry"
+                style="padding: 10px; border-bottom: 1px solid #eee"
+              >
+                <span style="color: #666">Today 10:30 AM</span>
+                <p style="margin: 5px 0; color: #333">
+                  Updated Premium Cocoa Beans stock to 15 Tons
+                </p>
+              </div>
+              <div
+                class="log-entry"
+                style="padding: 10px; border-bottom: 1px solid #eee"
+              >
+                <span style="color: #666">Today 09:15 AM</span>
+                <p style="margin: 5px 0; color: #333">
+                  Changed Shea Nuts status to Limited Stock
+                </p>
+              </div>
+              <div
+                class="log-entry"
+                style="padding: 10px; border-bottom: 1px solid #eee"
+              >
+                <span style="color: #666">Yesterday 4:45 PM</span>
+                <p style="margin: 5px 0; color: #333">
+                  Added new product: Raw Cashew Nuts
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -472,5 +1079,202 @@
     </footer>
 
     <script src="js/script.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Auth form switching
+        window.switchAuthType = function (type) {
+          const loginForm = document.getElementById("login-form");
+          const signupForm = document.getElementById("signup-form");
+          const loginTab = document.getElementById("login-tab");
+          const signupTab = document.getElementById("signup-tab");
+
+          if (type === "login") {
+            loginForm.style.display = "block";
+            signupForm.style.display = "none";
+            loginTab.style.backgroundColor = "#2c7744";
+            signupTab.style.backgroundColor = "#1e4d8c";
+          } else {
+            loginForm.style.display = "none";
+            signupForm.style.display = "block";
+            loginTab.style.backgroundColor = "#1e4d8c";
+            signupTab.style.backgroundColor = "#2c7744";
+          }
+        };
+
+        // Update form based on user type
+        window.updateAuthForm = function () {
+          const userType = document.getElementById("user-type").value;
+          const companyField = document.getElementById("company-field");
+          const emailHint = document.getElementById("email-hint");
+          const signupEmail = document.getElementById("signup-email");
+
+          if (userType === "staff") {
+            emailHint.style.display = "block";
+            companyField.style.display = "none";
+            signupEmail.pattern = ".*@improveafrica\\.com$";
+          } else if (userType === "buyer") {
+            emailHint.style.display = "none";
+            companyField.style.display = "block";
+            signupEmail.pattern = "";
+          } else {
+            emailHint.style.display = "none";
+            companyField.style.display = "none";
+            signupEmail.pattern = "";
+          }
+        };
+
+        // Check if user is staff member
+        function isStaffMember() {
+          const userToken = sessionStorage.getItem("userToken");
+          const userEmail = sessionStorage.getItem("userEmail");
+          const userRole = sessionStorage.getItem("userRole");
+
+          return (
+            userToken &&
+            userEmail &&
+            userRole === "staff" &&
+            userEmail.endsWith("@improveafrica.com")
+          );
+        }
+
+        // Handle login submission
+        window.handleLogin = function (event) {
+          event.preventDefault();
+          const email = document.getElementById("login-email").value;
+          const password = document.getElementById("login-password").value;
+          const userType = document.getElementById("user-type").value;
+
+          if (userType === "staff" && !email.endsWith("@improveafrica.com")) {
+            alert(
+              "Staff accounts must use an @improveafrica.com email address"
+            );
+            return;
+          }
+
+          const endpoint =
+            userType === "staff"
+              ? "/api/staff/login"
+              : userType === "buyer"
+              ? "/api/buyers/login"
+              : "/api/users/login";
+
+          fetch(endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                sessionStorage.setItem("userToken", data.token);
+                sessionStorage.setItem("userEmail", email);
+                sessionStorage.setItem("userRole", userType);
+
+                if (userType === "staff") {
+                  showStaffSection();
+                  logStaffAccess();
+                } else {
+                  window.location.href = "/dashboard.html";
+                }
+              }
+            });
+        };
+
+        // Handle signup submission
+        window.handleSignup = function (event) {
+          event.preventDefault();
+          const name = document.getElementById("signup-name").value;
+          const email = document.getElementById("signup-email").value;
+          const password = document.getElementById("signup-password").value;
+          const confirmPassword = document.getElementById(
+            "signup-confirm-password"
+          ).value;
+          const userType = document.getElementById("user-type").value;
+          const company = document.getElementById("signup-company").value;
+
+          if (password !== confirmPassword) {
+            alert("Passwords do not match");
+            return;
+          }
+
+          if (userType === "staff" && !email.endsWith("@improveafrica.com")) {
+            alert(
+              "Staff accounts must use an @improveafrica.com email address"
+            );
+            return;
+          }
+
+          const endpoint =
+            userType === "staff"
+              ? "/api/staff/register"
+              : userType === "buyer"
+              ? "/api/buyers/register"
+              : "/api/users/register";
+
+          fetch(endpoint, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              name,
+              email,
+              password,
+              company: userType === "buyer" ? company : undefined,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                alert("Account created successfully! Please log in.");
+                switchAuthType("login");
+              }
+            });
+        };
+
+        // Show/hide staff section
+        function showStaffSection() {
+          const staffSection = document.querySelector(".staff-only-section");
+          if (staffSection && isStaffMember()) {
+            staffSection.style.display = "block";
+          } else {
+            window.location.href = "/market.html";
+          }
+        }
+
+        // Log staff access
+        function logStaffAccess() {
+          const userEmail = sessionStorage.getItem("userEmail");
+          fetch("/api/staff/access-log", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${sessionStorage.getItem("userToken")}`,
+            },
+            body: JSON.stringify({
+              staffEmail: userEmail,
+              timestamp: new Date(),
+              action: "accessed_product_management",
+            }),
+          });
+        }
+
+        // Logout handler
+        window.handleLogout = function () {
+          sessionStorage.removeItem("userToken");
+          sessionStorage.removeItem("userEmail");
+          sessionStorage.removeItem("userRole");
+          window.location.href = "/market.html";
+        };
+
+        // Initialize form and check auth status
+        updateAuthForm();
+        if (isStaffMember()) {
+          showStaffSection();
+        }
+      });
+    </script>
   </body>
 </html>

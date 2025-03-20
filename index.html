@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Improve Africa - Empowering Farmers, Creating Opportunities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "ia-blue": "#1e4d8c",
+              "ia-green": "#2c7744",
+              "ia-light-blue": "#1a6985",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
@@ -17,25 +34,9 @@
   <body>
     <!-- Header Section -->
     <header>
-      <div
-        class="container"
-        style="
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 0;
-          max-width: 100%;
-        "
-      >
+      <div class="container flex justify-between items-center p-0 max-w-full">
         <div
-          class="logo"
-          style="
-            background-color: #f8f9fa;
-            padding: 8px 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            margin-left: 0;
-          "
+          class="logo bg-gray-100 p-2 rounded-md flex items-center m-2.5 shadow-sm"
         >
           <a
             href="index.html"

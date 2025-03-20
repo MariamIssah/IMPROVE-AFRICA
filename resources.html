@@ -3,11 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Resources | Improve Africa</title>
+    <title>Resources - Improve Africa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "ia-blue": "#1e4d8c",
+              "ia-green": "#2c7744",
+              "ia-light-blue": "#1a6985",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
     <link rel="stylesheet" href="css/styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -449,101 +466,37 @@
     >
       <div class="container">
         <div
-          class="search-filter-container"
-          style="
-            background: #2c7744;
-            border-radius: 10px;
-            padding: 2rem;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            color: white;
-          "
+          class="search-filter-container bg-ia-green rounded-lg p-8 shadow-md text-white"
         >
-          <h3
-            style="
-              color: white;
-              margin-bottom: 1.5rem;
-              font-size: 1.5rem;
-              text-align: center;
-            "
-          >
-            Find Resources
-          </h3>
+          <h3 class="text-white text-2xl mb-6 text-center">Find Resources</h3>
 
-          <div
-            class="search-box"
-            style="margin-bottom: 1.5rem; position: relative"
-          >
+          <div class="search-box mb-6 relative">
             <input
               type="text"
               id="resource-search"
               placeholder="Search resources..."
-              style="
-                width: 100%;
-                padding: 15px 20px;
-                border: 1px solid #ddd;
-                border-radius: 30px;
-                font-size: 1rem;
-                transition: all 0.3s ease;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-              "
-              onfocus="this.style.borderColor='#1a6985'; this.style.boxShadow='0 2px 15px rgba(26, 105, 133, 0.15)';"
-              onblur="this.style.borderColor='#ddd'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.05)';"
+              class="w-full py-3.5 px-5 border border-gray-300 rounded-full text-base transition-all duration-300 shadow-sm focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:ring-opacity-50 outline-none"
             />
             <button
               type="button"
-              class="search-btn"
-              title="Search resources"
-              style="
-                position: absolute;
-                right: 5px;
-                top: 5px;
-                background: linear-gradient(to right, #1a6985, #2a9d8f);
-                color: white;
-                border: none;
-                border-radius: 30px;
-                padding: 10px 20px;
-                cursor: pointer;
-                transition: all 0.3s ease;
-              "
-              onmouseover="this.style.opacity='0.9';"
-              onmouseout="this.style.opacity='1';"
+              class="search-btn absolute right-1.5 top-1.5 bg-gradient-to-r from-ia-light-blue to-teal-500 text-white border-none rounded-full py-2.5 px-5 cursor-pointer transition-all duration-300 hover:opacity-90"
             >
               <i class="fas fa-search"></i> Search
             </button>
           </div>
 
           <div
-            class="filter-options"
-            style="
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-              gap: 1.5rem;
-            "
+            class="filter-options grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"
           >
-            <div
-              class="filter-group"
-              style="display: flex; flex-direction: column"
-            >
-              <label
-                for="resource-category"
-                style="margin-bottom: 0.5rem; font-weight: 500; color: #555"
-                >Category:</label
+            <div class="filter-group flex flex-col">
+              <label for="resource-topic" class="mb-2 font-medium text-white"
+                >Topic:</label
               >
               <select
-                id="resource-category"
-                style="
-                  padding: 12px 15px;
-                  border: 1px solid #ddd;
-                  border-radius: 8px;
-                  background-color: #f9f9f9;
-                  font-size: 0.95rem;
-                  color: #444;
-                  transition: all 0.3s ease;
-                "
-                onfocus="this.style.borderColor='#1a6985';"
-                onblur="this.style.borderColor='#ddd';"
+                id="resource-topic"
+                class="py-3 px-4 border border-gray-300 rounded-lg bg-white bg-opacity-90 text-gray-700 text-sm transition-all duration-300 focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:outline-none"
               >
-                <option value="all">All Categories</option>
+                <option value="all">All Topics</option>
                 <option value="organic-farming">Organic Farming</option>
                 <option value="crop-management">Crop Management</option>
                 <option value="sustainable-practices">
@@ -557,28 +510,13 @@
               </select>
             </div>
 
-            <div
-              class="filter-group"
-              style="display: flex; flex-direction: column"
-            >
-              <label
-                for="resource-format"
-                style="margin-bottom: 0.5rem; font-weight: 500; color: #555"
+            <div class="filter-group flex flex-col">
+              <label for="resource-format" class="mb-2 font-medium text-white"
                 >Format:</label
               >
               <select
                 id="resource-format"
-                style="
-                  padding: 12px 15px;
-                  border: 1px solid #ddd;
-                  border-radius: 8px;
-                  background-color: #f9f9f9;
-                  font-size: 0.95rem;
-                  color: #444;
-                  transition: all 0.3s ease;
-                "
-                onfocus="this.style.borderColor='#1a6985';"
-                onblur="this.style.borderColor='#ddd';"
+                class="py-3 px-4 border border-gray-300 rounded-lg bg-white bg-opacity-90 text-gray-700 text-sm transition-all duration-300 focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:outline-none"
               >
                 <option value="all">All Formats</option>
                 <option value="book">Books</option>
@@ -590,28 +528,13 @@
               </select>
             </div>
 
-            <div
-              class="filter-group"
-              style="display: flex; flex-direction: column"
-            >
-              <label
-                for="resource-region"
-                style="margin-bottom: 0.5rem; font-weight: 500; color: #555"
+            <div class="filter-group flex flex-col">
+              <label for="resource-region" class="mb-2 font-medium text-white"
                 >Region:</label
               >
               <select
                 id="resource-region"
-                style="
-                  padding: 12px 15px;
-                  border: 1px solid #ddd;
-                  border-radius: 8px;
-                  background-color: #f9f9f9;
-                  font-size: 0.95rem;
-                  color: #444;
-                  transition: all 0.3s ease;
-                "
-                onfocus="this.style.borderColor='#1a6985';"
-                onblur="this.style.borderColor='#ddd';"
+                class="py-3 px-4 border border-gray-300 rounded-lg bg-white bg-opacity-90 text-gray-700 text-sm transition-all duration-300 focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:outline-none"
               >
                 <option value="all">All Regions</option>
                 <option value="greater-accra">Greater Accra</option>
@@ -619,29 +542,17 @@
                 <option value="northern">Northern</option>
                 <option value="western">Western</option>
                 <option value="eastern">Eastern</option>
-                <option value="volta">Volta</option>
+                <option value="central">Central</option>
               </select>
             </div>
           </div>
 
-          <div style="text-align: center; margin-top: 1.5rem">
+          <div class="mt-6 text-center">
             <button
-              type="button"
-              style="
-                background: #2a9d8f;
-                color: white;
-                border: none;
-                border-radius: 30px;
-                padding: 12px 25px;
-                font-weight: 500;
-                cursor: pointer;
-                transition: all 0.3s ease;
-                box-shadow: 0 3px 10px rgba(42, 157, 143, 0.2);
-              "
-              onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(42, 157, 143, 0.3)';"
-              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 3px 10px rgba(42, 157, 143, 0.2)';"
+              class="bg-white text-ia-green font-medium py-2.5 px-6 rounded-full hover:bg-opacity-90 transition-all shadow-md transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              aria-label="Apply resource filters"
             >
-              Apply Filters
+              <i class="fas fa-filter mr-2"></i> Apply Filters
             </button>
           </div>
         </div>

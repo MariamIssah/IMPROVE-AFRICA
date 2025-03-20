@@ -19,10 +19,7 @@ const defaultUser = {
 async function createDefaultUser() {
     try {
         // Connect to MongoDB
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/improve-africa', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/improve-africa');
 
         // Check if user already exists
         const existingUser = await User.findOne({ email: defaultUser.email });

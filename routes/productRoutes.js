@@ -10,12 +10,12 @@ const {
     getSellerProducts
 } = require('../controllers/productController');
 
-// Public routes
+// All routes require authentication
+router.use(protect);
+
+// Protected routes for all authenticated users
 router.get('/', getProducts);
 router.get('/:id', getProduct);
-
-// Protected routes
-router.use(protect); // All routes after this require authentication
 
 // Farmer only routes
 router.post('/', authorize('farmer', 'admin'), createProduct);

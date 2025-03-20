@@ -60,40 +60,63 @@ exports.registerUser = async (req, res) => {
 // @access  Public
 exports.loginUser = async (req, res) => {
     try {
+        console.log('Login attempt for:', req.body.email);
         const { email, password } = req.body;
+        
+        // Validate input
+        if (!email || !password) {
+            console.log('Login failed: Missing email or password');
+            return res.status(400).json({
+                success: false,
+                message: 'Please provide email and password'
+            });
+        }
 
         // Check for user email
         const user = await User.findOne({ email });
         if (!user) {
+            console.log('Login failed: User not found');
             return res.status(401).json({
                 success: false,
                 message: 'Invalid credentials'
             });
         }
 
+        console.log(`User found: ${user.email}, role: ${user.role}`);
+        
         // Check password
         const isMatch = await user.comparePassword(password);
         if (!isMatch) {
+            console.log('Login failed: Password mismatch');
             return res.status(401).json({
                 success: false,
                 message: 'Invalid credentials'
             });
         }
 
-        res.json({
+        console.log('Login successful:', user.email);
+        
+        // Generate token
+        const token = generateToken(user._id);
+        console.log('Token generated successfully');
+
+        // Return a proper JSON response
+        return res.json({
             success: true,
             user: {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
                 role: user.role,
-                token: generateToken(user._id)
+                token
             }
         });
     } catch (error) {
-        res.status(400).json({
+        console.error('Login error:', error);
+        return res.status(500).json({
             success: false,
-            message: error.message
+            message: 'Server error during login',
+            error: error.message
         });
     }
 };

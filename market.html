@@ -3,2932 +3,1151 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Marketplace | Improve Africa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              "ia-blue": "#1e4d8c",
-              "ia-light-blue": "#3a6fc4",
-              "ia-green": "#2c7744",
-              "ia-light-green": "#4caf50",
-            },
-            fontFamily: {
-              sans: ["Poppins", "sans-serif"],
-            },
-            animation: {
-              "fade-in": "fadeIn 0.5s ease-in-out",
-              "slide-up": "slideUp 0.5s ease-out",
-              scale: "scale 0.3s ease-in-out",
-            },
-            keyframes: {
-              fadeIn: {
-                "0%": { opacity: "0" },
-                "100%": { opacity: "1" },
-              },
-              slideUp: {
-                "0%": { transform: "translateY(20px)", opacity: "0" },
-                "100%": { transform: "translateY(0)", opacity: "1" },
-              },
-              scale: {
-                "0%": { transform: "scale(0.95)" },
-                "100%": { transform: "scale(1)" },
-              },
-            },
-            boxShadow: {
-              card: "0 2px 4px rgba(0,0,0,0.1)",
-              header: "0 1px 3px rgba(0,0,0,0.1)",
-            },
-          },
-        },
-      };
-    </script>
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>IMPROVE AFRICA - Agricultural Marketplace</title>
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <!-- Supabase JS Client -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <!-- Add our API client -->
-    <script type="module">
-      import * as api from "./js/api.js";
-      window.api = api; // Make it available globally
-    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .product-card {
+        transition: all 0.3s ease;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+      .badge {
+        position: absolute;
+        padding: 4px 8px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+        z-index: 10;
+      }
+      .badge-organic {
+        top: 12px;
+        right: 12px;
+        background-color: #10b981;
+        color: white;
+      }
+      .badge-featured {
+        top: 12px;
+        left: 12px;
+        background-color: #f59e0b;
+        color: white;
+      }
+      .image-container {
+        position: relative;
+        padding-top: 75%;
+        overflow: hidden;
+        background-color: #f3f4f6;
+      }
+      .image-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+      .product-card:hover .image-container img {
+        transform: scale(1.05);
+      }
+      .filter-active {
+        background-color: #059669;
+        color: white;
+      }
+      .filter-pill {
+        transition: all 0.3s ease;
+      }
+      .filter-pill:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      .filter-pill.filter-active {
+        background-color: #10b981;
+        color: white;
+        font-weight: 600;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+      }
+      .skeleton {
+        animation: pulse 1.5s infinite;
+        background: linear-gradient(
+          90deg,
+          #f3f4f6 25%,
+          #e5e7eb 50%,
+          #f3f4f6 75%
+        );
+        background-size: 200% 100%;
+      }
+      @keyframes pulse {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+      .modal-content {
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .scroll-smooth {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
-  <body class="font-poppins">
-    <!-- Header -->
-    <header class="fixed w-full bg-white z-50 shadow-header">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-20">
-          <!-- Logo -->
-          <div class="flex-shrink-0">
-            <a href="index.html" class="flex items-center space-x-2">
-              <img
-                src="images/logo.png"
-                alt="Improve Africa Logo"
-                class="h-12 w-auto"
-              />
-              <span class="text-xl font-semibold text-neutral-500"
-                >Improve Africa</span
-              >
-            </a>
-          </div>
-
-          <!-- Search Bar -->
-          <div class="hidden md:flex items-center flex-1 max-w-2xl mx-8">
-            <div class="relative w-full">
-              <input
-                type="text"
-                placeholder="Search products, categories, or regions..."
-                class="w-full pl-12 pr-4 py-3 rounded-full border border-neutral-200 focus:border-neutral-300 focus:ring-2 focus:ring-primary focus:ring-opacity-20 transition-all duration-200"
-              />
-              <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
-                <i class="fas fa-search text-neutral-400"></i>
-              </div>
-            </div>
-          </div>
-
-          <!-- Navigation -->
-          <nav class="hidden md:flex items-center space-x-8">
-            <a
-              href="index.html"
-              class="text-neutral-500 hover:text-neutral-800 transition-colors"
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+      <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+          <a href="index.html" class="text-2xl font-bold text-green-600"
+            >IMPROVE AFRICA</a
+          >
+          <div class="hidden md:flex space-x-6">
+            <a href="index.html" class="text-gray-600 hover:text-green-600"
               >Home</a
             >
-            <a
-              href="about.html"
-              class="text-neutral-500 hover:text-neutral-800 transition-colors"
+            <a href="about.html" class="text-gray-600 hover:text-green-600"
               >About</a
             >
-            <a
-              href="programs.html"
-              class="text-neutral-500 hover:text-neutral-800 transition-colors"
+            <a href="programs.html" class="text-gray-600 hover:text-green-600"
               >Programs</a
             >
-            <a href="market.html" class="text-primary font-medium"
+            <a href="regions.html" class="text-gray-600 hover:text-green-600"
+              >Regions</a
+            >
+            <a
+              href="market.html"
+              class="text-gray-600 hover:text-green-600 font-medium"
               >Marketplace</a
             >
+            <a href="contact.html" class="text-gray-600 hover:text-green-600"
+              >Contact</a
+            >
+          </div>
+          <div class="flex items-center space-x-4">
+            <a
+              href="login.html"
+              id="login-button"
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+            >
+              Login
+            </a>
+            <a
+              href="#"
+              id="logout-button"
+              class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors shadow-sm hidden"
+            >
+              Logout
+            </a>
+            <button class="md:hidden text-gray-600" aria-label="Toggle menu">
+              <i class="fas fa-bars text-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
 
-            <!-- User Menu -->
-            <div class="relative" id="user-menu">
-              <button
-                onclick="toggleUserMenu()"
-                class="flex items-center space-x-2 px-4 py-2 rounded-full border border-neutral-200 hover:shadow-md transition-all duration-200"
-                title="Open user menu"
-              >
-                <span
-                  class="text-neutral-700 text-sm hidden md:block"
-                  id="user-name"
-                  >John Doe</span
+    <!-- Search Section -->
+    <section class="bg-gray-100 py-8">
+      <div class="container mx-auto px-4">
+        <div class="bg-white rounded-lg shadow-md p-6">
+          <div
+            class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4"
+          >
+            <div class="flex-grow">
+              <div class="relative">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Search products..."
+                  class="w-full rounded-lg border border-gray-300 px-4 py-2 pl-10 focus:border-blue-500 focus:outline-none"
+                />
+                <div
+                  class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
                 >
-                <i class="fas fa-chevron-down text-neutral-500"></i>
-                <i class="fas fa-user-circle text-2xl text-neutral-500"></i>
-              </button>
-
-              <!-- Dropdown Menu -->
-              <div
-                id="user-dropdown"
-                class="absolute right-0 mt-2 w-64 bg-white rounded-xl shadow-lg py-2 hidden animate-fade-in z-50"
-              >
-                <div class="px-4 py-3 border-b border-gray-100">
-                  <p
-                    class="text-sm font-medium text-gray-900"
-                    id="dropdown-user-name"
-                  >
-                    John Doe
-                  </p>
-                  <p class="text-sm text-gray-500" id="dropdown-user-email">
-                    john@example.com
-                  </p>
-                  <p class="text-xs text-ia-blue mt-1" id="dropdown-user-type">
-                    Buyer Account
-                  </p>
-                </div>
-
-                <div class="py-2">
-                  <a
-                    href="#profile"
-                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    <i
-                      class="fas fa-user-circle w-5 h-5 mr-3 text-gray-400"
-                    ></i>
-                    Your Profile
-                  </a>
-                  <a
-                    href="#orders"
-                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    <i
-                      class="fas fa-shopping-bag w-5 h-5 mr-3 text-gray-400"
-                    ></i>
-                    Orders
-                  </a>
-                  <a
-                    href="#favorites"
-                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    <i class="fas fa-heart w-5 h-5 mr-3 text-gray-400"></i>
-                    Favorites
-                  </a>
-                  <a
-                    href="#settings"
-                    class="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                  >
-                    <i class="fas fa-cog w-5 h-5 mr-3 text-gray-400"></i>
-                    Settings
-                  </a>
-                </div>
-
-                <div class="border-t border-gray-100">
-                  <button
-                    onclick="handleLogout()"
-                    class="flex w-full items-center px-4 py-2 text-sm text-red-700 hover:bg-red-50"
-                    title="Sign out of your account"
-                  >
-                    <i
-                      class="fas fa-sign-out-alt w-5 h-5 mr-3 text-red-400"
-                    ></i>
-                    Sign out
-                  </button>
+                  <i class="fas fa-search text-gray-400"></i>
                 </div>
               </div>
             </div>
-          </nav>
-
-          <!-- Mobile menu button -->
-          <div class="md:hidden">
-            <button
-              class="p-2 rounded-md text-neutral-400 hover:text-neutral-500 hover:bg-neutral-50"
-              title="Open mobile menu"
-            >
-              <i class="fas fa-bars text-2xl"></i>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Mobile Search (visible on mobile only) -->
-      <div class="md:hidden px-4 pb-4">
-        <div class="relative">
-          <input
-            type="text"
-            placeholder="Search products..."
-            class="w-full pl-12 pr-4 py-3 rounded-full border border-neutral-200 focus:border-neutral-300 focus:ring-2 focus:ring-primary focus:ring-opacity-20"
-          />
-          <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
-            <i class="fas fa-search text-neutral-400"></i>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Mobile Navigation Menu (hidden by default) -->
-    <div class="hidden md:hidden fixed inset-0 bg-black bg-opacity-50 z-40">
-      <div class="bg-white h-full w-64 shadow-xl">
-        <div class="p-4 border-b border-neutral-200">
-          <div class="flex items-center justify-between">
-            <img
-              src="images/logo.png"
-              alt="Improve Africa Logo"
-              class="h-8 w-auto"
-            />
-            <button
-              class="p-2 rounded-md text-neutral-400 hover:text-neutral-500"
-              title="Close mobile menu"
-            >
-              <i class="fas fa-times text-xl"></i>
-            </button>
-          </div>
-        </div>
-        <nav class="p-4">
-          <a
-            href="index.html"
-            class="block py-2 text-neutral-500 hover:text-neutral-800"
-            >Home</a
-          >
-          <a
-            href="about.html"
-            class="block py-2 text-neutral-500 hover:text-neutral-800"
-            >About</a
-          >
-          <a
-            href="programs.html"
-            class="block py-2 text-neutral-500 hover:text-neutral-800"
-            >Programs</a
-          >
-          <a href="market.html" class="block py-2 text-primary font-medium"
-            >Marketplace</a
-          >
-        </nav>
-      </div>
-    </div>
-
-    <!-- Authentication Section -->
-    <section
-      id="auth-section"
-      class="min-h-screen py-20 bg-gradient-to-r from-ia-blue to-ia-green relative overflow-hidden"
-    >
-      <div class="absolute inset-0 bg-black opacity-30"></div>
-      <div class="container mx-auto px-4 relative z-10">
-        <div class="text-center mb-12">
-          <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
-            Welcome to Improve Africa Marketplace
-          </h2>
-          <p class="text-xl text-white/90 mb-8">
-            Please login or create an account to access our marketplace
-          </p>
-        </div>
-
-        <!-- Auth Type Selection -->
-        <div class="max-w-md mx-auto">
-          <div class="flex justify-center gap-4 mb-8">
-            <button
-              onclick="switchAuthType('login')"
-              id="login-tab"
-              class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-white text-ia-blue hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-            >
-              Login
-            </button>
-            <button
-              onclick="switchAuthType('signup')"
-              id="signup-tab"
-              class="flex-1 py-3 px-6 rounded-lg font-semibold transition-all duration-300 bg-white/20 text-white hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
-            >
-              Sign Up
-            </button>
-          </div>
-
-          <div class="mb-8 bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <select
-              id="user-type"
-              onchange="updateAuthForm()"
-              class="w-full px-4 py-3 rounded-lg border border-white/30 bg-white/10 text-white focus:ring-2 focus:ring-white focus:border-white transition-all duration-300"
-              aria-label="Select user type"
-            >
-              <option value="buyer">Buyer</option>
-              <option value="user">Regular User</option>
-              <option value="staff">Staff Member</option>
-            </select>
-          </div>
-
-          <!-- Login Form -->
-          <div
-            id="login-form"
-            class="bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 transform animate-fade-in"
-          >
-            <form
-              onsubmit="event.preventDefault(); showMarketplace();"
-              class="space-y-6"
-            >
-              <div>
-                <label
-                  for="login-email"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="login-email"
-                  required
-                  placeholder="Enter your email"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-              </div>
-              <div>
-                <label
-                  for="login-password"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Password</label
-                >
-                <input
-                  type="password"
-                  id="login-password"
-                  required
-                  placeholder="Enter your password"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-              </div>
-              <button
-                type="submit"
-                class="w-full py-3 px-6 rounded-lg font-semibold bg-ia-green text-white hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ia-green"
+            <div class="flex flex-col md:flex-row gap-4">
+              <select
+                id="categoryFilter"
+                class="rounded-lg border border-gray-300 px-4 py-2 bg-white focus:border-blue-500 focus:outline-none cursor-pointer"
+                aria-label="Filter by category"
               >
-                Login
-              </button>
-              <p class="text-center mt-4">
-                <a
-                  href="#"
-                  class="text-ia-blue hover:text-ia-light-blue transition-colors duration-300"
-                >
-                  Forgot Password?
-                </a>
-              </p>
-            </form>
-          </div>
-
-          <!-- Sign Up Form -->
-          <div
-            id="signup-form"
-            class="hidden bg-white rounded-2xl shadow-lg p-8 transition-all duration-300 transform"
-          >
-            <form onsubmit="handleSignup(event)" class="space-y-6">
-              <div>
-                <label
-                  for="signup-name"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Full Name</label
-                >
-                <input
-                  type="text"
-                  id="signup-name"
-                  required
-                  placeholder="Enter your full name"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-              </div>
-              <div>
-                <label
-                  for="signup-email"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Email</label
-                >
-                <input
-                  type="email"
-                  id="signup-email"
-                  required
-                  placeholder="Enter your email"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-                <small
-                  id="email-hint"
-                  class="text-gray-500 text-sm mt-1 hidden"
-                >
-                  Must be an @improveafrica.com email for staff accounts
-                </small>
-              </div>
-              <div id="company-field">
-                <label
-                  for="signup-company"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Company Name</label
-                >
-                <input
-                  type="text"
-                  id="signup-company"
-                  placeholder="Enter your company name"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-              </div>
-              <div>
-                <label
-                  for="signup-password"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Password</label
-                >
-                <input
-                  type="password"
-                  id="signup-password"
-                  required
-                  placeholder="Create a password"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-              </div>
-              <div>
-                <label
-                  for="signup-confirm-password"
-                  class="block text-gray-700 font-medium mb-2"
-                  >Confirm Password</label
-                >
-                <input
-                  type="password"
-                  id="signup-confirm-password"
-                  required
-                  placeholder="Confirm your password"
-                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-ia-blue focus:border-ia-blue transition-all duration-300"
-                />
-              </div>
-              <button
-                type="submit"
-                class="w-full py-3 px-6 rounded-lg font-semibold bg-ia-green text-white hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ia-green"
+                <option value="">All Categories</option>
+                <option value="fruits">Fruits</option>
+                <option value="vegetables">Vegetables</option>
+                <option value="grains">Grains</option>
+                <option value="legumes">Legumes</option>
+                <option value="oilseeds">Oilseeds</option>
+                <option value="roots-tubers">Roots & Tubers</option>
+                <option value="spices">Spices</option>
+              </select>
+              <select
+                id="regionFilter"
+                class="rounded-lg border border-gray-300 px-4 py-2 bg-white focus:border-blue-500 focus:outline-none cursor-pointer"
+                aria-label="Filter by region"
               >
-                Create Account
+                <option value="">All Regions</option>
+                <option value="Ashanti">Ashanti</option>
+                <option value="Brong-Ahafo">Brong-Ahafo</option>
+                <option value="Central">Central</option>
+                <option value="Eastern">Eastern</option>
+                <option value="Greater Accra">Greater Accra</option>
+                <option value="Northern">Northern</option>
+                <option value="Upper East">Upper East</option>
+                <option value="Upper West">Upper West</option>
+                <option value="Volta">Volta</option>
+                <option value="Western">Western</option>
+              </select>
+              <button
+                id="filterButton"
+                class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center justify-center"
+              >
+                <i class="fas fa-filter mr-2"></i> Filter
               </button>
-            </form>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="organicFilter"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <label for="organicFilter" class="ml-2 text-sm text-gray-700"
+                >Organic</label
+              >
+            </div>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="featuredFilter"
+                class="form-checkbox h-4 w-4 text-blue-600"
+              />
+              <label for="featuredFilter" class="ml-2 text-sm text-gray-700"
+                >Featured</label
+              >
+            </div>
+            <div class="flex items-center ml-4">
+              <span class="text-sm text-gray-700 mr-2">Sort by:</span>
+              <select
+                id="sortFilter"
+                class="text-sm rounded border border-gray-300 px-2 py-1 bg-white focus:border-blue-500 focus:outline-none cursor-pointer"
+                aria-label="Sort products by"
+              >
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="name-asc">Name: A-Z</option>
+                <option value="name-desc">Name: Z-A</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Marketplace Content -->
-    <div id="marketplace" class="hidden">
-      <!-- Header content -->
-
-      <!-- Loading Overlay -->
-      <div
-        id="loading-overlay"
-        class="fixed inset-0 bg-white bg-opacity-75 z-50 hidden flex items-center justify-center"
-      >
-        <div class="text-center">
-          <i class="fas fa-spinner fa-spin text-4xl text-ia-blue mb-4"></i>
-          <p class="text-gray-600">Loading products...</p>
+    <!-- Category Filters -->
+    <section class="bg-white py-4 sticky top-16 z-40 border-b">
+      <div class="container mx-auto px-4">
+        <div class="flex overflow-x-auto pb-2 scroll-smooth hide-scrollbar">
+          <div class="flex space-x-3">
+            <button
+              class="filter-pill filter-active bg-green-500 text-white whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-sm font-medium"
+              data-category="all"
+            >
+              All Products
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="grains"
+            >
+              <i class="fas fa-wheat-alt mr-2"></i>Grains
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="legumes"
+            >
+              <i class="fas fa-seedling mr-2"></i>Legumes
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="oilseeds"
+            >
+              <i class="fas fa-leaf mr-2"></i>Oilseeds
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="roots-tubers"
+            >
+              <i class="fas fa-carrot mr-2"></i>Roots & Tubers
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="fruits"
+            >
+              <i class="fas fa-apple-alt mr-2"></i>Fruits
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="vegetables"
+            >
+              <i class="fas fa-pepper-hot mr-2"></i>Vegetables
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="spices"
+            >
+              <i class="fas fa-mortar-pestle mr-2"></i>Spices
+            </button>
+            <button
+              class="filter-pill whitespace-nowrap px-4 py-2 rounded-full border border-green-500 text-green-700 text-sm font-medium"
+              data-category="organic"
+            >
+              <i class="fas fa-leaf mr-2"></i>Organic Only
+            </button>
+          </div>
         </div>
       </div>
+    </section>
 
-      <!-- Error Message -->
-      <div
-        id="error-message"
-        class="fixed top-20 inset-x-0 bg-red-100 text-red-700 p-4 text-center hidden z-40"
-      >
-        An error occurred while loading products. Please try again later.
-      </div>
-
-      <!-- Main content -->
-      <div id="marketplace-content" class="hidden">
-        <!-- Marketplace Banner -->
-        <section class="relative bg-gray-50 py-24 overflow-hidden">
-          <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center animate-fade-in">
-              <h1
-                class="text-4xl md:text-5xl lg:text-6xl font-bold text-ia-blue mb-6"
-              >
-                Agricultural Raw Materials Marketplace
-              </h1>
-              <p
-                class="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto"
-              >
-                Premium quality products sourced directly from Ghanaian farmers
-              </p>
-              <div
-                class="flex flex-col sm:flex-row gap-4 justify-center items-center"
-              >
-                <a
-                  href="#products"
-                  class="px-8 py-3 bg-ia-blue text-white rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
-                >
-                  Browse Products
-                </a>
-                <a
-                  href="#register"
-                  class="px-8 py-3 bg-ia-green text-white rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300 transform hover:-translate-y-1 shadow-lg"
-                >
-                  Register as Buyer
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Search and Filters -->
-        <section
-          class="sticky top-20 z-30 bg-white border-b border-neutral-200 py-4"
+    <!-- Products Grid -->
+    <section class="py-8">
+      <div class="container mx-auto px-4">
+        <!-- Loading Skeletons -->
+        <div
+          id="loading"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
         >
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Category Pills -->
-            <div class="flex items-center space-x-6 overflow-x-auto pb-4">
-              <a
-                href="market.html"
-                class="px-6 py-3 rounded-lg bg-ia-blue text-white hover:bg-ia-light-blue transition-all duration-300"
-                title="View all raw materials"
-              >
-                <i class="fas fa-th mr-2"></i>
-                <span>All</span>
-              </a>
-
-              <a
-                href="grains.html"
-                class="px-6 py-3 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                title="View grains and cereals"
-              >
-                <i class="fas fa-wheat mr-2"></i>
-                <span>Grains & Cereals</span>
-              </a>
-
-              <a
-                href="oilseeds.html"
-                class="px-6 py-3 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                title="View oilseeds"
-              >
-                <i class="fas fa-seedling mr-2"></i>
-                <span>Oilseeds</span>
-              </a>
-
-              <a
-                href="pulses.html"
-                class="px-6 py-3 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                title="View pulses"
-              >
-                <i class="fas fa-leaf mr-2"></i>
-                <span>Pulses</span>
-              </a>
-
-              <a
-                href="nuts.html"
-                class="px-6 py-3 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                title="View nuts"
-              >
-                <i class="fas fa-apple-alt mr-2"></i>
-                <span>Nuts</span>
-              </a>
-
-              <a
-                href="spices.html"
-                class="px-6 py-3 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                title="View spices"
-              >
-                <i class="fas fa-mortar-pestle mr-2"></i>
-                <span>Spices</span>
-              </a>
-            </div>
-
-            <!-- Advanced Filters -->
-            <div class="flex items-center justify-between mt-4">
-              <div class="flex items-center space-x-4">
-                <button
-                  class="px-4 py-2 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                >
-                  <i class="fas fa-dollar-sign mr-2"></i>
-                  <span>Price</span>
-                </button>
-
-                <button
-                  class="px-4 py-2 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                >
-                  <i class="fas fa-box mr-2"></i>
-                  <span>Quantity</span>
-                </button>
-
-                <button
-                  class="px-4 py-2 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                >
-                  <i class="fas fa-certificate mr-2"></i>
-                  <span>Certification</span>
-                </button>
-              </div>
-
-              <div class="flex items-center space-x-2">
-                <button
-                  class="flex items-center justify-center w-10 h-10 rounded-full bg-white text-ia-blue hover:bg-ia-blue hover:text-white transition-colors duration-200"
-                  aria-label="Toggle view mode"
-                >
-                  <i class="fas fa-th-large"></i>
-                  <span class="sr-only">Toggle between grid and list view</span>
-                </button>
-                <button
-                  class="p-2 rounded-lg bg-white text-ia-blue border border-ia-blue hover:bg-ia-blue hover:text-white transition-all duration-300"
-                  title="List view"
-                >
-                  <i class="fas fa-list"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Products Section -->
-        <section id="products" class="py-12 bg-gray-50">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-              <h2 class="text-3xl font-bold text-ia-blue mb-4">
-                Featured Products
-              </h2>
-              <p class="text-gray-600">
-                Premium quality agricultural raw materials from Ghana
-              </p>
-            </div>
-
-            <div
-              class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-              id="featured-products"
-            >
-              <!-- Grains & Cereals -->
-              <div class="bg-white rounded-xl shadow-card overflow-hidden">
-                <div class="relative">
-                  <img
-                    src="images/products/obatanpa-maize.jpg"
-                    alt="Obatanpa Maize"
-                    class="w-full h-64 object-cover"
-                  />
-                  <span
-                    class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm"
-                    >In Stock</span
-                  >
-                  <span
-                    class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm"
-                    >QPM</span
-                  >
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 class="text-xl font-semibold text-gray-900">
-                        Obatanpa Maize
-                      </h3>
-                      <p class="text-gray-500">
-                        High-yielding, quality protein maize
-                      </p>
-                    </div>
-                    <button
-                      class="text-ia-blue hover:text-ia-light-blue"
-                      title="Add to favorites"
-                      onclick="toggleFavorite(1)"
-                    >
-                      <i class="far fa-heart text-xl"></i>
-                    </button>
-                  </div>
-
-                  <div class="space-y-2 mb-4">
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-box-open mr-2"></i>
-                      <span>MOQ: 20 MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-dollar-sign mr-2"></i>
-                      <span>Price: $280-320/MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      <span>Origin: Bono East Region, Ghana</span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  >
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-
-              <!-- Rice -->
-              <div class="bg-white rounded-xl shadow-card overflow-hidden">
-                <div class="relative">
-                  <img
-                    src="images/products/rice.jpg"
-                    alt="Jasmine Rice"
-                    class="w-full h-64 object-cover"
-                  />
-                  <span
-                    class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm"
-                    >In Stock</span
-                  >
-                  <span
-                    class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm"
-                    >Aromatic</span
-                  >
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 class="text-xl font-semibold text-gray-900">
-                        Jasmine Rice
-                      </h3>
-                      <p class="text-gray-500">
-                        Aromatic long-grain rice variety
-                      </p>
-                    </div>
-                    <button
-                      class="text-ia-blue hover:text-ia-light-blue"
-                      title="Add to favorites"
-                      onclick="toggleFavorite(6)"
-                    >
-                      <i class="far fa-heart text-xl"></i>
-                    </button>
-                  </div>
-                  <div class="space-y-2 mb-4">
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-box-open mr-2"></i>
-                      <span>MOQ: 15 MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-dollar-sign mr-2"></i>
-                      <span>Price: $800-950/MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      <span>Origin: Volta Region, Ghana</span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  >
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-
-              <!-- Millet -->
-              <div class="bg-white rounded-xl shadow-card overflow-hidden">
-                <div class="relative">
-                  <img
-                    src="images/products/millet.jpg"
-                    alt="Pearl Millet"
-                    class="w-full h-64 object-cover"
-                  />
-                  <span
-                    class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm"
-                    >In Stock</span
-                  >
-                  <span
-                    class="absolute top-4 left-4 bg-ia-green text-white px-3 py-1 rounded-full text-sm"
-                    >Organic</span
-                  >
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 class="text-xl font-semibold text-gray-900">
-                        Pearl Millet
-                      </h3>
-                      <p class="text-gray-500">
-                        Traditional drought-resistant grain
-                      </p>
-                    </div>
-                    <button
-                      class="text-ia-blue hover:text-ia-light-blue"
-                      title="Add to favorites"
-                      onclick="toggleFavorite(9)"
-                    >
-                      <i class="far fa-heart text-xl"></i>
-                    </button>
-                  </div>
-                  <div class="space-y-2 mb-4">
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-box-open mr-2"></i>
-                      <span>MOQ: 10 MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-dollar-sign mr-2"></i>
-                      <span>Price: $400-450/MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      <span>Origin: Northern Region, Ghana</span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  >
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-
-              <!-- Sorghum -->
-              <div class="bg-white rounded-xl shadow-card overflow-hidden">
-                <div class="relative">
-                  <img
-                    src="images/products/sorghum.jpg"
-                    alt="Red Sorghum"
-                    class="w-full h-64 object-cover"
-                  />
-                  <span
-                    class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm"
-                    >In Stock</span
-                  >
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 class="text-xl font-semibold text-gray-900">
-                        Red Sorghum
-                      </h3>
-                      <p class="text-gray-500">Used for food and brewing</p>
-                    </div>
-                    <button
-                      class="text-ia-blue hover:text-ia-light-blue"
-                      title="Add to favorites"
-                      onclick="toggleFavorite(10)"
-                    >
-                      <i class="far fa-heart text-xl"></i>
-                    </button>
-                  </div>
-                  <div class="space-y-2 mb-4">
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-box-open mr-2"></i>
-                      <span>MOQ: 15 MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-dollar-sign mr-2"></i>
-                      <span>Price: $350-400/MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      <span>Origin: Upper West Region, Ghana</span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  >
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-
-              <!-- Fonio -->
-              <div class="bg-white rounded-xl shadow-card overflow-hidden">
-                <div class="relative">
-                  <img
-                    src="images/products/fonio.jpg"
-                    alt="Fonio (Acha)"
-                    class="w-full h-64 object-cover"
-                  />
-                  <span
-                    class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm"
-                    >In Stock</span
-                  >
-                  <span
-                    class="absolute top-4 left-4 bg-ia-green text-white px-3 py-1 rounded-full text-sm"
-                    >Organic</span
-                  >
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 class="text-xl font-semibold text-gray-900">
-                        Fonio (Acha)
-                      </h3>
-                      <p class="text-gray-500">
-                        Ancient indigenous super grain
-                      </p>
-                    </div>
-                    <button
-                      class="text-ia-blue hover:text-ia-light-blue"
-                      title="Add to favorites"
-                      onclick="toggleFavorite(12)"
-                    >
-                      <i class="far fa-heart text-xl"></i>
-                    </button>
-                  </div>
-                  <div class="space-y-2 mb-4">
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-box-open mr-2"></i>
-                      <span>MOQ: 5 MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-dollar-sign mr-2"></i>
-                      <span>Price: $900-1,100/MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      <span>Origin: Savannah Region, Ghana</span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  >
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-
-              <!-- Wheat -->
-              <div class="bg-white rounded-xl shadow-card overflow-hidden">
-                <div class="relative">
-                  <img
-                    src="images/products/wheat.jpg"
-                    alt="Wheat"
-                    class="w-full h-64 object-cover"
-                  />
-                  <span
-                    class="absolute top-4 right-4 bg-yellow-500 text-white px-3 py-1 rounded-full text-sm"
-                    >Limited Stock</span
-                  >
-                </div>
-                <div class="p-6">
-                  <div class="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 class="text-xl font-semibold text-gray-900">Wheat</h3>
-                      <p class="text-gray-500">Limited local production</p>
-                    </div>
-                    <button
-                      class="text-ia-blue hover:text-ia-light-blue"
-                      title="Add to favorites"
-                      onclick="toggleFavorite(13)"
-                    >
-                      <i class="far fa-heart text-xl"></i>
-                    </button>
-                  </div>
-                  <div class="space-y-2 mb-4">
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-box-open mr-2"></i>
-                      <span>MOQ: 25 MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-dollar-sign mr-2"></i>
-                      <span>Price: $600-750/MT</span>
-                    </div>
-                    <div class="flex items-center text-sm text-gray-500">
-                      <i class="fas fa-map-marker-alt mr-2"></i>
-                      <span>Origin: Northern Region, Ghana</span>
-                    </div>
-                  </div>
-                  <button
-                    class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  >
-                    Request Quote
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Grains & Cereals Detailed Section -->
-            <div class="mt-16 bg-white rounded-xl shadow-card p-8">
-              <h3 class="text-2xl font-bold text-ia-blue mb-6">
-                Grains & Cereals in Ghana
-              </h3>
-              <p class="text-gray-600 mb-8">
-                Explore our selection of premium grains and cereals sourced from
-                various regions across Ghana.
-              </p>
-
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Maize -->
-                <div
-                  class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div class="flex items-start justify-between">
-                    <div>
-                      <h4 class="text-xl font-semibold text-gray-900 mb-2">
-                        Maize (Corn) 🌽
-                      </h4>
-                      <p class="text-gray-600 mb-4">
-                        Premium quality maize available from multiple regions
-                      </p>
-                    </div>
-                    <span
-                      class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full"
-                      >High Availability</span
-                    >
-                  </div>
-
-                  <!-- Varieties Section -->
-                  <div class="mb-6 border-b border-gray-100 pb-6">
-                    <h5 class="font-medium text-gray-700 mb-3">
-                      Available Varieties:
-                    </h5>
-                    <div class="grid grid-cols-1 gap-3">
-                      <div class="bg-gray-50 p-3 rounded-lg">
-                        <div class="flex items-center justify-between">
-                          <span class="font-medium text-ia-blue">Obatanpa</span>
-                          <span
-                            class="text-xs bg-ia-blue text-white px-2 py-1 rounded"
-                            >QPM</span
-                          >
-                        </div>
-                        <p class="text-sm text-gray-600 mt-1">
-                          High-yielding, quality protein maize
-                        </p>
-                      </div>
-
-                      <div class="bg-gray-50 p-3 rounded-lg">
-                        <div class="flex items-center justify-between">
-                          <span class="font-medium text-ia-blue">Mamaba</span>
-                          <span
-                            class="text-xs bg-green-500 text-white px-2 py-1 rounded"
-                            >Early-Maturing</span
-                          >
-                        </div>
-                        <p class="text-sm text-gray-600 mt-1">
-                          Early-maturing and drought-resistant variety
-                        </p>
-                      </div>
-
-                      <div class="bg-gray-50 p-3 rounded-lg">
-                        <div class="flex items-center justify-between">
-                          <span class="font-medium text-ia-blue"
-                            >Aburohemaa</span
-                          >
-                          <span
-                            class="text-xs bg-yellow-500 text-white px-2 py-1 rounded"
-                            >Vitamin A</span
-                          >
-                        </div>
-                        <p class="text-sm text-gray-600 mt-1">
-                          Yellow maize, rich in vitamin A
-                        </p>
-                      </div>
-
-                      <div class="bg-gray-50 p-3 rounded-lg">
-                        <div class="flex items-center justify-between">
-                          <span class="font-medium text-ia-blue"
-                            >Golden Jubilee</span
-                          >
-                          <span
-                            class="text-xs bg-purple-500 text-white px-2 py-1 rounded"
-                            >Disease-Resistant</span
-                          >
-                        </div>
-                        <p class="text-sm text-gray-600 mt-1">
-                          High-yielding and disease-resistant variety
-                        </p>
-                      </div>
-
-                      <div class="bg-gray-50 p-3 rounded-lg">
-                        <div class="flex items-center justify-between">
-                          <span class="font-medium text-ia-blue">Dobidi</span>
-                          <span
-                            class="text-xs bg-orange-500 text-white px-2 py-1 rounded"
-                            >Late-Maturing</span
-                          >
-                        </div>
-                        <p class="text-sm text-gray-600 mt-1">
-                          Late-maturing but very productive variety
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="space-y-2">
-                    <h5 class="font-medium text-gray-700">
-                      Major Production Regions:
-                    </h5>
-                    <ul class="grid grid-cols-2 gap-2">
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Bono East
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Ashanti
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Eastern
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Northern
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper East
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper West
-                      </li>
-                    </ul>
-                  </div>
-
-                  <div class="mt-6 flex gap-2">
-                    <button
-                      class="flex-1 bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                    >
-                      Request Quote
-                    </button>
-                    <button
-                      class="px-4 py-2 border border-ia-blue text-ia-blue rounded-lg hover:bg-ia-blue hover:text-white transition-colors duration-300"
-                      title="View variety details"
-                    >
-                      <i class="fas fa-info-circle"></i>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Rice -->
-                <div
-                  class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div class="flex items-start justify-between">
-                    <div>
-                      <h4 class="text-xl font-semibold text-gray-900 mb-2">
-                        Rice 🍚
-                      </h4>
-                      <p class="text-gray-600 mb-4">
-                        Both lowland and upland varieties available
-                      </p>
-                    </div>
-                    <span
-                      class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full"
-                      >Available</span
-                    >
-                  </div>
-                  <div class="space-y-2">
-                    <h5 class="font-medium text-gray-700">
-                      Major Production Regions:
-                    </h5>
-                    <ul class="grid grid-cols-2 gap-2">
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Volta (Keta, Hohoe)
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Northern (Nasia)
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper East
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Ashanti (Ejura)
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Western North
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Millet -->
-                <div
-                  class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div class="flex items-start justify-between">
-                    <div>
-                      <h4 class="text-xl font-semibold text-gray-900 mb-2">
-                        Millet 🌾
-                      </h4>
-                      <p class="text-gray-600 mb-4">
-                        Traditional grain from northern regions
-                      </p>
-                    </div>
-                    <span
-                      class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full"
-                      >Seasonal</span
-                    >
-                  </div>
-                  <div class="space-y-2">
-                    <h5 class="font-medium text-gray-700">
-                      Major Production Regions:
-                    </h5>
-                    <ul class="grid grid-cols-2 gap-2">
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Northern
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper East
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper West
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Savannah
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Sorghum -->
-                <div
-                  class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div class="flex items-start justify-between">
-                    <div>
-                      <h4 class="text-xl font-semibold text-gray-900 mb-2">
-                        Sorghum 🌿
-                      </h4>
-                      <p class="text-gray-600 mb-4">
-                        Drought-resistant grain for multiple uses
-                      </p>
-                    </div>
-                    <span
-                      class="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full"
-                      >Available</span
-                    >
-                  </div>
-                  <div class="space-y-2">
-                    <h5 class="font-medium text-gray-700">
-                      Major Production Regions:
-                    </h5>
-                    <ul class="grid grid-cols-2 gap-2">
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Northern
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper East
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper West
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Savannah
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Fonio -->
-                <div
-                  class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow"
-                >
-                  <div class="flex items-start justify-between">
-                    <div>
-                      <h4 class="text-xl font-semibold text-gray-900 mb-2">
-                        Fonio (Acha) 🌾
-                      </h4>
-                      <p class="text-gray-600 mb-4">Indigenous super grain</p>
-                    </div>
-                    <span
-                      class="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full"
-                      >Limited Stock</span
-                    >
-                  </div>
-                  <div class="space-y-2">
-                    <h5 class="font-medium text-gray-700">
-                      Major Production Regions:
-                    </h5>
-                    <ul class="grid grid-cols-2 gap-2">
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Northern
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper East
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Upper West
-                      </li>
-                      <li class="flex items-center text-sm text-gray-600">
-                        <i
-                          class="fas fa-map-marker-alt w-4 mr-2 text-ia-blue"
-                        ></i
-                        >Savannah
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <!-- Note about Wheat and Barley -->
-                <div class="col-span-1 md:col-span-2 bg-gray-50 rounded-lg p-6">
-                  <h4 class="text-lg font-semibold text-gray-900 mb-4">
-                    Additional Information
-                  </h4>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="space-y-2">
-                      <h5 class="font-medium text-gray-700">Wheat 🍞</h5>
-                      <p class="text-sm text-gray-600">
-                        Limited local production in Northern Ghana and Savannah
-                        regions. Most wheat consumed in Ghana is imported.
-                      </p>
-                    </div>
-                    <div class="space-y-2">
-                      <h5 class="font-medium text-gray-700">Barley 🍺</h5>
-                      <p class="text-sm text-gray-600">
-                        Small-scale production primarily for brewing in Northern
-                        and Upper East regions.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="mt-8 p-4 bg-blue-50 rounded-lg">
-                <h4 class="text-lg font-semibold text-ia-blue mb-2">
-                  Looking for Specific Grains?
-                </h4>
-                <p class="text-gray-600">
-                  Contact our agricultural experts for detailed information
-                  about availability, pricing, and bulk purchases.
-                </p>
-                <button
-                  class="mt-4 px-6 py-2 bg-ia-blue text-white rounded-lg hover:bg-ia-light-blue transition-colors"
-                >
-                  Contact Expert
-                </button>
-              </div>
-            </div>
-
-            <!-- How to Order Section -->
-            <div class="mt-16 bg-white rounded-xl shadow-card p-8">
-              <h3 class="text-2xl font-bold text-ia-blue mb-6">How to Order</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center">
-                  <div
-                    class="w-16 h-16 bg-ia-blue/10 rounded-full flex items-center justify-center mx-auto mb-4"
-                  >
-                    <i class="fas fa-user-plus text-2xl text-ia-blue"></i>
-                  </div>
-                  <h4 class="text-lg font-semibold mb-2">
-                    1. Register as a Buyer
-                  </h4>
-                  <p class="text-gray-600">
-                    Complete our buyer registration process to access detailed
-                    product information and pricing.
-                  </p>
-                </div>
-
-                <div class="text-center">
-                  <div
-                    class="w-16 h-16 bg-ia-blue/10 rounded-full flex items-center justify-center mx-auto mb-4"
-                  >
-                    <i class="fas fa-file-alt text-2xl text-ia-blue"></i>
-                  </div>
-                  <h4 class="text-lg font-semibold mb-2">
-                    2. Request Quotation
-                  </h4>
-                  <p class="text-gray-600">
-                    Select your desired products and quantities to receive a
-                    detailed quote within 24 hours.
-                  </p>
-                </div>
-
-                <div class="text-center">
-                  <div
-                    class="w-16 h-16 bg-ia-blue/10 rounded-full flex items-center justify-center mx-auto mb-4"
-                  >
-                    <i class="fas fa-handshake text-2xl text-ia-blue"></i>
-                  </div>
-                  <h4 class="text-lg font-semibold mb-2">3. Finalize Order</h4>
-                  <p class="text-gray-600">
-                    Review and accept the quote, make payment arrangements, and
-                    confirm shipping details.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <!-- Additional Information -->
-            <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div class="bg-white rounded-xl shadow-card p-6">
-                <h4 class="text-lg font-semibold text-ia-blue mb-4">
-                  Payment Terms
-                </h4>
-                <ul class="space-y-2 text-gray-600">
-                  <li class="flex items-center">
-                    <i class="fas fa-check-circle text-ia-green mr-2"></i>
-                    <span>Letter of Credit (L/C)</span>
-                  </li>
-                  <li class="flex items-center">
-                    <i class="fas fa-check-circle text-ia-green mr-2"></i>
-                    <span>Telegraphic Transfer (T/T)</span>
-                  </li>
-                  <li class="flex items-center">
-                    <i class="fas fa-check-circle text-ia-green mr-2"></i>
-                    <span>Advance Payment</span>
-                  </li>
-                </ul>
-              </div>
-
-              <div class="bg-white rounded-xl shadow-card p-6">
-                <h4 class="text-lg font-semibold text-ia-blue mb-4">
-                  Shipping Information
-                </h4>
-                <ul class="space-y-2 text-gray-600">
-                  <li class="flex items-center">
-                    <i class="fas fa-check-circle text-ia-green mr-2"></i>
-                    <span>FOB Tema Port, Ghana</span>
-                  </li>
-                  <li class="flex items-center">
-                    <i class="fas fa-check-circle text-ia-green mr-2"></i>
-                    <span>CIF available on request</span>
-                  </li>
-                  <li class="flex items-center">
-                    <i class="fas fa-check-circle text-ia-green mr-2"></i>
-                    <span>Bulk and container shipping available</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section class="contact-section">
-          <div class="container">
-            <div class="section-header">
-              <h2>Need Assistance?</h2>
-              <p>Our team is here to help you</p>
-            </div>
-            <div class="contact-options">
-              <div class="contact-card">
-                <i class="fas fa-phone"></i>
-                <h3>Call Us</h3>
-                <p>+233 XX XXX XXXX</p>
-                <p>Monday - Friday, 8am - 5pm GMT</p>
-              </div>
-              <div class="contact-card">
-                <i class="fas fa-envelope"></i>
-                <h3>Email Us</h3>
-                <p>market@improveafrica.com</p>
-                <p>Response within 24 hours</p>
-              </div>
-              <div class="contact-card">
-                <i class="fas fa-shopping-cart"></i>
-                <h3>Bulk Purchase</h3>
-                <p>Looking to make a large order?</p>
-                <p>
-                  Our team will assist you with special pricing and logistics
-                </p>
-                <button
-                  class="btn btn-secondary"
-                  onclick="window.location.href='mailto:market@improveafrica.com?subject=Bulk Purchase Inquiry'"
-                >
-                  Contact Sales Team
-                </button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Footer -->
-        <footer>
-          <div class="container">
-            <div class="footer-content">
-              <div class="footer-logo">
-                <h2>Improve Africa</h2>
-                <p>
-                  Your trusted source for quality agricultural raw materials
-                </p>
-              </div>
-              <div class="footer-links">
-                <div class="footer-column">
-                  <h3>Quick Links</h3>
-                  <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="raw-materials.html">Raw Materials</a></li>
-                    <li><a href="market.html">Marketplace</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                  </ul>
-                </div>
-                <div class="footer-column">
-                  <h3>Buyer Resources</h3>
-                  <ul>
-                    <li><a href="#register">Registration</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#how-to-order">How to Order</a></li>
-                    <li><a href="#quality">Quality Standards</a></li>
-                  </ul>
-                </div>
-                <div class="footer-column">
-                  <h3>Legal</h3>
-                  <ul>
-                    <li><a href="#">Terms of Service</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                    <li><a href="#">Shipping Policy</a></li>
-                    <li><a href="#">Return Policy</a></li>
-                  </ul>
-                </div>
-              </div>
-              <div class="footer-social">
-                <h3>Connect With Us</h3>
-                <div class="social-icons">
-                  <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a href="#"><i class="fab fa-twitter"></i></a>
-                  <a href="#"><i class="fab fa-instagram"></i></a>
-                  <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-              </div>
-            </div>
-            <div class="footer-bottom">
-              <p>&copy; 2023 Improve Africa. All rights reserved.</p>
-            </div>
-          </div>
-        </footer>
-      </div>
-    </div>
-
-    <!-- Add Product Modal -->
-    <div
-      id="add-product-modal"
-      class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden"
-    >
-      <div
-        class="bg-white rounded-xl p-6 max-w-2xl mx-auto mt-20 overflow-y-auto max-h-[90vh]"
-      >
-        <div class="flex justify-between items-center mb-6">
-          <h3 class="text-xl font-semibold text-ia-blue">Add New Product</h3>
-          <button
-            onclick="closeAddProductModal()"
-            class="text-gray-500 hover:text-gray-700"
-            title="Close modal"
-            aria-label="Close modal"
-          >
-            <i class="fas fa-times" aria-hidden="true"></i>
-            <span class="sr-only">Close add product modal</span>
-          </button>
+          <!-- Skeleton cards will be inserted here -->
         </div>
 
-        <form onsubmit="handleAddProduct(event)" class="space-y-6">
-          <!-- Image Upload Section -->
-          <div class="space-y-2">
-            <label class="block text-gray-700 font-medium"
-              >Product Images</label
-            >
-            <div
-              class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center"
-              id="image-drop-zone"
-            >
-              <input
-                type="file"
-                id="product-image"
-                accept="image/*"
-                multiple
-                class="hidden"
-                onchange="handleImageUpload(event)"
-                title="Upload product images"
-                aria-label="Upload product images"
-              />
-              <div class="space-y-2" id="upload-prompt">
-                <i class="fas fa-cloud-upload-alt text-4xl text-gray-400"></i>
-                <p class="text-gray-600">Drag and drop images here or</p>
-                <button
-                  type="button"
-                  onclick="document.getElementById('product-image').click()"
-                  class="px-4 py-2 bg-ia-blue text-white rounded-lg hover:bg-ia-light-blue transition-colors"
-                  title="Browse files to upload"
-                >
-                  Browse Files
-                </button>
-              </div>
-              <div id="image-preview" class="grid grid-cols-3 gap-4 mt-4"></div>
-            </div>
-            <p class="text-sm text-gray-500">
-              Upload up to 5 images. First image will be the main product image.
+        <!-- No Results Message -->
+        <div id="no-results" class="hidden text-center py-12">
+          <div class="max-w-md mx-auto">
+            <i class="fas fa-search text-4xl text-gray-400 mb-4"></i>
+            <p class="text-gray-600 text-lg">
+              No products found. Try adjusting your filters.
             </p>
           </div>
+        </div>
 
-          <!-- Product Details -->
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label
-                for="product-name"
-                class="block text-gray-700 font-medium mb-2"
-                >Product Name</label
-              >
-              <input
-                type="text"
-                id="product-name"
-                required
-                class="w-full px-4 py-2 border rounded-lg"
-              />
-            </div>
-            <div>
-              <label
-                for="product-category"
-                class="block text-gray-700 font-medium mb-2"
-                >Category</label
-              >
-              <select
-                id="product-category"
-                required
-                class="w-full px-4 py-2 border rounded-lg"
-              >
-                <option value="grains">Grains & Cereals</option>
-                <option value="oilseeds">Oilseeds</option>
-                <option value="pulses">Pulses</option>
-                <option value="nuts">Nuts</option>
-                <option value="spices">Spices</option>
-                <option value="other">Other</option>
-              </select>
-            </div>
-          </div>
+        <!-- Products Container -->
+        <div
+          id="products-container"
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        >
+          <!-- Products will be inserted here -->
+        </div>
+      </div>
+    </section>
 
-          <div>
-            <label
-              for="product-description"
-              class="block text-gray-700 font-medium mb-2"
-              >Description</label
-            >
-            <textarea
-              id="product-description"
-              required
-              rows="3"
-              class="w-full px-4 py-2 border rounded-lg"
-            ></textarea>
-          </div>
-
-          <div class="grid grid-cols-2 gap-4">
-            <div>
-              <label
-                for="product-price"
-                class="block text-gray-700 font-medium mb-2"
-                >Price Range (USD/MT)</label
-              >
-              <div class="flex space-x-2">
-                <input
-                  type="number"
-                  id="price-min"
-                  placeholder="Min"
-                  required
-                  class="w-1/2 px-4 py-2 border rounded-lg"
-                />
-                <input
-                  type="number"
-                  id="price-max"
-                  placeholder="Max"
-                  required
-                  class="w-1/2 px-4 py-2 border rounded-lg"
-                />
-              </div>
-            </div>
-            <div>
-              <label
-                for="product-moq"
-                class="block text-gray-700 font-medium mb-2"
-                >MOQ (MT)</label
-              >
-              <input
-                type="number"
-                id="product-moq"
-                required
-                class="w-full px-4 py-2 border rounded-lg"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label
-              for="product-origin"
-              class="block text-gray-700 font-medium mb-2"
-              >Origin</label
-            >
-            <input
-              type="text"
-              id="product-origin"
-              required
-              class="w-full px-4 py-2 border rounded-lg"
-            />
-          </div>
-
-          <div class="flex space-x-4">
-            <label class="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="product-organic"
-                class="form-checkbox text-ia-blue"
-              />
-              <span>Organic Certified</span>
-            </label>
-            <label class="flex items-center space-x-2">
-              <input
-                type="checkbox"
-                id="product-featured"
-                class="form-checkbox text-ia-blue"
-              />
-              <span>Featured Product</span>
-            </label>
-          </div>
-
+    <!-- Product Modal -->
+    <div
+      id="product-modal"
+      class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden"
+    >
+      <div
+        class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+      >
+        <div class="flex justify-between items-center p-6 border-b">
+          <h3 class="text-xl font-bold">Product Details</h3>
           <button
-            type="submit"
-            class="w-full bg-ia-blue text-white py-3 rounded-lg hover:bg-ia-light-blue transition-colors"
+            id="modal-close"
+            class="text-gray-500 hover:text-gray-700"
+            aria-label="Close modal"
           >
-            Add Product
+            <i class="fas fa-times text-xl"></i>
           </button>
-        </form>
+        </div>
+        <div class="modal-content p-6">
+          <!-- Product details will be inserted here by JavaScript -->
+        </div>
       </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+      <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 class="text-xl font-bold mb-4">IMPROVE AFRICA</h3>
+            <p class="text-gray-300">
+              Connecting farmers and buyers across Ghana with high-quality
+              agricultural raw materials.
+            </p>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="index.html"
+                  class="text-gray-300 hover:text-white transition-colors"
+                  >Home</a
+                >
+              </li>
+              <li>
+                <a
+                  href="about.html"
+                  class="text-gray-300 hover:text-white transition-colors"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="programs.html"
+                  class="text-gray-300 hover:text-white transition-colors"
+                  >Programs</a
+                >
+              </li>
+              <li>
+                <a
+                  href="regions.html"
+                  class="text-gray-300 hover:text-white transition-colors"
+                  >Regions</a
+                >
+              </li>
+              <li>
+                <a
+                  href="market.html"
+                  class="text-gray-300 hover:text-white transition-colors"
+                  >Marketplace</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contact.html"
+                  class="text-gray-300 hover:text-white transition-colors"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+            <p class="text-gray-300 mb-2">
+              <i class="fas fa-envelope mr-2"></i>Email: info@improveafrica.com
+            </p>
+            <p class="text-gray-300 mb-2">
+              <i class="fas fa-phone mr-2"></i>Phone: +233 123 456 789
+            </p>
+            <p class="text-gray-300">
+              <i class="fas fa-map-marker-alt mr-2"></i>Accra, Ghana
+            </p>
+          </div>
+        </div>
+        <div
+          class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-300"
+        >
+          <p>&copy; 2024 IMPROVE AFRICA. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden"
+    >
+      <div
+        class="bg-white h-full w-64 p-4 transform transition-transform duration-300 ease-in-out -translate-x-full"
+      >
+        <div class="flex justify-between items-center mb-6">
+          <span class="text-lg font-bold text-green-600">IMPROVE AFRICA</span>
+          <button id="close-menu" class="text-gray-500" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="flex flex-col space-y-4">
+          <a
+            href="index.html"
+            class="text-gray-600 hover:text-green-600 py-2 border-b border-gray-100"
+            >Home</a
+          >
+          <a
+            href="about.html"
+            class="text-gray-600 hover:text-green-600 py-2 border-b border-gray-100"
+            >About</a
+          >
+          <a
+            href="programs.html"
+            class="text-gray-600 hover:text-green-600 py-2 border-b border-gray-100"
+            >Programs</a
+          >
+          <a
+            href="regions.html"
+            class="text-gray-600 hover:text-green-600 py-2 border-b border-gray-100"
+            >Regions</a
+          >
+          <a
+            href="market.html"
+            class="text-gray-600 hover:text-green-600 font-medium py-2 border-b border-gray-100"
+            >Marketplace</a
+          >
+          <a
+            href="contact.html"
+            class="text-gray-600 hover:text-green-600 py-2 border-b border-gray-100"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script src="js/auth.js"></script>
     <script>
-      // Initialize store
-      const store = {
-        state: {
-          products: [],
-          currentCategory: "all",
-          searchQuery: "",
-          viewMode: "grid",
-          favorites: new Set(),
-          filters: {
-            priceRange: { min: null, max: null },
-            stockRange: { min: null, max: null },
-            region: null,
-          },
-          sortBy: "name",
-          sortOrder: "asc",
-          loading: false,
-          error: null,
-          user: null,
-        },
+      document.addEventListener("DOMContentLoaded", () => {
+        // Get DOM elements
+        const productsContainer = document.getElementById("products-container");
+        const loadingContainer = document.getElementById("loading");
+        const noResultsMessage = document.getElementById("no-results");
+        const searchInput = document.getElementById("searchInput");
+        const regionFilter = document.getElementById("regionFilter");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const organicFilter = document.getElementById("organicFilter");
+        const featuredFilter = document.getElementById("featuredFilter");
+        const sortFilter = document.getElementById("sortFilter");
+        const filterButton = document.getElementById("filterButton");
+        const productModal = document.getElementById("product-modal");
+        const modalClose = document.getElementById("modal-close");
+        const loginButton = document.getElementById("login-button");
+        const logoutButton = document.getElementById("logout-button");
 
-        mutations: {
-          setProducts(products) {
-            this.state.products = products;
-            this.notifySubscribers();
-          },
-          setCategory(category) {
-            this.state.currentCategory = category;
-            this.notifySubscribers();
-          },
-          setSearchQuery(query) {
-            this.state.searchQuery = query.toLowerCase();
-            this.notifySubscribers();
-          },
-          setViewMode(mode) {
-            this.state.viewMode = mode;
-            this.notifySubscribers();
-          },
-          toggleFavorite(productId) {
-            if (this.state.favorites.has(productId)) {
-              this.state.favorites.delete(productId);
-            } else {
-              this.state.favorites.add(productId);
-            }
-            this.notifySubscribers();
-          },
-          setFilters(filters) {
-            this.state.filters = { ...this.state.filters, ...filters };
-            this.notifySubscribers();
-          },
-          setSortBy(sortBy) {
-            this.state.sortBy = sortBy;
-            this.notifySubscribers();
-          },
-          setSortOrder(order) {
-            this.state.sortOrder = order;
-            this.notifySubscribers();
-          },
-          setLoading(loading) {
-            this.state.loading = loading;
-            this.notifySubscribers();
-          },
-          setError(error) {
-            this.state.error = error;
-            this.notifySubscribers();
-          },
-          setUser(user) {
-            this.state.user = user;
-            this.notifySubscribers();
-          },
-        },
+        let allProducts = [];
+        let filteredProducts = [];
 
-        computed: {
-          filteredProducts() {
-            let result = [...this.state.products];
+        // Show login/logout buttons based on authentication
+        function updateAuthButtons() {
+          const token = localStorage.getItem("token");
+          if (token) {
+            loginButton.textContent = "Logout";
+            loginButton.onclick = () => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("user");
+              window.location.reload();
+            };
+            logoutButton.classList.remove("hidden");
+            fetchProducts(); // Fetch products when user is logged in
+          } else {
+            loginButton.textContent = "Login";
+            loginButton.onclick = () => {
+              window.location.href = "login.html";
+            };
+            loadingContainer.classList.add("hidden");
+            noResultsMessage.classList.remove("hidden");
+            noResultsMessage.innerHTML = `
+              <div class="text-center py-8">
+                <img src="assets/images/login-required.svg" alt="Login required" class="w-32 h-32 mx-auto mb-4 opacity-60">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Login Required</h3>
+                <p class="text-gray-600 mb-4">Please <a href="login.html" class="text-blue-600 hover:underline">log in</a> to view available products.</p>
+                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors inline-block">
+                  Login to Continue
+                </a>
+              </div>
+            `;
+            logoutButton.classList.add("hidden");
+          }
+        }
 
-            if (this.state.currentCategory !== "all") {
-              result = result.filter(
-                (p) =>
-                  this.getCategoryFromType(p.type) ===
-                  this.state.currentCategory
+        updateAuthButtons();
+
+        // Handle logout
+        logoutButton.addEventListener("click", () => {
+          localStorage.removeItem("token");
+          localStorage.removeItem("user");
+          window.location.href = "login.html";
+        });
+
+        // Function to fetch products from API
+        async function fetchProducts() {
+          console.log("Fetching products...");
+
+          // Create loading skeletons
+          productsContainer.innerHTML = "";
+          for (let i = 0; i < 8; i++) {
+            productsContainer.innerHTML += createSkeletonCard();
+          }
+
+          loadingContainer.classList.remove("hidden");
+          noResultsMessage.classList.add("hidden");
+
+          // Check for authentication token
+          const token = localStorage.getItem("token");
+          if (!token) {
+            loadingContainer.classList.add("hidden");
+            noResultsMessage.classList.remove("hidden");
+            noResultsMessage.innerHTML = `
+              <div class="text-center py-8">
+                <img src="assets/images/login-required.svg" alt="Login required" class="w-32 h-32 mx-auto mb-4 opacity-60">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Login Required</h3>
+                <p class="text-gray-600 mb-4">Please <a href="login.html" class="text-blue-600 hover:underline">log in</a> to view available products.</p>
+                <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors inline-block">
+                  Login to Continue
+                </a>
+              </div>
+            `;
+            return;
+          }
+
+          try {
+            // Add timestamp to prevent caching
+            const timestamp = new Date().getTime();
+            const url = `/api/products?_=${timestamp}`;
+
+            console.log("Fetching products from:", url);
+            const response = await fetch(url, {
+              headers: {
+                Authorization: `Bearer ${token}`,
+                "Cache-Control": "no-cache, no-store",
+              },
+            });
+
+            if (!response.ok) {
+              throw new Error(
+                `Failed to fetch products: ${response.status} ${response.statusText}`
               );
             }
 
-            if (this.state.searchQuery) {
-              result = result.filter((p) => {
-                const searchFields = [p.name, p.type, p.region].map((field) =>
-                  field ? field.toLowerCase() : ""
-                );
-                return searchFields.some((field) =>
-                  field.includes(this.state.searchQuery)
-                );
+            // First check if there's content
+            const text = await response.text();
+            console.log("Response text length:", text.length);
+
+            if (!text || text.trim() === "") {
+              throw new Error("Empty response from server");
+            }
+
+            // Then parse as JSON
+            const responseData = JSON.parse(text);
+            console.log("Response data:", responseData);
+
+            if (!responseData.success) {
+              throw new Error(
+                responseData.message || "Failed to fetch products"
+              );
+            }
+
+            // Extract products from the response data
+            allProducts = responseData.data || [];
+            console.log("Products fetched:", allProducts);
+
+            // Initialize with all products
+            filteredProducts = [...allProducts];
+            applyFilters();
+          } catch (error) {
+            console.error("Error fetching products:", error);
+            loadingContainer.classList.add("hidden");
+            noResultsMessage.classList.remove("hidden");
+            noResultsMessage.innerHTML = `
+              <div class="text-center py-8">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">Error Loading Products</h3>
+                <p class="text-gray-600 mb-4">${
+                  error.message || "An unexpected error occurred."
+                }</p>
+                <button onclick="fetchProducts()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition-colors inline-block">
+                  Try Again
+                </button>
+              </div>
+            `;
+          }
+        }
+
+        // Apply all filters to products
+        function applyFilters() {
+          const searchTerm = searchInput.value.toLowerCase();
+          const regionValue = regionFilter.value;
+          const categoryValue = categoryFilter.value;
+          const isOrganic = organicFilter.checked;
+          const isFeatured = featuredFilter.checked;
+          const sortValue = sortFilter.value;
+
+          filteredProducts = allProducts.filter((product) => {
+            // Search term filter
+            const matchesSearch =
+              searchTerm === "" ||
+              product.name.toLowerCase().includes(searchTerm) ||
+              (product.description &&
+                product.description.toLowerCase().includes(searchTerm));
+
+            // Region filter
+            const matchesRegion =
+              regionValue === "" ||
+              (product.location && product.location.region === regionValue);
+
+            // Category filter
+            const matchesCategory =
+              categoryValue === "" || product.category === categoryValue;
+
+            // Organic filter - check if certifications array includes "Organic"
+            const matchesOrganic =
+              !isOrganic ||
+              (product.certifications &&
+                product.certifications.some(
+                  (cert) => cert.toLowerCase() === "organic"
+                ));
+
+            // Featured filter - check for featured status
+            const matchesFeatured =
+              !isFeatured || product.status === "featured";
+
+            return (
+              matchesSearch &&
+              matchesRegion &&
+              matchesCategory &&
+              matchesOrganic &&
+              matchesFeatured
+            );
+          });
+
+          // Sort products
+          if (sortValue === "price-low") {
+            filteredProducts.sort((a, b) => a.price - b.price);
+          } else if (sortValue === "price-high") {
+            filteredProducts.sort((a, b) => b.price - a.price);
+          } else if (sortValue === "name-asc") {
+            filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
+          } else if (sortValue === "name-desc") {
+            filteredProducts.sort((a, b) => b.name.localeCompare(a.name));
+          } else if (sortValue === "newest") {
+            filteredProducts.sort(
+              (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+            );
+          }
+
+          displayProducts(filteredProducts);
+        }
+
+        // Event listeners for filters
+        searchInput.addEventListener("input", applyFilters);
+        regionFilter.addEventListener("change", applyFilters);
+        categoryFilter.addEventListener("change", applyFilters);
+        organicFilter.addEventListener("change", applyFilters);
+        featuredFilter.addEventListener("change", applyFilters);
+        sortFilter.addEventListener("change", applyFilters);
+        filterButton.addEventListener("click", applyFilters);
+
+        // Event listeners for category filter pills
+        document.querySelectorAll(".filter-pill").forEach((pill) => {
+          pill.addEventListener("click", function () {
+            // Remove active class from all pills
+            document.querySelectorAll(".filter-pill").forEach((p) => {
+              p.classList.remove("filter-active");
+              p.classList.remove("bg-green-500");
+              p.classList.remove("text-white");
+              p.classList.add("text-green-700");
+            });
+
+            // Add active class to clicked pill
+            this.classList.add("filter-active");
+            this.classList.add("bg-green-500");
+            this.classList.add("text-white");
+            this.classList.remove("text-green-700");
+
+            const category = this.getAttribute("data-category");
+
+            if (category === "all") {
+              categoryFilter.value = "";
+            } else if (category === "organic") {
+              organicFilter.checked = true;
+            } else {
+              categoryFilter.value = category;
+            }
+
+            applyFilters();
+          });
+        });
+
+        // Function to display products as cards
+        function displayProducts(products) {
+          loadingContainer.classList.add("hidden");
+          productsContainer.innerHTML = "";
+
+          if (products.length === 0) {
+            noResultsMessage.classList.remove("hidden");
+            noResultsMessage.textContent =
+              "No products found matching your filters.";
+            return;
+          }
+
+          noResultsMessage.classList.add("hidden");
+
+          products.forEach((product) => {
+            // Create certification badges
+            let certificationBadges = "";
+
+            // Check for certifications in the certifications array
+            if (product.certifications && product.certifications.length > 0) {
+              product.certifications.forEach((cert) => {
+                if (cert.toLowerCase() === "organic") {
+                  certificationBadges += `<span class="badge bg-green-100 text-green-800 mr-1 mb-1">Organic</span>`;
+                } else {
+                  certificationBadges += `<span class="badge bg-blue-100 text-blue-800 mr-1 mb-1">${cert}</span>`;
+                }
               });
             }
 
-            if (this.state.filters.priceRange?.min) {
-              result = result.filter(
-                (p) => p.price >= this.state.filters.priceRange.min
-              );
-            }
-            if (this.state.filters.priceRange?.max) {
-              result = result.filter(
-                (p) => p.price <= this.state.filters.priceRange.max
-              );
+            // Special badge for featured products
+            if (product.status === "featured") {
+              certificationBadges += `<span class="badge bg-yellow-100 text-yellow-800 mr-1 mb-1">Featured</span>`;
             }
 
-            if (this.state.filters.stockRange?.min) {
-              result = result.filter(
-                (p) => p.stock >= this.state.filters.stockRange.min
-              );
-            }
-            if (this.state.filters.stockRange?.max) {
-              result = result.filter(
-                (p) => p.stock <= this.state.filters.stockRange.max
-              );
-            }
+            // Set default image URL if no product images
+            const imageUrl =
+              product.images && product.images.length > 0
+                ? product.images[0]
+                : "assets/images/product-placeholder.jpg";
 
-            if (this.state.filters.region) {
-              result = result.filter(
-                (p) => p.region === this.state.filters.region
-              );
-            }
+            // Format harvest date
+            const harvestDate = product.harvestDate
+              ? new Date(product.harvestDate).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "short",
+                  day: "numeric",
+                })
+              : "Not specified";
 
-            result.sort((a, b) => {
-              let comparison = 0;
-              switch (this.state.sortBy) {
-                case "name":
-                  comparison = a.name.localeCompare(b.name);
-                  break;
-                case "price":
-                  comparison = a.price - b.price;
-                  break;
-                case "stock":
-                  comparison = a.stock - b.stock;
-                  break;
-              }
-              return this.state.sortOrder === "asc" ? comparison : -comparison;
-            });
+            // Get location information safely
+            const locationCity =
+              product.location && product.location.city
+                ? product.location.city
+                : "Unknown";
+            const locationRegion =
+              product.location && product.location.region
+                ? product.location.region
+                : "Unknown";
+            const locationCountry =
+              product.location && product.location.country
+                ? product.location.country
+                : "Ghana";
 
-            return result;
-          },
-
-          // Get unique regions from products
-          regions() {
-            const regions = new Set();
-            this.state.products.forEach((product) => {
-              if (product.region) {
-                regions.add(product.region);
-              }
-            });
-            return Array.from(regions).sort();
-          },
-
-          // Get unique product types
-          productTypes() {
-            const types = new Set();
-            this.state.products.forEach((product) => {
-              if (product.type) {
-                types.add(product.type);
-              }
-            });
-            return Array.from(types).sort();
-          },
-        },
-
-        // Helper method to determine category from product type
-        getCategoryFromType(type) {
-          if (!type) return "other";
-
-          type = type.toLowerCase();
-
-          if (type.includes("maize")) return "maize";
-          if (
-            type.includes("rice") ||
-            type.includes("millet") ||
-            type.includes("sorghum") ||
-            type.includes("wheat") ||
-            type.includes("fonio") ||
-            type.includes("barley")
-          )
-            return "grains";
-          if (
-            type.includes("soybean") ||
-            type.includes("sunflower") ||
-            type.includes("sesame")
-          )
-            return "oilseeds";
-          if (
-            type.includes("bean") ||
-            type.includes("pea") ||
-            type.includes("lentil") ||
-            type.includes("cowpea")
-          )
-            return "pulses";
-          if (
-            type.includes("cashew") ||
-            type.includes("peanut") ||
-            type.includes("almond")
-          )
-            return "nuts";
-          if (
-            type.includes("ginger") ||
-            type.includes("pepper") ||
-            type.includes("turmeric")
-          )
-            return "spices";
-
-          return "other";
-        },
-
-        subscribers: [],
-        subscribe(callback) {
-          this.subscribers.push(callback);
-          return () => {
-            this.subscribers = this.subscribers.filter((cb) => cb !== callback);
-          };
-        },
-        notifySubscribers() {
-          this.subscribers.forEach((callback) => callback());
-        },
-
-        // Fetch products from Express API
-        async fetchProducts() {
-          try {
-            this.mutations.setLoading.call(this, true);
-            this.mutations.setError.call(this, null);
-
-            const products = await window.api.fetchProducts();
-
-            // Transform data if needed to match our product structure
-            this.mutations.setProducts.call(this, products);
-          } catch (error) {
-            console.error("Error fetching products:", error);
-            this.mutations.setError.call(this, error.message);
-          } finally {
-            this.mutations.setLoading.call(this, false);
-          }
-        },
-
-        // Fetch featured products from Express API
-        async fetchFeaturedProducts() {
-          try {
-            return await window.api.fetchFeaturedProducts();
-          } catch (error) {
-            console.error("Error fetching featured products:", error);
-            return [];
-          }
-        },
-      };
-
-      // Initialize the marketplace
-      async function initMarketplace() {
-        // Show loading overlay
-        document.getElementById("loading-overlay").classList.remove("hidden");
-
-        try {
-          // Check if we need to seed the database
-          const products = await window.api.fetchProducts();
-
-          if (!products || products.length === 0) {
-            console.log("No products found, seeding database...");
-            await window.api.seedProducts();
-          }
-
-          // Fetch products
-          await store.fetchProducts();
-
-          // Initialize UI components
-          initializeUI();
-
-          // Hide loading overlay
-          document.getElementById("loading-overlay").classList.add("hidden");
-
-          // Show marketplace content
-          document
-            .getElementById("marketplace-content")
-            .classList.remove("hidden");
-          document.getElementById("marketplace").classList.remove("hidden");
-        } catch (error) {
-          console.error("Error initializing marketplace:", error);
-          document.getElementById("loading-overlay").classList.add("hidden");
-          document.getElementById("error-message").classList.remove("hidden");
-          document.getElementById(
-            "error-message"
-          ).textContent = `Error loading marketplace: ${error.message}. Please try again later.`;
-        }
-      }
-
-      // Initialize components
-      function initializeComponents() {
-        ensureMaizeCategory();
-
-        // Fetch products from Supabase
-        store.fetchProducts();
-
-        // Subscribe components to store updates
-        store.subscribe(() => {
-          renderProducts(store.computed.filteredProducts());
-          CategoryFilter.render();
-          ViewToggle.render();
-
-          // Update loading state
-          const loadingOverlay = document.getElementById("loading-overlay");
-          if (loadingOverlay) {
-            if (store.state.loading) {
-              loadingOverlay.classList.remove("hidden");
-            } else {
-              loadingOverlay.classList.add("hidden");
-            }
-          }
-
-          // Update error state
-          const errorMessage = document.getElementById("error-message");
-          if (errorMessage) {
-            if (store.state.error) {
-              errorMessage.textContent = store.state.error;
-              errorMessage.classList.remove("hidden");
-            } else {
-              errorMessage.classList.add("hidden");
-            }
-          }
-        });
-
-        // Load featured products
-        loadFeaturedProducts();
-      }
-
-      // Load featured products from Supabase
-      async function loadFeaturedProducts() {
-        const featuredProductsContainer =
-          document.getElementById("featured-products");
-        if (!featuredProductsContainer) return;
-
-        // Show loading state
-        featuredProductsContainer.innerHTML = `
-          <div class="col-span-full flex justify-center items-center py-12">
-            <div class="text-center">
-              <i class="fas fa-spinner fa-spin text-4xl text-ia-blue mb-4"></i>
-              <p class="text-gray-600">Loading featured products...</p>
-            </div>
-          </div>
-        `;
-
-        try {
-          // Fetch featured products
-          const featuredProducts = await store.fetchFeaturedProducts();
-
-          if (featuredProducts.length === 0) {
-            featuredProductsContainer.innerHTML = `
-              <div class="col-span-full text-center py-12">
-                <i class="fas fa-exclamation-circle text-4xl text-gray-300 mb-4"></i>
-                <p class="text-gray-500">No featured products found.</p>
-              </div>
-            `;
-            return;
-          }
-
-          // Render featured products
-          featuredProductsContainer.innerHTML = featuredProducts
-            .map(
-              (product) => `
-            <div class="bg-white rounded-xl shadow-card overflow-hidden">
-              <div class="relative">
-                <img
-                  src="${
-                    product.image_url || "images/products/placeholder.jpg"
-                  }"
-                  alt="${product.name}"
-                  class="w-full h-64 object-cover"
-                />
-                <span
-                  class="absolute top-4 right-4 ${
-                    product.inStock ? "bg-green-500" : "bg-yellow-500"
-                  } text-white px-3 py-1 rounded-full text-sm"
-                  >${product.inStock ? "In Stock" : "Limited Stock"}</span
-                >
-                ${
-                  product.variety
-                    ? `
-                <span
-                  class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm"
-                  >${product.variety}</span
-                >`
-                    : ""
-                }
-                ${
-                  product.isOrganic
-                    ? `
-                <span
-                  class="absolute ${
-                    product.variety ? "top-14" : "top-4"
-                  } left-4 bg-ia-green text-white px-3 py-1 rounded-full text-sm"
-                  >Organic</span
-                >`
-                    : ""
-                }
-              </div>
-              <div class="p-6">
-                <div class="flex justify-between items-start mb-4">
-                  <div>
-                    <h3 class="text-xl font-semibold text-gray-900">
-                      ${product.name}
+            // Create product card
+            const productCard = `
+              <div class="product-card relative bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                <div class="absolute top-2 left-2 flex flex-wrap z-10">${certificationBadges}</div>
+                <div class="image-container h-48 relative overflow-hidden">
+                  <img
+                    src="${imageUrl}"
+                    alt="${product.name}"
+                    class="w-full h-full object-cover transition transform hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="p-4 flex flex-col h-[calc(100%-12rem)] flex-grow">
+                  <div class="mb-2">
+                    <h3 class="text-lg font-semibold leading-tight">${
+                      product.name
+                    }
+                      <span class="text-blue-600 whitespace-nowrap ml-2">$${
+                        product.price
+                      }/${product.unit || "kg"}</span>
                     </h3>
-                    <p class="text-gray-500">${product.description}</p>
+                    <p class="text-sm text-gray-600">${locationCity}, ${locationRegion}</p>
                   </div>
-                  <button
-                    class="text-ia-blue hover:text-ia-light-blue"
-                    title="Add to favorites"
-                    onclick="toggleFavorite(${product.id})"
-                  >
-                    <i class="far fa-heart text-xl"></i>
-                  </button>
-                </div>
-                <div class="space-y-2 mb-4">
-                  <div class="flex items-center text-sm text-gray-500">
-                    <i class="fas fa-box-open mr-2"></i>
-                    <span>MOQ: ${product.moq} MT</span>
-                  </div>
-                  <div class="flex items-center text-sm text-gray-500">
-                    <i class="fas fa-dollar-sign mr-2"></i>
-                    <span>Price: $${product.price.min}-${
-                product.price.max
-              }/MT</span>
-                  </div>
-                  <div class="flex items-center text-sm text-gray-500">
-                    <i class="fas fa-map-marker-alt mr-2"></i>
-                    <span>Origin: ${product.origin}</span>
+                  <p class="text-gray-700 mb-4 text-sm line-clamp-2 flex-grow">${
+                    product.description || "No description available"
+                  }</p>
+                  <div class="mt-auto flex justify-between items-center">
+                    <span class="text-sm text-gray-500">${product.quantity} ${
+              product.unit || "kg"
+            }</span>
+                    <button
+                      class="view-details bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-sm transition-colors"
+                      data-product-id="${product._id}"
+                    >
+                      View Details
+                    </button>
                   </div>
                 </div>
-                <button
-                  class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                  onclick="requestQuote(${product.id})"
-                >
-                  Request Quote
-                </button>
               </div>
-            </div>
-          `
-            )
-            .join("");
-        } catch (error) {
-          console.error("Error loading featured products:", error);
-          featuredProductsContainer.innerHTML = `
-            <div class="col-span-full text-center py-12">
-              <i class="fas fa-exclamation-triangle text-4xl text-red-300 mb-4"></i>
-              <p class="text-red-500">Error loading featured products. Please try again later.</p>
-            </div>
-          `;
-        }
-      }
-
-      // Function to request a quote
-      function requestQuote(productId) {
-        const product = store.state.products.find((p) => p.id === productId);
-        if (!product) return;
-
-        // Here you would typically open a modal or navigate to a quote request form
-        alert(
-          `Request quote for ${product.name}. In a real application, this would open a form.`
-        );
-      }
-
-      // Call initialization when DOM is loaded
-      document.addEventListener("DOMContentLoaded", initializeComponents);
-
-      // Image Upload Functionality
-      function handleImageUpload(event) {
-        const files = Array.from(
-          event.target.files || event.dataTransfer?.files || []
-        );
-        if (!files.length) return;
-
-        const imagePreview = document.getElementById("image-preview");
-        if (!imagePreview) return;
-
-        imagePreview.innerHTML = "";
-
-        files.slice(0, 5).forEach((file, index) => {
-          // Check if file is an image
-          if (!file.type.match("image.*")) {
-            console.error("File is not an image:", file.name);
-            return;
-          }
-
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            const preview = document.createElement("div");
-            preview.className = "relative";
-            preview.innerHTML = `
-              <img src="${
-                e.target.result
-              }" class="w-full h-32 object-cover rounded-lg">
-              <button type="button" onclick="removeImage(${index})" 
-                class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center hover:bg-red-600"
-                title="Remove image">
-                <i class="fas fa-times" aria-hidden="true"></i>
-                <span class="sr-only">Remove image</span>
-              </button>
-              ${
-                index === 0
-                  ? '<span class="absolute top-2 left-2 bg-ia-blue text-white px-2 py-1 rounded text-sm">Main</span>'
-                  : ""
-              }
             `;
-            imagePreview.appendChild(preview);
-          };
 
-          reader.onerror = function () {
-            console.error("Error reading file:", file.name);
-          };
-
-          reader.readAsDataURL(file);
-        });
-
-        const uploadPrompt = document.getElementById("upload-prompt");
-        if (uploadPrompt) {
-          uploadPrompt.style.display = files.length ? "none" : "block";
-        }
-      }
-
-      function removeImage(index) {
-        const imagePreview = document.getElementById("image-preview");
-        if (!imagePreview || !imagePreview.children[index]) return;
-
-        imagePreview.children[index].remove();
-
-        // Renumber the remaining images
-        Array.from(imagePreview.children).forEach((child, i) => {
-          // Update the remove button onclick handler
-          const removeButton = child.querySelector("button");
-          if (removeButton) {
-            removeButton.setAttribute("onclick", `removeImage(${i})`);
-          }
-
-          // Update the main label
-          const mainLabel = child.querySelector("span.bg-ia-blue");
-          if (i === 0 && !mainLabel) {
-            const img = child.querySelector("img");
-            if (img) {
-              const label = document.createElement("span");
-              label.className =
-                "absolute top-2 left-2 bg-ia-blue text-white px-2 py-1 rounded text-sm";
-              label.textContent = "Main";
-              child.insertBefore(label, img.nextSibling);
-            }
-          }
-        });
-
-        if (imagePreview.children.length === 0) {
-          const uploadPrompt = document.getElementById("upload-prompt");
-          if (uploadPrompt) {
-            uploadPrompt.style.display = "block";
-          }
-        }
-      }
-
-      // Initialize drag and drop
-      function initializeImageUpload() {
-        const dropZone = document.getElementById("image-drop-zone");
-        if (!dropZone) return;
-
-        ["dragenter", "dragover", "dragleave", "drop"].forEach((eventName) => {
-          dropZone.addEventListener(eventName, preventDefaults, false);
-        });
-
-        function preventDefaults(e) {
-          e.preventDefault();
-          e.stopPropagation();
-        }
-
-        ["dragenter", "dragover"].forEach((eventName) => {
-          dropZone.addEventListener(eventName, highlight, false);
-        });
-
-        ["dragleave", "drop"].forEach((eventName) => {
-          dropZone.addEventListener(eventName, unhighlight, false);
-        });
-
-        function highlight(e) {
-          dropZone.classList.add("border-ia-blue");
-          dropZone.classList.add("bg-blue-50");
-        }
-
-        function unhighlight(e) {
-          dropZone.classList.remove("border-ia-blue");
-          dropZone.classList.remove("bg-blue-50");
-        }
-
-        dropZone.addEventListener("drop", handleDrop, false);
-      }
-
-      function handleDrop(e) {
-        const dt = e.dataTransfer;
-        const files = dt.files;
-        const fileInput = document.getElementById("product-image");
-
-        if (fileInput) {
-          fileInput.files = files;
-          handleImageUpload({ target: { files: files } });
-        }
-      }
-
-      // Add category buttons
-      const categoryButtons = document.querySelectorAll(".category-btn");
-
-      // Add maize category button if it doesn't exist
-      function ensureMaizeCategory() {
-        const categoryContainer = document.querySelector(".category-filter");
-        if (!categoryContainer) return;
-
-        // Check if maize button already exists
-        const existingMaizeBtn = Array.from(categoryButtons).find(
-          (btn) => btn.textContent.trim().toLowerCase() === "maize"
-        );
-
-        if (!existingMaizeBtn) {
-          // Create maize button after "All" but before "Grains & Cereals"
-          const maizeBtn = document.createElement("button");
-          maizeBtn.className =
-            "category-btn px-4 py-2 rounded-lg shadow-sm bg-white text-ia-blue hover:bg-ia-blue hover:text-white transition-colors duration-300";
-          maizeBtn.textContent = "Maize";
-          maizeBtn.onclick = function () {
-            updateCategory("maize");
-          };
-
-          // Insert after "All" button
-          const allBtn = Array.from(categoryButtons).find(
-            (btn) => btn.textContent.trim().toLowerCase() === "all"
-          );
-
-          if (allBtn && allBtn.parentNode) {
-            allBtn.parentNode.insertBefore(maizeBtn, allBtn.nextSibling);
-          } else {
-            categoryContainer.appendChild(maizeBtn);
-          }
-        }
-      }
-
-      // Enhanced renderProducts function
-      function renderProducts(products) {
-        const productGrid = document.getElementById("product-grid");
-        if (!productGrid) return;
-
-        if (products.length === 0) {
-          productGrid.innerHTML = `
-            <div class="col-span-full text-center py-12">
-              <i class="fas fa-search text-4xl text-gray-300 mb-4"></i>
-              <p class="text-gray-500">No products found. Try adjusting your filters.</p>
-            </div>
-          `;
-          return;
-        }
-
-        productGrid.innerHTML = products
-          .map((product) => createProductCard(product))
-          .join("");
-      }
-
-      // Add maize category button if it doesn't exist
-      function ensureMaizeCategory() {
-        const categoryContainer = document.querySelector(".category-filter");
-        if (!categoryContainer) return;
-
-        // Check if maize button already exists
-        const existingMaizeBtn = Array.from(categoryButtons).find(
-          (btn) => btn.textContent.trim().toLowerCase() === "maize"
-        );
-
-        if (!existingMaizeBtn) {
-          // Create maize button after "All" but before "Grains & Cereals"
-          const maizeBtn = document.createElement("button");
-          maizeBtn.className =
-            "category-btn px-4 py-2 rounded-lg shadow-sm bg-white text-ia-blue hover:bg-ia-blue hover:text-white transition-colors duration-300";
-          maizeBtn.textContent = "Maize";
-          maizeBtn.onclick = function () {
-            updateCategory("maize");
-          };
-
-          // Insert after "All" button
-          const allBtn = Array.from(categoryButtons).find(
-            (btn) => btn.textContent.trim().toLowerCase() === "all"
-          );
-
-          if (allBtn && allBtn.parentNode) {
-            allBtn.parentNode.insertBefore(maizeBtn, allBtn.nextSibling);
-          } else {
-            categoryContainer.appendChild(maizeBtn);
-          }
-        }
-      }
-
-      // Authentication handling
-      function switchAuthType(type) {
-        const loginForm = document.getElementById("login-form");
-        const signupForm = document.getElementById("signup-form");
-        const loginTab = document.getElementById("login-tab");
-        const signupTab = document.getElementById("signup-tab");
-
-        if (type === "login") {
-          loginForm.classList.remove("hidden");
-          signupForm.classList.add("hidden");
-          loginTab.classList.add("bg-white");
-          loginTab.classList.remove("bg-white/20");
-          loginTab.classList.add("text-ia-blue");
-          loginTab.classList.remove("text-white");
-          signupTab.classList.add("bg-white/20");
-          signupTab.classList.remove("bg-white");
-          signupTab.classList.add("text-white");
-          signupTab.classList.remove("text-ia-blue");
-        } else {
-          loginForm.classList.add("hidden");
-          signupForm.classList.remove("hidden");
-          loginTab.classList.add("bg-white/20");
-          loginTab.classList.remove("bg-white");
-          loginTab.classList.add("text-white");
-          loginTab.classList.remove("text-ia-blue");
-          signupTab.classList.add("bg-white");
-          signupTab.classList.remove("bg-white/20");
-          signupTab.classList.add("text-ia-blue");
-          signupTab.classList.remove("text-white");
-        }
-      }
-
-      // Simplified login function
-      function showMarketplace() {
-        // Hide auth section
-        document.getElementById("auth-section").classList.add("hidden");
-
-        // Initialize the marketplace
-        initMarketplace();
-
-        // Scroll to top
-        window.scrollTo({ top: 0, behavior: "smooth" });
-
-        // Update user info with demo data
-        const email =
-          document.getElementById("login-email").value || "demo@example.com";
-        const userType = document.getElementById("user-type").value || "buyer";
-
-        const user = {
-          name: email
-            .split("@")[0]
-            .replace(/[.]/g, " ")
-            .replace(/\b\w/g, (l) => l.toUpperCase()),
-          email: email,
-          type:
-            userType.charAt(0).toUpperCase() + userType.slice(1) + " Account",
-        };
-
-        updateUserInfo(user);
-      }
-
-      function handleLogin(event) {
-        event.preventDefault();
-        const email = document.getElementById("login-email").value;
-        const password = document.getElementById("login-password").value;
-
-        // Add loading state
-        const submitBtn = event.target.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML =
-          '<i class="fas fa-spinner fa-spin"></i> Logging in...';
-        submitBtn.disabled = true;
-
-        // For demo purposes, accept any email/password
-        setTimeout(() => {
-          // Reset button state
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-
-          // Update user info
-          const userType = document.getElementById("user-type").value;
-          const user = {
-            name: email
-              .split("@")[0]
-              .replace(/[.]/g, " ")
-              .replace(/\b\w/g, (l) => l.toUpperCase()),
-            email: email,
-            type:
-              userType.charAt(0).toUpperCase() + userType.slice(1) + " Account",
-          };
-          updateUserInfo(user);
-
-          // Show marketplace content
-          showMarketplace();
-
-          // Show staff section if staff member
-          if (email.endsWith("@improveafrica.com")) {
-            const staffManagement = document.getElementById("staff-management");
-            if (staffManagement) {
-              staffManagement.classList.remove("hidden");
-            }
-          }
-        }, 1500);
-      }
-
-      function handleSignup(event) {
-        event.preventDefault();
-        const email = document.getElementById("signup-email").value;
-        const password = document.getElementById("signup-password").value;
-        const confirmPassword = document.getElementById(
-          "signup-confirm-password"
-        ).value;
-
-        if (password !== confirmPassword) {
-          alert("Passwords do not match!");
-          return;
-        }
-
-        // Add loading state
-        const submitBtn = event.target.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        submitBtn.innerHTML =
-          '<i class="fas fa-spinner fa-spin"></i> Creating account...';
-        submitBtn.disabled = true;
-
-        // Simulate API call
-        setTimeout(() => {
-          // Reset button state
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-
-          // Show success message and switch to login
-          const successMsg = document.createElement("div");
-          successMsg.className =
-            "text-green-600 text-center mt-4 animate-fade-in";
-          successMsg.textContent =
-            "Account created successfully! Please log in.";
-          event.target.appendChild(successMsg);
-
-          setTimeout(() => {
-            switchAuthType("login");
-          }, 2000);
-        }, 1500);
-      }
-
-      // UI Components
-      const ProductGrid = {
-        render() {
-          const products = store.computed.filteredProducts();
-          const productCards = products
-            .map((product) => createProductCard(product))
-            .join("");
-
-          // Get the product grid element
-          const productGrid = document.querySelector("#products .grid");
-          if (productGrid) {
-            productGrid.innerHTML = productCards;
-          }
-
-          // Update section title based on category
-          const sectionTitle = document.querySelector("#products h2");
-          const sectionSubtitle = document.querySelector("#products p");
-
-          if (sectionTitle && sectionSubtitle) {
-            if (store.state.currentCategory === "all") {
-              sectionTitle.textContent = "Featured Products";
-              sectionSubtitle.textContent =
-                "Premium quality agricultural raw materials from Ghana";
-            } else {
-              // Map category IDs to display names
-              const categoryNames = {
-                grains: "Grains & Cereals",
-                oilseeds: "Oilseeds",
-                pulses: "Pulses",
-                nuts: "Nuts",
-                spices: "Spices",
-              };
-
-              const categoryName =
-                categoryNames[store.state.currentCategory] ||
-                store.state.currentCategory;
-              sectionTitle.textContent = categoryName;
-
-              // Custom subtitles for each category
-              const categorySubtitles = {
-                grains:
-                  "Premium quality grains and cereals from various regions in Ghana",
-                oilseeds:
-                  "High-quality oilseeds sourced directly from Ghanaian farmers",
-                pulses: "Nutritious pulses grown in the fertile lands of Ghana",
-                nuts: "Premium nuts harvested from sustainable farms across Ghana",
-                spices:
-                  "Aromatic spices cultivated in Ghana's diverse climate zones",
-              };
-
-              sectionSubtitle.textContent =
-                categorySubtitles[store.state.currentCategory] ||
-                "Premium quality agricultural raw materials from Ghana";
-            }
-          }
-
-          // Update loading state
-          const loadingOverlay = document.getElementById("loading-overlay");
-          if (loadingOverlay) {
-            if (store.state.loading) {
-              loadingOverlay.classList.remove("hidden");
-            } else {
-              loadingOverlay.classList.add("hidden");
-            }
-          }
-
-          // Update empty state
-          const emptyState = document.getElementById("empty-state");
-          if (emptyState) {
-            if (products.length === 0) {
-              emptyState.classList.remove("hidden");
-            } else {
-              emptyState.classList.add("hidden");
-            }
-          }
-        },
-      };
-
-      const CategoryFilter = {
-        render() {
-          const categoryContainer = document.querySelector(".category-filter");
-          if (!categoryContainer) return;
-
-          // Get unique categories from products
-          const categories = ["all"];
-          store.state.products.forEach((product) => {
-            if (!categories.includes(product.category)) {
-              categories.push(product.category);
-            }
+            productsContainer.innerHTML += productCard;
           });
 
-          // Create buttons
-          categoryContainer.innerHTML = categories
-            .map((category) => {
-              const isActive = store.state.currentCategory === category;
-              const displayName =
-                category === "all"
-                  ? "All"
-                  : category.charAt(0).toUpperCase() + category.slice(1);
+          // Add event listeners to View Details buttons
+          document.querySelectorAll(".view-details").forEach((button) => {
+            button.addEventListener("click", function () {
+              const productId = this.getAttribute("data-product-id");
+              const product = products.find((p) => p._id === productId);
+              showProductDetails(product);
+            });
+          });
+        }
 
-              return `
-              <button
-                class="category-btn px-4 py-2 rounded-lg shadow-sm ${
-                  isActive
-                    ? "bg-ia-blue text-white"
-                    : "bg-white text-ia-blue hover:bg-ia-blue hover:text-white"
-                } transition-colors duration-300"
-                onclick="updateCategory('${category}')"
-              >
-                ${category === "all" ? '<i class="fas fa-th mr-2"></i>' : ""}
-                ${displayName}
-              </button>
-            `;
-            })
-            .join("");
-        },
-      };
-
-      const ViewToggle = {
-        render() {
-          const viewToggle = document.querySelector(".view-toggle");
-          if (!viewToggle) return;
-
-          viewToggle.innerHTML = `
-            <button
-              class="${
-                store.state.viewMode === "grid"
-                  ? "bg-ia-blue text-white"
-                  : "bg-white text-ia-blue"
-              } p-2 rounded-lg transition-colors duration-200"
-              onclick="updateViewMode('grid')"
-              title="Grid view"
-              aria-label="Switch to grid view"
-            >
-              <i class="fas fa-th-large"></i>
-            </button>
-            <button
-              class="${
-                store.state.viewMode === "list"
-                  ? "bg-ia-blue text-white"
-                  : "bg-white text-ia-blue"
-              } p-2 rounded-lg transition-colors duration-200"
-              onclick="updateViewMode('list')"
-              title="List view"
-              aria-label="Switch to list view"
-            >
-              <i class="fas fa-list"></i>
-            </button>
-          `;
-        },
-      };
-
-      // Function to create product cards
-      function createProductCard(product) {
-        return `
-          <div class="bg-white rounded-xl shadow-card overflow-hidden animate-fade-in">
-            <div class="relative">
-              <img
-                src="${product.image_url || "images/products/placeholder.jpg"}"
-                alt="${product.name}"
-                class="w-full h-64 object-cover"
-              />
-              <span
-                class="absolute top-4 right-4 ${
-                  product.stock > 0 ? "bg-green-500" : "bg-yellow-500"
-                } text-white px-3 py-1 rounded-full text-sm"
-                >${product.stock > 0 ? "In Stock" : "Limited Stock"}</span
-              >
-              ${
-                product.type
-                  ? `
-              <span
-                class="absolute top-4 left-4 bg-blue-500 text-white px-3 py-1 rounded-full text-sm"
-                >${product.type}</span
-              >`
-                  : ""
-              }
-              ${
-                product.is_organic
-                  ? `
-              <span
-                class="absolute ${
-                  product.type ? "top-14" : "top-4"
-                } left-4 bg-ia-green text-white px-3 py-1 rounded-full text-sm"
-                >Organic</span
-              >`
-                  : ""
-              }
+        // Create skeleton loading card
+        function createSkeletonCard() {
+          return `
+            <div class="product-card bg-white rounded-lg overflow-hidden shadow">
+              <div class="image-container skeleton h-48"></div>
+              <div class="p-4">
+                <div class="skeleton h-6 w-3/4 mb-2 rounded"></div>
+                <div class="skeleton h-4 w-1/2 mb-4 rounded"></div>
+                <div class="skeleton h-16 w-full mb-4 rounded"></div>
+                <div class="flex justify-between items-center">
+                  <div class="skeleton h-4 w-1/4 rounded"></div>
+                  <div class="skeleton h-8 w-1/4 rounded"></div>
+                </div>
+              </div>
             </div>
-            <div class="p-6">
-              <div class="flex justify-between items-start mb-4">
-                <div>
-                  <h3 class="text-xl font-semibold text-gray-900">
-                    ${product.name}
-                  </h3>
-                  <p class="text-gray-500">${
-                    product.description || product.type
+          `;
+        }
+
+        // Function to display product details in modal
+        function showProductDetails(product) {
+          if (!product) return;
+
+          // Format harvest date
+          const harvestDate = product.harvestDate
+            ? new Date(product.harvestDate).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            : "Not specified";
+
+          // Create certification badges
+          let certificationBadges = "";
+
+          // Check for certifications in the certifications array
+          if (product.certifications && product.certifications.length > 0) {
+            product.certifications.forEach((cert) => {
+              if (cert.toLowerCase() === "organic") {
+                certificationBadges += `<span class="badge bg-green-100 text-green-800 mr-2 px-2 py-1 rounded text-sm">Organic</span>`;
+              } else {
+                certificationBadges += `<span class="badge bg-blue-100 text-blue-800 mr-2 px-2 py-1 rounded text-sm">${cert}</span>`;
+              }
+            });
+          }
+
+          // Special badge for featured products
+          if (product.status === "featured") {
+            certificationBadges += `<span class="badge bg-yellow-100 text-yellow-800 mr-2 px-2 py-1 rounded text-sm">Featured</span>`;
+          }
+
+          // Get main image and additional images
+          const mainImage =
+            product.images && product.images.length > 0
+              ? product.images[0]
+              : "assets/images/product-placeholder.jpg";
+
+          let additionalImagesHtml = "";
+          if (product.images && product.images.length > 1) {
+            additionalImagesHtml = '<div class="grid grid-cols-4 gap-2 mt-3">';
+            for (let i = 0; i < Math.min(4, product.images.length); i++) {
+              additionalImagesHtml += `
+                <div class="image-container bg-gray-100 rounded overflow-hidden shadow-sm">
+                  <img 
+                    src="${product.images[i]}" 
+                    alt="${product.name} image ${i + 1}" 
+                    class="w-full h-16 object-cover"
+                  />
+                </div>
+              `;
+            }
+            additionalImagesHtml += "</div>";
+          }
+
+          // Get location information safely
+          const locationCity =
+            product.location && product.location.city
+              ? product.location.city
+              : "Unknown";
+          const locationRegion =
+            product.location && product.location.region
+              ? product.location.region
+              : "Unknown";
+          const locationCountry =
+            product.location && product.location.country
+              ? product.location.country
+              : "Ghana";
+
+          productModal.querySelector(".modal-content").innerHTML = `
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <div class="image-container rounded-lg overflow-hidden shadow-md bg-gray-100 h-64 md:h-80">
+                  <img 
+                    src="${mainImage}" 
+                    alt="${product.name}" 
+                    class="w-full h-full object-cover"
+                  />
+                </div>
+                ${additionalImagesHtml}
+              </div>
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <h2 class="text-2xl font-bold">${product.name}</h2>
+                  <div>${certificationBadges}</div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-600">Price:</span>
+                    <span class="text-xl font-bold text-blue-600">$${
+                      product.price
+                    }/${product.unit || "kg"}</span>
+                  </div>
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-600">Available Quantity:</span>
+                    <span class="font-medium">${product.quantity} ${
+            product.unit || "kg"
+          }</span>
+                  </div>
+                  <div class="flex justify-between items-center mb-2">
+                    <span class="text-gray-600">Status:</span>
+                    <span class="font-medium capitalize">${
+                      product.status || "Available"
+                    }</span>
+                  </div>
+                </div>
+                <div class="mb-4">
+                  <h3 class="text-lg font-semibold mb-2">Description</h3>
+                  <p class="text-gray-700">${
+                    product.description || "No description available"
                   }</p>
                 </div>
-                <button
-                  class="text-ia-blue hover:text-ia-light-blue"
-                  title="Add to favorites"
-                  onclick="toggleFavorite(${product.id})"
-                >
-                  <i class="${
-                    store.state.favorites.has(product.id) ? "fas" : "far"
-                  } fa-heart text-xl"></i>
+                <div class="grid grid-cols-2 gap-3 mb-4">
+                  <div class="bg-gray-50 p-3 rounded-md">
+                    <div class="flex items-center mb-1">
+                      <i class="fas fa-map-marker-alt text-gray-500 mr-2"></i>
+                      <span class="text-sm font-medium">Location</span>
+                    </div>
+                    <p class="text-gray-700">${locationCity}, ${locationRegion}, ${locationCountry}</p>
+                  </div>
+                  <div class="bg-gray-50 p-3 rounded-md">
+                    <div class="flex items-center mb-1">
+                      <i class="fas fa-calendar-alt text-gray-500 mr-2"></i>
+                      <span class="text-sm font-medium">Harvest Date</span>
+                    </div>
+                    <p class="text-gray-700">${harvestDate}</p>
+                  </div>
+                  <div class="bg-gray-50 p-3 rounded-md">
+                    <div class="flex items-center mb-1">
+                      <i class="fas fa-star text-gray-500 mr-2"></i>
+                      <span class="text-sm font-medium">Quality Grade</span>
+                    </div>
+                    <p class="text-gray-700">${
+                      product.quality || "Not specified"
+                    }</p>
+                  </div>
+                  <div class="bg-gray-50 p-3 rounded-md">
+                    <div class="flex items-center mb-1">
+                      <i class="fas fa-user text-gray-500 mr-2"></i>
+                      <span class="text-sm font-medium">Seller</span>
+                    </div>
+                    <p class="text-gray-700">${
+                      product.seller && product.seller.name
+                        ? product.seller.name
+                        : "Contact for details"
+                    }</p>
+                  </div>
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors"
+                  data-product-id="${product._id}">
+                  <i class="fas fa-envelope mr-2"></i> Contact Seller
                 </button>
               </div>
-              <div class="space-y-2 mb-4">
-                <div class="flex items-center text-sm text-gray-500">
-                  <i class="fas fa-box-open mr-2"></i>
-                  <span>MOQ: ${product.moq || 1} MT</span>
-                </div>
-                <div class="flex items-center text-sm text-gray-500">
-                  <i class="fas fa-dollar-sign mr-2"></i>
-                  <span>Price: $${product.price}${
-          product.price_max ? "-" + product.price_max : ""
-        }/MT</span>
-                </div>
-                <div class="flex items-center text-sm text-gray-500">
-                  <i class="fas fa-map-marker-alt mr-2"></i>
-                  <span>Origin: ${product.region || "Ghana"}</span>
-                </div>
-              </div>
-              <button
-                class="w-full bg-ia-blue text-white py-2 rounded-lg hover:bg-ia-light-blue transition-colors duration-300"
-                onclick="requestQuote(${product.id})"
-              >
-                Request Quote
-              </button>
             </div>
-          </div>
-        `;
-      }
+          `;
 
-      // Event Handlers
-      function handleSearch() {
-        const productSearchInput = document.querySelector(
-          'input[placeholder*="Search products"]'
-        );
-        if (productSearchInput) {
-          store.mutations.setLoading(true);
-          store.mutations.setSearchQuery(productSearchInput.value);
+          productModal.classList.remove("hidden");
+        }
 
+        // Close modal when clicked outside or on close button
+        modalClose.addEventListener("click", function () {
+          productModal.classList.add("hidden");
+        });
+
+        window.addEventListener("click", function (event) {
+          if (event.target === productModal) {
+            productModal.classList.add("hidden");
+          }
+        });
+
+        // Initial fetch of products
+        fetchProducts();
+
+        // Mobile menu functionality
+        const mobileMenuButton = document.querySelector(".md\\:hidden");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const closeMenuButton = document.getElementById("close-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.remove("hidden");
+          // Add a small delay to apply the transform
           setTimeout(() => {
-            store.mutations.setLoading(false);
+            mobileMenu.querySelector("div").classList.add("translate-x-0");
+          }, 10);
+        });
+
+        closeMenuButton.addEventListener("click", function () {
+          mobileMenu.querySelector("div").classList.remove("translate-x-0");
+          // Wait for the transition to complete before hiding
+          setTimeout(() => {
+            mobileMenu.classList.add("hidden");
           }, 300);
-        }
-      }
+        });
 
-      function updateCategory(category) {
-        store.mutations.setCategory.call(store, category);
-
-        // Update section title
-        const sectionTitle = document.querySelector("#product-section-title");
-        if (sectionTitle) {
-          if (category === "all") {
-            sectionTitle.textContent = "All Products";
-          } else if (category === "maize") {
-            sectionTitle.textContent = "Maize Varieties";
-          } else if (category === "grains") {
-            sectionTitle.textContent = "Grains & Cereals";
-          } else {
-            sectionTitle.textContent =
-              category.charAt(0).toUpperCase() + category.slice(1);
+        // Close the mobile menu when clicking outside of it
+        mobileMenu.addEventListener("click", function (event) {
+          if (event.target === mobileMenu) {
+            mobileMenu.querySelector("div").classList.remove("translate-x-0");
+            setTimeout(() => {
+              mobileMenu.classList.add("hidden");
+            }, 300);
           }
-        }
-      }
+        });
 
-      function updateViewMode(mode) {
-        store.mutations.setViewMode.call(store, mode);
+        // Contact seller button handler
+        document.querySelectorAll(".modal-content button").forEach((button) => {
+          button.addEventListener("click", async function () {
+            const product = products.find(
+              (p) => p._id === this.getAttribute("data-product-id")
+            );
+            if (!product || !product.seller) {
+              alert(
+                "Seller information not available. Please try again later."
+              );
+              return;
+            }
 
-        const productGrid = document.getElementById("product-grid");
-        if (productGrid) {
-          if (mode === "grid") {
-            productGrid.classList.remove("grid-cols-1");
-            productGrid.classList.add("md:grid-cols-2", "lg:grid-cols-3");
-          } else {
-            productGrid.classList.remove("md:grid-cols-2", "lg:grid-cols-3");
-            productGrid.classList.add("grid-cols-1");
-          }
-        }
-      }
+            // You can implement your own contact logic here
+            // For example, open a contact form modal or redirect to a messaging page
+            const sellerId = product.seller._id || product.seller;
+            const currentUser = JSON.parse(
+              localStorage.getItem("user") || "{}"
+            );
 
-      function toggleFavorite(productId) {
-        store.mutations.toggleFavorite.call(store, productId);
-      }
+            if (!currentUser || !currentUser._id) {
+              alert("You need to be logged in to contact the seller.");
+              window.location.href = "login.html";
+              return;
+            }
 
-      function applyFilters() {
-        const filters = {
-          priceRange: {
-            min: Number(document.getElementById("price-min").value) || null,
-            max: Number(document.getElementById("price-max").value) || null,
-          },
-          stockRange: {
-            min: Number(document.getElementById("stock-min").value) || null,
-            max: Number(document.getElementById("stock-max").value) || null,
-          },
-          region: document.getElementById("region-filter").value,
-        };
+            alert(
+              `Contact function will be implemented soon. You're trying to contact the seller of ${product.name}.`
+            );
 
-        store.mutations.setFilters(filters);
-        closeFilterModal();
-      }
-
-      // When the page loads, check if we should show the marketplace directly
-      document.addEventListener("DOMContentLoaded", function () {
-        // Update the page title to match the database name
-        document.title =
-          "Agricultural Raw Materials Marketplace | Improve Africa";
-
-        // For development, you can auto-show the marketplace
-        // Comment this out if you want to show the login screen first
-        // showMarketplace();
-
-        // Initialize event listeners
-        initEventListeners();
+            // For future implementation, you might want to:
+            // 1. Create a message in your database
+            // 2. Send a notification to the seller
+            // 3. Redirect to a messaging interface
+          });
+        });
       });
     </script>
   </body>

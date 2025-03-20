@@ -22,8 +22,7 @@ const productSchema = new mongoose.Schema({
     },
     unit: {
         type: String,
-        required: [true, 'Unit of measurement is required'],
-        enum: ['kg', 'tons', 'pieces', 'bags']
+        default: 'tons'
     },
     category: {
         type: String,
@@ -31,65 +30,45 @@ const productSchema = new mongoose.Schema({
         enum: ['grains', 'vegetables', 'fruits', 'nuts', 'spices', 'legumes', 'oilseeds', 'roots-tubers', 'other']
     },
     images: [{
-        type: String,
-        required: [true, 'At least one product image is required']
+        type: String
     }],
     seller: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+        ref: 'User'
     },
     location: {
         country: {
             type: String,
-            required: [true, 'Country is required']
+            default: 'Ghana'
         },
         region: {
             type: String,
             required: [true, 'Region is required']
         },
-        city: String
+        city: {
+            type: String
+        }
     },
     quality: {
         type: String,
-        enum: ['Grade A', 'Grade B', 'Grade C'],
-        required: true
+        default: 'Grade A'
     },
     harvestDate: {
         type: Date
     },
     certifications: [{
-        type: String,
-        enum: ['Organic', 'Fair Trade', 'Non-GMO', 'Sustainable Farming', 'Other']
+        type: String
     }],
     status: {
         type: String,
-        enum: ['available', 'sold', 'pending'],
-        default: 'available'
-    },
-    isVerified: {
-        type: Boolean,
-        default: false
-    },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    },
-    updatedAt: {
-        type: Date,
-        default: Date.now
+        default: 'available',
+        enum: ['available', 'sold', 'pending']
     }
+}, {
+    timestamps: true
 });
 
-// Update the updatedAt timestamp before saving
-productSchema.pre('save', function(next) {
-    this.updatedAt = Date.now();
-    next();
-});
-
-// Add indexes for better search performance
+// Add text index for search
 productSchema.index({ name: 'text', description: 'text' });
-productSchema.index({ category: 1, status: 1 });
-productSchema.index({ 'location.country': 1, 'location.region': 1 });
 
 module.exports = mongoose.model('Product', productSchema); 

@@ -609,7 +609,7 @@
           try {
             // Add timestamp to prevent caching
             const timestamp = new Date().getTime();
-            const url = `/api/products?_=${timestamp}`;
+            const url = `/api/products?_=${timestamp}&limit=1000`; // Request up to 1000 products
 
             console.log("Fetching products from:", url);
             const response = await fetch(url, {
@@ -677,6 +677,16 @@
           const isFeatured = featuredFilter.checked;
           const sortValue = sortFilter.value;
 
+          console.log("Applying filters:", {
+            searchTerm,
+            regionValue,
+            categoryValue,
+            isOrganic,
+            isFeatured,
+            sortValue,
+            totalProducts: allProducts.length,
+          });
+
           filteredProducts = allProducts.filter((product) => {
             // Search term filter
             const matchesSearch =
@@ -690,9 +700,11 @@
               regionValue === "" ||
               (product.location && product.location.region === regionValue);
 
-            // Category filter
+            // Category filter - normalize category names if needed
             const matchesCategory =
-              categoryValue === "" || product.category === categoryValue;
+              categoryValue === "" ||
+              (product.category &&
+                product.category.toLowerCase() === categoryValue.toLowerCase());
 
             // Organic filter - check if certifications array includes "Organic"
             const matchesOrganic =
@@ -714,6 +726,8 @@
               matchesFeatured
             );
           });
+
+          console.log(`Filtered to ${filteredProducts.length} products`);
 
           // Sort products
           if (sortValue === "price-low") {
@@ -760,15 +774,23 @@
             this.classList.remove("text-green-700");
 
             const category = this.getAttribute("data-category");
+            console.log("Selected category:", category);
+
+            // Reset organic filter
+            organicFilter.checked = false;
 
             if (category === "all") {
               categoryFilter.value = "";
             } else if (category === "organic") {
               organicFilter.checked = true;
+              // Keep the current category if any
             } else {
               categoryFilter.value = category;
             }
 
+            console.log("Category filter value set to:", categoryFilter.value);
+
+            // Apply filters immediately
             applyFilters();
           });
         });
@@ -777,6 +799,8 @@
         function displayProducts(products) {
           loadingContainer.classList.add("hidden");
           productsContainer.innerHTML = "";
+
+          console.log(`Displaying ${products.length} products on the page`);
 
           if (products.length === 0) {
             noResultsMessage.classList.remove("hidden");

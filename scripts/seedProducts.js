@@ -1,3 +1,11 @@
+/**
+ * Seed data for products in the IMPROVE AFRICA marketplace
+ * All prices are in Ghana Cedis (GH₵)
+ * All locations use the 16 regions of Ghana
+ * All image filenames must match exactly with files in the images/marketplace directory
+ * File extensions must be correct: jpg, jpeg, webp, png, or avif as appropriate
+ */
+
 const products = [
     {
         name: "Yellow Maize",
@@ -6,7 +14,7 @@ const products = [
         quantity: 1000,
         unit: "tons",
         category: "grains",
-        images: ["yellow-maize.jpg"],
+        images: ["Yellow Maize.jpeg"],
         location: {
             country: "Ghana",
             region: "Ashanti",
@@ -24,10 +32,10 @@ const products = [
         quantity: 800,
         unit: "tons",
         category: "grains",
-        images: ["white-maize.jpg"],
+        images: ["White Maize.jpeg"],
         location: {
             country: "Ghana",
-            region: "Brong-Ahafo",
+            region: "Bono",
             city: "Sunyani"
         },
         quality: "Grade A",
@@ -42,7 +50,7 @@ const products = [
         quantity: 500,
         unit: "tons",
         category: "grains",
-        images: ["basmati-rice.jpg"],
+        images: ["Basmati Rice.webp"],
         location: {
             country: "Ghana",
             region: "Northern",
@@ -60,7 +68,7 @@ const products = [
         quantity: 1200,
         unit: "tons",
         category: "grains",
-        images: ["hard-red-wheat.jpg"],
+        images: ["Hard Red Wheat.jpg"],
         location: {
             country: "Ghana",
             region: "Upper East",
@@ -78,7 +86,7 @@ const products = [
         quantity: 600,
         unit: "tons",
         category: "grains",
-        images: ["barley.jpg"],
+        images: ["Barley.webp"],
         location: {
             country: "Ghana",
             region: "Upper West",
@@ -96,11 +104,11 @@ const products = [
         quantity: 800,
         unit: "tons",
         category: "grains",
-        images: ["red-sorghum.jpg"],
+        images: ["Red Sorghum.jpg"],
         location: {
             country: "Ghana",
-            region: "Upper East",
-            city: "Bolgatanga"
+            region: "Savannah",
+            city: "Damongo"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-12"),
@@ -114,11 +122,11 @@ const products = [
         quantity: 1200,
         unit: "tons",
         category: "grains",
-        images: ["brown-sorghum.jpg"],
+        images: ["Brown Sorghum.jpg"],
         location: {
             country: "Ghana",
-            region: "Upper West",
-            city: "Wa"
+            region: "North East",
+            city: "Nalerigu"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-10"),
@@ -132,11 +140,11 @@ const products = [
         quantity: 1000,
         unit: "tons",
         category: "grains",
-        images: ["sweet-sorghum.jpg"],
+        images: ["Sweet Sorghum.jpg"],
         location: {
             country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
+            region: "Bono East",
+            city: "Techiman"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-18"),
@@ -150,7 +158,7 @@ const products = [
         quantity: 400,
         unit: "tons",
         category: "grains",
-        images: ["pearl-millet.jpg"],
+        images: ["Pearl Millet.jpg"],
         location: {
             country: "Ghana",
             region: "Northern",
@@ -163,20 +171,20 @@ const products = [
     },
     {
         name: "Black Beans",
-        description: "Premium quality black beans, rich in fiber and protein. Perfect for soups, stews, and Latin American cuisine.",
-        price: 850,
+        description: "Premium quality black beans with rich flavor and creamy texture when cooked. Excellent source of protein and fiber.",
+        price: 420,
         quantity: 500,
         unit: "tons",
         category: "legumes",
-        images: ["black-beans.jpg"],
+        images: ["Black Beans.jpg"],
         location: {
             country: "Ghana",
             region: "Volta",
             city: "Ho"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-01"),
-        certifications: ["Organic", "Non-GMO"],
+        harvestDate: new Date("2024-03-05"),
+        certifications: ["Organic"],
         status: "available"
     },
     {
@@ -186,7 +194,7 @@ const products = [
         quantity: 400,
         unit: "tons",
         category: "legumes",
-        images: ["kidney-beans.jpg"],
+        images: ["Kidney Beans.jpg"],
         location: {
             country: "Ghana",
             region: "Eastern",
@@ -204,7 +212,7 @@ const products = [
         quantity: 300,
         unit: "tons",
         category: "legumes",
-        images: ["pinto-beans.jpg"],
+        images: ["Pinto Beans.jpg"],
         location: {
             country: "Ghana",
             region: "Central",
@@ -217,37 +225,37 @@ const products = [
     },
     {
         name: "Navy Beans",
-        description: "Small, white navy beans ideal for baked beans and soups. Excellent source of protein and fiber.",
-        price: 780,
-        quantity: 350,
+        description: "Small, white navy beans with mild flavor. Perfect for soups and stews.",
+        price: 850,
+        quantity: 600,
         unit: "tons",
         category: "legumes",
-        images: ["navy-beans.jpg"],
+        images: ["Navy Beans.webp"],
         location: {
             country: "Ghana",
-            region: "Western",
-            city: "Sekondi-Takoradi"
+            region: "Eastern",
+            city: "Koforidua"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-05"),
+        harvestDate: new Date("2024-02-12"),
         certifications: ["Non-GMO"],
         status: "available"
     },
     {
         name: "Green Lentils",
-        description: "Premium green lentils with a mild, earthy flavor. Perfect for salads and side dishes.",
-        price: 950,
-        quantity: 400,
+        description: "Nutritious green lentils that hold their shape when cooked. Perfect for salads, soups, and side dishes.",
+        price: 1400,
+        quantity: 300,
         unit: "tons",
         category: "legumes",
-        images: ["green-lentils.jpg"],
+        images: ["Green Lentils.jpg"],
         location: {
             country: "Ghana",
             region: "Northern",
             city: "Tamale"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-01-25"),
+        harvestDate: new Date("2024-01-20"),
         certifications: ["Organic", "Non-GMO"],
         status: "available"
     },
@@ -258,7 +266,7 @@ const products = [
         quantity: 450,
         unit: "tons",
         category: "legumes",
-        images: ["red-lentils.jpg"],
+        images: ["Red Lentils.jpeg"],
         location: {
             country: "Ghana",
             region: "Upper East",
@@ -276,10 +284,10 @@ const products = [
         quantity: 600,
         unit: "tons",
         category: "legumes",
-        images: ["yellow-split-peas.jpg"],
+        images: ["Yellow Split Peas.jpg"],
         location: {
             country: "Ghana",
-            region: "Brong-Ahafo",
+            region: "Bono",
             city: "Sunyani"
         },
         quality: "Grade A",
@@ -294,7 +302,7 @@ const products = [
         quantity: 500,
         unit: "tons",
         category: "legumes",
-        images: ["chickpeas.jpg"],
+        images: ["Chickpeas.jpg"],
         location: {
             country: "Ghana",
             region: "Greater Accra",
@@ -312,7 +320,7 @@ const products = [
         quantity: 800,
         unit: "tons",
         category: "legumes",
-        images: ["non-gmo-soybeans.jpg"],
+        images: ["Non-GMO Soybeans.jpg"],
         location: {
             country: "Ghana",
             region: "Ashanti",
@@ -324,20 +332,20 @@ const products = [
         status: "available"
     },
     {
-        name: "Edamame Soybeans",
-        description: "Fresh edamame soybeans, harvested at peak maturity. Perfect for healthy snacking and Asian cuisine.",
-        price: 1300,
+        name: "Edamame",
+        description: "Fresh green edamame beans in pods. High in protein, fiber, and nutrients.",
+        price: 1100,
         quantity: 300,
         unit: "tons",
         category: "legumes",
-        images: ["edamame.jpg"],
+        images: ["Edamame.avif"],
         location: {
             country: "Ghana",
             region: "Eastern",
             city: "Koforidua"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
+        harvestDate: new Date("2024-02-15"),
         certifications: ["Organic", "Non-GMO"],
         status: "available"
     },
@@ -348,7 +356,7 @@ const products = [
         quantity: 1000,
         unit: "tons",
         category: "oilseeds",
-        images: ["conventional-soybeans.jpg"],
+        images: ["Conventional Soybeans.jpg"],
         location: {
             country: "Ghana",
             region: "Northern",
@@ -366,7 +374,7 @@ const products = [
         quantity: 800,
         unit: "tons",
         category: "oilseeds",
-        images: ["high-oleic-soybeans.jpg"],
+        images: ["High-Oleic Soybeans.jpg"],
         location: {
             country: "Ghana",
             region: "Upper East",
@@ -384,10 +392,10 @@ const products = [
         quantity: 600,
         unit: "tons",
         category: "oilseeds",
-        images: ["runner-groundnuts.jpg"],
+        images: ["Runner Groundnuts.webp"],
         location: {
             country: "Ghana",
-            region: "Brong-Ahafo",
+            region: "Bono",
             city: "Sunyani"
         },
         quality: "Grade A",
@@ -402,7 +410,7 @@ const products = [
         quantity: 500,
         unit: "tons",
         category: "oilseeds",
-        images: ["spanish-groundnuts.jpg"],
+        images: ["Spanish Groundnuts.webp"],
         location: {
             country: "Ghana",
             region: "Volta",
@@ -420,7 +428,7 @@ const products = [
         quantity: 400,
         unit: "tons",
         category: "oilseeds",
-        images: ["virginia-groundnuts.jpg"],
+        images: ["Virginia Groundnuts.webp"],
         location: {
             country: "Ghana",
             region: "Eastern",
@@ -438,7 +446,7 @@ const products = [
         quantity: 700,
         unit: "tons",
         category: "oilseeds",
-        images: ["oilseed-sunflower.jpg"],
+        images: ["Oilseed Sunflower.jpg"],
         location: {
             country: "Ghana",
             region: "Upper West",
@@ -456,7 +464,7 @@ const products = [
         quantity: 500,
         unit: "tons",
         category: "oilseeds",
-        images: ["confectionary-sunflower.jpg"],
+        images: ["Confectionary Sunflower.jpg"],
         location: {
             country: "Ghana",
             region: "Ashanti",
@@ -469,20 +477,20 @@ const products = [
     },
     {
         name: "White Sesame Seeds",
-        description: "Premium white sesame seeds with high oil content. Perfect for oil extraction and culinary applications.",
-        price: 2200,
-        quantity: 400,
-        unit: "tons",
+        description: "Premium hulled white sesame seeds with nutty flavor. High in calcium and ideal for baking, cooking, and oil production.",
+        price: 1800,
+        quantity: 250,
+        unit: "kg",
         category: "oilseeds",
-        images: ["white-sesame.jpg"],
+        images: ["White Sesame.webp"],
         location: {
             country: "Ghana",
             region: "Northern",
-            city: "Yendi"
+            city: "Tamale"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-01-20"),
-        certifications: ["Organic", "Non-GMO"],
+        certifications: ["Organic"],
         status: "available"
     },
     {
@@ -492,7 +500,7 @@ const products = [
         quantity: 300,
         unit: "tons",
         category: "oilseeds",
-        images: ["black-sesame.jpg"],
+        images: ["Black Sesame.webp"],
         location: {
             country: "Ghana",
             region: "Upper East",
@@ -510,7 +518,7 @@ const products = [
         quantity: 2000,
         unit: "tons",
         category: "oilseeds",
-        images: ["tenera-palm.jpg"],
+        images: ["Tenera Palm.jpg"],
         location: {
             country: "Ghana",
             region: "Western",
@@ -523,52 +531,34 @@ const products = [
     },
     {
         name: "Tall Coconut",
-        description: "Traditional tall coconut variety with high oil content and copra yield. Excellent for oil extraction.",
-        price: 1000,
-        quantity: 1500,
-        unit: "tons",
+        description: "Traditional tall-growing coconut palms with excellent yields.",
+        price: 950,
+        quantity: 2000,
+        unit: "kg",
         category: "oilseeds",
-        images: ["tall-coconut.jpg"],
+        images: ["Dwarf Coconut.webp"],
         location: {
             country: "Ghana",
-            region: "Central",
-            city: "Cape Coast"
+            region: "Western",
+            city: "Axim"
         },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Dwarf Coconut",
-        description: "Early-bearing dwarf coconut variety, ideal for both oil production and fresh consumption.",
-        price: 1100,
-        quantity: 1200,
-        unit: "tons",
-        category: "oilseeds",
-        images: ["dwarf-coconut.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Volta",
-            city: "Keta"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
+        quality: "Premium",
+        harvestDate: new Date("2024-01-20"),
         certifications: ["Organic"],
         status: "available"
     },
     {
-        name: "Bitter Cassava",
-        description: "Traditional bitter cassava variety, perfect for industrial starch production and flour making. Requires proper processing.",
-        price: 400,
-        quantity: 2000,
+        name: "Dwarf Coconut",
+        description: "Sweet, tender dwarf coconuts with abundant water and soft meat. Early bearing variety.",
+        price: 1800,
+        quantity: 500,
         unit: "tons",
-        category: "roots-tubers",
-        images: ["bitter-cassava.jpg"],
+        category: "oilseeds",
+        images: ["Dwarf Coconut.webp"],
         location: {
             country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
+            region: "Western",
+            city: "Axim"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-10"),
@@ -576,38 +566,56 @@ const products = [
         status: "available"
     },
     {
-        name: "Sweet Cassava",
-        description: "Sweet cassava variety ideal for direct consumption and local food processing. Low in toxins and great taste.",
-        price: 450,
-        quantity: 1800,
-        unit: "tons",
+        name: "Bitter Cassava",
+        description: "High-starch bitter cassava requiring proper processing to remove cyanide compounds. Used for industrial starch and traditional preparations.",
+        price: 380,
+        quantity: 1200,
+        unit: "kg",
         category: "roots-tubers",
-        images: ["sweet-cassava.jpg"],
+        images: ["Bitter Cassava.jpg"],
         location: {
             country: "Ghana",
-            region: "Volta",
-            city: "Ho"
+            region: "Western",
+            city: "Takoradi"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
+        harvestDate: new Date("2024-02-05"),
+        certifications: [],
+        status: "available"
+    },
+    {
+        name: "Sweet Cassava",
+        description: "Low-cyanide sweet cassava with white, starchy flesh. Excellent for boiling, frying, or making fufu.",
+        price: 450,
+        quantity: 900,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Sweet Cassava.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Sekondi-Takoradi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-08"),
+        certifications: ["Pesticide-Free"],
         status: "available"
     },
     {
         name: "White Yam",
-        description: "Premium white yam variety with firm texture and excellent taste. Perfect for traditional dishes.",
-        price: 800,
-        quantity: 1000,
-        unit: "tons",
+        description: "Premium white yam tubers with smooth skin and starchy white flesh.",
+        price: 550,
+        quantity: 800,
+        unit: "kg",
         category: "roots-tubers",
-        images: ["white-yam.jpg"],
+        images: ["White Yam.webp"],
         location: {
             country: "Ghana",
-            region: "Northern",
-            city: "Tamale"
+            region: "Bono East",
+            city: "Techiman"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-01-25"),
+        harvestDate: new Date("2024-02-05"),
         certifications: ["Organic"],
         status: "available"
     },
@@ -618,7 +626,7 @@ const products = [
         quantity: 800,
         unit: "tons",
         category: "roots-tubers",
-        images: ["yellow-yam.jpg"],
+        images: ["Yellow Yam.jpg"],
         location: {
             country: "Ghana",
             region: "Ashanti",
@@ -631,174 +639,12 @@ const products = [
     },
     {
         name: "Water Yam",
-        description: "Versatile water yam variety suitable for various culinary applications. Good storage capability.",
-        price: 700,
-        quantity: 600,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["water-yam.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-05"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Russet Potato",
-        description: "High-quality russet potatoes ideal for baking and frying. Excellent texture and taste.",
-        price: 600,
-        quantity: 1200,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["russet-potato.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper East",
-            city: "Bolgatanga"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-01"),
-        certifications: ["Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Red Potato",
-        description: "Premium red potatoes with smooth skin and creamy flesh. Perfect for boiling and salads.",
-        price: 650,
-        quantity: 900,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["red-potato.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper West",
-            city: "Wa"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-08"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Sweet Potato",
-        description: "Nutritious orange-fleshed sweet potatoes rich in beta-carotene. Great for both savory and sweet dishes.",
-        price: 550,
-        quantity: 1500,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["sweet-potato.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Central",
-            city: "Cape Coast"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Dasheen Taro",
-        description: "Large dasheen taro variety with excellent starch content. Perfect for traditional dishes.",
+        description: "Purple-skinned water yams with moist, white flesh. Excellent for soups, stews, and traditional African dishes.",
         price: 750,
-        quantity: 400,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["dasheen-taro.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Western",
-            city: "Takoradi"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-01-28"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Eddoe Taro",
-        description: "Small-sized eddoe taro, perfect for specialty dishes. Rich, nutty flavor when cooked.",
-        price: 800,
-        quantity: 300,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["eddoe-taro.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Greater Accra",
-            city: "Tema"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-03"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Xanthosoma Cocoyam",
-        description: "Traditional xanthosoma cocoyam variety with high starch content. Ideal for flour and paste production.",
-        price: 680,
-        quantity: 700,
-        unit: "tons",
-        category: "roots-tubers",
-        images: ["xanthosoma-cocoyam.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-18"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Colocasia Cocoyam",
-        description: "Premium colocasia cocoyam variety, excellent for traditional African dishes. Rich in nutrients.",
-        price: 700,
         quantity: 600,
-        unit: "tons",
+        unit: "kg",
         category: "roots-tubers",
-        images: ["colocasia-cocoyam.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Volta",
-            city: "Ho"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Sweet Orange",
-        description: "Fresh, juicy sweet oranges with perfect balance of sweetness and acidity. Rich in Vitamin C.",
-        price: 600,
-        quantity: 1000,
-        unit: "tons",
-        category: "fruits",
-        images: ["sweet-orange.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Meyer Lemon",
-        description: "Premium Meyer lemons, sweeter and less acidic than regular lemons. Perfect for culinary use.",
-        price: 800,
-        quantity: 500,
-        unit: "tons",
-        category: "fruits",
-        images: ["meyer-lemon.jpg"],
+        images: ["Water Yam.jpg"],
         location: {
             country: "Ghana",
             region: "Volta",
@@ -806,21 +652,183 @@ const products = [
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic", "Sustainable Farming"],
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Russet Potato",
+        description: "High-starch russet potatoes with fluffy interior. Perfect for baking, mashing, and french fries.",
+        price: 650,
+        quantity: 900,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Russet Potato.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-25"),
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Red Potato",
+        description: "Waxy red potatoes with smooth skin and creamy flesh. Excellent for roasting, soups, and potato salads.",
+        price: 700,
+        quantity: 750,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Red Potato.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Volta",
+            city: "Ho"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-20"),
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Sweet Potato",
+        description: "Orange-fleshed sweet potatoes rich in beta-carotene. Sweet flavor and versatile for roasting, mashing, or desserts.",
+        price: 550,
+        quantity: 1000,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Sweet Potato.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Northern",
+            city: "Tamale"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-30"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Dasheen Taro",
+        description: "Large dasheen taro with starchy flesh and earthy flavor. Excellent for stews, chips, and traditional dishes.",
+        price: 680,
+        quantity: 500,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Dasheen Taro.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Volta",
+            city: "Ho"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-10"),
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Eddoe Taro",
+        description: "Small-sized eddoe taro with crisp texture when cooked. Ideal for curries, soups, and frying.",
+        price: 720,
+        quantity: 400,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Eddoe Taro.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Volta",
+            city: "Keta"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-15"),
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Xanthosoma Cocoyam",
+        description: "Starchy root crop with nutritious, delicious tubers.",
+        price: 400,
+        quantity: 600,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Xanthosoma Cocoyam.png"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Tarkwa"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-10"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Colocasia Cocoyam",
+        description: "Heart-shaped leaf colocasia cocoyam with purple stems. Both corms and leaves are edible and nutritious.",
+        price: 630,
+        quantity: 550,
+        unit: "kg",
+        category: "roots-tubers",
+        images: ["Colocasia Cocoyam.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Sekondi-Takoradi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-12"),
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Sweet Orange",
+        description: "Sweet, juicy oranges with balanced flavor. Excellent for fresh eating, juicing, or zesting.",
+        price: 800,
+        quantity: 600,
+        unit: "kg",
+        category: "fruits",
+        images: ["Sweet Orange.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-10"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Meyer Lemon",
+        description: "Hybrid lemons with sweeter, less acidic flavor than regular lemons. Great for desserts and cocktails.",
+        price: 900,
+        quantity: 400,
+        unit: "kg",
+        category: "fruits",
+        images: ["Meyer Lemon.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Aburi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-08"),
+        certifications: ["Organic"],
         status: "available"
     },
     {
         name: "Persian Lime",
-        description: "Fresh Persian limes with bright, zesty flavor. Essential for beverages and cooking.",
-        price: 750,
-        quantity: 600,
-        unit: "tons",
+        description: "Seedless Persian limes with bright, aromatic flavor. Excellent for cooking, beverages, and desserts.",
+        price: 950,
+        quantity: 450,
+        unit: "kg",
         category: "fruits",
-        images: ["persian-lime.jpg"],
+        images: ["Persian Lime.jpg"],
         location: {
             country: "Ghana",
-            region: "Greater Accra",
-            city: "Tema"
+            region: "Eastern",
+            city: "Aburi"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-12"),
@@ -828,74 +836,74 @@ const products = [
         status: "available"
     },
     {
-        name: "Ruby Red Grapefruit",
-        description: "Sweet-tart Ruby Red grapefruits with vibrant flesh. High in antioxidants and vitamins.",
-        price: 700,
-        quantity: 800,
-        unit: "tons",
+        name: "Ruby Grapefruit",
+        description: "Sweet-tart grapefruit with vibrant red flesh, excellent for juicing or fresh eating.",
+        price: 750,
+        quantity: 600,
+        unit: "kg",
         category: "fruits",
-        images: ["ruby-grapefruit.jpg"],
+        images: ["Sweet Orange.jpg"],
         location: {
             country: "Ghana",
-            region: "Central",
-            city: "Cape Coast"
+            region: "Eastern",
+            city: "Koforidua"
         },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-08"),
-        certifications: ["Organic", "Non-GMO"],
+        quality: "Premium",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Non-GMO"],
         status: "available"
     },
     {
         name: "Honey Tangerine",
-        description: "Sweet, easy-to-peel honey tangerines. Perfect for snacking and juicing.",
-        price: 650,
-        quantity: 700,
+        description: "Sweet, easy-peel honey tangerines with rich orange flavor. Low acid and excellent eating quality.",
+        price: 1900,
+        quantity: 300,
         unit: "tons",
         category: "fruits",
-        images: ["honey-tangerine.jpg"],
+        images: ["Honey Tangerine.png"],
         location: {
             country: "Ghana",
-            region: "Ashanti",
-            city: "Kumasi"
+            region: "Eastern",
+            city: "Koforidua"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-05"),
+        harvestDate: new Date("2024-02-18"),
         certifications: ["Organic"],
         status: "available"
     },
     {
         name: "Kent Mango",
-        description: "Premium Kent mangoes with rich, sweet flesh and minimal fiber. Excellent for fresh consumption.",
-        price: 900,
-        quantity: 1200,
-        unit: "tons",
+        description: "Large, juicy Kent mangoes with rich, sweet flavor and minimal fiber. Perfect for fresh eating or desserts.",
+        price: 1200,
+        quantity: 800,
+        unit: "kg",
         category: "fruits",
-        images: ["kent-mango.jpg"],
+        images: ["Kent Mango.jpg"],
         location: {
             country: "Ghana",
             region: "Northern",
             city: "Tamale"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-18"),
-        certifications: ["Organic", "Sustainable Farming"],
+        harvestDate: new Date("2024-02-25"),
+        certifications: ["Organic"],
         status: "available"
     },
     {
         name: "Cavendish Banana",
-        description: "Sweet, creamy Cavendish bananas at perfect ripeness. Ideal for direct consumption and processing.",
-        price: 500,
-        quantity: 1500,
+        description: "Sweet and creamy Cavendish bananas, perfect for direct consumption or food processing.",
+        price: 280,
+        quantity: 650,
         unit: "tons",
         category: "fruits",
-        images: ["cavendish-banana.jpg"],
+        images: ["Cavendish Banana.jpg"],
         location: {
             country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
+            region: "Western",
+            city: "Takoradi"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
+        harvestDate: new Date("2024-03-10"),
         certifications: ["Organic"],
         status: "available"
     },
@@ -906,7 +914,7 @@ const products = [
         quantity: 1000,
         unit: "tons",
         category: "fruits",
-        images: ["smooth-cayenne-pineapple.jpg"],
+        images: ["Smooth Cayenne Pineapple.jpg"],
         location: {
             country: "Ghana",
             region: "Central",
@@ -919,70 +927,466 @@ const products = [
     },
     {
         name: "Red Lady Papaya",
-        description: "Sweet, aromatic Red Lady papayas with bright orange flesh. Rich in vitamins and enzymes.",
-        price: 600,
-        quantity: 800,
+        description: "Sweet, orange-fleshed Red Lady papayas with high yield and excellent flavor. Rich in vitamins and enzymes.",
+        price: 900,
+        quantity: 700,
+        unit: "kg",
+        category: "fruits",
+        images: ["Red Lady Papaya.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Takoradi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Pink Guava",
+        description: "Aromatic pink guavas with sweet, tropical flavor. Rich in vitamin C and antioxidants.",
+        price: 1700,
+        quantity: 250,
         unit: "tons",
         category: "fruits",
-        images: ["red-lady-papaya.jpg"],
+        images: ["Pink Guava.webp"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Sekondi-Takoradi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-25"),
+        certifications: ["Organic", "Sustainable Farming"],
+        status: "available"
+    },
+    {
+        name: "Sweet Charlie Strawberry",
+        description: "Sweet, juicy strawberries with excellent flavor and bright red color.",
+        price: 1350,
+        quantity: 250,
+        unit: "kg",
+        category: "fruits",
+        images: ["Heritage Raspberry.jpg"],
         location: {
             country: "Ghana",
             region: "Eastern",
             city: "Koforidua"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
+        harvestDate: new Date("2024-04-05"),
         certifications: ["Organic"],
         status: "available"
     },
     {
-        name: "Pink Guava",
-        description: "Fresh pink guavas with sweet-tart flavor. High in vitamin C and dietary fiber.",
-        price: 550,
-        quantity: 600,
-        unit: "tons",
+        name: "Highbush Blueberry",
+        description: "Plump, sweet-tart blueberries with deep blue color. Rich in antioxidants and perfect for fresh eating or desserts.",
+        price: 3200,
+        quantity: 150,
+        unit: "kg",
         category: "fruits",
-        images: ["pink-guava.jpg"],
+        images: ["Highbush Blueberry.jpg"],
         location: {
             country: "Ghana",
-            region: "Volta",
-            city: "Ho"
+            region: "Eastern",
+            city: "Aburi"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic", "Sustainable Farming"],
+        harvestDate: new Date("2024-02-18"),
+        certifications: ["Organic"],
         status: "available"
     },
     {
-        name: "Sweet Charlie Strawberry",
-        description: "Premium Sweet Charlie strawberries, bright red and perfectly sweet. Excellent for fresh consumption.",
-        price: 2200,
+        name: "Heritage Raspberry",
+        description: "Bright red, flavorful Heritage raspberries with excellent balance of sweetness and acidity. Great for fresh eating or desserts.",
+        price: 3500,
+        quantity: 120,
+        unit: "kg",
+        category: "fruits",
+        images: ["Heritage Raspberry.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Aburi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-20"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Yellow Peach",
+        description: "Sweet, juicy yellow peaches with excellent aroma and flavor. Perfect for fresh eating and preserving.",
+        price: 2100,
         quantity: 200,
         unit: "tons",
         category: "fruits",
-        images: ["sweet-charlie-strawberry.jpg"],
+        images: ["Yellow Peach.png"],
         location: {
             country: "Ghana",
             region: "Ashanti",
             city: "Kumasi"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-08"),
-        certifications: ["Organic", "Non-GMO"],
+        harvestDate: new Date("2024-02-15"),
+        certifications: ["Organic", "Sustainable Farming"],
         status: "available"
     },
     {
-        name: "Highbush Blueberry",
-        description: "Fresh highbush blueberries bursting with flavor. Rich in antioxidants.",
-        price: 2500,
-        quantity: 150,
+        name: "Black Plum",
+        description: "Sweet and juicy black plums with deep purple skin. Perfect for fresh eating and preserving.",
+        price: 1800,
+        quantity: 250,
         unit: "tons",
         category: "fruits",
-        images: ["highbush-blueberry.jpg"],
+        images: ["Black Plum.avif"],
+        location: {
+            country: "Ghana",
+            region: "Central",
+            city: "Cape Coast"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-20"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Crimson Sweet Watermelon",
+        description: "Large, oval watermelons with vibrant red flesh and sweet, crisp texture. Perfect for summer refreshment.",
+        price: 1300,
+        quantity: 450,
+        unit: "kg",
+        category: "fruits",
+        images: ["Crimson Watermelon.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Northern",
+            city: "Tamale"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-03-05"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Tuscan Cantaloupe",
+        description: "Sweet, aromatic Tuscan cantaloupe with orange flesh and netted rind. Rich in vitamins A and C.",
+        price: 1100,
+        quantity: 400,
+        unit: "kg",
+        category: "fruits",
+        images: ["Tuscan Cantaloupe.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Upper East",
+            city: "Bolgatanga"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-03-01"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Honeydew Melon",
+        description: "Sweet, juicy honeydew melons with pale green flesh. Excellent dessert quality.",
+        price: 1400,
+        quantity: 400,
+        unit: "tons",
+        category: "fruits",
+        images: ["Honeydew Melon.webp"],
+        location: {
+            country: "Ghana",
+            region: "Upper East",
+            city: "Bolgatanga"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-03-01"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Baby Spinach",
+        description: "Tender, young spinach leaves with mild flavor. Perfect for salads and quick cooking.",
+        price: 1800,
+        quantity: 100,
+        unit: "tons",
+        category: "vegetables",
+        images: ["Baby Spinach.jpeg"],
         location: {
             country: "Ghana",
             region: "Eastern",
             city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-03-01"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Curly Kale",
+        description: "Nutrient-rich curly kale with deep green leaves. Excellent for salads, stir-fries, and smoothies.",
+        price: 550,
+        quantity: 400,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Curly Kale.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Aburi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Romaine Lettuce",
+        description: "Crisp, elongated romaine lettuce with green outer leaves and pale heart. Perfect for salads and wraps.",
+        price: 480,
+        quantity: 350,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Romaine Lettuce.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Ashanti",
+            city: "Kumasi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-10"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Green Cabbage",
+        description: "Compact, round green cabbage with crisp texture. Versatile for slaws, stir-fries, or fermenting.",
+        price: 400,
+        quantity: 600,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Green Cabbage.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Volta",
+            city: "Ho"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-20"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Crown Broccoli",
+        description: "Compact broccoli crowns with tight, dark green florets. Excellent nutrition and flavor.",
+        price: 1900,
+        quantity: 120,
+        unit: "tons",
+        category: "vegetables",
+        images: ["Crown Broccoli.webp"],
+        location: {
+            country: "Ghana",
+            region: "Ashanti",
+            city: "Kumasi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-28"),
+        certifications: ["Organic", "Sustainable Farming"],
+        status: "available"
+    },
+    {
+        name: "Snow White Cauliflower",
+        description: "Pure white cauliflower heads with tight florets. Excellent for roasting, steaming, or making cauliflower rice.",
+        price: 750,
+        quantity: 450,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Snow Cauliflower.webp"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-20"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Brussels Sprouts",
+        description: "Firm, compact Brussels sprouts with excellent flavor. Perfect size for culinary applications.",
+        price: 2100,
+        quantity: 80,
+        unit: "tons",
+        category: "vegetables",
+        images: ["Brussels Sprouts.webp"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-25"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Nantes Carrots",
+        description: "Sweet, cylindrical carrots with minimal core and bright orange color. Excellent for fresh eating and cooking.",
+        price: 480,
+        quantity: 700,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Nantes Carrot.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Ashanti",
+            city: "Kumasi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-10"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Detroit Dark Red Beetroot",
+        description: "Deep red beetroot with sweet, earthy flavor. Excellent for roasting, juicing, or pickling.",
+        price: 550,
+        quantity: 500,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Detroit Beetroot.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-18"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Cherry Belle Radish",
+        description: "Bright red, round radishes with crisp white flesh. Perfect for salads, garnishes, and quick pickling.",
+        price: 450,
+        quantity: 350,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Cherry Radish.webp"],
+        location: {
+            country: "Ghana",
+            region: "Greater Accra",
+            city: "Accra"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Purple Top Turnip",
+        description: "Sweet and mild purple top turnips with crisp white flesh. Excellent for roasting, mashing, or adding to stews.",
+        price: 480,
+        quantity: 400,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Purple Turnip.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-25"),
+        certifications: ["Pesticide-Free"],
+        status: "available"
+    },
+    {
+        name: "Yellow Onion",
+        description: "Versatile, all-purpose onions with golden skin and mild flavor.",
+        price: 420,
+        quantity: 800,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Yellow Onion.webp"],
+        location: {
+            country: "Ghana",
+            region: "Upper East",
+            city: "Bolgatanga"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-02-15"),
+        certifications: ["Non-GMO"],
+        status: "available"
+    },
+    {
+        name: "White Garlic",
+        description: "Large, flavorful garlic bulbs with easy-to-peel cloves and strong aroma.",
+        price: 550,
+        quantity: 650,
+        unit: "kg",
+        category: "vegetables",
+        images: ["White Garlic.avif"],
+        location: {
+            country: "Ghana",
+            region: "Upper East",
+            city: "Bolgatanga"
+        },
+        quality: "Premium",
+        harvestDate: new Date("2024-02-20"),
+        certifications: ["Non-GMO"],
+        status: "available"
+    },
+    {
+        name: "American Flag Leek",
+        description: "Large, thick-stemmed leeks with a mild onion flavor. Ideal for soups, stews, and sautéing.",
+        price: 750,
+        quantity: 300,
+        unit: "kg",
+        category: "vegetables",
+        images: ["American Leek.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Central",
+            city: "Cape Coast"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "French Shallot",
+        description: "Mild, aromatic French shallots with copper skin and pink-purple flesh. Perfect for sauces and dressings.",
+        price: 850,
+        quantity: 250,
+        unit: "kg",
+        category: "vegetables",
+        images: ["French Shallot.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-18"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Cinderella Pumpkin",
+        description: "Large, ribbed Cinderella pumpkins with sweet, smooth flesh. Ideal for pies, roasting, and fall displays.",
+        price: 800,
+        quantity: 350,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Cinderella Pumpkin.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Brong-Ahafo",
+            city: "Sunyani"
         },
         quality: "Grade A",
         harvestDate: new Date("2024-02-05"),
@@ -990,489 +1394,93 @@ const products = [
         status: "available"
     },
     {
-        name: "Heritage Raspberry",
-        description: "Sweet, aromatic Heritage raspberries. Perfect for fresh consumption and processing.",
-        price: 2800,
-        quantity: 100,
-        unit: "tons",
-        category: "fruits",
-        images: ["heritage-raspberry.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Volta",
-            city: "Ho"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Yellow Peach",
-        description: "Sweet, juicy yellow peaches with tender flesh. Perfect for fresh eating and preserves.",
-        price: 1200,
-        quantity: 400,
-        unit: "tons",
-        category: "fruits",
-        images: ["yellow-peach.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Black Plum",
-        description: "Sweet-tart black plums with deep purple flesh. Rich in antioxidants and flavor.",
-        price: 1100,
-        quantity: 300,
-        unit: "tons",
-        category: "fruits",
-        images: ["black-plum.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Northern",
-            city: "Tamale"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Crimson Sweet Watermelon",
-        description: "Sweet, crisp Crimson Sweet watermelons with bright red flesh. Perfect for fresh consumption.",
-        price: 450,
-        quantity: 2000,
-        unit: "tons",
-        category: "fruits",
-        images: ["crimson-watermelon.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper East",
-            city: "Bolgatanga"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Tuscan Cantaloupe",
-        description: "Aromatic Tuscan cantaloupes with sweet, orange flesh. Rich in vitamins and minerals.",
-        price: 600,
-        quantity: 800,
-        unit: "tons",
-        category: "fruits",
-        images: ["tuscan-cantaloupe.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper West",
-            city: "Wa"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-18"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Honeydew Melon",
-        description: "Sweet, juicy honeydew melons with pale green flesh. Excellent for fresh consumption.",
-        price: 550,
-        quantity: 700,
-        unit: "tons",
-        category: "fruits",
-        images: ["honeydew-melon.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Northern",
-            city: "Tamale"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Baby Spinach",
-        description: "Tender, young spinach leaves with mild flavor. Rich in iron and vitamins. Perfect for salads and cooking.",
-        price: 1200,
-        quantity: 300,
-        unit: "tons",
-        category: "vegetables",
-        images: ["baby-spinach.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Curly Kale",
-        description: "Fresh, crisp curly kale with deep green leaves. Packed with nutrients and antioxidants.",
-        price: 1100,
-        quantity: 400,
-        unit: "tons",
-        category: "vegetables",
-        images: ["curly-kale.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Volta",
-            city: "Ho"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Romaine Lettuce",
-        description: "Crisp, elongated romaine lettuce heads. Perfect for salads and sandwiches.",
-        price: 900,
-        quantity: 500,
-        unit: "tons",
-        category: "vegetables",
-        images: ["romaine-lettuce.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Greater Accra",
-            city: "Tema"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-18"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Green Cabbage",
-        description: "Large, firm heads of green cabbage. Excellent for cooking, slaws, and fermentation.",
-        price: 600,
-        quantity: 800,
-        unit: "tons",
-        category: "vegetables",
-        images: ["green-cabbage.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Ashanti",
-            city: "Kumasi"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Crown Broccoli",
-        description: "Fresh broccoli crowns with tight, green florets. Rich in vitamins and fiber.",
-        price: 1400,
-        quantity: 400,
-        unit: "tons",
-        category: "vegetables",
-        images: ["crown-broccoli.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Central",
-            city: "Cape Coast"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Snow White Cauliflower",
-        description: "Pure white, compact cauliflower heads. Perfect for various cooking methods.",
-        price: 1300,
-        quantity: 450,
-        unit: "tons",
-        category: "vegetables",
-        images: ["snow-cauliflower.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Northern",
-            city: "Tamale"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Brussels Sprouts",
-        description: "Fresh, firm Brussels sprouts. Sweet and nutty when cooked properly.",
-        price: 1500,
-        quantity: 300,
-        unit: "tons",
-        category: "vegetables",
-        images: ["brussels-sprouts.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-08"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Nantes Carrots",
-        description: "Sweet, cylindrical Nantes carrots. Perfect for fresh eating and cooking.",
-        price: 800,
-        quantity: 1000,
-        unit: "tons",
-        category: "vegetables",
-        images: ["nantes-carrots.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper East",
-            city: "Bolgatanga"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Detroit Dark Red Beetroot",
-        description: "Deep red, smooth beetroots with sweet flavor. Excellent for cooking and juicing.",
-        price: 750,
-        quantity: 600,
-        unit: "tons",
-        category: "vegetables",
-        images: ["detroit-beetroot.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper West",
-            city: "Wa"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Cherry Belle Radish",
-        description: "Bright red, round radishes with crisp texture. Perfect for salads and garnishing.",
-        price: 900,
-        quantity: 400,
-        unit: "tons",
-        category: "vegetables",
-        images: ["cherry-radish.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Purple Top Turnip",
-        description: "Classic purple-top white turnips. Versatile for cooking and storage.",
-        price: 600,
-        quantity: 700,
-        unit: "tons",
-        category: "vegetables",
-        images: ["purple-turnip.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Volta",
-            city: "Ho"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Yellow Onion",
-        description: "All-purpose yellow onions with strong flavor. Essential for cooking.",
-        price: 700,
-        quantity: 1500,
-        unit: "tons",
-        category: "vegetables",
-        images: ["yellow-onion.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Northern",
-            city: "Tamale"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-18"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "White Garlic",
-        description: "Fresh white garlic bulbs with intense flavor. Essential cooking ingredient.",
-        price: 1800,
-        quantity: 400,
-        unit: "tons",
-        category: "vegetables",
-        images: ["white-garlic.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper East",
-            city: "Bolgatanga"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "American Flag Leek",
-        description: "Long, straight leeks with white stems and dark green tops. Mild onion flavor.",
-        price: 1100,
-        quantity: 300,
-        unit: "tons",
-        category: "vegetables",
-        images: ["american-leek.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Ashanti",
-            city: "Kumasi"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "French Shallot",
-        description: "Premium French shallots with delicate flavor. Perfect for gourmet cooking.",
-        price: 2000,
-        quantity: 200,
-        unit: "tons",
-        category: "vegetables",
-        images: ["french-shallot.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Greater Accra",
-            city: "Tema"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Cinderella Pumpkin",
-        description: "Large, decorative pumpkins with sweet flesh. Perfect for cooking and decoration.",
-        price: 800,
-        quantity: 1000,
-        unit: "tons",
-        category: "vegetables",
-        images: ["cinderella-pumpkin.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Central",
-            city: "Cape Coast"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-20"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
         name: "Black Beauty Zucchini",
-        description: "Dark green zucchini with tender flesh. Versatile for cooking and grilling.",
-        price: 900,
-        quantity: 600,
-        unit: "tons",
+        description: "Dark green, slender zucchini with tender flesh and delicate flavor. Perfect for grilling, stir-fries, and baking.",
+        price: 600,
+        quantity: 450,
+        unit: "kg",
         category: "vegetables",
-        images: ["black-zucchini.jpg"],
+        images: ["Black Zucchini.jpg"],
         location: {
             country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
+            region: "Eastern",
+            city: "Koforidua"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
+        harvestDate: new Date("2024-01-25"),
+        certifications: ["Organic"],
         status: "available"
     },
     {
-        name: "Long Bottle Gourd",
-        description: "Traditional bottle gourds, perfect for cooking and crafts. Tender when young.",
-        price: 700,
-        quantity: 800,
+        name: "Bottle Gourd",
+        description: "Fresh, young bottle gourds with tender flesh. Perfect for traditional dishes.",
+        price: 1200,
+        quantity: 150,
         unit: "tons",
         category: "vegetables",
-        images: ["bottle-gourd.jpg"],
+        images: ["Bottle Gourd.webp"],
         location: {
             country: "Ghana",
             region: "Northern",
             city: "Tamale"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic"],
+        harvestDate: new Date("2024-03-05"),
+        certifications: ["Organic", "Sustainable Farming"],
         status: "available"
     },
     {
         name: "Black Pepper",
-        description: "Premium black peppercorns with intense aroma and pungent flavor. Essential spice for cooking.",
-        price: 2800,
-        quantity: 200,
+        description: "Premium black peppercorns with strong, pungent flavor. Perfect for table grinders and cooking.",
+        price: 3000,
+        quantity: 80,
         unit: "tons",
         category: "spices",
-        images: ["black-pepper.jpg"],
+        images: ["Black Pepper.png"],
         location: {
             country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
+            region: "Western",
+            city: "Sekondi-Takoradi"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
+        harvestDate: new Date("2024-01-20"),
+        certifications: ["Organic", "Non-GMO"],
         status: "available"
     },
     {
         name: "White Pepper",
         description: "Clean, uniform white peppercorns with subtle heat. Perfect for light-colored dishes.",
-        price: 3000,
-        quantity: 150,
-        unit: "tons",
+        price: 850,
+        quantity: 400,
+        unit: "kg",
         category: "spices",
-        images: ["white-pepper.jpg"],
+        images: ["White Pepper.webp"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Sekondi-Takoradi"
+        },
+        quality: "Premium",
+        harvestDate: new Date("2024-01-05"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Green Pepper",
+        description: "Crisp, mild green bell peppers with thick walls. Perfect for stuffing, salads, and cooking.",
+        price: 550,
+        quantity: 650,
+        unit: "kg",
+        category: "vegetables",
+        images: ["Green Pepper.jpg"],
         location: {
             country: "Ghana",
             region: "Volta",
             city: "Ho"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
+        harvestDate: new Date("2024-01-30"),
         certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Green Pepper",
-        description: "Fresh green peppercorns with mild, bright flavor. Ideal for gourmet cooking.",
-        price: 3200,
-        quantity: 100,
-        unit: "tons",
-        category: "spices",
-        images: ["green-pepper.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Greater Accra",
-            city: "Tema"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic", "Non-GMO"],
         status: "available"
     },
     {
@@ -1482,7 +1490,7 @@ const products = [
         quantity: 500,
         unit: "tons",
         category: "spices",
-        images: ["fresh-ginger.jpg"],
+        images: ["Fresh Ginger.jpg"],
         location: {
             country: "Ghana",
             region: "Ashanti",
@@ -1495,181 +1503,199 @@ const products = [
     },
     {
         name: "Dry Ginger",
-        description: "Sun-dried ginger with concentrated flavor. Long shelf life and intense aroma.",
-        price: 1800,
-        quantity: 300,
-        unit: "tons",
-        category: "spices",
-        images: ["dry-ginger.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Northern",
-            city: "Tamale"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Powdered Ginger",
-        description: "Finely ground ginger powder with strong flavor. Perfect for baking and cooking.",
-        price: 2200,
-        quantity: 200,
-        unit: "tons",
-        category: "spices",
-        images: ["powdered-ginger.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Brong-Ahafo",
-            city: "Sunyani"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Alleppey Finger Turmeric",
-        description: "Premium Alleppey finger turmeric with high curcumin content. Deep orange color.",
-        price: 2500,
-        quantity: 250,
-        unit: "tons",
-        category: "spices",
-        images: ["alleppey-turmeric.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper East",
-            city: "Bolgatanga"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Madras Turmeric",
-        description: "Bright yellow Madras turmeric powder. Essential for curries and traditional dishes.",
-        price: 2300,
-        quantity: 300,
-        unit: "tons",
-        category: "spices",
-        images: ["madras-turmeric.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Upper West",
-            city: "Wa"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Ceylon Cinnamon",
-        description: "True Ceylon cinnamon with delicate, sweet flavor. Premium quality bark.",
-        price: 3500,
+        description: "Dehydrated ginger with concentrated flavor and aroma. Perfect for spice blends and cooking.",
+        price: 2800,
         quantity: 150,
         unit: "tons",
         category: "spices",
-        images: ["ceylon-cinnamon.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Eastern",
-            city: "Koforidua"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-08"),
-        certifications: ["Organic", "Non-GMO"],
-        status: "available"
-    },
-    {
-        name: "Cassia Cinnamon",
-        description: "Strong, spicy cassia cinnamon bark. Perfect for baking and cooking.",
-        price: 2800,
-        quantity: 200,
-        unit: "tons",
-        category: "spices",
-        images: ["cassia-cinnamon.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Volta",
-            city: "Ho"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-12"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Bourbon Vanilla",
-        description: "Premium Bourbon vanilla beans with rich, creamy flavor. Perfect for baking.",
-        price: 12000,
-        quantity: 50,
-        unit: "tons",
-        category: "spices",
-        images: ["bourbon-vanilla.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Greater Accra",
-            city: "Tema"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-05"),
-        certifications: ["Organic", "Sustainable Farming"],
-        status: "available"
-    },
-    {
-        name: "Tahitian Vanilla",
-        description: "Floral, fruity Tahitian vanilla beans. Ideal for desserts and beverages.",
-        price: 13000,
-        quantity: 40,
-        unit: "tons",
-        category: "spices",
-        images: ["tahitian-vanilla.jpg"],
-        location: {
-            country: "Ghana",
-            region: "Central",
-            city: "Cape Coast"
-        },
-        quality: "Grade A",
-        harvestDate: new Date("2024-02-10"),
-        certifications: ["Organic"],
-        status: "available"
-    },
-    {
-        name: "Mexican Vanilla",
-        description: "Bold, dark Mexican vanilla beans with rich aroma. Perfect for traditional baking.",
-        price: 11500,
-        quantity: 45,
-        unit: "tons",
-        category: "spices",
-        images: ["mexican-vanilla.jpg"],
+        images: ["Dry Ginger.jpeg"],
         location: {
             country: "Ghana",
             region: "Ashanti",
             city: "Kumasi"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
+        harvestDate: new Date("2024-01-20"),
+        certifications: ["Organic", "Sustainable Farming"],
+        status: "available"
+    },
+    {
+        name: "Powdered Ginger",
+        description: "Finely ground ginger powder, perfect for baking, cooking, and medicinal uses.",
+        price: 3800,
+        quantity: 50,
+        unit: "tons",
+        category: "spices",
+        images: ["Powdered Ginger.webp"],
+        location: {
+            country: "Ghana",
+            region: "Eastern",
+            city: "Koforidua"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Alleppey Finger Turmeric",
+        description: "High-curcumin Alleppey turmeric with deep orange interior. Premium quality for curries, medicinal uses, and dyeing.",
+        price: 1900,
+        quantity: 200,
+        unit: "kg",
+        category: "spices",
+        images: ["Alleppey Turmeric.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Volta",
+            city: "Ho"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Madras Turmeric",
+        description: "Aromatic Madras turmeric with deep color and balanced flavor. Perfect for culinary and medicinal uses.",
+        price: 3400,
+        quantity: 70,
+        unit: "tons",
+        category: "spices",
+        images: ["Madras Turmeric.webp"],
+        location: {
+            country: "Ghana",
+            region: "Ashanti",
+            city: "Kumasi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Ceylon Cinnamon",
+        description: "True Ceylon cinnamon with delicate, sweet flavor. Premium quality for culinary and medicinal uses.",
+        price: 4200,
+        quantity: 40,
+        unit: "tons",
+        category: "spices",
+        images: ["Ceylon Cinnamon.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Sekondi-Takoradi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-10"),
         certifications: ["Organic", "Non-GMO"],
         status: "available"
     },
     {
+        name: "Cassia Cinnamon",
+        description: "Aromatic cassia cinnamon with strong, spicy flavor. Perfect for baking and cooking.",
+        price: 3800,
+        quantity: 50,
+        unit: "tons",
+        category: "spices",
+        images: ["Cassia Cinnamon.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Central",
+            city: "Cape Coast"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-15"),
+        certifications: ["Organic"],
+        status: "available"
+    },
+    {
+        name: "Bourbon Vanilla",
+        description: "Premium Bourbon vanilla beans with deep, rich flavor. Ideal for baking and desserts.",
+        price: 12000,
+        quantity: 50,
+        unit: "kg",
+        category: "spices",
+        images: ["Bourbon Vanilla.jpg"],
+        location: {
+            country: "Ghana",
+            region: "Western",
+            city: "Sekondi-Takoradi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-10"),
+        certifications: ["Organic", "Fair Trade"],
+        status: "available"
+    },
+    {
+        name: "Tahitian Vanilla",
+        description: "Fragrant Tahitian vanilla beans with floral notes. Premium quality for gourmet products.",
+        price: 14000,
+        quantity: 40,
+        unit: "kg",
+        category: "spices",
+        images: ["Tahitian Vanilla.webp"],
+        location: {
+            country: "Ghana",
+            region: "Greater Accra",
+            city: "Accra"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-05"),
+        certifications: ["Organic", "Fair Trade"],
+        status: "available"
+    },
+    {
+        name: "Mexican Vanilla",
+        description: "Authentic Mexican vanilla beans with bold, spicy notes. Excellent for savory and sweet applications.",
+        price: 11000,
+        quantity: 60,
+        unit: "kg",
+        category: "spices",
+        images: ["Mexican Vanilla.webp"],
+        location: {
+            country: "Ghana",
+            region: "Ashanti",
+            city: "Kumasi"
+        },
+        quality: "Grade A",
+        harvestDate: new Date("2024-01-08"),
+        certifications: ["Organic", "Fair Trade"],
+        status: "available"
+    },
+    {
         name: "White Sorghum",
-        description: "Premium white sorghum grains, perfect for making porridge, flour, and traditional dishes. Clean and well-sorted.",
-        price: 340,
-        quantity: 900,
+        description: "High-yield white sorghum with large, pale grains. Excellent for flour, porridge, and brewing.",
+        price: 420,
+        quantity: 1000,
         unit: "tons",
         category: "grains",
-        images: ["white-sorghum.jpg"],
+        images: ["White Sorghum.jpg"],
         location: {
             country: "Ghana",
             region: "Northern",
             city: "Tamale"
         },
         quality: "Grade A",
-        harvestDate: new Date("2024-02-15"),
+        harvestDate: new Date("2024-01-25"),
+        certifications: ["Non-GMO"],
+        status: "available"
+    },
+    {
+        name: "Premium White Sesame",
+        description: "Clean, high-oil content white sesame seeds for food and oil production.",
+        price: 1800,
+        quantity: 400,
+        unit: "kg",
+        category: "oilseeds",
+        images: ["White Sesame.webp"],
+        location: {
+            country: "Ghana",
+            region: "Northern",
+            city: "Tamale"
+        },
+        quality: "Premium",
+        harvestDate: new Date("2024-01-10"),
         certifications: ["Organic", "Non-GMO"],
         status: "available"
     }

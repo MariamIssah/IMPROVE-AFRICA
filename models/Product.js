@@ -13,7 +13,8 @@ const productSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: [true, 'Product price is required'],
-        min: [0, 'Price cannot be negative']
+        min: [0, 'Price cannot be negative'],
+        description: 'Price in Ghana Cedis (GH₵)'
     },
     quantity: {
         type: Number,

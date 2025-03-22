@@ -205,16 +205,22 @@
                 aria-label="Filter by region"
               >
                 <option value="">All Regions</option>
+                <option value="Ahafo">Ahafo</option>
                 <option value="Ashanti">Ashanti</option>
-                <option value="Brong-Ahafo">Brong-Ahafo</option>
+                <option value="Bono">Bono</option>
+                <option value="Bono East">Bono East</option>
                 <option value="Central">Central</option>
                 <option value="Eastern">Eastern</option>
                 <option value="Greater Accra">Greater Accra</option>
+                <option value="North East">North East</option>
                 <option value="Northern">Northern</option>
+                <option value="Oti">Oti</option>
+                <option value="Savannah">Savannah</option>
                 <option value="Upper East">Upper East</option>
                 <option value="Upper West">Upper West</option>
                 <option value="Volta">Volta</option>
                 <option value="Western">Western</option>
+                <option value="Western North">Western North</option>
               </select>
               <button
                 id="filterButton"
@@ -834,7 +840,7 @@
             // Set default image URL if no product images
             const imageUrl =
               product.images && product.images.length > 0
-                ? product.images[0]
+                ? `images/marketplace/${encodeURIComponent(product.images[0])}`
                 : "assets/images/product-placeholder.jpg";
 
             // Format harvest date
@@ -877,7 +883,7 @@
                     <h3 class="text-lg font-semibold leading-tight">${
                       product.name
                     }
-                      <span class="text-blue-600 whitespace-nowrap ml-2">$${
+                      <span class="text-blue-600 whitespace-nowrap ml-2">GH₵${
                         product.price
                       }/${product.unit || "kg"}</span>
                     </h3>
@@ -964,27 +970,28 @@
             certificationBadges += `<span class="badge bg-yellow-100 text-yellow-800 mr-2 px-2 py-1 rounded text-sm">Featured</span>`;
           }
 
-          // Get main image and additional images
+          // Set main image
           const mainImage =
             product.images && product.images.length > 0
-              ? product.images[0]
+              ? `images/marketplace/${encodeURIComponent(product.images[0])}`
               : "assets/images/product-placeholder.jpg";
 
-          let additionalImagesHtml = "";
+          // Generate HTML for additional images (if any)
+          let additionalImagesHTML = "";
           if (product.images && product.images.length > 1) {
-            additionalImagesHtml = '<div class="grid grid-cols-4 gap-2 mt-3">';
-            for (let i = 0; i < Math.min(4, product.images.length); i++) {
-              additionalImagesHtml += `
-                <div class="image-container bg-gray-100 rounded overflow-hidden shadow-sm">
+            for (let i = 1; i < Math.min(product.images.length, 5); i++) {
+              additionalImagesHTML += `
+                <div class="w-1/4 p-1">
                   <img 
-                    src="${product.images[i]}" 
-                    alt="${product.name} image ${i + 1}" 
-                    class="w-full h-16 object-cover"
-                  />
+                    src="images/marketplace/${encodeURIComponent(
+                      product.images[i]
+                    )}" 
+                    alt="${product.name} additional view" 
+                    class="object-cover w-full h-24 rounded cursor-pointer"
+                  >
                 </div>
               `;
             }
-            additionalImagesHtml += "</div>";
           }
 
           // Get location information safely
@@ -1011,7 +1018,7 @@
                     class="w-full h-full object-cover"
                   />
                 </div>
-                ${additionalImagesHtml}
+                ${additionalImagesHTML}
               </div>
               <div>
                 <div class="flex items-center justify-between mb-3">
@@ -1021,7 +1028,7 @@
                 <div class="bg-gray-50 p-4 rounded-lg shadow-sm mb-4">
                   <div class="flex justify-between items-center mb-2">
                     <span class="text-gray-600">Price:</span>
-                    <span class="text-xl font-bold text-blue-600">$${
+                    <span class="text-xl font-bold text-blue-600">GH₵${
                       product.price
                     }/${product.unit || "kg"}</span>
                   </div>

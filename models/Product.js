@@ -1,75 +1,109 @@
+/**
+ * IMPROVE AFRICA Marketplace - Product Model
+ * 
+ * This defines the schema for agricultural products in the marketplace
+ */
+
 const mongoose = require('mongoose');
 
-const productSchema = new mongoose.Schema({
+const ProductSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Product name is required'],
+        required: true,
         trim: true
     },
     description: {
         type: String,
-        required: [true, 'Product description is required']
+        required: true
     },
     price: {
         type: Number,
-        required: [true, 'Product price is required'],
-        min: [0, 'Price cannot be negative'],
-        description: 'Price in Ghana Cedis (GH₵)'
-    },
-    quantity: {
-        type: Number,
-        required: [true, 'Product quantity is required'],
-        min: [0, 'Quantity cannot be negative']
+        required: true,
+        min: 0
     },
     unit: {
         type: String,
-        default: 'tons'
+        default: 'kg'
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        min: 0
     },
     category: {
         type: String,
-        required: [true, 'Product category is required'],
-        enum: ['grains', 'vegetables', 'fruits', 'nuts', 'spices', 'legumes', 'oilseeds', 'roots-tubers', 'other']
+        required: true,
+        enum: ['Grains', 'Legumes', 'Oilseeds', 'Roots & Tubers', 'Fruits', 'Vegetables', 'Spices']
     },
-    images: [{
+    subcategory: {
         type: String
-    }],
+    },
+    images: {
+        type: [String],
+        default: []
+    },
+    isOrganic: {
+        type: Boolean,
+        default: false
+    },
+    origin: {
+        region: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        },
+        country: {
+            type: String,
+            default: 'Ghana'
+        }
+    },
     seller: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
-    location: {
-        country: {
-            type: String,
-            default: 'Ghana'
-        },
-        region: {
-            type: String,
-            required: [true, 'Region is required']
-        },
-        city: {
-            type: String
-        }
+    rating: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 5
     },
-    quality: {
+    status: {
         type: String,
-        default: 'Grade A'
+        enum: ['available', 'sold', 'featured', 'reserved'],
+        default: 'available'
     },
     harvestDate: {
         type: Date
     },
-    certifications: [{
-        type: String
-    }],
-    status: {
-        type: String,
-        default: 'available',
-        enum: ['available', 'sold', 'pending']
+    reviews: {
+        type: Array,
+        default: []
+    },
+    certifications: {
+        type: [String],
+        default: []
     }
 }, {
     timestamps: true
 });
 
-// Add text index for search
-productSchema.index({ name: 'text', description: 'text' });
+// Add text indexes for search
+ProductSchema.index({
+    name: 'text',
+    description: 'text',
+    category: 'text',
+    subcategory: 'text'
+});
 
-module.exports = mongoose.model('Product', productSchema); 
+// If product is organic, automatically add "Organic" to certifications
+ProductSchema.pre('save', function(next) {
+    if (this.isOrganic && !this.certifications.includes('Organic')) {
+        this.certifications.push('Organic');
+    }
+    next();
+});
+
+module.exports = mongoose.models.Product || mongoose.model('Product', ProductSchema); 

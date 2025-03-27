@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic Product Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: Arial;
+        margin: 20px;
+      }
+      .product {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin: 10px;
+        display: inline-block;
+        width: 300px;
+      }
+      .product-name {
+        font-weight: bold;
+        font-size: 18px;
+      }
+      .product-price {
+        color: green;
+        font-weight: bold;
+      }
+      .stats {
+        background-color: #f5f5f5;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Basic Product Display</h1>
+    <div class="stats" id="stats-container">Loading product statistics...</div>
+    <div id="product-container">Loading products...</div>
+
+    <script>
+      // Simple fetch and display
+      console.log("Starting fetch for products");
+      fetch("/api/products?limit=0")
+        .then((response) => {
+          console.log("Response status:", response.status);
+          return response.json();
+        })
+        .then((data) => {
+          console.log("Data received:", data);
+          const container = document.getElementById("product-container");
+          const statsContainer = document.getElementById("stats-container");
+
+          if (!data.products || data.products.length === 0) {
+            container.innerHTML = "No products found";
+            statsContainer.innerHTML = "No products available";
+            return;
+          }
+
+          // Group products by category for statistics
+          const categoryCounts = {};
+          data.products.forEach((product) => {
+            if (!categoryCounts[product.category]) {
+              categoryCounts[product.category] = 0;
+            }
+            categoryCounts[product.category]++;
+          });
+
+          // Display stats
+          let statsHtml = `<strong>Total Products: ${data.products.length}</strong><br>`;
+          statsHtml += `<strong>Products by Category:</strong><br>`;
+          for (const category in categoryCounts) {
+            statsHtml += `${category}: ${categoryCounts[category]} products<br>`;
+          }
+          statsContainer.innerHTML = statsHtml;
+
+          let html = "";
+          data.products.forEach((product) => {
+            html += `
+            <div class="product">
+              <div class="product-name">${product.name}</div>
+              <div>Category: ${product.category}</div>
+              <div class="product-price">$${product.price} per ${
+              product.unit
+            }</div>
+              <div>Origin: ${product.origin.city}, ${
+              product.origin.region
+            }</div>
+              <div>Quantity: ${product.quantity} ${product.unit}</div>
+              ${product.isOrganic ? "<div>Organic: Yes</div>" : ""}
+            </div>
+          `;
+          });
+
+          container.innerHTML = html;
+        })
+        .catch((error) => {
+          document.getElementById(
+            "product-container"
+          ).innerHTML = `Error: ${error.message}`;
+          console.error("Error:", error);
+        });
+    </script>
+  </body>
+</html>

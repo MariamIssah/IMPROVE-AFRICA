@@ -1,45 +1,85 @@
-require('dotenv').config();
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 const User = require('../models/User');
 
-const testUser = {
-    name: "Test User",
-    email: "test@example.com",
-    password: "password123",
-    role: "buyer",
-    location: {
-        country: "Ghana",
-        region: "Greater Accra",
-        city: "Accra"
-    },
-    phoneNumber: "+233111111111",
-    isVerified: true
-};
+// Load environment variables
+dotenv.config();
 
-async function createTestUser() {
+const createTestUser = async () => {
     try {
         // Connect to MongoDB
-        await mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/improve-africa');
+        console.log('Connecting to MongoDB...');
+        await mongoose.connect(process.env.MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+        console.log('Connected to MongoDB successfully');
 
-        // Check if user already exists
-        const existingUser = await User.findOne({ email: testUser.email });
-        if (existingUser) {
-            console.log('Test user already exists');
-            mongoose.disconnect();
-            return;
+        // Find or create test user
+        let testUser = await User.findOne({ email: 'seller@test.com' });
+        
+        if (!testUser) {
+            testUser = await User.create({
+                name: 'Test Seller',
+                email: 'seller@test.com',
+                password: 'password123',
+                role: 'seller',
+                phone: '+233123456789',
+                address: {
+                    street: '123 Test Street',
+                    city: 'Accra',
+                    region: 'Greater Accra'
+                }
+            });
+            console.log('Test user created successfully');
+        } else {
+            console.log('Using existing test user');
         }
 
-        // Create new user
-        const user = await User.create(testUser);
-        console.log('Test user created successfully');
+        console.log('User ID:', testUser._id.toString());
+
+        // Update the SAMPLE_SELLER_ID in seedProducts.js
+        const fs = require('fs');
+        const path = require('path');
+        const seedProductsPath = path.join(__dirname, 'seedProducts.js');
+        let seedProductsContent = fs.readFileSync(seedProductsPath, 'utf8');
         
-        // Disconnect from MongoDB
-        await mongoose.disconnect();
+        // Replace the sample seller ID with the new user ID
+        seedProductsContent = seedProductsContent.replace(
+            /const SAMPLE_SELLER_ID = '.*?'/,
+            `const SAMPLE_SELLER_ID = '${testUser._id.toString()}'`
+        );
+        
+        fs.writeFileSync(seedProductsPath, seedProductsContent);
+        console.log('Updated seedProducts.js with new seller ID');
+
+        await mongoose.connection.close();
+        console.log('Database connection closed');
+        
+        return {
+            success: true,
+            userId: testUser._id.toString(),
+            message: 'Test user created and seller ID updated in seedProducts.js'
+        };
+
     } catch (error) {
-        console.error('Error creating test user:', error);
-        process.exit(1);
+        console.error('Error with test user:', error);
+        await mongoose.connection.close().catch(err => console.error('Error closing connection:', err));
+        
+        return {
+            success: false,
+            error: error.message
+        };
     }
+};
+
+// Run directly if script is executed directly
+if (require.main === module) {
+    createTestUser().then(result => {
+        console.log('Result:', result);
+        process.exit(result.success ? 0 : 1);
+    });
 }
 
-// Run the function
-createTestUser(); 
+// Export the function
+module.exports = { createTestUser }; 

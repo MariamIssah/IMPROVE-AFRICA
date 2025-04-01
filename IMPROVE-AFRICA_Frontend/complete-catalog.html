@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IMPROVE AFRICA - Complete Product Catalog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      .product-card {
+        transition: transform 0.3s ease;
+        height: 100%;
+      }
+      .product-card:hover {
+        transform: translateY(-5px);
+      }
+      .category-section {
+        scroll-margin-top: 5rem;
+      }
+      .badge {
+        position: absolute;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        padding: 0.25rem 0.75rem;
+        font-weight: 600;
+        z-index: 10;
+      }
+      .badge-organic {
+        top: 0.5rem;
+        left: 0.5rem;
+        background-color: #10b981;
+        color: white;
+      }
+      .badge-featured {
+        top: 0.5rem;
+        right: 0.5rem;
+        background-color: #3b82f6;
+        color: white;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 min-h-screen">
+    <header
+      class="bg-green-600 text-white py-4 px-6 sticky top-0 z-30 shadow-md"
+    >
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 class="text-xl md:text-2xl font-bold">
+          IMPROVE AFRICA - Product Catalog
+        </h1>
+        <div class="flex items-center space-x-4">
+          <a
+            href="http://localhost:5000/market.html"
+            class="text-white hover:text-green-200 transition-colors"
+          >
+            <i class="fas fa-store mr-1"></i> Marketplace
+          </a>
+          <a
+            href="http://localhost:5000/standalone-test.html"
+            class="text-white hover:text-green-200 transition-colors"
+          >
+            <i class="fas fa-vial mr-1"></i> Test Page
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <nav class="bg-white py-3 px-6 shadow-sm sticky top-16 z-20">
+      <div class="container mx-auto">
+        <div class="flex overflow-x-auto space-x-4 pb-2 no-scrollbar">
+          <a
+            href="#grains"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Grains</a
+          >
+          <a
+            href="#legumes"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Legumes</a
+          >
+          <a
+            href="#oilseeds"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Oilseeds</a
+          >
+          <a
+            href="#roots-tubers"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Roots & Tubers</a
+          >
+          <a
+            href="#fruits"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Fruits</a
+          >
+          <a
+            href="#vegetables"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Vegetables</a
+          >
+          <a
+            href="#spices"
+            class="px-4 py-2 bg-gray-100 rounded-full hover:bg-green-100 whitespace-nowrap text-sm font-medium"
+            >Spices</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold text-gray-800">
+          Complete Product Catalog
+        </h2>
+        <p class="text-gray-600 mt-2">
+          Browse all available agricultural products from IMPROVE AFRICA.
+        </p>
+      </div>
+
+      <!-- Category sections will be inserted here -->
+      <div id="catalog-container">
+        <div class="text-center py-12">
+          <div
+            class="inline-block animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-green-500"
+          ></div>
+          <p class="mt-4 text-lg text-gray-600">Loading product catalog...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-6">
+      <div class="container mx-auto px-6">
+        <div class="text-center">
+          <p>&copy; 2024 IMPROVE AFRICA. All rights reserved.</p>
+          <p class="mt-2 text-gray-400 text-sm">
+            Connecting farmers and buyers across Ghana with high-quality
+            agricultural raw materials.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Load product data -->
+    <script src="js/product-data.js"></script>
+    <script src="js/product-data-2.js"></script>
+    <script src="js/product-data-3.js"></script>
+    <script src="js/product-data-4.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Check if product data is available
+        if (!window.productData || !window.productData.allProducts) {
+          document.getElementById("catalog-container").innerHTML =
+            '<div class="text-center py-12"><p class="text-red-500 text-lg">Failed to load product data. Please refresh the page.</p></div>';
+          return;
+        }
+
+        const products = window.productData.allProducts;
+        console.log(`Loaded ${products.length} products`);
+
+        // Group products by category
+        const categories = {};
+        products.forEach((product) => {
+          if (!categories[product.category]) {
+            categories[product.category] = [];
+          }
+          categories[product.category].push(product);
+        });
+
+        // Format category name for display
+        function formatCategoryName(category) {
+          if (category === "roots-tubers") return "Roots & Tubers";
+          return category
+            .split("-")
+            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ");
+        }
+
+        // Create product card HTML
+        function createProductCard(product) {
+          return `
+          <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="relative">
+              ${
+                product.isOrganic
+                  ? '<span class="badge badge-organic">Organic</span>'
+                  : ""
+              }
+              ${
+                product.isFeatured
+                  ? '<span class="badge badge-featured">Featured</span>'
+                  : ""
+              }
+              <div class="h-48 bg-gray-100 flex items-center justify-center">
+                <div class="text-5xl text-gray-400">
+                  ${getCategoryIcon(product.category)}
+                </div>
+              </div>
+            </div>
+            <div class="p-4">
+              <div class="flex justify-between items-start mb-2">
+                <h3 class="font-semibold text-gray-800">${product.name}</h3>
+                <div class="flex items-center text-sm">
+                  <i class="fas fa-star text-yellow-400 mr-1"></i>
+                  <span>${product.rating}</span>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 line-clamp-2 mb-2">${
+                product.description
+              }</p>
+              <div class="flex justify-between items-end">
+                <p class="font-bold text-green-600">$${product.price.toFixed(
+                  2
+                )}/${product.unit}</p>
+                <p class="text-xs text-gray-500">${
+                  product.quantity
+                } available</p>
+              </div>
+              <div class="flex items-center mt-2 text-xs text-gray-500">
+                <i class="fas fa-map-marker-alt mr-1"></i>
+                <span>${product.origin.city}, ${product.origin.region}</span>
+              </div>
+            </div>
+          </div>
+        `;
+        }
+
+        // Get icon for category
+        function getCategoryIcon(category) {
+          const icons = {
+            grains: '<i class="fas fa-wheat-alt"></i>',
+            legumes: '<i class="fas fa-seedling"></i>',
+            oilseeds: '<i class="fas fa-oil-can"></i>',
+            "roots-tubers": '<i class="fas fa-carrot"></i>',
+            fruits: '<i class="fas fa-apple-alt"></i>',
+            vegetables: '<i class="fas fa-leaf"></i>',
+            spices: '<i class="fas fa-mortar-pestle"></i>',
+          };
+          return icons[category] || '<i class="fas fa-box"></i>';
+        }
+
+        // Build the catalog HTML
+        let catalogHTML = "";
+        const categoryOrder = [
+          "grains",
+          "legumes",
+          "oilseeds",
+          "roots-tubers",
+          "fruits",
+          "vegetables",
+          "spices",
+        ];
+
+        categoryOrder.forEach((category) => {
+          if (categories[category] && categories[category].length > 0) {
+            const productCards = categories[category]
+              .map((product) => createProductCard(product))
+              .join("");
+
+            catalogHTML += `
+            <section id="${category}" class="category-section mb-12">
+              <div class="flex items-center mb-4">
+                <h2 class="text-2xl font-bold text-gray-800">${formatCategoryName(
+                  category
+                )}</h2>
+                <span class="ml-4 bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-600">${
+                  categories[category].length
+                } products</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                ${productCards}
+              </div>
+            </section>
+          `;
+          }
+        });
+
+        // Insert the catalog into the page
+        document.getElementById("catalog-container").innerHTML = catalogHTML;
+      });
+    </script>
+  </body>
+</html>

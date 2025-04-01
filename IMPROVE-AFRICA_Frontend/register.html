@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Improve Africa</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+      }
+      .register-container {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      }
+      .register-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .register-header h1 {
+        color: #1e4d8c;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      .register-header p {
+        color: #666;
+        font-size: 1.1rem;
+      }
+      .form-section {
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+      }
+      .form-section h3 {
+        color: #1e4d8c;
+        margin-bottom: 1.5rem;
+        font-size: 1.4rem;
+      }
+      .form-label {
+        font-weight: 500;
+        color: #333;
+      }
+      .form-control {
+        border: 1px solid #ddd;
+        padding: 0.8rem;
+        border-radius: 8px;
+      }
+      .form-control:focus {
+        border-color: #1e4d8c;
+        box-shadow: 0 0 0 0.2rem rgba(30, 77, 140, 0.25);
+      }
+      .btn-register {
+        background-color: #1e4d8c;
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .btn-register:hover {
+        background-color: #153a6b;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(30, 77, 140, 0.3);
+      }
+      .login-link {
+        text-align: center;
+        margin-top: 1.5rem;
+      }
+      .login-link a {
+        color: #1e4d8c;
+        text-decoration: none;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+      .user-type-selector {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+      }
+      .user-type-btn {
+        padding: 0.8rem 1.5rem;
+        border: 2px solid #1e4d8c;
+        border-radius: 8px;
+        background: white;
+        color: #1e4d8c;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .user-type-btn.active {
+        background: #1e4d8c;
+        color: white;
+      }
+      .user-type-btn:hover {
+        background: #1e4d8c;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="register-container">
+        <div class="register-header">
+          <h1>Create Your Account</h1>
+          <p>
+            Join Improve Africa's community of farmers, buyers, and agricultural
+            professionals
+          </p>
+        </div>
+
+        <div class="user-type-selector">
+          <button class="user-type-btn active" data-type="farmer">
+            Farmer
+          </button>
+          <button class="user-type-btn" data-type="buyer">Buyer</button>
+          <button class="user-type-btn" data-type="professional">
+            Professional
+          </button>
+          <button class="user-type-btn" data-type="general">
+            General User
+          </button>
+        </div>
+
+        <!-- Farmer Registration Form -->
+        <form id="farmerForm" class="registration-form">
+          <div class="form-section">
+            <h3>Personal Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your first name"
+                  title="First Name"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your last name"
+                  title="Last Name"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  placeholder="Enter your email address"
+                  title="Email Address"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  required
+                  placeholder="Enter your phone number"
+                  title="Phone Number"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Create a password"
+                  title="Password"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Confirm your password"
+                  title="Confirm Password"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Location Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="farmerCountry">Country</label>
+                <select
+                  id="farmerCountry"
+                  class="form-control"
+                  required
+                  aria-label="Select your country"
+                >
+                  <option value="">Select Country</option>
+                  <option value="ghana">Ghana</option>
+                  <option value="nigeria">Nigeria</option>
+                  <option value="kenya">Kenya</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="farmerRegion"
+                  >Region/State</label
+                >
+                <input
+                  id="farmerRegion"
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your region or state"
+                  aria-label="Region/State"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="farmerAddress">Address</label>
+              <textarea
+                id="farmerAddress"
+                class="form-control"
+                rows="3"
+                required
+                placeholder="Enter your full address"
+                aria-label="Address"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Farmer Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Farm Size (Acres)</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  min="0"
+                  placeholder="Enter your farm size in acres"
+                  title="Farm Size"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Primary Crops</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="e.g., Maize, Cassava"
+                  title="Primary Crops"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Farming Experience (Years)</label>
+              <input
+                type="number"
+                class="form-control"
+                min="0"
+                placeholder="Enter years of farming experience"
+                title="Farming Experience"
+              />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Terms and Conditions</h3>
+            <div class="mb-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  required
+                  id="farmerTerms"
+                />
+                <label class="form-check-label" for="farmerTerms">
+                  I agree to the
+                  <a href="#" class="text-primary">Terms of Service</a> and
+                  <a href="#" class="text-primary">Privacy Policy</a>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-register">
+              Create Farmer Account
+            </button>
+          </div>
+        </form>
+
+        <!-- Buyer Registration Form -->
+        <form id="buyerForm" class="registration-form" style="display: none">
+          <div class="form-section">
+            <h3>Personal Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your first name"
+                  title="First Name"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your last name"
+                  title="Last Name"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  placeholder="Enter your email address"
+                  title="Email Address"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  required
+                  placeholder="Enter your phone number"
+                  title="Phone Number"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Create a password"
+                  title="Password"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Confirm your password"
+                  title="Confirm Password"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Location Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="buyerCountry">Country</label>
+                <select
+                  id="buyerCountry"
+                  class="form-control"
+                  required
+                  aria-label="Select your country"
+                >
+                  <option value="">Select Country</option>
+                  <option value="ghana">Ghana</option>
+                  <option value="nigeria">Nigeria</option>
+                  <option value="kenya">Kenya</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="buyerRegion">Region/State</label>
+                <input
+                  id="buyerRegion"
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your region or state"
+                  aria-label="Region/State"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="buyerAddress">Address</label>
+              <textarea
+                id="buyerAddress"
+                class="form-control"
+                rows="3"
+                required
+                placeholder="Enter your full address"
+                aria-label="Address"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Buyer Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Business Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your business name"
+                  title="Business Name"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="businessType"
+                  >Business Type</label
+                >
+                <select
+                  id="businessType"
+                  class="form-control"
+                  aria-label="Select your business type"
+                >
+                  <option value="">Select Type</option>
+                  <option value="wholesaler">Wholesaler</option>
+                  <option value="retailer">Retailer</option>
+                  <option value="processor">Processor</option>
+                  <option value="exporter">Exporter</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="products"
+                >Products of Interest</label
+              >
+              <input
+                id="products"
+                type="text"
+                class="form-control"
+                placeholder="e.g., Maize, Rice, Vegetables"
+                aria-label="Products of Interest"
+              />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Terms and Conditions</h3>
+            <div class="mb-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  required
+                  id="buyerTerms"
+                />
+                <label class="form-check-label" for="buyerTerms">
+                  I agree to the
+                  <a href="#" class="text-primary">Terms of Service</a> and
+                  <a href="#" class="text-primary">Privacy Policy</a>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-register">
+              Create Buyer Account
+            </button>
+          </div>
+        </form>
+
+        <!-- Professional Registration Form -->
+        <form
+          id="professionalForm"
+          class="registration-form"
+          style="display: none"
+        >
+          <div class="form-section">
+            <h3>Personal Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your first name"
+                  title="First Name"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your last name"
+                  title="Last Name"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  placeholder="Enter your email address"
+                  title="Email Address"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  required
+                  placeholder="Enter your phone number"
+                  title="Phone Number"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Create a password"
+                  title="Password"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Confirm your password"
+                  title="Confirm Password"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Location Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="professionalCountry"
+                  >Country</label
+                >
+                <select
+                  id="professionalCountry"
+                  class="form-control"
+                  required
+                  aria-label="Select your country"
+                >
+                  <option value="">Select Country</option>
+                  <option value="ghana">Ghana</option>
+                  <option value="nigeria">Nigeria</option>
+                  <option value="kenya">Kenya</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="professionalRegion"
+                  >Region/State</label
+                >
+                <input
+                  id="professionalRegion"
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your region or state"
+                  aria-label="Region/State"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="professionalAddress"
+                >Address</label
+              >
+              <textarea
+                id="professionalAddress"
+                class="form-control"
+                rows="3"
+                required
+                placeholder="Enter your full address"
+                aria-label="Address"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Professional Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Professional Title</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your professional title"
+                  title="Professional Title"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="specialization"
+                  >Specialization</label
+                >
+                <select
+                  id="specialization"
+                  class="form-control"
+                  aria-label="Select your specialization"
+                >
+                  <option value="">Select Specialization</option>
+                  <option value="agronomist">Agronomist</option>
+                  <option value="veterinarian">Veterinarian</option>
+                  <option value="researcher">Researcher</option>
+                  <option value="consultant">Agricultural Consultant</option>
+                </select>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Years of Experience</label>
+              <input
+                type="number"
+                class="form-control"
+                min="0"
+                placeholder="Enter years of professional experience"
+                title="Years of Experience"
+              />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Terms and Conditions</h3>
+            <div class="mb-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  required
+                  id="professionalTerms"
+                />
+                <label class="form-check-label" for="professionalTerms">
+                  I agree to the
+                  <a href="#" class="text-primary">Terms of Service</a> and
+                  <a href="#" class="text-primary">Privacy Policy</a>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-register">
+              Create Professional Account
+            </button>
+          </div>
+        </form>
+
+        <!-- General User Registration Form -->
+        <form id="generalForm" class="registration-form" style="display: none">
+          <div class="form-section">
+            <h3>Personal Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">First Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your first name"
+                  title="First Name"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Last Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your last name"
+                  title="Last Name"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  required
+                  placeholder="Enter your email address"
+                  title="Email Address"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  required
+                  placeholder="Enter your phone number"
+                  title="Phone Number"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Create a password"
+                  title="Password"
+                />
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  required
+                  placeholder="Confirm your password"
+                  title="Confirm Password"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Location Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="generalCountry">Country</label>
+                <select
+                  id="generalCountry"
+                  class="form-control"
+                  required
+                  aria-label="Select your country"
+                >
+                  <option value="">Select Country</option>
+                  <option value="ghana">Ghana</option>
+                  <option value="nigeria">Nigeria</option>
+                  <option value="kenya">Kenya</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="generalRegion"
+                  >Region/State</label
+                >
+                <input
+                  id="generalRegion"
+                  type="text"
+                  class="form-control"
+                  required
+                  placeholder="Enter your region or state"
+                  aria-label="Region/State"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="generalAddress">Address</label>
+              <textarea
+                id="generalAddress"
+                class="form-control"
+                rows="3"
+                required
+                placeholder="Enter your full address"
+                aria-label="Address"
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>User Information</h3>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="userType">I am a</label>
+                <select
+                  id="userType"
+                  class="form-control"
+                  required
+                  aria-label="Select your user type"
+                >
+                  <option value="">Select User Type</option>
+                  <option value="customer">Customer</option>
+                  <option value="job_seeker">Job Seeker</option>
+                  <option value="student">Student</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label class="form-label" for="occupation">Occupation</label>
+                <input
+                  id="occupation"
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter your occupation"
+                  aria-label="Occupation"
+                />
+              </div>
+            </div>
+            <div class="mb-3">
+              <label class="form-label" for="interests"
+                >Areas of Interest</label
+              >
+              <input
+                id="interests"
+                type="text"
+                class="form-control"
+                placeholder="e.g., Agriculture, Technology, Education"
+                aria-label="Areas of Interest"
+              />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Terms and Conditions</h3>
+            <div class="mb-3">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  required
+                  id="generalTerms"
+                />
+                <label class="form-check-label" for="generalTerms">
+                  I agree to the
+                  <a href="#" class="text-primary">Terms of Service</a> and
+                  <a href="#" class="text-primary">Privacy Policy</a>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-register">
+              Create General Account
+            </button>
+          </div>
+        </form>
+
+        <div class="login-link">
+          Already have an account? <a href="login.html">Login here</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // User type selector functionality
+      const userTypeButtons = document.querySelectorAll(".user-type-btn");
+      const forms = document.querySelectorAll(".registration-form");
+
+      // Function to show the selected form and hide others
+      function showForm(userType) {
+        forms.forEach((form) => {
+          if (form.id === `${userType}Form`) {
+            form.style.display = "block";
+          } else {
+            form.style.display = "none";
+          }
+        });
+      }
+
+      // Initialize with farmer form
+      showForm("farmer");
+
+      userTypeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // Remove active class from all buttons
+          userTypeButtons.forEach((btn) => btn.classList.remove("active"));
+          // Add active class to clicked button
+          button.classList.add("active");
+
+          // Show the selected form
+          const userType = button.getAttribute("data-type");
+          showForm(userType);
+        });
+      });
+
+      // Form submission handling
+      forms.forEach((form) => {
+        form.addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const userType = this.id.replace("Form", "");
+
+          // Get all form inputs
+          const formInputs = this.querySelectorAll("input, select, textarea");
+          const formData = {};
+
+          // Collect form data
+          formInputs.forEach((input) => {
+            if (input.type === "checkbox") {
+              formData[input.id] = input.checked;
+            } else if (input.value) {
+              formData[input.id] = input.value;
+            }
+          });
+
+          // Prepare data object
+          const data = {
+            userType: userType,
+            firstName: formData[`${userType}FirstName`] || formData.firstName,
+            lastName: formData[`${userType}LastName`] || formData.lastName,
+            email: formData[`${userType}Email`] || formData.email,
+            phone: formData[`${userType}Phone`] || formData.phone,
+            password: formData[`${userType}Password`] || formData.password,
+            country: formData[`${userType}Country`] || formData.country,
+            region: formData[`${userType}Region`] || formData.region,
+            address: formData[`${userType}Address`] || formData.address,
+            terms: formData[`${userType}Terms`] || formData.terms,
+          };
+
+          // Add role-specific data
+          if (userType === "farmer") {
+            data.farmSize = formData.farmSize;
+            data.primaryCrops = formData.primaryCrops;
+            data.experience = formData.experience;
+          } else if (userType === "buyer") {
+            data.businessName = formData.businessName;
+            data.businessType = formData.businessType;
+            data.products = formData.products;
+          } else if (userType === "professional") {
+            data.professionalTitle = formData.professionalTitle;
+            data.specialization = formData.specialization;
+            data.experience = formData.experience;
+          } else if (userType === "general") {
+            data.userType = formData.userType;
+            data.occupation = formData.occupation;
+            data.interests = formData.interests;
+          }
+
+          try {
+            const response = await fetch("/api/register", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            });
+
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            if (result.success) {
+              alert(
+                "Registration successful! Please check your email for confirmation."
+              );
+              window.location.href = "login.html";
+            } else {
+              alert(result.message || "Registration failed. Please try again.");
+            }
+          } catch (error) {
+            console.error("Registration error:", error);
+            alert("Registration failed. Please try again later.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

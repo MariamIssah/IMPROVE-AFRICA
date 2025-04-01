@@ -1,31 +1,31 @@
 /**
  * IMPROVE AFRICA Marketplace Server
- * 
+ *
  * This server loads product data from the category files in scripts/products.
  */
-const express = require('express');
-const path = require('path');
-const nodemailer = require('nodemailer');
-const config = require('./config');
+const express = require("express");
+const path = require("path");
+const nodemailer = require("nodemailer");
+const config = require("./config.js");
 const app = express();
 const PORT = process.env.PORT || 3002;
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 // Email configuration
 const transporter = nodemailer.createTransport(config.emailConfig);
 
 // Import product data from all categories
-const fruitsProducts = require('./scripts/products/fruits.js');
-const grainsProducts = require('./scripts/products/grains.js');
-const legumesProducts = require('./scripts/products/legumes.js');
-const oilseedsProducts = require('./scripts/products/oilseeds.js');
-const rootsAndTubersProducts = require('./scripts/products/rootsAndTubers.js');
-const spicesProducts = require('./scripts/products/spices.js');
-const vegetablesProducts = require('./scripts/products/vegetables.js');
+const fruitsProducts = require("./scripts/products/fruits.js");
+const grainsProducts = require("./scripts/products/grains.js");
+const legumesProducts = require("./scripts/products/legumes.js");
+const oilseedsProducts = require("./scripts/products/oilseeds.js");
+const rootsAndTubersProducts = require("./scripts/products/rootsAndTubers.js");
+const spicesProducts = require("./scripts/products/spices.js");
+const vegetablesProducts = require("./scripts/products/vegetables.js");
 
 // Import utility scripts
-const { fixRegions } = require('./scripts/fixRegions');
-const { createTestUser } = require('./scripts/createTestUser');
+const { fixRegions } = require("./scripts/fixRegions.js");
+const { createTestUser } = require("./scripts/createTestUser.js");
 
 // Combine all products
 const allProducts = [
@@ -35,7 +35,7 @@ const allProducts = [
   ...oilseedsProducts,
   ...rootsAndTubersProducts,
   ...spicesProducts,
-  ...vegetablesProducts
+  ...vegetablesProducts,
 ];
 
 // Store for orders (in-memory database)
@@ -48,80 +48,93 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
 // Main homepage route - redirects to market.html
-app.get('/', (req, res) => {
-  res.redirect('/market.html');
+app.get("/", (req, res) => {
+  res.redirect("/market.html");
 });
 
 // API endpoint to get all products
-app.get('/api/products', (req, res) => {
+app.get("/api/products", (req, res) => {
   res.json(allProducts);
 });
 
 // API endpoint to get products by category
-app.get('/api/products-by-category/:category', (req, res) => {
+app.get("/api/products-by-category/:category", (req, res) => {
   const category = req.params.category;
-  const filteredProducts = allProducts.filter(product => 
-    product.category === category
+  const filteredProducts = allProducts.filter(
+    (product) => product.category === category
   );
   res.json(filteredProducts);
 });
 
 // API endpoint to get a specific product by name
-app.get('/api/product/:name', (req, res) => {
+app.get("/api/product/:name", (req, res) => {
   const productName = req.params.name;
-  const product = allProducts.find(p => p.name === productName);
-  
+  const product = allProducts.find((p) => p.name === productName);
+
   if (!product) {
-    return res.status(404).json({ error: 'Product not found' });
+    return res.status(404).json({ error: "Product not found" });
   }
-  
+
   res.json(product);
 });
 
 // API endpoint to place an order
-app.post('/api/order', (req, res) => {
+app.post("/api/order", async (req, res) => {
   try {
     const { customerInfo, items, notificationEmail, totalInCedis } = req.body;
-    
+
     // Validate customer information
-    if (!customerInfo || !customerInfo.name || !customerInfo.email || 
-        !customerInfo.phone || !customerInfo.address) {
-      return res.status(400).json({ error: 'Customer information is incomplete' });
+    if (
+      !customerInfo ||
+      !customerInfo.name ||
+      !customerInfo.email ||
+      !customerInfo.phone ||
+      !customerInfo.address
+    ) {
+      return res
+        .status(400)
+        .json({ error: "Customer information is incomplete" });
     }
-    
+
     // Validate order items
     if (!items || !Array.isArray(items) || items.length === 0) {
-      return res.status(400).json({ error: 'Order must contain at least one item' });
+      return res
+        .status(400)
+        .json({ error: "Order must contain at least one item" });
     }
-    
+
     // Process order items
     const orderItems = [];
     let totalAmount = 0;
-    
+
     for (const item of items) {
-      const product = allProducts.find(p => p.name === item.productName);
-      
+      const product = allProducts.find((p) => p.name === item.productName);
+
       if (!product) {
-        return res.status(400).json({ error: `Product "${item.productName}" not found` });
+        return res
+          .status(400)
+          .json({ error: `Product "${item.productName}" not found` });
       }
-      
+
       if (item.quantity <= 0) {
-        return res.status(400).json({ error: 'Quantity must be greater than 0' });
+        return res
+          .status(400)
+          .json({ error: "Quantity must be greater than 0" });
       }
-      
+
       if (item.quantity > product.quantity) {
-        return res.status(400).json({ 
-          error: `Only ${product.quantity} units of "${product.name}" available` 
+        return res.status(400).json({
+          error: `Only ${product.quantity} units of "${product.name}" available`,
         });
       }
-      
+
       // Subtract quantity from product
       product.quantity -= item.quantity;
-      
+
       // Calculate base price and Ghana Cedis price
       const basePrice = product.price;
       const cedisPrice = basePrice * 10;
-      
+
       // Add to order items
       orderItems.push({
         product: {
@@ -129,164 +142,248 @@ app.post('/api/order', (req, res) => {
           name: product.name,
           price: basePrice,
           cedisPrice: cedisPrice,
-          unit: product.unit || 'kg'
+          unit: product.unit || "kg",
         },
         quantity: item.quantity,
         subtotal: basePrice * item.quantity,
-        subtotalCedis: cedisPrice * item.quantity
+        subtotalCedis: cedisPrice * item.quantity,
       });
-      
+
       totalAmount += basePrice * item.quantity;
     }
-    
+
     // Calculate total in Ghana Cedis
     const totalAmountCedis = totalAmount * 10;
-    
+
     // Verify total matches client calculation
     if (totalInCedis && Math.abs(totalInCedis - totalAmountCedis) > 0.01) {
-      console.warn(`Client total (₵${totalInCedis}) differs from server calculation (₵${totalAmountCedis})`);
+      console.warn(
+        `Client total (₵${totalInCedis}) differs from server calculation (₵${totalAmountCedis})`
+      );
     }
-    
+
     // Create order object
     const order = {
-      orderId: 'ORD-' + Date.now(),
+      orderId: "ORD-" + Date.now(),
       customerInfo,
-      notificationEmail: notificationEmail || "improveafrica01@gmail.com", // Set default if not provided
+      notificationEmail: notificationEmail || "improveafrica01@gmail.com",
       items: orderItems,
       totalAmount: totalAmount,
       totalAmountCedis: totalAmountCedis,
-      status: 'Pending',
-      orderDate: new Date().toISOString()
+      status: "Pending",
+      orderDate: new Date().toISOString(),
     };
-    
+
     // Store order
     orders.push(order);
-    
+
     console.log(`New order received: ${order.orderId}`);
-    console.log(`Total amount: ₵${totalAmountCedis.toFixed(2)} (${totalAmount.toFixed(2)} x 10)`);
+    console.log(
+      `Total amount: ₵${totalAmountCedis.toFixed(2)} (${totalAmount.toFixed(
+        2
+      )} x 10)`
+    );
     console.log(`Customer: ${customerInfo.name} (${customerInfo.email})`);
     console.log(`Notification will be sent to: ${order.notificationEmail}`);
-    
+
+    // Send email to customer
+    const customerMailOptions = {
+      from: "improveafrica01@gmail.com",
+      to: customerInfo.email, // Send to customer email
+      subject: `Order Confirmation: ${order.orderId}`,
+      html: `
+        <h2>Thank You for Your Order!</h2>
+        <p><strong>Order ID:</strong> ${order.orderId}</p>
+        <p><strong>Name:</strong> ${customerInfo.name}</p>
+        <p><strong>Phone:</strong> ${customerInfo.phone}</p>
+        <p><strong>Address:</strong> ${customerInfo.address}</p>
+        <h3>Your Items:</h3>
+        <ul>
+          ${orderItems
+            .map(
+              (item) => `
+            <li>
+              ${item.product.name} - 
+              Quantity: ${item.quantity} ${item.product.unit} - 
+              Subtotal: ₵${item.subtotalCedis.toFixed(2)}
+            </li>
+          `
+            )
+            .join("")}
+        </ul>
+        <p><strong>Total Amount:</strong> ₵${totalAmountCedis.toFixed(2)}</p>
+        <p><strong>Order Date:</strong> ${new Date(
+          order.orderDate
+        ).toLocaleString()}</p>
+        <p>We will contact you soon regarding delivery. Thank you for shopping with IMPROVE AFRICA!</p>
+      `,
+    };
+
+    // Send email to notification email (admin)
+    const adminMailOptions = {
+      from: "improveafrica01@gmail.com",
+      to: order.notificationEmail, // Admin email
+      subject: `New Order Received: ${order.orderId}`,
+      html: `
+        <h2>New Order Details</h2>
+        <p><strong>Order ID:</strong> ${order.orderId}</p>
+        <p><strong>Customer:</strong> ${customerInfo.name}</p>
+        <p><strong>Email:</strong> ${customerInfo.email}</p>
+        <p><strong>Phone:</strong> ${customerInfo.phone}</p>
+        <p><strong>Address:</strong> ${customerInfo.address}</p>
+        <h3>Items:</h3>
+        <ul>
+          ${orderItems
+            .map(
+              (item) => `
+            <li>
+              ${item.product.name} - 
+              Quantity: ${item.quantity} ${item.product.unit} - 
+              Subtotal: ₵${item.subtotalCedis.toFixed(2)}
+            </li>
+          `
+            )
+            .join("")}
+        </ul>
+        <p><strong>Total Amount:</strong> ₵${totalAmountCedis.toFixed(2)}</p>
+        <p><strong>Order Date:</strong> ${new Date(
+          order.orderDate
+        ).toLocaleString()}</p>
+      `,
+    };
+
+    // Send both emails
+    await Promise.all([
+      transporter.sendMail(customerMailOptions),
+      transporter.sendMail(adminMailOptions),
+    ]);
+    console.log(
+      `Email notification sent successfully to ${customerInfo.email} and ${order.notificationEmail}`
+    );
+
     // Return success response
     res.status(200).json({
       success: true,
       orderId: order.orderId,
       totalAmount: totalAmount,
-      totalAmountCedis: totalAmountCedis
+      totalAmountCedis: totalAmountCedis,
     });
-    
   } catch (error) {
-    console.error('Error processing order:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    console.error("Error processing order:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
 // API endpoint to view all orders
-app.get('/api/orders', (req, res) => {
+app.get("/api/orders", (req, res) => {
   res.json(orders);
 });
 
 // API endpoint to add a new product
-app.post('/api/product', async (req, res) => {
+app.post("/api/product", async (req, res) => {
   try {
     const productData = req.body;
-    
+
     // If we have MongoDB connection, use it
     if (mongoose.connection.readyState === 1) {
-      const Product = require('./models/Product');
+      const Product = require("./backend/models/Product.js");
       const newProduct = new Product(productData);
       await newProduct.save();
       res.status(201).json(newProduct);
     } else {
       // Otherwise just add to our in-memory array
       // Generate a simple ID
-      productData._id = 'prod_' + Date.now();
+      productData._id = "prod_" + Date.now();
       allProducts.push(productData);
       res.status(201).json(productData);
     }
   } catch (err) {
-    console.error('Error adding product:', err);
-    res.status(500).json({ error: 'Failed to add product' });
+    console.error("Error adding product:", err);
+    res.status(500).json({ error: "Failed to add product" });
   }
 });
 
 // API endpoint to get products by category
-app.get('/api/products/category/:category', (req, res) => {
+app.get("/api/products/category/:category", (req, res) => {
   const category = req.params.category;
 
   let products;
-  switch(category.toLowerCase()) {
-    case 'grains':
+  switch (category.toLowerCase()) {
+    case "grains":
       products = grainsProducts;
       break;
-    case 'legumes':
+    case "legumes":
       products = legumesProducts;
       break;
-    case 'oilseeds':
+    case "oilseeds":
       products = oilseedsProducts;
       break;
-    case 'roots-tubers':
-    case 'roots & tubers':
+    case "roots-tubers":
+    case "roots & tubers":
       products = rootsAndTubersProducts;
       break;
-    case 'fruits':
+    case "fruits":
       products = fruitsProducts;
       break;
-    case 'vegetables':
+    case "vegetables":
       products = vegetablesProducts;
       break;
-    case 'spices':
+    case "spices":
       products = spicesProducts;
       break;
     default:
       products = allProducts;
   }
 
-    res.json(products);
+  res.json(products);
 });
 
 // API endpoint to search products
-app.get('/api/search', (req, res) => {
+app.get("/api/search", (req, res) => {
   const query = req.query.q.toLowerCase();
-  
+
   if (!query) {
     return res.json(allProducts);
   }
-  
+
   try {
-    const searchResults = allProducts.filter(product => 
-      product.name.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query) ||
-      product.category.toLowerCase().includes(query) ||
-      (product.subcategory && product.subcategory.toLowerCase().includes(query))
+    const searchResults = allProducts.filter(
+      (product) =>
+        product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query) ||
+        (product.subcategory &&
+          product.subcategory.toLowerCase().includes(query))
     );
-    
+
     res.json(searchResults);
   } catch (err) {
-    console.error('Error searching products:', err);
-    res.status(500).json({ error: 'Search failed' });
+    console.error("Error searching products:", err);
+    res.status(500).json({ error: "Search failed" });
   }
 });
 
 // Admin interface
-app.get('/admin', (req, res) => {
+app.get("/admin", (req, res) => {
   // Calculate statistics
   const stats = {
     totalProducts: allProducts.length,
     categoryCounts: {},
-    organicCount: allProducts.filter(p => p.isOrganic).length,
+    organicCount: allProducts.filter((p) => p.isOrganic).length,
     regionCounts: {},
-    sellerCount: new Set(allProducts.filter(p => p.seller).map(p => p.seller)).size,
-    orderCount: orders.length
+    sellerCount: new Set(
+      allProducts.filter((p) => p.seller).map((p) => p.seller)
+    ).size,
+    orderCount: orders.length,
   };
-  
+
   // Count by category
-  allProducts.forEach(product => {
+  allProducts.forEach((product) => {
     if (!stats.categoryCounts[product.category]) {
       stats.categoryCounts[product.category] = 0;
     }
     stats.categoryCounts[product.category]++;
-    
+
     if (product.origin && product.origin.region) {
       if (!stats.regionCounts[product.origin.region]) {
         stats.regionCounts[product.origin.region] = 0;
@@ -294,7 +391,7 @@ app.get('/admin', (req, res) => {
       stats.regionCounts[product.origin.region]++;
     }
   });
-  
+
   res.send(`
     <!DOCTYPE html>
     <html>
@@ -327,19 +424,27 @@ app.get('/admin', (req, res) => {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
           <div class="bg-white rounded-lg shadow p-4">
             <h3 class="text-sm font-medium text-gray-500">Total Products</h3>
-            <p class="text-3xl font-bold text-gray-800">${stats.totalProducts}</p>
+            <p class="text-3xl font-bold text-gray-800">${
+              stats.totalProducts
+            }</p>
           </div>
           <div class="bg-white rounded-lg shadow p-4">
             <h3 class="text-sm font-medium text-gray-500">Organic Products</h3>
-            <p class="text-3xl font-bold text-green-600">${stats.organicCount}</p>
+            <p class="text-3xl font-bold text-green-600">${
+              stats.organicCount
+            }</p>
           </div>
           <div class="bg-white rounded-lg shadow p-4">
             <h3 class="text-sm font-medium text-gray-500">Regions</h3>
-            <p class="text-3xl font-bold text-blue-600">${Object.keys(stats.regionCounts).length}</p>
+            <p class="text-3xl font-bold text-blue-600">${
+              Object.keys(stats.regionCounts).length
+            }</p>
           </div>
           <div class="bg-white rounded-lg shadow p-4">
             <h3 class="text-sm font-medium text-gray-500">Orders</h3>
-            <p class="text-3xl font-bold text-purple-600">${stats.orderCount}</p>
+            <p class="text-3xl font-bold text-purple-600">${
+              stats.orderCount
+            }</p>
           </div>
         </div>
         
@@ -394,15 +499,21 @@ app.get('/admin', (req, res) => {
                 <div>
                   <h3 class="text-md font-medium text-gray-700 mb-2">Products by Category</h3>
                   <div class="space-y-2">
-                    ${Object.entries(stats.categoryCounts).map(([category, count]) => `
+                    ${Object.entries(stats.categoryCounts)
+                      .map(
+                        ([category, count]) => `
                       <div class="flex items-center">
                         <div class="w-24 text-sm text-gray-700">${category}</div>
                         <div class="flex-grow bg-gray-200 rounded-full h-2.5">
-                          <div class="bg-green-600 h-2.5 rounded-full" style="width: ${Math.round(count/stats.totalProducts*100)}%"></div>
+                          <div class="bg-green-600 h-2.5 rounded-full" style="width: ${Math.round(
+                            (count / stats.totalProducts) * 100
+                          )}%"></div>
                         </div>
                         <div class="w-10 text-right text-sm text-gray-700">${count}</div>
                       </div>
-                    `).join('')}
+                    `
+                      )
+                      .join("")}
                   </div>
                 </div>
                 
@@ -412,15 +523,20 @@ app.get('/admin', (req, res) => {
                     ${Object.entries(stats.regionCounts)
                       .sort((a, b) => b[1] - a[1])
                       .slice(0, 5)
-                      .map(([region, count]) => `
+                      .map(
+                        ([region, count]) => `
                         <div class="flex items-center">
                           <div class="w-24 text-sm text-gray-700">${region}</div>
                           <div class="flex-grow bg-gray-200 rounded-full h-2.5">
-                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${Math.round(count/stats.totalProducts*100)}%"></div>
+                            <div class="bg-blue-600 h-2.5 rounded-full" style="width: ${Math.round(
+                              (count / stats.totalProducts) * 100
+                            )}%"></div>
                           </div>
                           <div class="w-10 text-right text-sm text-gray-700">${count}</div>
                         </div>
-                      `).join('')}
+                      `
+                      )
+                      .join("")}
                   </div>
                 </div>
                 
@@ -520,7 +636,7 @@ app.get('/admin', (req, res) => {
 });
 
 // API endpoint to debug/test order submission
-app.get('/api/debug/test-order', (req, res) => {
+app.get("/api/debug/test-order", (req, res) => {
   const testOrderHtml = `
     <!DOCTYPE html>
     <html>
@@ -543,10 +659,16 @@ app.get('/api/debug/test-order', (req, res) => {
           <label for="productName">Product:</label>
           <select id="productName" name="productName" required>
             <option value="">Select a product</option>
-            ${allProducts.map(p => {
-              const cedisPrice = p.price * 10;
-              return `<option value="${p.name}">${p.name} - ₵${cedisPrice.toFixed(2)} (${p.price.toFixed(2)} x 10)/${p.unit}</option>`;
-            }).join('')}
+            ${allProducts
+              .map((p) => {
+                const cedisPrice = p.price * 10;
+                return `<option value="${p.name}">${
+                  p.name
+                } - ₵${cedisPrice.toFixed(2)} (${p.price.toFixed(2)} x 10)/${
+                  p.unit
+                }</option>`;
+              })
+              .join("")}
           </select>
         </div>
         <div class="form-group">
@@ -624,12 +746,12 @@ app.get('/api/debug/test-order', (req, res) => {
     </body>
     </html>
   `;
-  
+
   res.send(testOrderHtml);
 });
 
 // API endpoint to view all orders (for debugging)
-app.get('/api/debug/orders', (req, res) => {
+app.get("/api/debug/orders", (req, res) => {
   const ordersHtml = `
     <!DOCTYPE html>
     <html>
@@ -648,32 +770,68 @@ app.get('/api/debug/orders', (req, res) => {
     </head>
     <body>
       <h1>All Orders</h1>
-      ${orders.length === 0 ? '<p class="no-orders">No orders yet.</p>' : ''}
-      ${orders.map(order => `
+      ${orders.length === 0 ? '<p class="no-orders">No orders yet.</p>' : ""}
+      ${orders
+        .map(
+          (order) => `
         <div class="order">
           <div class="order-header">
             <span class="order-id">Order ID: ${order.orderId}</span>
-            <span class="order-date">Date: ${new Date(order.orderDate).toLocaleString()}</span>
+            <span class="order-date">Date: ${new Date(
+              order.orderDate
+            ).toLocaleString()}</span>
           </div>
           <p><strong>Customer:</strong> ${order.customerInfo.name}</p>
           <p><strong>Items:</strong> ${order.items.length}</p>
-          <p><strong>Total Amount:</strong> ₵${order.totalAmountCedis ? order.totalAmountCedis.toFixed(2) : (order.totalAmount * 10).toFixed(2)}</p>
+          <p><strong>Total Amount:</strong> ₵${
+            order.totalAmountCedis
+              ? order.totalAmountCedis.toFixed(2)
+              : (order.totalAmount * 10).toFixed(2)
+          }</p>
           <p><strong>Status:</strong> ${order.status}</p>
-          <p><strong>Contact:</strong> ${order.customerInfo.email}, ${order.customerInfo.phone}</p>
+          <p><strong>Contact:</strong> ${order.customerInfo.email}, ${
+            order.customerInfo.phone
+          }</p>
           <p><strong>Address:</strong> ${order.customerInfo.address}</p>
-          ${order.location ? `<p><strong>Location:</strong> ${order.location}</p>` : ''}
-          ${order.customerInfo.notes ? `<p><strong>Notes:</strong> ${order.customerInfo.notes}</p>` : ''}
+          ${
+            order.location
+              ? `<p><strong>Location:</strong> ${order.location}</p>`
+              : ""
+          }
+          ${
+            order.customerInfo.notes
+              ? `<p><strong>Notes:</strong> ${order.customerInfo.notes}</p>`
+              : ""
+          }
         </div>
-      `).join('')}
+      `
+        )
+        .join("")}
     </body>
     </html>
   `;
-  
+
   res.send(ordersHtml);
+});
+
+app.get("/test-email", async (req, res) => {
+  try {
+    await transporter.sendMail({
+      from: "improveafrica01@gmail.com",
+      to: "improveafrica01@gmail.com",
+      subject: "Test Email",
+      text: "This is a test email from IMPROVE AFRICA server",
+    });
+    console.log("Test email sent successfully");
+    res.send("Test email sent");
+  } catch (error) {
+    console.error("Test email error:", error);
+    res.status(500).send("Email test failed: " + error.message);
+  }
 });
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
   console.log(`Visit http://localhost:${PORT} to view all products`);
-}); 
+});

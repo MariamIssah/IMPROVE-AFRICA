@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Improve Africa</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header
+      style="
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background-color: white;
+      "
+    >
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0;
+          max-width: 100%;
+        "
+      >
+        <div
+          class="logo"
+          style="
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-left: 0;
+          "
+        >
+          <a
+            href="index.html"
+            style="
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+              gap: 10px;
+            "
+          >
+            <img
+              src="images/logo.png"
+              alt="Improve Africa Logo"
+              style="height: 50px; width: auto"
+            />
+            <h1 style="position: relative; overflow: hidden; margin: 0">
+              Improve Africa<span
+                style="
+                  position: absolute;
+                  bottom: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 3px;
+                  background: linear-gradient(90deg, #1a6985, #2a9d8f);
+                  transform: translateX(-100%);
+                  animation: slidein 1.5s forwards;
+                "
+              ></span>
+            </h1>
+          </a>
+        </div>
+        <nav style="margin-left: auto; margin-right: 0; padding-right: 0">
+          <ul class="nav-links" style="gap: 1.5rem">
+            <li>
+              <a
+                href="index1.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Home</a
+              >
+            </li>
+            <li>
+              <a
+                href="about.html"
+                class="active"
+                style="
+                  transition: all 0.3s ease;
+                  position: relative;
+                  font-weight: 600;
+                  color: #1a6985;
+                "
+                >About Us</a
+              >
+            </li>
+            <li>
+              <a
+                href="programs.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Programs</a
+              >
+            </li>
+            <li>
+              <a
+                href="regions.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Regions</a
+              >
+            </li>
+            <li>
+              <a
+                href="jobs.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Jobs</a
+              >
+            </li>
+            <li>
+              <a
+                href="raw-materials.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Raw Materials</a
+              >
+            </li>
+            <li>
+              <a
+                href="market.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Marketplace</a
+              >
+            </li>
+            <li>
+              <a
+                href="resources.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Resources</a
+              >
+            </li>
+            <li>
+              <a
+                href="contact.html"
+                style="transition: all 0.3s ease; position: relative"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <style>
+      @keyframes slidein {
+        to {
+          transform: translateX(0);
+        }
+      }
+      .nav-links a:hover {
+        color: #2a9d8f;
+      }
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, #1a6985, #2a9d8f);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.3s ease;
+      }
+      .nav-links a:hover::after,
+      .nav-links a.active::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+    </style>
+
+    <!-- Page Banner -->
+    <section
+      class="page-banner"
+      style="
+        background: linear-gradient(135deg, #1a6985 0%, #2a9d8f 100%);
+        padding: 6rem 0 4rem;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          );
+          background-size: 20px 20px;
+          opacity: 0.3;
+          z-index: 0;
+        "
+      ></div>
+
+      <!-- Animated shapes -->
+      <div class="animated-shape shape1"></div>
+      <div class="animated-shape shape2"></div>
+      <div class="animated-shape shape3"></div>
+
+      <div class="container" style="position: relative; z-index: 1">
+        <h1
+          style="
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            animation: fadeInUp 1s ease;
+          "
+        >
+          About Us
+        </h1>
+        <p
+          style="
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.3s both;
+          "
+        >
+          Learn about our mission, vision, and the team behind Improve Africa
+        </p>
+      </div>
+    </section>
+
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animated-shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .shape1 {
+        width: 300px;
+        height: 300px;
+        background-color: rgba(255, 255, 255, 0.2);
+        top: -100px;
+        right: -50px;
+        animation: float 15s infinite ease-in-out;
+      }
+
+      .shape2 {
+        width: 200px;
+        height: 200px;
+        background-color: rgba(255, 255, 255, 0.15);
+        bottom: -80px;
+        left: 10%;
+        animation: float 18s infinite ease-in-out reverse;
+      }
+
+      .shape3 {
+        width: 150px;
+        height: 150px;
+        background-color: rgba(255, 255, 255, 0.1);
+        top: 20%;
+        left: 20%;
+        animation: float 12s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(30px, 20px) rotate(5deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+    </style>
+
+    <!-- Our Story Section -->
+    <section class="about-story" style="position: relative; padding: 0">
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+              rgba(26, 105, 133, 0.4),
+              rgba(42, 157, 143, 0.4)
+            ),
+            url('/images/avator lb.webp') no-repeat center center;
+          background-size: cover;
+          background-position: center;
+          filter: brightness(1.05) contrast(1.05);
+          z-index: -1;
+        "
+      ></div>
+      <div
+        class="container"
+        style="position: relative; z-index: 1; padding: 5rem 0"
+      >
+        <div class="section-header">
+          <h2 style="color: #fff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            Our Story
+          </h2>
+          <p style="color: #fff; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)">
+            How Improve Africa began its journey
+          </p>
+        </div>
+        <div
+          class="story-content"
+          style="
+            display: grid;
+            grid-template-columns: 1fr;
+            max-width: 800px;
+            margin: 0 auto;
+          "
+        >
+          <div
+            class="story-text"
+            style="
+              background-color: rgba(255, 255, 255, 0.9);
+              padding: 2rem;
+              border-radius: 8px;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              border-left: 5px solid #2a9d8f;
+            "
+          >
+            <p>
+              Improve Africa was founded in 2023 by a group of agricultural
+              experts and social entrepreneurs who recognized the untapped
+              potential of Ghana's agricultural sector. Having witnessed
+              firsthand the challenges faced by farmers across Ghana, they were
+              determined to create a platform that would empower farmers,
+              particularly young people and women, with the resources,
+              knowledge, and opportunities they needed to thrive.
+            </p>
+            <p>
+              What began as a small initiative in a single community is rapidly
+              growing throughout Ghana, reaching farmers in various regions of
+              the country. Our journey is guided by a simple yet powerful
+              belief: that by investing in Ghana's farmers, we can create
+              sustainable livelihoods, strengthen food security, and drive
+              economic growth across the nation.
+            </p>
+            <p>
+              Today, Improve Africa continues to expand its reach and impact,
+              working tirelessly to revolutionize agriculture in Ghana and
+              improve the lives of farmers and their communities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section
+      class="mission-vision"
+      style="background-color: #f8f9fa; padding: 5rem 0"
+    >
+      <div class="container">
+        <div class="mission-vision-grid">
+          <div
+            class="mission-box"
+            style="
+              background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+              border-radius: 10px;
+              padding: 2.5rem;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+              border-top: 5px solid #1a6985;
+            "
+          >
+            <div
+              class="icon"
+              style="color: #1a6985; font-size: 2.5rem; margin-bottom: 1.5rem"
+            >
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h3 style="color: #1a6985; margin-bottom: 1rem; font-size: 1.5rem">
+              Our Mission
+            </h3>
+            <p
+              style="
+                font-size: 1.1rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+                color: #333;
+              "
+            >
+              To reduce poverty and unemployment in Ghana through job creation
+              in agriculture, supporting farmers with the tools, knowledge, and
+              opportunities they need.
+            </p>
+            <p class="mission-detail" style="color: #555; line-height: 1.6">
+              Improve Africa is committed to empowering farmers through
+              education, mentorship, and access to markets for raw agricultural
+              materials. We aim to reduce unemployment and increase economic
+              opportunities through sustainable agriculture practices.
+            </p>
+          </div>
+          <div
+            class="vision-box"
+            style="
+              background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+              border-radius: 10px;
+              padding: 2.5rem;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+              border-top: 5px solid #2a9d8f;
+            "
+          >
+            <div
+              class="icon"
+              style="color: #2a9d8f; font-size: 2.5rem; margin-bottom: 1.5rem"
+            >
+              <i class="fas fa-eye"></i>
+            </div>
+            <h3 style="color: #2a9d8f; margin-bottom: 1rem; font-size: 1.5rem">
+              Our Vision
+            </h3>
+            <p
+              style="
+                font-size: 1.1rem;
+                font-weight: 500;
+                margin-bottom: 1rem;
+                color: #333;
+              "
+            >
+              A prosperous Ghana where youth, especially women, thrive in
+              agriculture, creating sustainable livelihoods and improving food
+              security.
+            </p>
+            <p class="vision-detail" style="color: #555; line-height: 1.6">
+              We envision a future where Ghana's agricultural sector is
+              transformed through innovation, where farmers are respected
+              entrepreneurs, and where agriculture is a driving force for
+              economic growth and prosperity across the nation.
+            </p>
+          </div>
+          <div
+            class="values-box"
+            style="
+              background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+              border-radius: 10px;
+              padding: 2.5rem;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+              border-top: 5px solid #264653;
+            "
+          >
+            <div
+              class="icon"
+              style="color: #264653; font-size: 2.5rem; margin-bottom: 1.5rem"
+            >
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 style="color: #264653; margin-bottom: 1rem; font-size: 1.5rem">
+              Our Values
+            </h3>
+            <ul
+              style="
+                list-style-type: none;
+                padding-left: 0;
+                color: #555;
+                line-height: 1.6;
+              "
+            >
+              <li style="margin-bottom: 0.8rem">
+                <strong style="color: #264653">Empowerment:</strong> We believe
+                in enabling farmers to take control of their own futures.
+              </li>
+              <li style="margin-bottom: 0.8rem">
+                <strong style="color: #264653">Sustainability:</strong> We
+                promote practices that protect the environment and ensure
+                long-term viability.
+              </li>
+              <li style="margin-bottom: 0.8rem">
+                <strong style="color: #264653">Innovation:</strong> We embrace
+                new ideas and technologies to solve agricultural challenges.
+              </li>
+              <li style="margin-bottom: 0.8rem">
+                <strong style="color: #264653">Inclusivity:</strong> We ensure
+                that opportunities are accessible to all, regardless of gender,
+                age, or background.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Milestones Section -->
+    <section
+      class="milestones"
+      style="
+        background: linear-gradient(135deg, #2c7744 0%, #1a4b2a 100%);
+        color: #fff;
+        position: relative;
+        padding: 5rem 0;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          );
+          background-size: 20px 20px;
+          opacity: 0.3;
+          z-index: 0;
+        "
+      ></div>
+      <div class="container" style="position: relative; z-index: 1">
+        <div class="section-header">
+          <h2 style="color: #fff">Our Milestones</h2>
+          <p style="color: rgba(255, 255, 255, 0.9)">
+            Key achievements in our journey
+          </p>
+        </div>
+        <div class="timeline" style="position: relative">
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background-color: #fff"></div>
+            <div
+              class="timeline-content"
+              style="
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <h3 style="color: #2c7744">December 2023</h3>
+              <p>
+                Founded Improve Africa with a pilot program in Accra, Ghana,
+                supporting 50 local farmers.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background-color: #fff"></div>
+            <div
+              class="timeline-content"
+              style="
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <h3 style="color: #2c7744">February 2024</h3>
+              <p>
+                Established our first agricultural training center in Accra.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background-color: #fff"></div>
+            <div
+              class="timeline-content"
+              style="
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <h3 style="color: #2c7744">April 2024</h3>
+              <p>
+                Launched the Women in Agriculture initiative, providing
+                specialized support to women farmers in Ghana.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background-color: #fff"></div>
+            <div
+              class="timeline-content"
+              style="
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <h3 style="color: #2c7744">June 2024</h3>
+              <p>
+                Expanded operations to the Northern Region of Ghana, bringing
+                our resources to farmers in different ecological zones.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background-color: #fff"></div>
+            <div
+              class="timeline-content"
+              style="
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <h3 style="color: #2c7744">August 2024</h3>
+              <p>
+                Created our first international market connections, helping
+                Ghanaian farmers access global markets for their produce.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot" style="background-color: #fff"></div>
+            <div
+              class="timeline-content"
+              style="
+                background-color: rgba(255, 255, 255, 0.9);
+                color: #333;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+              "
+            >
+              <h3 style="color: #2c7744">October 2024</h3>
+              <p>
+                Launched digital farming platform, connecting Ghanaian farmers
+                with resources, markets, and mentors through mobile technology.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Leadership Team</h2>
+          <p>Meet the visionaries behind Improve Africa</p>
+        </div>
+        <div class="team-grid">
+          <div class="team-member">
+            <div class="member-image">
+              <img src="/images/avator cl.webp" alt="Team member" />
+            </div>
+            <div class="member-info">
+              <h3>Amara Okafor</h3>
+              <p class="position">Founder & CEO</p>
+              <p class="bio">
+                Agricultural economist with over 15 years of experience working
+                with farmers across Ghana. Passionate about creating sustainable
+                agricultural systems that empower communities.
+              </p>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <div class="member-image">
+              <img src="/images/avator n.webp" alt="Team member" />
+            </div>
+            <div class="member-info">
+              <h3>Jean-Pierre Mutombo</h3>
+              <p class="position">Director of Programs</p>
+              <p class="bio">
+                Former farmer turned agricultural educator with a passion for
+                sustainable farming practices. Leads our training and mentorship
+                initiatives across Ghana.
+              </p>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <div class="member-image">
+              <img src="/images/avator n1.webp" alt="Team member" />
+            </div>
+            <div class="member-info">
+              <h3>Fatima Diallo</h3>
+              <p class="position">Head of Farmer Relations</p>
+              <p class="bio">
+                Community organizer with extensive experience in rural
+                development and women's empowerment. Spearheads our Women in
+                Agriculture initiative.
+              </p>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="team-member">
+            <div class="member-image">
+              <img src="/images/avator n2.webp" alt="Team member" />
+            </div>
+            <div class="member-info">
+              <h3>David Mensah</h3>
+              <p class="position">Technology Director</p>
+              <p class="bio">
+                Tech entrepreneur focused on developing digital solutions for
+                agricultural challenges. Leads our digital transformation
+                efforts to connect farmers with resources.
+              </p>
+              <div class="social-links">
+                <a href="#" aria-label="LinkedIn"
+                  ><i class="fab fa-linkedin-in"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+      <div class="container">
+        <div class="section-header">
+          <h2>Our Strategic Partners</h2>
+          <p>
+            Organizations that collaborate with us to transform Ghana's
+            agriculture
+          </p>
+        </div>
+        <div class="partners-description">
+          <p>
+            Improve Africa works closely with a network of strategic partners
+            including the Ghanaian government, international development
+            agencies, agricultural research institutions, and private sector
+            companies. These collaborations enable us to leverage resources,
+            expertise, and networks to maximize our impact across Ghana.
+          </p>
+        </div>
+        <div class="partners-grid">
+          <div class="partner-logo">
+            <img src="/images/avator mfa.png" alt="Partner logo" />
+            <div class="partner-info">
+              <h4>Ghana Ministry of Food and Agriculture</h4>
+              <p>Policy support and local implementation</p>
+            </div>
+          </div>
+          <div class="partner-logo">
+            <img src="/images/avator fao.png" alt="Partner logo" />
+            <div class="partner-info">
+              <h4>UN Food and Agriculture Organization</h4>
+              <p>Technical expertise and global best practices</p>
+            </div>
+          </div>
+          <div class="partner-logo">
+            <img src="/images/avator ug.png" alt="Partner logo" />
+            <div class="partner-info">
+              <h4>University of Ghana</h4>
+              <p>Research and agricultural innovation</p>
+            </div>
+          </div>
+          <div class="partner-logo">
+            <img src="/images/avator at.png" alt="Partner logo" />
+            <div class="partner-info">
+              <h4>AgriTech Solutions Ghana</h4>
+              <p>Technology and innovation partnerships</p>
+            </div>
+          </div>
+          <div class="partner-logo">
+            <img src="/images/avator gepa.jpeg" alt="Partner logo" />
+            <div class="partner-info">
+              <h4>Ghana Export Promotion Authority</h4>
+              <p>International market access and trade facilitation</p>
+            </div>
+          </div>
+          <div class="partner-logo">
+            <img src="/images/avator a8.jpeg" alt="Partner logo" />
+            <div class="partner-info">
+              <h4>Women's Agricultural Cooperative of Ghana</h4>
+              <p>Gender-focused agricultural initiatives</p>
+            </div>
+          </div>
+        </div>
+        <div class="partner-cta">
+          <p>
+            Interested in partnering with Improve Africa?
+            <a href="partnerships.html"
+              >Learn more about our partnership opportunities</a
+            >
+            or <a href="contact.html">contact us</a> to discuss collaboration
+            possibilities.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Join Our Mission</h2>
+        <p>
+          Be part of the agricultural revolution in Ghana. Register now to
+          access resources, training, and opportunities.
+        </p>
+        <a href="register.html" class="btn btn-primary">Register Now</a>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Improve Africa</h2>
+            <p>Empowering farmers, creating opportunities</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index1.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="regions.html">Regions</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Resources</h3>
+              <ul>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="raw-materials.html">Raw Materials</a></li>
+                <li><a href="resources.html">Farmer Resources</a></li>
+                <li><a href="blog.html">Blog</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Contact</h3>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="donate.html">Donate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Improve Africa. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

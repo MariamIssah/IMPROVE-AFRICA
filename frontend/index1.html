@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Improve Africa - Empowering Farmers, Creating Opportunities</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "ia-blue": "#1e4d8c",
+              "ia-green": "#2c7744",
+              "ia-light-blue": "#1a6985",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header>
+      <div class="container flex justify-between items-center p-0 max-w-full">
+        <div
+          class="logo bg-gray-100 p-2 rounded-md flex items-center m-2.5 shadow-sm"
+        >
+          <a
+            href="index.html"
+            style="
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+              gap: 10px;
+              color: #1e4d8c;
+            "
+          >
+            <img
+              src="images/logo.png"
+              alt="Improve Africa Logo"
+              style="height: 50px; width: auto"
+            />
+            <h1 style="margin: 0; color: #1e4d8c">Improve Africa</h1>
+          </a>
+        </div>
+        <nav style="margin-left: auto; margin-right: 0; padding-right: 0">
+          <ul class="nav-links" style="color: #1e4d8c">
+            <li>
+              <a href="index.html" class="active" style="color: #1e4d8c"
+                >Home</a
+              >
+            </li>
+            <li><a href="about.html" style="color: #1e4d8c">About Us</a></li>
+            <li><a href="programs.html" style="color: #1e4d8c">Programs</a></li>
+            <li><a href="regions.html" style="color: #1e4d8c">Regions</a></li>
+            <li><a href="jobs.html" style="color: #1e4d8c">Jobs</a></li>
+            <li>
+              <a href="raw-materials.html" style="color: #1e4d8c"
+                >Raw Materials</a
+              >
+            </li>
+            <li>
+              <a href="market.html" style="color: #1e4d8c">Marketplace</a>
+            </li>
+            <li>
+              <a href="resources.html" style="color: #1e4d8c">Resources</a>
+            </li>
+            <li><a href="contact.html" style="color: #1e4d8c">Contact</a></li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section
+      class="hero"
+      style="
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+          url('images/avator bg.webp');
+        background-size: cover;
+        background-position: center;
+      "
+    >
+      <div class="container">
+        <div class="hero-content">
+          <h1 style="color: #ffffff">Welcome to Improve Africa!</h1>
+          <h2 style="color: #ffffff">
+            Empowering farmers, creating job opportunities, and transforming
+            Africa's agricultural future.
+          </h2>
+          <div class="cta-buttons">
+            <a
+              href="register.html"
+              class="btn btn-primary"
+              style="background-color: #1e4d8c; color: #ffffff"
+              >Register Now</a
+            >
+            <a
+              href="about.html"
+              class="btn btn-secondary"
+              style="background-color: #ffffff; color: #1e4d8c"
+              >Learn More</a
+            >
+            <a
+              href="market.html"
+              class="btn btn-primary"
+              style="
+                background-color: #10b981;
+                color: #ffffff;
+                margin-left: 10px;
+              "
+              >Visit Marketplace</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Overview Section -->
+    <section class="mission">
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: #1e4d8c">Our Mission</h2>
+          <p style="color: #333333">
+            Empowering young farmers and marginalized communities across Africa
+          </p>
+        </div>
+        <div class="mission-content">
+          <div class="mission-text">
+            <p style="color: #333333">
+              Improve Africa aims to empower young farmers and marginalized
+              communities in Africa by providing access to resources,
+              agricultural training, and job opportunities. Through mentorship,
+              education, and the collection and sale of raw agricultural
+              materials, Improve Africa is working to revolutionize agriculture
+              in Africa and improve the lives of farmers.
+            </p>
+          </div>
+          <div class="mission-stats">
+            <div class="stat-item">
+              <i class="fas fa-users" style="color: #1e4d8c"></i>
+              <h3 style="color: #1e4d8c">1000+</h3>
+              <p style="color: #333333">Farmers Supported</p>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-map-marker-alt" style="color: #1e4d8c"></i>
+              <h3 style="color: #1e4d8c">12</h3>
+              <p style="color: #333333">African Countries</p>
+            </div>
+            <div class="stat-item">
+              <i class="fas fa-briefcase" style="color: #1e4d8c"></i>
+              <h3 style="color: #1e4d8c">500+</h3>
+              <p style="color: #333333">Jobs Created</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Programs Section -->
+    <section class="featured-programs">
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: #1e4d8c">Featured Programs</h2>
+          <p style="color: #333333">
+            Initiatives that are transforming African agriculture
+          </p>
+        </div>
+        <div class="programs-grid">
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-seedling" style="color: #1e4d8c"></i>
+            </div>
+            <h3 style="color: #1e4d8c">Farmer Mentorship</h3>
+            <p style="color: #333333">
+              Connecting experienced agricultural experts with young farmers to
+              share knowledge and best practices.
+            </p>
+            <a
+              href="programs.html#mentorship"
+              class="read-more"
+              style="color: #1e4d8c"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-graduation-cap" style="color: #1e4d8c"></i>
+            </div>
+            <h3 style="color: #1e4d8c">Agricultural Training</h3>
+            <p style="color: #333333">
+              Providing hands-on education in modern farming techniques,
+              sustainable practices, and crop management.
+            </p>
+            <a
+              href="programs.html#training"
+              class="read-more"
+              style="color: #1e4d8c"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-store" style="color: #1e4d8c"></i>
+            </div>
+            <h3 style="color: #1e4d8c">Market Access</h3>
+            <p style="color: #333333">
+              Creating pathways for farmers to sell their products at fair
+              prices in local and international markets.
+            </p>
+            <a
+              href="programs.html#market"
+              class="read-more"
+              style="color: #1e4d8c"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="program-card">
+            <div class="program-icon">
+              <i class="fas fa-hands-helping" style="color: #1e4d8c"></i>
+            </div>
+            <h3 style="color: #1e4d8c">Women in Agriculture</h3>
+            <p style="color: #333333">
+              Special initiatives focused on empowering women farmers with
+              resources and opportunities.
+            </p>
+            <a
+              href="programs.html#women"
+              class="read-more"
+              style="color: #1e4d8c"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section
+      class="cta-section"
+      style="
+        background: linear-gradient(to right, #1e4d8c, #2c7744);
+        padding: 60px 0;
+      "
+    >
+      <div class="container">
+        <h2 style="color: #ffffff">Join the Improve Africa Community</h2>
+        <p style="color: #ffffff">
+          Be part of the agricultural revolution in Africa. Register now to
+          access resources, training, and opportunities.
+        </p>
+        <a
+          href="register.html"
+          class="btn btn-primary"
+          style="background-color: #2c7744; color: #ffffff; border: none"
+          >Register Now</a
+        >
+      </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section
+      class="marketplace-feature"
+      style="padding: 60px 0; background-color: #f9fafb"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: #1e4d8c">Explore Our Marketplace</h2>
+          <p style="color: #333333">
+            Discover and purchase quality agricultural products directly from
+            African farmers
+          </p>
+        </div>
+        <div
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 40px;
+          "
+        >
+          <div style="flex: 1; min-width: 300px; max-width: 500px">
+            <div
+              style="
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              <div style="padding: 20px">
+                <h3 style="color: #1e4d8c; margin-bottom: 15px">
+                  Featured Products
+                </h3>
+                <p style="color: #333333; margin-bottom: 20px">
+                  Browse our selection of high-quality grains, fruits,
+                  vegetables, and spices sourced directly from African farmers.
+                </p>
+                <ul
+                  style="
+                    color: #333333;
+                    padding-left: 20px;
+                    margin-bottom: 20px;
+                  "
+                >
+                  <li>Fresh, locally grown produce</li>
+                  <li>Organic and conventional options</li>
+                  <li>Support local farmers directly</li>
+                  <li>Fair prices and ethical sourcing</li>
+                </ul>
+              </div>
+              <div
+                style="
+                  margin-top: auto;
+                  padding: 20px;
+                  border-top: 1px solid #e5e7eb;
+                  text-align: center;
+                "
+              >
+                <a
+                  href="market.html"
+                  class="btn btn-primary"
+                  style="
+                    background-color: #10b981;
+                    color: #ffffff;
+                    display: inline-block;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    font-weight: 500;
+                  "
+                  >Shop Now</a
+                >
+              </div>
+            </div>
+          </div>
+          <div style="flex: 1; min-width: 300px; max-width: 500px">
+            <div
+              style="
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              <div style="padding: 20px">
+                <h3 style="color: #1e4d8c; margin-bottom: 15px">
+                  Sell Your Products
+                </h3>
+                <p style="color: #333333; margin-bottom: 20px">
+                  Are you a farmer looking to sell your produce? Join our
+                  marketplace to reach more customers and get fair prices for
+                  your products.
+                </p>
+                <ul
+                  style="
+                    color: #333333;
+                    padding-left: 20px;
+                    margin-bottom: 20px;
+                  "
+                >
+                  <li>Simple listing process</li>
+                  <li>Connect with buyers directly</li>
+                  <li>Secure payment system</li>
+                  <li>Marketing support and visibility</li>
+                </ul>
+              </div>
+              <div
+                style="
+                  margin-top: auto;
+                  padding: 20px;
+                  border-top: 1px solid #e5e7eb;
+                  text-align: center;
+                "
+              >
+                <a
+                  href="market.html"
+                  class="btn btn-primary"
+                  style="
+                    background-color: #1e4d8c;
+                    color: #ffffff;
+                    display: inline-block;
+                    padding: 10px 20px;
+                    border-radius: 4px;
+                    text-decoration: none;
+                    font-weight: 500;
+                  "
+                  >Become a Seller</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2 style="color: #1e4d8c">Success Stories</h2>
+          <p style="color: #333333">
+            Hear from farmers who have transformed their lives with Improve
+            Africa
+          </p>
+        </div>
+        <div class="testimonial-slider">
+          <div class="testimonial-card">
+            <div class="testimonial-image">
+              <img src="/images/avator a0.jpeg" alt="Farmer testimonial" />
+            </div>
+            <div class="testimonial-content">
+              <p style="color: #333333">
+                "Improve Africa's mentorship program helped me increase my crop
+                yield by 40% and connect with buyers across the continent."
+              </p>
+              <div class="testimonial-author">
+                <h4 style="color: #2c7744">Amara Okafor</h4>
+                <p style="color: #333333">Cassava Farmer, Nigeria</p>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="testimonial-image">
+              <img src="/images/avator a1.jpeg" alt="Farmer testimonial" />
+            </div>
+            <div class="testimonial-content">
+              <p style="color: #333333">
+                "The training I received transformed my small farm into a
+                thriving business. Now I employ five people from my village."
+              </p>
+              <div class="testimonial-author">
+                <h4 style="color: #2c7744">Jean-Pierre Mutombo</h4>
+                <p style="color: #333333">Coffee Grower, Rwanda</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer style="background-color: #2c7744; padding: 40px 0">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2 style="color: #ffffff">Improve Africa</h2>
+            <p style="color: #ffffff">
+              Empowering farmers, creating opportunities
+            </p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3 style="color: #ffffff">Quick Links</h3>
+              <ul>
+                <li><a href="index.html" style="color: #ffffff">Home</a></li>
+                <li>
+                  <a href="about.html" style="color: #ffffff">About Us</a>
+                </li>
+                <li>
+                  <a href="programs.html" style="color: #ffffff">Programs</a>
+                </li>
+                <li>
+                  <a href="regions.html" style="color: #ffffff">Regions</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3 style="color: #ffffff">Resources</h3>
+              <ul>
+                <li>
+                  <a
+                    href="market.html"
+                    style="color: #ffffff; font-weight: bold"
+                    >Marketplace</a
+                  >
+                </li>
+                <li><a href="jobs.html" style="color: #ffffff">Jobs</a></li>
+                <li>
+                  <a href="raw-materials.html" style="color: #ffffff"
+                    >Raw Materials</a
+                  >
+                </li>
+                <li>
+                  <a href="resources.html" style="color: #ffffff"
+                    >Farmer Resources</a
+                  >
+                </li>
+                <li><a href="blog.html" style="color: #ffffff">Blog</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3 style="color: #ffffff">Contact</h3>
+              <ul>
+                <li>
+                  <a href="contact.html" style="color: #ffffff">Contact Us</a>
+                </li>
+                <li>
+                  <a href="support.html" style="color: #ffffff">Support</a>
+                </li>
+                <li>
+                  <a href="partnerships.html" style="color: #ffffff"
+                    >Partnerships</a
+                  >
+                </li>
+                <li><a href="donate.html" style="color: #ffffff">Donate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3 style="color: #ffffff">Follow Us</h3>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook" style="color: #ffffff"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter" style="color: #ffffff"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram" style="color: #ffffff"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn" style="color: #ffffff"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p style="color: #ffffff">
+            &copy; 2023 Improve Africa. All rights reserved.
+          </p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html" style="color: #ffffff">Privacy Policy</a>
+            <a href="terms.html" style="color: #ffffff">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

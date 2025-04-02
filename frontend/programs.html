@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programs - Improve Africa</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0;
+          max-width: 100%;
+        "
+      >
+        <div
+          class="logo"
+          style="
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-left: 0;
+          "
+        >
+          <a
+            href="index.html"
+            style="
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+              gap: 10px;
+            "
+          >
+            <img
+              src="images/logo.png"
+              alt="Improve Africa Logo"
+              style="height: 50px; width: auto"
+            />
+            <h1 style="margin: 0">Improve Africa</h1>
+          </a>
+        </div>
+        <nav style="margin-left: auto; margin-right: 0; padding-right: 0">
+          <ul class="nav-links">
+            <li><a href="index1.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html" class="active">Programs</a></li>
+            <li><a href="regions.html">Regions</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="raw-materials.html">Raw Materials</a></li>
+            <li><a href="market.html">Marketplace</a></li>
+            <li><a href="resources.html">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section
+      class="page-banner"
+      style="
+        background: linear-gradient(135deg, #1a6985 0%, #2a9d8f 100%);
+        padding: 6rem 0 4rem;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          );
+          background-size: 20px 20px;
+          opacity: 0.3;
+          z-index: 0;
+        "
+      ></div>
+
+      <!-- Animated shapes -->
+      <div class="animated-shape shape1"></div>
+      <div class="animated-shape shape2"></div>
+      <div class="animated-shape shape3"></div>
+
+      <div class="container" style="position: relative; z-index: 1">
+        <h1
+          style="
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1.5rem;
+            font-size: 3rem;
+            animation: fadeInUp 1s ease;
+          "
+        >
+          Our Programs
+        </h1>
+        <p
+          style="
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease 0.3s both;
+          "
+        >
+          Empowering farmers and youth through mentorship, education, and job
+          creation
+        </p>
+      </div>
+    </section>
+
+    <style>
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animated-shape {
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.2;
+        z-index: 0;
+      }
+
+      .shape1 {
+        width: 300px;
+        height: 300px;
+        background-color: rgba(255, 255, 255, 0.2);
+        top: -100px;
+        right: -50px;
+        animation: float 15s infinite ease-in-out;
+      }
+
+      .shape2 {
+        width: 200px;
+        height: 200px;
+        background-color: rgba(255, 255, 255, 0.15);
+        bottom: -80px;
+        left: 10%;
+        animation: float 18s infinite ease-in-out reverse;
+      }
+
+      .shape3 {
+        width: 150px;
+        height: 150px;
+        background-color: rgba(255, 255, 255, 0.1);
+        top: 20%;
+        left: 20%;
+        animation: float 12s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(30px, 20px) rotate(5deg);
+        }
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+      }
+    </style>
+
+    <!-- Programs Overview Section -->
+    <section
+      class="programs-overview"
+      style="background-color: #f8f9fa; padding: 5rem 0"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Programs Overview</h2>
+          <p>
+            Transforming Ghana's agricultural landscape through targeted
+            initiatives
+          </p>
+        </div>
+        <div class="overview-content">
+          <div
+            class="overview-image"
+            style="
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+              border-radius: 8px;
+              overflow: hidden;
+            "
+          >
+            <img src="/images/avator t.webp" alt="Improve Africa programs" />
+          </div>
+          <div
+            class="overview-text"
+            style="
+              background-color: white;
+              padding: 2rem;
+              border-radius: 8px;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            "
+          >
+            <p>
+              At Improve Africa, we offer several comprehensive programs aimed
+              at empowering farmers and youth across Ghana. Our initiatives
+              focus on providing mentorship, education, and creating sustainable
+              job opportunities within the agricultural sector.
+            </p>
+            <p>
+              Through our programs, we address the key challenges facing Ghana's
+              agricultural sector: limited access to markets, knowledge gaps in
+              modern farming techniques, and unemployment among rural youth. By
+              combining practical training with real economic opportunities,
+              we're building a stronger agricultural ecosystem that benefits
+              farmers, communities, and the nation as a whole.
+            </p>
+            <p>
+              Each of our programs is designed with sustainability and
+              scalability in mind, ensuring that the benefits continue to grow
+              and spread throughout Ghana's agricultural communities.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Programs Section -->
+    <section
+      class="key-programs"
+      style="
+        background: linear-gradient(135deg, #1a6985 0%, #2a9d8f 100%);
+        color: #fff;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+          );
+          background-size: 20px 20px;
+          opacity: 0.3;
+          z-index: 0;
+        "
+      ></div>
+      <div class="container" style="position: relative; z-index: 1">
+        <div class="section-header">
+          <h2 style="color: #fff">Our Key Programs</h2>
+          <p style="color: rgba(255, 255, 255, 0.9)">
+            Initiatives that drive agricultural transformation in Ghana
+          </p>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-users"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Farmer Mentorship Program</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Our flagship mentorship program connects experienced agricultural
+              experts with farmers across Ghana to improve farming techniques,
+              expand businesses, and gain access to markets.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  One-on-one mentorship with agricultural experts
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Guidance on crop selection and rotation strategies
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Business development and financial management training
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Market access facilitation and networking opportunities
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Sustainable farming practices and certification guidance
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Program Duration:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                6-month intensive mentorship with ongoing support
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Eligibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Open to small and medium-scale farmers across Ghana
+              </p>
+            </div>
+            <a href="mentorship.html" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-briefcase"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Youth Employment Program</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Creating sustainable job opportunities for young Ghanaians in the
+              agricultural value chain, with a special focus on empowering women
+              in agriculture.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Job placements in crop collection, processing, and
+                  distribution
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Sales and marketing positions within agricultural businesses
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Technical training for agricultural technology roles
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Entrepreneurship support for youth-led agricultural ventures
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Women-focused initiatives to address gender gaps in
+                  agriculture
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Program Benefits:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                Stable income, skills development, career advancement
+                opportunities
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Eligibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Youth aged 18-35 from rural and peri-urban areas of Ghana
+              </p>
+            </div>
+            <a href="youth-employment.html" class="btn btn-secondary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Agricultural Education & Training</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Comprehensive educational programs teaching modern farming
+              techniques, sustainable practices, and agricultural business
+              management.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Workshops and hands-on training sessions in farming
+                  communities
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Seminars on sustainable farming, pest control, and irrigation
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Online courses accessible via mobile devices
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Demonstration farms showcasing best practices
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Certification programs for specialized agricultural skills
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Training Formats:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                In-person workshops, mobile learning, demonstration sites
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Accessibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Programs available in multiple languages and adapted for various
+                literacy levels
+              </p>
+            </div>
+            <a href="education.html" class="btn btn-secondary">Learn More</a>
+          </div>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-seedling"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Sustainable Farming Initiative</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Promoting environmentally friendly farming practices that preserve
+              Ghana's natural resources while improving crop yields and farm
+              profitability.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Training in organic farming methods and certification
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Water conservation and management techniques
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Soil health improvement and natural fertilizer production
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Climate-smart agricultural practices
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Agroforestry and integrated farming systems
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Program Benefits:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                Reduced input costs, premium market prices, environmental
+                sustainability
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Eligibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Open to all farmers in Ghana interested in sustainable practices
+              </p>
+            </div>
+            <a href="sustainable-farming.html" class="btn btn-secondary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Digital Agriculture Program</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Leveraging technology to transform farming practices, improve
+              decision-making, and connect farmers to digital marketplaces
+              across Ghana.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Mobile app training for weather forecasting and market prices
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Digital record-keeping and farm management systems
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  E-commerce platforms for direct-to-consumer sales
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Precision agriculture techniques using affordable technology
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Digital financial services and mobile banking for farmers
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Technology Provided:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                Smartphones, solar chargers, internet connectivity solutions
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Eligibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Farmers of all ages with basic literacy skills or willingness to
+                learn
+              </p>
+            </div>
+            <a href="digital-agriculture.html" class="btn btn-secondary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-coins"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Agricultural Finance Access</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Connecting Ghanaian farmers with financial resources, microloans,
+              and investment opportunities to grow their agricultural
+              businesses.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Microfinance partnerships for small-scale farmers
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Financial literacy training and business planning
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Grant application assistance for agricultural projects
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Savings groups and cooperative financial models
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Equipment leasing and affordable financing options
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Financial Partners:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                Ghana Agricultural Development Bank, rural microfinance
+                institutions
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Eligibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Farmers with viable business plans and good standing in their
+                communities
+              </p>
+            </div>
+            <a href="agricultural-finance.html" class="btn btn-secondary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="program-card"
+          style="
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 3rem;
+            overflow: hidden;
+          "
+        >
+          <div
+            class="program-icon"
+            style="background-color: #1a6985; color: white"
+          >
+            <i class="fas fa-store"></i>
+          </div>
+          <div class="program-content" style="padding: 2rem">
+            <h3 style="color: #1a6985">Market Access & Value Addition</h3>
+            <p
+              class="program-description"
+              style="
+                color: #333;
+                font-size: 1.05rem;
+                line-height: 1.6;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Helping Ghanaian farmers process their raw agricultural products,
+              add value, and access premium markets both locally and
+              internationally.
+            </p>
+            <div class="program-details">
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Key Components:
+              </h4>
+              <ul style="padding-left: 1.2rem; margin-bottom: 1.5rem">
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Food processing and preservation techniques
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Packaging, branding, and product development
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Quality control and food safety standards
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Export readiness and international market access
+                </li>
+                <li style="margin-bottom: 0.5rem; color: #333; font-size: 1rem">
+                  Cooperative marketing and bulk selling strategies
+                </li>
+              </ul>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Market Connections:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1rem">
+                Local supermarkets, hotels, restaurants, export aggregators
+              </p>
+              <h4
+                style="
+                  color: #1a6985;
+                  font-size: 1.1rem;
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.8rem;
+                "
+              >
+                Eligibility:
+              </h4>
+              <p style="color: #333; font-size: 1rem; margin-bottom: 1.5rem">
+                Farmers and farmer groups with consistent production capacity
+              </p>
+            </div>
+            <a href="market-access.html" class="btn btn-secondary"
+              >Learn More</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section
+      class="success-stories"
+      style="background-color: #f8f9fa; padding: 5rem 0"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Success Stories</h2>
+          <p>Real impact in the lives of Ghanaian farmers and communities</p>
+        </div>
+        <div class="stories-grid">
+          <div
+            class="story-card"
+            style="
+              background-color: white;
+              border-radius: 10px;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+              overflow: hidden;
+              transition: transform 0.3s ease;
+            "
+          >
+            <div class="story-image">
+              <img src="/images/avator kj.jpg" alt="Success story" />
+            </div>
+            <div class="story-content" style="padding: 1.5rem">
+              <h3 style="color: #1a6985">Kwame's Journey</h3>
+              <p class="location" style="color: #666; font-style: italic">
+                Accra Region, Ghana
+              </p>
+              <p>
+                "Through Improve Africa's mentorship program, I learned modern
+                farming techniques that increased my cassava yield by 40%. Now I
+                can afford to send all my children to school and have expanded
+                my farm."
+              </p>
+              <a
+                href="stories.html#kwame"
+                class="read-more"
+                style="color: #1a6985; font-weight: 600"
+                >Read Full Story</a
+              >
+            </div>
+          </div>
+          <div
+            class="story-card"
+            style="
+              background-color: white;
+              border-radius: 10px;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+              overflow: hidden;
+              transition: transform 0.3s ease;
+            "
+          >
+            <div class="story-image">
+              <img src="/images/avator acor.jpg" alt="Success story" />
+            </div>
+            <div class="story-content" style="padding: 1.5rem">
+              <h3 style="color: #1a6985">Ama's Cooperative</h3>
+              <p class="location" style="color: #666; font-style: italic">
+                Northern Region, Ghana
+              </p>
+              <p>
+                "As a woman farmer, I faced many challenges. Improve Africa
+                helped me form a women's cooperative with 15 other farmers.
+                Together, we've gained access to better markets and increased
+                our bargaining power."
+              </p>
+              <a
+                href="stories.html#ama"
+                class="read-more"
+                style="color: #1a6985; font-weight: 600"
+                >Read Full Story</a
+              >
+            </div>
+          </div>
+          <div
+            class="story-card"
+            style="
+              background-color: white;
+              border-radius: 10px;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+              overflow: hidden;
+              transition: transform 0.3s ease;
+            "
+          >
+            <div class="story-image">
+              <img src="/images/avator yc.jpg" alt="Success story" />
+            </div>
+            <div class="story-content" style="padding: 1.5rem">
+              <h3 style="color: #1a6985">Youth Collective</h3>
+              <p class="location" style="color: #666; font-style: italic">
+                Volta Region, Ghana
+              </p>
+              <p>
+                "Through the Youth Employment Program, 25 young people from our
+                village found jobs in agricultural processing. This has
+                transformed our community, reducing migration to cities and
+                building local prosperity."
+              </p>
+              <a
+                href="stories.html#youth"
+                class="read-more"
+                style="color: #1a6985; font-weight: 600"
+                >Read Full Story</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Registration Section -->
+    <section
+      class="program-registration"
+      style="
+        background: linear-gradient(
+            to right,
+            rgba(26, 105, 133, 0.9),
+            rgba(42, 157, 143, 0.8)
+          ),
+          url('/images/avator bg.webp');
+        background-size: cover;
+        background-position: center;
+        padding: 5rem 0;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <!-- Animated shapes for visual interest -->
+      <div
+        class="animated-shape shape-reg1"
+        style="
+          position: absolute;
+          width: 250px;
+          height: 250px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.1);
+          top: -100px;
+          right: -50px;
+          animation: float-reg 20s infinite ease-in-out;
+        "
+      ></div>
+      <div
+        class="animated-shape shape-reg2"
+        style="
+          position: absolute;
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.08);
+          bottom: -80px;
+          left: 10%;
+          animation: float-reg 15s infinite ease-in-out reverse;
+        "
+      ></div>
+
+      <style>
+        @keyframes float-reg {
+          0% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+          50% {
+            transform: translate(20px, 30px) rotate(5deg);
+          }
+          100% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+        }
+      </style>
+      <div class="container">
+        <div
+          class="row justify-content-center text-center"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <div class="col-lg-8">
+            <h2
+              style="
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+                font-weight: 700;
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+                letter-spacing: 1px;
+              "
+            >
+              Join Our Programs
+            </h2>
+            <p
+              style="
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
+                line-height: 1.7;
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+              "
+            >
+              Ready to be part of the change? Register for our programs and
+              start your journey towards making a positive impact in Africa.
+            </p>
+            <a
+              href="#"
+              class="btn btn-light btn-lg"
+              style="
+                padding: 12px 30px;
+                font-weight: 600;
+                border-radius: 30px;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: none;
+                position: relative;
+                overflow: hidden;
+                z-index: 1;
+              "
+              onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.15)';"
+              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';"
+            >
+              Register Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section
+      class="faq-section"
+      style="background-color: #f8f9fa; padding: 5rem 0"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>Common questions about our programs</p>
+        </div>
+        <div class="faq-container" style="max-width: 900px; margin: 0 auto">
+          <div
+            class="faq-item"
+            style="
+              background-color: white;
+              border-radius: 8px;
+              margin-bottom: 1rem;
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+            "
+          >
+            <div
+              class="faq-question"
+              style="
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="margin: 0; font-size: 1.1rem; color: #333">
+                How do I qualify for the Farmer Mentorship Program?
+              </h3>
+              <span class="faq-toggle" style="color: #1a6985"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <div
+              class="faq-answer"
+              style="
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+              "
+            >
+              <p style="padding-bottom: 1.5rem">
+                The Farmer Mentorship Program is open to all farmers in Ghana,
+                regardless of experience level. To qualify, you need to be
+                actively involved in farming, be willing to implement new
+                techniques, and commit to the 6-month program duration. We
+                particularly encourage applications from women and youth
+                farmers.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            style="
+              background-color: white;
+              border-radius: 8px;
+              margin-bottom: 1rem;
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+            "
+          >
+            <div
+              class="faq-question"
+              style="
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="margin: 0; font-size: 1.1rem; color: #333">
+                Are there any costs associated with your programs?
+              </h3>
+              <span class="faq-toggle" style="color: #1a6985"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <div
+              class="faq-answer"
+              style="
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+              "
+            >
+              <p style="padding-bottom: 1.5rem">
+                Most of our programs are offered at no cost to participants,
+                thanks to our partnerships with government agencies and
+                international organizations. For some specialized training
+                programs, there may be a nominal fee to cover materials and
+                resources, but financial assistance is available for those who
+                qualify.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            style="
+              background-color: white;
+              border-radius: 8px;
+              margin-bottom: 1rem;
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+            "
+          >
+            <div
+              class="faq-question"
+              style="
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="margin: 0; font-size: 1.1rem; color: #333">
+                How long do your programs typically last?
+              </h3>
+              <span class="faq-toggle" style="color: #1a6985"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <div
+              class="faq-answer"
+              style="
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+              "
+            >
+              <p style="padding-bottom: 1.5rem">
+                Program durations vary based on the type and intensity. The
+                Farmer Mentorship Program runs for 6 months, while our
+                Agricultural Education workshops typically last 1-2 weeks. The
+                Youth Employment Program offers ongoing job placements with
+                regular check-ins and support. All programs include follow-up
+                support after completion.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            style="
+              background-color: white;
+              border-radius: 8px;
+              margin-bottom: 1rem;
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+            "
+          >
+            <div
+              class="faq-question"
+              style="
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="margin: 0; font-size: 1.1rem; color: #333">
+                Can I participate in multiple programs simultaneously?
+              </h3>
+              <span class="faq-toggle" style="color: #1a6985"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <div
+              class="faq-answer"
+              style="
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+              "
+            >
+              <p style="padding-bottom: 1.5rem">
+                Yes, many of our participants engage in multiple programs
+                simultaneously. For example, you might participate in the Farmer
+                Mentorship Program while also attending Agricultural Education
+                workshops. We encourage this integrated approach as it provides
+                a more comprehensive support system for your agricultural
+                journey.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            style="
+              background-color: white;
+              border-radius: 8px;
+              margin-bottom: 1rem;
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+            "
+          >
+            <div
+              class="faq-question"
+              style="
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="margin: 0; font-size: 1.1rem; color: #333">
+                How can I apply for your programs?
+              </h3>
+              <span class="faq-toggle" style="color: #1a6985"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <div
+              class="faq-answer"
+              style="
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+              "
+            >
+              <p style="padding-bottom: 1.5rem">
+                You can apply for our programs through our website by clicking
+                the "Register Now" button, visiting any of our regional offices
+                across Ghana, or calling our program hotline at +233 30 273
+                9900. Our team is available to assist with the application
+                process and answer any questions you might have.
+              </p>
+            </div>
+          </div>
+          <div
+            class="faq-item"
+            style="
+              background-color: white;
+              border-radius: 8px;
+              margin-bottom: 1rem;
+              box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+              overflow: hidden;
+            "
+          >
+            <div
+              class="faq-question"
+              style="
+                padding: 1.5rem;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <h3 style="margin: 0; font-size: 1.1rem; color: #333">
+                Do you offer programs in all regions of Ghana?
+              </h3>
+              <span class="faq-toggle" style="color: #1a6985"
+                ><i class="fas fa-plus"></i
+              ></span>
+            </div>
+            <div
+              class="faq-answer"
+              style="
+                padding: 0 1.5rem;
+                max-height: 0;
+                overflow: hidden;
+                transition: all 0.3s ease;
+              "
+            >
+              <p style="padding-bottom: 1.5rem">
+                We currently operate in several regions of Ghana, including
+                Accra, Northern Region, and Volta Region, with plans to expand
+                to additional regions. Even if we don't have a physical presence
+                in your region yet, many of our educational resources are
+                available online, and we can connect you with mentors remotely.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta-section">
+      <div class="container">
+        <h2>Transform Your Agricultural Future</h2>
+        <p>
+          Join thousands of Ghanaian farmers who have improved their livelihoods
+          through our programs.
+        </p>
+        <a href="register.html" class="btn btn-primary">Register Now</a>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Improve Africa</h2>
+            <p>Empowering farmers, creating opportunities</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="regions.html">Regions</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Resources</h3>
+              <ul>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="raw-materials.html">Raw Materials</a></li>
+                <li><a href="resources.html">Farmer Resources</a></li>
+                <li><a href="blog.html">Blog</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Contact</h3>
+              <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="support.html">Support</a></li>
+                <li><a href="partnerships.html">Partnerships</a></li>
+                <li><a href="donate.html">Donate</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#" aria-label="Facebook"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="#" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="#" aria-label="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+              <a href="#" aria-label="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2023 Improve Africa. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/script.js"></script>
+    <script>
+      // FAQ Toggle Functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const faqItems = document.querySelectorAll(".faq-item");
+
+        faqItems.forEach((item) => {
+          const question = item.querySelector(".faq-question");
+          const answer = item.querySelector(".faq-answer");
+          const toggle = item.querySelector(".faq-toggle i");
+
+          question.addEventListener("click", () => {
+            // Close all other items
+            faqItems.forEach((otherItem) => {
+              if (otherItem !== item) {
+                otherItem.classList.remove("active");
+                otherItem.querySelector(".faq-answer").style.maxHeight = "0";
+                otherItem.querySelector(".faq-toggle i").className =
+                  "fas fa-plus";
+              }
+            });
+
+            // Toggle current item
+            item.classList.toggle("active");
+
+            if (item.classList.contains("active")) {
+              answer.style.maxHeight = answer.scrollHeight + "px";
+              toggle.className = "fas fa-minus";
+            } else {
+              answer.style.maxHeight = "0";
+              toggle.className = "fas fa-plus";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "@ljharb/tsconfig": "^0.3.2",
+    "live-server": "^1.2.2"
+  },
+  "scripts": {
+    "start": "live-server --open=index1.html"
+  }
+}

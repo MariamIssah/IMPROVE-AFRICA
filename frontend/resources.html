@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resources - Improve Africa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "ia-blue": "#1e4d8c",
+              "ia-green": "#2c7744",
+              "ia-light-blue": "#1a6985",
+            },
+            fontFamily: {
+              poppins: ["Poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #f0f5f7; /* Subtle light blue-gray background */
+        color: #333;
+      }
+
+      /* Add subtle pattern overlay to the background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+          rgba(42, 157, 143, 0.03) 1px,
+          transparent 1px
+        );
+        background-size: 20px 20px;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      /* Ensure sections with white backgrounds stand out properly */
+      section {
+        position: relative;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div
+        class="container"
+        style="
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0;
+          max-width: 100%;
+        "
+      >
+        <div
+          class="logo"
+          style="
+            background-color: #f8f9fa;
+            padding: 8px 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-left: 0;
+          "
+        >
+          <a
+            href="index.html"
+            style="
+              display: flex;
+              align-items: center;
+              text-decoration: none;
+              gap: 10px;
+            "
+          >
+            <img
+              src="/images/logo.png"
+              alt="Improve Africa Logo"
+              style="height: 50px; width: auto"
+            />
+            <h1 style="margin: 0">Improve Africa</h1>
+          </a>
+        </div>
+        <nav style="margin-left: auto; margin-right: 0; padding-right: 0">
+          <ul class="nav-links">
+            <li><a href="index1.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="regions.html">Regions</a></li>
+            <li><a href="jobs.html">Jobs</a></li>
+            <li><a href="raw-materials.html">Raw Materials</a></li>
+            <li><a href="market.html">Marketplace</a></li>
+            <li><a href="resources.html" class="active">Resources</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section
+      class="page-banner"
+      style="
+        background: linear-gradient(to right, #1a6985, #2a9d8f);
+        padding: 5rem 0;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <!-- Animated shapes for visual interest -->
+      <div
+        class="animated-shape shape1"
+        style="
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.1);
+          top: -100px;
+          right: -50px;
+          animation: float 20s infinite ease-in-out;
+        "
+      ></div>
+      <div
+        class="animated-shape shape2"
+        style="
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.08);
+          bottom: -80px;
+          left: 10%;
+          animation: float 15s infinite ease-in-out reverse;
+        "
+      ></div>
+
+      <style>
+        @keyframes float {
+          0% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+          50% {
+            transform: translate(20px, 30px) rotate(5deg);
+          }
+          100% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+        }
+      </style>
+
+      <div class="container">
+        <h1
+          style="
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1.5s ease-out;
+          "
+        >
+          Resources
+        </h1>
+        <p
+          style="
+            font-size: 1.3rem;
+            max-width: 600px;
+            line-height: 1.6;
+            animation: fadeIn 1.5s ease-out 0.3s both;
+          "
+        >
+          Knowledge and tools to help farmers succeed in sustainable agriculture
+        </p>
+      </div>
+    </section>
+
+    <style>
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+
+    <!-- Resources Overview -->
+    <section
+      class="resources-overview"
+      style="padding: 5rem 0; background-color: #f0f5f7"
+    >
+      <div class="container">
+        <div
+          class="section-header"
+          style="text-align: center; margin-bottom: 3rem"
+        >
+          <h2
+            style="
+              color: #1a6985;
+              font-size: 2.5rem;
+              margin-bottom: 1rem;
+              font-weight: 700;
+            "
+          >
+            Farmer Resources
+          </h2>
+          <p
+            style="
+              font-size: 1.2rem;
+              color: #555;
+              max-width: 700px;
+              margin: 0 auto;
+              line-height: 1.6;
+            "
+          >
+            Empowering farmers with knowledge, tools, and information for
+            sustainable agriculture
+          </p>
+        </div>
+
+        <div
+          class="overview-content"
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 3rem;
+          "
+        >
+          <div
+            class="overview-image"
+            style="
+              flex: 1;
+              min-width: 300px;
+              border-radius: 10px;
+              overflow: hidden;
+              box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            "
+          >
+            <img
+              src="/images/avator2.webp"
+              alt="Farmers learning"
+              style="
+                width: 100%;
+                height: auto;
+                display: block;
+                transition: transform 0.5s ease;
+              "
+              onmouseover="this.style.transform='scale(1.05)'"
+              onmouseout="this.style.transform='scale(1)'"
+            />
+          </div>
+
+          <div class="overview-text" style="flex: 1; min-width: 300px">
+            <div
+              style="
+                background-color: #1e4d8c;
+                color: white;
+                padding: 30px;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+              "
+            >
+              <p
+                style="
+                  font-size: 1.1rem;
+                  line-height: 1.7;
+                  margin-bottom: 1.5rem;
+                "
+              >
+                At Improve Africa, we believe that knowledge is power. Our
+                resources section is designed to provide farmers with the
+                information, tools, and guidance they need to improve their
+                agricultural practices, increase yields, and build sustainable
+                businesses.
+              </p>
+              <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 0">
+                From comprehensive farming guides to market reports and success
+                stories, our resources are developed by agricultural experts and
+                tailored to the specific needs and conditions of farming in
+                Ghana. Whether you're a small-scale farmer or managing a large
+                agricultural operation, you'll find valuable resources to help
+                you succeed.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="resource-categories"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+          "
+        >
+          <div
+            class="resource-category"
+            style="
+              background: white;
+              border-radius: 10px;
+              padding: 2rem;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              text-align: center;
+              border-top: 4px solid #1a6985;
+            "
+            onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';"
+          >
+            <i
+              class="fas fa-book"
+              style="
+                font-size: 2.5rem;
+                color: #1a6985;
+                margin-bottom: 1.5rem;
+                display: block;
+              "
+            ></i>
+            <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.3rem">
+              Farming Guides
+            </h3>
+            <p style="color: #666">
+              Step-by-step instructions for various crops and farming techniques
+            </p>
+          </div>
+
+          <div
+            class="resource-category"
+            style="
+              background: white;
+              border-radius: 10px;
+              padding: 2rem;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              text-align: center;
+              border-top: 4px solid #2a9d8f;
+            "
+            onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';"
+          >
+            <i
+              class="fas fa-chart-line"
+              style="
+                font-size: 2.5rem;
+                color: #2a9d8f;
+                margin-bottom: 1.5rem;
+                display: block;
+              "
+            ></i>
+            <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.3rem">
+              Market Reports
+            </h3>
+            <p style="color: #666">
+              Pricing trends, market opportunities, and economic insights
+            </p>
+          </div>
+
+          <div
+            class="resource-category"
+            style="
+              background: white;
+              border-radius: 10px;
+              padding: 2rem;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              text-align: center;
+              border-top: 4px solid #1a6985;
+            "
+            onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';"
+          >
+            <i
+              class="fas fa-user-check"
+              style="
+                font-size: 2.5rem;
+                color: #1a6985;
+                margin-bottom: 1.5rem;
+                display: block;
+              "
+            ></i>
+            <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.3rem">
+              Success Stories
+            </h3>
+            <p style="color: #666">
+              Learn from successful farmers and their innovative approaches
+            </p>
+          </div>
+
+          <div
+            class="resource-category"
+            style="
+              background: white;
+              border-radius: 10px;
+              padding: 2rem;
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              text-align: center;
+              border-top: 4px solid #2a9d8f;
+            "
+            onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.1)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 15px rgba(0,0,0,0.05)';"
+          >
+            <i
+              class="fas fa-newspaper"
+              style="
+                font-size: 2.5rem;
+                color: #2a9d8f;
+                margin-bottom: 1.5rem;
+                display: block;
+              "
+            ></i>
+            <h3 style="color: #333; margin-bottom: 1rem; font-size: 1.3rem">
+              News & Updates
+            </h3>
+            <p style="color: #666">
+              Latest agricultural developments and industry news
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section
+      class="search-filter-section"
+      style="
+        padding: 3rem 0;
+        background-color: white;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      "
+    >
+      <div class="container">
+        <div
+          class="search-filter-container bg-ia-green rounded-lg p-8 shadow-md text-white"
+        >
+          <h3 class="text-white text-2xl mb-6 text-center">Find Resources</h3>
+
+          <div class="search-box mb-6 relative">
+            <input
+              type="text"
+              id="resource-search"
+              placeholder="Search resources..."
+              class="w-full py-3.5 px-5 border border-gray-300 rounded-full text-base transition-all duration-300 shadow-sm focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:ring-opacity-50 outline-none"
+            />
+            <button
+              type="button"
+              class="search-btn absolute right-1.5 top-1.5 bg-gradient-to-r from-ia-light-blue to-teal-500 text-white border-none rounded-full py-2.5 px-5 cursor-pointer transition-all duration-300 hover:opacity-90"
+            >
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+
+          <div
+            class="filter-options grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4"
+          >
+            <div class="filter-group flex flex-col">
+              <label for="resource-topic" class="mb-2 font-medium text-white"
+                >Topic:</label
+              >
+              <select
+                id="resource-topic"
+                class="py-3 px-4 border border-gray-300 rounded-lg bg-white bg-opacity-90 text-gray-700 text-sm transition-all duration-300 focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:outline-none"
+              >
+                <option value="all">All Topics</option>
+                <option value="organic-farming">Organic Farming</option>
+                <option value="crop-management">Crop Management</option>
+                <option value="sustainable-practices">
+                  Sustainable Practices
+                </option>
+                <option value="farm-business">Farm Business</option>
+                <option value="soil-health">Soil Health</option>
+                <option value="irrigation">Irrigation</option>
+                <option value="pest-control">Pest Control</option>
+                <option value="technology">Technology</option>
+              </select>
+            </div>
+
+            <div class="filter-group flex flex-col">
+              <label for="resource-format" class="mb-2 font-medium text-white"
+                >Format:</label
+              >
+              <select
+                id="resource-format"
+                class="py-3 px-4 border border-gray-300 rounded-lg bg-white bg-opacity-90 text-gray-700 text-sm transition-all duration-300 focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:outline-none"
+              >
+                <option value="all">All Formats</option>
+                <option value="book">Books</option>
+                <option value="pdf">PDFs</option>
+                <option value="article">Articles</option>
+                <option value="video">Videos</option>
+                <option value="podcast">Podcasts</option>
+                <option value="webinar">Webinars</option>
+              </select>
+            </div>
+
+            <div class="filter-group flex flex-col">
+              <label for="resource-region" class="mb-2 font-medium text-white"
+                >Region:</label
+              >
+              <select
+                id="resource-region"
+                class="py-3 px-4 border border-gray-300 rounded-lg bg-white bg-opacity-90 text-gray-700 text-sm transition-all duration-300 focus:border-ia-light-blue focus:ring-2 focus:ring-ia-light-blue focus:outline-none"
+              >
+                <option value="all">All Regions</option>
+                <option value="greater-accra">Greater Accra</option>
+                <option value="ashanti">Ashanti</option>
+                <option value="northern">Northern</option>
+                <option value="western">Western</option>
+                <option value="eastern">Eastern</option>
+                <option value="central">Central</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="mt-6 text-center">
+            <button
+              class="bg-white text-ia-green font-medium py-2.5 px-6 rounded-full hover:bg-opacity-90 transition-all shadow-md transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              aria-label="Apply resource filters"
+            >
+              <i class="fas fa-filter mr-2"></i> Apply Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Books Section -->
+    <section
+      class="books-section"
+      id="books"
+      style="padding: 5rem 0; background-color: white"
+    >
+      <div class="container">
+        <div
+          class="section-header"
+          style="text-align: center; margin-bottom: 3rem"
+        >
+          <h2
+            style="
+              color: #1a6985;
+              font-size: 2.5rem;
+              margin-bottom: 1rem;
+              font-weight: 700;
+            "
+          >
+            Books
+          </h2>
+          <p
+            style="
+              font-size: 1.2rem;
+              color: #555;
+              max-width: 700px;
+              margin: 0 auto;
+              line-height: 1.6;
+            "
+          >
+            A curated selection of books related to farming, agriculture, and
+            business development
+          </p>
+        </div>
+
+        <div
+          class="books-grid"
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+          "
+        >
+          <div
+            class="book-card"
+            style="
+              background: white;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              display: flex;
+              flex-direction: column;
+            "
+            onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.15)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)';"
+          >
+            <div
+              class="book-image"
+              style="height: 250px; overflow: hidden; position: relative"
+            >
+              <img
+                src="images/New OG BOOK.avif"
+                alt="The New Organic Grower book cover"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: transform 0.5s ease;
+                "
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+              />
+              <div
+                style="
+                  position: absolute;
+                  top: 15px;
+                  right: 15px;
+                  background: #1a6985;
+                  color: white;
+                  padding: 5px 12px;
+                  border-radius: 20px;
+                  font-size: 0.8rem;
+                  font-weight: 500;
+                "
+              >
+                Bestseller
+              </div>
+            </div>
+
+            <div
+              class="book-content"
+              style="
+                padding: 1.5rem;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              <h3 style="color: #333; font-size: 1.4rem; margin-bottom: 0.5rem">
+                The New Organic Grower
+              </h3>
+
+              <p
+                class="book-author"
+                style="
+                  color: #1a6985;
+                  font-weight: 500;
+                  margin-bottom: 1rem;
+                  font-size: 1rem;
+                "
+              >
+                By Eliot Coleman
+              </p>
+
+              <p
+                style="
+                  color: #555;
+                  line-height: 1.6;
+                  margin-bottom: 1.5rem;
+                  flex-grow: 1;
+                "
+              >
+                A comprehensive guide to organic farming principles and
+                techniques. This book covers everything from soil management to
+                crop rotation and pest control for small-scale organic farmers.
+              </p>
+
+              <div
+                class="book-meta"
+                style="
+                  margin-bottom: 1.5rem;
+                  padding-top: 1rem;
+                  border-top: 1px solid #eee;
+                "
+              >
+                <span
+                  style="display: inline-block; color: #666; font-size: 0.9rem"
+                >
+                  <i
+                    class="fas fa-tags"
+                    style="color: #2a9d8f; margin-right: 5px"
+                  ></i>
+                  Organic Farming, Sustainable Practices
+                </span>
+              </div>
+
+              <div class="book-actions" style="display: flex; gap: 1rem">
+                <a
+                  href="#"
+                  class="btn btn-sm btn-secondary"
+                  style="
+                    background: #1a6985;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    flex: 1;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 3px 10px rgba(26, 105, 133, 0.2);
+                  "
+                  onmouseover="this.style.backgroundColor='#155a74'; this.style.boxShadow='0 5px 15px rgba(26, 105, 133, 0.3)';"
+                  onmouseout="this.style.backgroundColor='#1a6985'; this.style.boxShadow='0 3px 10px rgba(26, 105, 133, 0.2)';"
+                >
+                  <i class="fas fa-download" style="margin-right: 5px"></i>
+                  Download PDF
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline"
+                  style="
+                    background: transparent;
+                    color: #1a6985;
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    border: 1px solid #1a6985;
+                    flex: 1;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="this.style.backgroundColor='#1a6985'; this.style.color='white';"
+                  onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1a6985';"
+                >
+                  <i class="fas fa-shopping-cart" style="margin-right: 5px"></i>
+                  Buy Online
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="book-card"
+            style="
+              background: white;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+              transition: transform 0.3s ease, box-shadow 0.3s ease;
+              display: flex;
+              flex-direction: column;
+            "
+            onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 15px 30px rgba(0,0,0,0.15)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(0,0,0,0.08)';"
+          >
+            <div
+              class="book-image"
+              style="height: 250px; overflow: hidden; position: relative"
+            >
+              <img
+                src="images/The Lean Farm.avif"
+                alt="The Lean Farm book cover"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                  transition: transform 0.5s ease;
+                "
+                onmouseover="this.style.transform='scale(1.05)'"
+                onmouseout="this.style.transform='scale(1)'"
+              />
+              <div
+                style="
+                  position: absolute;
+                  top: 15px;
+                  right: 15px;
+                  background: #2a9d8f;
+                  color: white;
+                  padding: 5px 12px;
+                  border-radius: 20px;
+                  font-size: 0.8rem;
+                  font-weight: 500;
+                "
+              >
+                New
+              </div>
+            </div>
+
+            <div
+              class="book-content"
+              style="
+                padding: 1.5rem;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+              "
+            >
+              <h3 style="color: #333; font-size: 1.4rem; margin-bottom: 0.5rem">
+                The Lean Farm
+              </h3>
+
+              <p
+                class="book-author"
+                style="
+                  color: #1a6985;
+                  font-weight: 500;
+                  margin-bottom: 1rem;
+                  font-size: 1rem;
+                "
+              >
+                By Ben Hartman
+              </p>
+
+              <p
+                style="
+                  color: #555;
+                  line-height: 1.6;
+                  margin-bottom: 1.5rem;
+                  flex-grow: 1;
+                "
+              >
+                An essential resource for creating efficient, sustainable
+                farming practices. Learn how to minimize waste, increase
+                productivity, and improve profitability using lean principles.
+              </p>
+
+              <div
+                class="book-meta"
+                style="
+                  margin-bottom: 1.5rem;
+                  padding-top: 1rem;
+                  border-top: 1px solid #eee;
+                "
+              >
+                <span
+                  style="display: inline-block; color: #666; font-size: 0.9rem"
+                >
+                  <i
+                    class="fas fa-tags"
+                    style="color: #2a9d8f; margin-right: 5px"
+                  ></i>
+                  Farm Business, Efficiency, Sustainability
+                </span>
+              </div>
+
+              <div class="book-actions" style="display: flex; gap: 1rem">
+                <a
+                  href="#"
+                  class="btn btn-sm btn-secondary"
+                  style="
+                    background: #1a6985;
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    flex: 1;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                    box-shadow: 0 3px 10px rgba(26, 105, 133, 0.2);
+                  "
+                  onmouseover="this.style.backgroundColor='#155a74'; this.style.boxShadow='0 5px 15px rgba(26, 105, 133, 0.3)';"
+                  onmouseout="this.style.backgroundColor='#1a6985'; this.style.boxShadow='0 3px 10px rgba(26, 105, 133, 0.2)';"
+                >
+                  <i class="fas fa-download" style="margin-right: 5px"></i>
+                  Download PDF
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-sm btn-outline"
+                  style="
+                    background: transparent;
+                    color: #1a6985;
+                    padding: 10px 20px;
+                    border-radius: 30px;
+                    text-decoration: none;
+                    font-weight: 500;
+                    border: 1px solid #1a6985;
+                    flex: 1;
+                    text-align: center;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="this.style.backgroundColor='#1a6985'; this.style.color='white';"
+                  onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1a6985';"
+                >
+                  <i class="fas fa-shopping-cart" style="margin-right: 5px"></i>
+                  Buy Online
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 3rem">
+          <a
+            href="#"
+            class="view-more-btn"
+            style="
+              display: inline-block;
+              background: transparent;
+              color: #1a6985;
+              border: 2px solid #1a6985;
+              padding: 12px 30px;
+              border-radius: 30px;
+              font-weight: 600;
+              text-decoration: none;
+              transition: all 0.3s ease;
+            "
+            onmouseover="this.style.backgroundColor='#1a6985'; this.style.color='white';"
+            onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1a6985';"
+          >
+            View All Books
+            <i class="fas fa-arrow-right" style="margin-left: 5px"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PDFs Section -->
+    <section class="pdfs-section" id="pdfs">
+      <div class="container">
+        <div class="section-header">
+          <h2>PDFs</h2>
+          <p>
+            Downloadable guides and manuals focused on practical agricultural
+            techniques
+          </p>
+        </div>
+        <div class="pdfs-grid">
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Soil Fertility Guide</h3>
+              <p>
+                A comprehensive guide to improving soil health and increasing
+                crop yields. Learn about soil testing, organic amendments, and
+                nutrient management.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: May 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (3.2 MB)</span>
+                <span><i class="fas fa-tags"></i> Soil Health</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Pest Control for Farmers</h3>
+              <p>
+                Effective ways to manage pests in your crops using both organic
+                and conventional methods. Includes identification guides and
+                treatment options.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: June 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (4.5 MB)</span>
+                <span><i class="fas fa-tags"></i> Pest Control</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Water Management Techniques</h3>
+              <p>
+                Learn about efficient irrigation systems, water conservation
+                methods, and rainwater harvesting techniques suitable for
+                different farm sizes.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: July 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (2.8 MB)</span>
+                <span
+                  ><i class="fas fa-tags"></i> Irrigation, Water
+                  Management</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+
+          <div class="pdf-card">
+            <div class="pdf-icon">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="pdf-content">
+              <h3>Crop Rotation Planning</h3>
+              <p>
+                A guide to effective crop rotation strategies to improve soil
+                health, reduce pest pressure, and maximize yields over multiple
+                growing seasons.
+              </p>
+              <div class="pdf-meta">
+                <span><i class="fas fa-calendar"></i> Updated: April 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (1.9 MB)</span>
+                <span
+                  ><i class="fas fa-tags"></i> Crop Rotation, Sustainable
+                  Practices</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download PDF</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All PDFs</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section
+      class="articles-section"
+      id="articles"
+      style="padding: 5rem 0; background-color: white"
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Articles</h2>
+          <p>
+            Insightful articles on agricultural best practices, technological
+            advancements, and innovations
+          </p>
+        </div>
+        <div class="articles-grid">
+          <div class="article-card">
+            <div class="article-image">
+              <img
+                src="images/article-irrigation.jpg"
+                alt="Irrigation systems"
+              />
+            </div>
+            <div class="article-content">
+              <h3>Best Practices for Irrigation</h3>
+              <p>
+                Effective irrigation techniques to improve water usage in
+                agriculture. This article covers drip irrigation, sprinkler
+                systems, and timing strategies to maximize efficiency.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: July 15,
+                  2023</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Water Management,
+                  Technology</span
+                >
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-image">
+              <img
+                src="images/article-sustainable.jpg"
+                alt="Sustainable farming"
+              />
+            </div>
+            <div class="article-content">
+              <h3>Sustainable Farming Practices</h3>
+              <p>
+                How sustainable farming can benefit both farmers and the
+                environment. Learn about conservation tillage, cover crops, and
+                integrated pest management.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: June 22,
+                  2023</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Sustainable Practices, Soil
+                  Health</span
+                >
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-image">
+              <img src="images/article-technology.jpg" alt="Farm technology" />
+            </div>
+            <div class="article-content">
+              <h3>Technology in African Agriculture</h3>
+              <p>
+                Exploring how technology is transforming farming in Africa, from
+                mobile apps for market access to drones for crop monitoring and
+                precision agriculture.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: August 5,
+                  2023</span
+                >
+                <span><i class="fas fa-tags"></i> Technology, Innovation</span>
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="article-card">
+            <div class="article-image">
+              <img
+                src="images/article-climate.jpg"
+                alt="Climate resilient farming"
+              />
+            </div>
+            <div class="article-content">
+              <h3>Climate-Resilient Farming Strategies</h3>
+              <p>
+                Adapting to changing climate conditions with resilient farming
+                strategies. Learn about drought-resistant crops, water
+                conservation, and diversification.
+              </p>
+              <div class="article-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Published: May 30, 2023</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Climate Change, Sustainable
+                  Practices</span
+                >
+              </div>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Articles</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Videos Section -->
+    <section
+      class="videos-section"
+      id="videos"
+      style="
+        padding: 5rem 0;
+        background-color: #f0f5f7;
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      "
+    >
+      <div class="container">
+        <div class="section-header">
+          <h2>Videos</h2>
+          <p>
+            Visual content for farmers to learn farming techniques and hear from
+            experts
+          </p>
+        </div>
+        <div class="videos-grid">
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img
+                src="images/video-first-farm.jpg"
+                alt="Starting your first farm"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>How to Start Your First Farm</h3>
+              <p>
+                A step-by-step guide to getting started in agriculture, covering
+                land selection, initial investments, and first-year planning.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 45 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Farming Techniques, Business
+                  Planning</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img
+                src="images/video-organic.jpg"
+                alt="Organic farming basics"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>Organic Farming Basics</h3>
+              <p>
+                Learn the fundamentals of organic farming from experts,
+                including soil management, natural pest control, and organic
+                certification.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 38 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Organic Farming, Sustainable
+                  Practices</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img
+                src="images/video-equipment.jpg"
+                alt="Agricultural equipment"
+              />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>Essential Farm Equipment Guide</h3>
+              <p>
+                An overview of essential equipment for small and medium-sized
+                farms, with tips on selection, maintenance, and cost-effective
+                alternatives.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 52 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Agricultural Equipment, Farm
+                  Management</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="images/video-expert.jpg" alt="Expert interview" />
+              <div class="play-button">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-content">
+              <h3>Expert Interview: Future of African Agriculture</h3>
+              <p>
+                An in-depth interview with Dr. Kwame Nkrumah, agricultural
+                economist, discussing trends, challenges, and opportunities in
+                African agriculture.
+              </p>
+              <div class="video-meta">
+                <span><i class="fas fa-clock"></i> 65 minutes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Expert Interviews, Agricultural
+                  Policy</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Watch Video</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Videos</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Other Learning Materials -->
+    <section class="other-materials" id="other-materials">
+      <div class="container">
+        <div class="section-header">
+          <h2>Other Learning Materials</h2>
+          <p>
+            Additional resources, such as podcasts, infographics, and webinars
+          </p>
+        </div>
+        <div class="materials-grid">
+          <div class="material-card podcast">
+            <div class="material-icon">
+              <i class="fas fa-podcast"></i>
+            </div>
+            <div class="material-content">
+              <h3>Podcast: The Future of African Agriculture</h3>
+              <p>
+                Interviews with industry leaders about the future of agriculture
+                in Africa, covering innovation, policy, and market trends.
+              </p>
+              <div class="material-meta">
+                <span><i class="fas fa-headphones"></i> 12 Episodes</span>
+                <span
+                  ><i class="fas fa-tags"></i> Agricultural Policy,
+                  Innovation</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Listen Now</a>
+            </div>
+          </div>
+
+          <div class="material-card webinar">
+            <div class="material-icon">
+              <i class="fas fa-video"></i>
+            </div>
+            <div class="material-content">
+              <h3>Webinar: Sustainable Farming for a Growing Africa</h3>
+              <p>
+                A live session with experts discussing sustainable farming
+                techniques, climate adaptation, and food security in Africa.
+              </p>
+              <div class="material-meta">
+                <span><i class="fas fa-calendar"></i> September 15, 2023</span>
+                <span><i class="fas fa-clock"></i> 2:00 PM GMT</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Register Now</a>
+            </div>
+          </div>
+
+          <div class="material-card infographic">
+            <div class="material-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <div class="material-content">
+              <h3>Infographic: Crop Calendar for Ghana</h3>
+              <p>
+                A visual guide to planting and harvesting times for major crops
+                across different regions of Ghana, with climate considerations.
+              </p>
+              <div class="material-meta">
+                <span><i class="fas fa-file"></i> PDF & JPG formats</span>
+                <span
+                  ><i class="fas fa-tags"></i> Crop Management, Planning</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download</a>
+            </div>
+          </div>
+
+          <div class="material-card toolkit">
+            <div class="material-icon">
+              <i class="fas fa-toolbox"></i>
+            </div>
+            <div class="material-content">
+              <h3>Farmer's Financial Toolkit</h3>
+              <p>
+                A collection of spreadsheets, calculators, and templates to help
+                farmers with budgeting, record-keeping, and financial planning.
+              </p>
+              <div class="material-meta">
+                <span
+                  ><i class="fas fa-file-excel"></i> Excel & Google Sheets</span
+                >
+                <span
+                  ><i class="fas fa-tags"></i> Farm Business, Financial
+                  Management</span
+                >
+              </div>
+              <a href="#" class="btn btn-secondary">Download Toolkit</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all">
+          <a href="#" class="btn btn-primary">View All Materials</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Farming Guides -->
+    <section class="farming-guides" id="farming-guides">
+      <div class="container">
+        <div class="section-header">
+          <h2>Farming Guides</h2>
+          <p>Comprehensive guides for successful farming</p>
+        </div>
+        <div class="guides-grid">
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/maize-farming.jpg" alt="Maize farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Maize Cultivation Guide</h3>
+              <p>
+                A comprehensive guide to growing maize in Ghana, covering soil
+                preparation, planting techniques, pest management, harvesting,
+                and storage.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: June 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (2.5 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/cassava-farming.jpg" alt="Cassava farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Cassava Production Manual</h3>
+              <p>
+                Learn the best practices for cassava cultivation, including
+                variety selection, planting methods, weed control, disease
+                management, and value addition.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: May 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (3.1 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/rice-farming.jpg" alt="Rice farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Rice Farming Handbook</h3>
+              <p>
+                A detailed guide on rice cultivation in both upland and lowland
+                conditions, covering water management, fertilization, pest
+                control, and post-harvest handling.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: July 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (4.2 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/vegetable-farming.jpg" alt="Vegetable farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Vegetable Growing Guide</h3>
+              <p>
+                Learn how to grow various vegetables including tomatoes,
+                peppers, onions, and leafy greens. Covers seedling production,
+                transplanting, irrigation, and organic pest management.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: April 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (3.8 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/cocoa-farming.jpg" alt="Cocoa farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Cocoa Production Manual</h3>
+              <p>
+                A comprehensive guide to cocoa cultivation, covering
+                establishment, maintenance, disease management, harvesting,
+                fermentation, and quality control.
+              </p>
+              <div class="guide-meta">
+                <span><i class="fas fa-calendar"></i> Updated: March 2023</span>
+                <span><i class="fas fa-file-pdf"></i> PDF (5.1 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/livestock-farming.jpg" alt="Livestock farming" />
+            </div>
+            <div class="guide-content">
+              <h3>Small-Scale Livestock Rearing</h3>
+              <p>
+                Guide to raising poultry, goats, and sheep on a small scale.
+                Covers housing, feeding, health management, breeding, and
+                marketing of livestock products.
+              </p>
+              <div class="guide-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Updated: February 2023</span
+                >
+                <span><i class="fas fa-file-pdf"></i> PDF (4.5 MB)</span>
+              </div>
+              <a href="#" class="btn btn-secondary">Download Guide</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all-guides">
+          <a href="#" class="btn btn-primary">View All Farming Guides</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Market Reports -->
+    <section class="market-reports" id="market-reports">
+      <div class="container">
+        <div class="section-header">
+          <h2>Market Reports</h2>
+          <p>Stay informed about agricultural markets</p>
+        </div>
+        <div class="reports-content">
+          <div class="reports-intro">
+            <p>
+              Our market reports provide valuable insights into agricultural
+              commodity prices, market trends, and opportunities. These reports
+              are updated regularly to help farmers make informed decisions
+              about what to grow, when to sell, and how to maximize profits.
+            </p>
+          </div>
+          <div class="reports-grid">
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-chart-bar"></i>
+              </div>
+              <div class="report-content">
+                <h3>Monthly Commodity Price Report</h3>
+                <p>
+                  Current prices for major agricultural commodities across
+                  different regions of Ghana. Updated monthly.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> August 2023</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">Download Report</a>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="report-content">
+                <h3>Quarterly Market Trends Analysis</h3>
+                <p>
+                  Analysis of price trends, supply and demand dynamics, and
+                  market forecasts for the next quarter.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> Q3 2023</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">Download Report</a>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-globe-africa"></i>
+              </div>
+              <div class="report-content">
+                <h3>Export Market Opportunities</h3>
+                <p>
+                  Information on export opportunities for Ghanaian agricultural
+                  products, including market requirements and potential buyers.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> July 2023</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">Download Report</a>
+              </div>
+            </div>
+
+            <div class="report-card">
+              <div class="report-icon">
+                <i class="fas fa-seedling"></i>
+              </div>
+              <div class="report-content">
+                <h3>Crop-Specific Market Reports</h3>
+                <p>
+                  Detailed market information for specific crops including
+                  maize, rice, cassava, cocoa, and vegetables.
+                </p>
+                <div class="report-meta">
+                  <span><i class="fas fa-calendar"></i> Various Dates</span>
+                </div>
+                <a href="#" class="btn btn-sm btn-secondary">View Reports</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="success-stories" id="success-stories">
+      <div class="container">
+        <div class="section-header">
+          <h2>Success Stories</h2>
+          <p>Learn from farmers who have transformed their operations</p>
+        </div>
+        <div class="stories-grid">
+          <div class="story-card">
+            <div class="story-image">
+              <img src="images/avator a4.jpeg" alt="Farmer portrait" />
+            </div>
+            <div class="story-content">
+              <h3>From Subsistence to Commercial Farming</h3>
+              <p class="story-farmer">Kofi Mensah, Ashanti Region</p>
+              <p>
+                "I used to grow just enough maize to feed my family. After
+                joining Improve Africa's training program and implementing the
+                techniques from their farming guides, I now harvest three times
+                more maize and sell the surplus to Improve Africa at fair
+                prices. My income has doubled, and I've been able to send my
+                children to school."
+              </p>
+              <a href="#" class="btn btn-sm btn-secondary">Read Full Story</a>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-image">
+              <img src="images/avator a5.jpeg" alt="Farmer portrait" />
+            </div>
+            <div class="story-content">
+              <h3>Organic Vegetable Success</h3>
+              <p class="story-farmer">Abena Osei, Eastern Region</p>
+              <p>
+                "I switched to organic vegetable farming using the techniques in
+                Improve Africa's guides. Not only has this reduced my production
+                costs, but I now sell premium organic vegetables to hotels and
+                restaurants through Improve Africa's market connections. My farm
+                is now a model for sustainable agriculture in my community."
+              </p>
+              <a href="#" class="btn btn-sm btn-secondary">Read Full Story</a>
+            </div>
+          </div>
+
+          <div class="story-card">
+            <div class="story-image">
+              <img src="images/avator a6.jpeg" alt="Farmer portrait" />
+            </div>
+            <div class="story-content">
+              <h3>Rice Farming Transformation</h3>
+              <p class="story-farmer">Kwame Addo, Northern Region</p>
+              <p>
+                "I struggled with low rice yields due to poor water management
+                and traditional methods. After implementing the techniques from
+                Improve Africa's Rice Farming Handbook and receiving support
+                from their field officers, my yield has increased by 70%. I now
+                employ five people from my village during the planting and
+                harvesting seasons."
+              </p>
+              <a href="#" class="btn btn-sm btn-secondary">Read Full Story</a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all-stories">
+          <a href="#" class="btn btn-primary">View All Success Stories</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- News & Updates -->
+    <section class="news-updates" id="news-updates">
+      <div class="container">
+        <div class="section-header">
+          <h2>News & Updates</h2>
+          <p>Latest agricultural news and developments</p>
+        </div>
+        <div class="news-grid">
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-1.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">15</span>
+                <span class="month">Aug</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>New Drought-Resistant Maize Varieties Released</h3>
+              <p>
+                The Ghana Agricultural Research Institute has released three new
+                drought-resistant maize varieties that can increase yields by up
+                to 30% in dry conditions. Improve Africa will be distributing
+                seeds to farmers in our network.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-2.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">02</span>
+                <span class="month">Aug</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>Government Announces New Agricultural Subsidy Program</h3>
+              <p>
+                The Ministry of Food and Agriculture has announced a new subsidy
+                program for fertilizers and improved seeds. Improve Africa is
+                working with the government to ensure our registered farmers can
+                access these subsidies.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-3.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">25</span>
+                <span class="month">Jul</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>Improve Africa Expands Operations to Volta Region</h3>
+              <p>
+                We are excited to announce the opening of our new regional
+                office in Ho, Volta Region. This expansion will allow us to
+                support more farmers in the eastern part of Ghana with our
+                programs and services.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-image">
+              <img src="images/news-4.jpg" alt="Agricultural news" />
+              <div class="news-date">
+                <span class="day">18</span>
+                <span class="month">Jul</span>
+              </div>
+            </div>
+            <div class="news-content">
+              <h3>New Mobile App Feature for Weather Forecasts</h3>
+              <p>
+                Our mobile app now includes a new feature that provides
+                localized weather forecasts for farmers. This will help farmers
+                plan their planting, spraying, and harvesting activities based
+                on accurate weather predictions.
+              </p>
+              <a href="#" class="read-more"
+                >Read More <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+        <div class="view-all-news">
+          <a href="#" class="btn btn-primary">View All News</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resource Request -->
+    <section class="resource-request">
+      <div class="container">
+        <div class="section-header">
+          <h2>Request a Resource</h2>
+          <p>Can't find what you're looking for? Let us know!</p>
+        </div>
+        <div class="request-form-container">
+          <form class="request-form">
+            <div class="form-group">
+              <label for="name">Your Name*</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address*</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+            <div class="form-group">
+              <label for="resource-type">Resource Type*</label>
+              <select id="resource-type" name="resource-type" required>
+                <option value="">Select an option</option>
+                <option value="farming-guide">Farming Guide</option>
+                <option value="market-report">Market Report</option>
+                <option value="training-material">Training Material</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group full-width">
+              <label for="request-details">Request Details*</label>
+              <textarea
+                id="request-details"
+                name="request-details"
+                rows="5"
+                required
+              ></textarea>
+            </div>
+            <div class="form-group full-width">
+              <button type="submit" class="btn btn-primary">
+                Submit Request
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section
+      class="cta-section"
+      style="
+        background: linear-gradient(135deg, #1a6985, #2a9d8f);
+        color: white;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      "
+    >
+      <!-- Animated shapes for visual interest -->
+      <div
+        class="animated-shape cta-shape1"
+        style="
+          position: absolute;
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.1);
+          top: -150px;
+          right: -100px;
+          animation: float-cta 20s infinite ease-in-out;
+        "
+      ></div>
+      <div
+        class="animated-shape cta-shape2"
+        style="
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          border-radius: 50%;
+          background-color: rgba(255, 255, 255, 0.08);
+          bottom: -100px;
+          left: 10%;
+          animation: float-cta 15s infinite ease-in-out reverse;
+        "
+      ></div>
+
+      <style>
+        @keyframes float-cta {
+          0% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+          50% {
+            transform: translate(20px, 30px) rotate(5deg);
+          }
+          100% {
+            transform: translate(0, 0) rotate(0deg);
+          }
+        }
+      </style>
+
+      <div class="container" style="position: relative; z-index: 1">
+        <h2
+          style="
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+          "
+        >
+          Join Our Farmer Network
+        </h2>
+        <p
+          style="
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+          "
+        >
+          Access all our resources, training programs, and market opportunities
+          by joining the Improve Africa farmer network.
+        </p>
+        <div
+          class="cta-buttons"
+          style="
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+          "
+        >
+          <a
+            href="raw-materials.html"
+            class="btn btn-primary"
+            style="
+              background-color: white;
+              color: #1a6985;
+              padding: 12px 30px;
+              border-radius: 30px;
+              font-weight: 600;
+              text-decoration: none;
+              transition: all 0.3s ease;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            "
+            onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 6px 20px rgba(0,0,0,0.15)';"
+            onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0,0,0,0.1)';"
+            >Register Now</a
+          >
+          <a
+            href="contact.html"
+            class="btn btn-secondary"
+            style="
+              background-color: transparent;
+              color: white;
+              padding: 12px 30px;
+              border-radius: 30px;
+              font-weight: 600;
+              text-decoration: none;
+              transition: all 0.3s ease;
+              border: 2px solid white;
+            "
+            onmouseover="this.style.backgroundColor='rgba(255,255,255,0.1)';"
+            onmouseout="this.style.backgroundColor='transparent';"
+            >Contact Our Team</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      style="
+        background-color: #1a3c4a;
+        color: #fff;
+        padding-top: 4rem;
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <!-- Subtle pattern overlay -->
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: radial-gradient(
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          );
+          background-size: 20px 20px;
+          opacity: 0.2;
+          z-index: 0;
+        "
+      ></div>
+
+      <div class="container" style="position: relative; z-index: 1">
+        <div class="footer-content">
+          <div class="footer-logo">
+            <h2>Improve Africa</h2>
+            <p>Transforming agriculture, empowering communities</p>
+          </div>
+          <div class="footer-links">
+            <div class="footer-column">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="programs.html">Programs</a></li>
+                <li><a href="regions.html">Regions</a></li>
+                <li><a href="jobs.html">Jobs</a></li>
+                <li><a href="raw-materials.html">Raw Materials</a></li>
+                <li><a href="market.html">Marketplace</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Programs</h3>
+              <ul>
+                <li>
+                  <a href="programs.html#mentorship">Farmer Mentorship</a>
+                </li>
+                <li><a href="programs.html#youth">Youth Employment</a></li>
+                <li>
+                  <a href="programs.html#education">Agricultural Education</a>
+                </li>
+                <li>
+                  <a href="programs.html#sustainable">Sustainable Farming</a>
+                </li>
+              </ul>
+            </div>
+            <div class="footer-column">
+              <h3>Resources</h3>
+              <ul>
+                <li><a href="#farming-guides">Farming Guides</a></li>
+                <li><a href="#market-reports">Market Reports</a></li>
+                <li><a href="#success-stories">Success Stories</a></li>
+                <li><a href="#news-updates">News & Updates</a></li>
+
+                <li><a href="#books">Books</a></li>
+                <li><a href="#pdfs">PDFs</a></li>
+                <li><a href="#articles">Articles</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#other-materials">Other Materials</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="footer-social">
+            <h3>Connect With Us</h3>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="footer-bottom"
+        style="
+          background-color: rgba(0, 0, 0, 0.2);
+          padding: 1.5rem 0;
+          margin-top: 3rem;
+        "
+      >
+        <div class="container">
+          <p>&copy; 2023 Improve Africa. All rights reserved.</p>
+          <div class="footer-bottom-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

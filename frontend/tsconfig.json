@@ -1,0 +1,14 @@
+{
+	"extends": "@ljharb/tsconfig",
+	"compilerOptions": {
+		"target": "es2022",
+	},
+	"exclude": [
+		"node_modules", // Add this to ignore node_modules
+		"coverage",
+		"test/list-exports"
+	],
+	"include": [
+		"./src/**/*"
+	]
+}

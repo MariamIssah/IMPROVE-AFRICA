@@ -4,7 +4,6 @@
  * This defines the schema for agricultural products in the marketplace
  */
 
-const mongoose = require('mongoose');
 
 const ProductSchema = new mongoose.Schema({
     name: {

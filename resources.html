@@ -58,6 +58,228 @@
         position: relative;
         z-index: 1;
       }
+
+      /* Farming Guides Section Styles */
+      .farming-guides {
+        padding: 5rem 0;
+        background-color: white;
+      }
+
+      .guides-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .guide-card {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .guide-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .guide-image {
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .guide-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .guide-card:hover .guide-image img {
+        transform: scale(1.05);
+      }
+
+      .guide-content {
+        padding: 1.5rem;
+      }
+
+      .guide-content h3 {
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .guide-content p {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .guide-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .guide-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .guide-meta i {
+        color: #1a6985;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary {
+        background: #1a6985;
+        color: white;
+        box-shadow: 0 3px 10px rgba(26, 105, 133, 0.2);
+      }
+
+      .btn-secondary:hover {
+        background: #155a74;
+        box-shadow: 0 5px 15px rgba(26, 105, 133, 0.3);
+      }
+
+      .view-all-guides {
+        text-align: center;
+        margin-top: 3rem;
+      }
+
+      .btn-primary {
+        background: transparent;
+        color: #1a6985;
+        border: 2px solid #1a6985;
+      }
+
+      .btn-primary:hover {
+        background: #1a6985;
+        color: white;
+      }
+
+      /* Market Reports Section Styles */
+      .market-reports {
+        padding: 5rem 0;
+        background-color: white;
+      }
+
+      .reports-content {
+        margin-top: 2rem;
+      }
+
+      .reports-intro {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+      }
+
+      .reports-intro p {
+        font-size: 1.1rem;
+        line-height: 1.8;
+        color: #555;
+      }
+
+      .reports-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .report-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .report-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .report-icon {
+        width: 60px;
+        height: 60px;
+        background: #f0f5f7;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+
+      .report-icon i {
+        font-size: 1.8rem;
+        color: #1a6985;
+      }
+
+      .report-content h3 {
+        color: #333;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .report-content p {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .report-meta {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .report-meta span {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .report-meta i {
+        color: #1a6985;
+      }
+
+      .btn-sm {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .btn-sm.btn-secondary {
+        background: #1a6985;
+        color: white;
+        box-shadow: 0 3px 10px rgba(26, 105, 133, 0.2);
+      }
+
+      .btn-sm.btn-secondary:hover {
+        background: #155a74;
+        box-shadow: 0 5px 15px rgba(26, 105, 133, 0.3);
+      }
     </style>
   </head>
   <body>
@@ -93,7 +315,7 @@
             "
           >
             <img
-              src="/images/logo.png"
+              src="images/logo.png"
               alt="Improve Africa Logo"
               style="height: 50px; width: auto"
             />
@@ -267,7 +489,7 @@
             "
           >
             <img
-              src="/images/avator2.webp"
+              src="images/avator2.webp"
               alt="Farmers learning"
               style="
                 width: 100%;
@@ -708,7 +930,7 @@
 
               <div class="book-actions" style="display: flex; gap: 1rem">
                 <a
-                  href="#"
+                  href="https://www.chelseagreen.com/product/the-new-organic-grower-3rd-edition/"
                   class="btn btn-sm btn-secondary"
                   style="
                     background: #1a6985;
@@ -724,9 +946,14 @@
                   "
                   onmouseover="this.style.backgroundColor='#155a74'; this.style.boxShadow='0 5px 15px rgba(26, 105, 133, 0.3)';"
                   onmouseout="this.style.backgroundColor='#1a6985'; this.style.boxShadow='0 3px 10px rgba(26, 105, 133, 0.2)';"
+                  target="_blank"
+                  rel="noopener"
                 >
-                  <i class="fas fa-download" style="margin-right: 5px"></i>
-                  Download PDF
+                  <i
+                    class="fas fa-external-link-alt"
+                    style="margin-right: 5px"
+                  ></i>
+                  Purchase Book
                 </a>
                 <a
                   href="#"
@@ -859,7 +1086,7 @@
 
               <div class="book-actions" style="display: flex; gap: 1rem">
                 <a
-                  href="#"
+                  href="https://www.chelseagreen.com/product/the-lean-farm/"
                   class="btn btn-sm btn-secondary"
                   style="
                     background: #1a6985;
@@ -875,9 +1102,14 @@
                   "
                   onmouseover="this.style.backgroundColor='#155a74'; this.style.boxShadow='0 5px 15px rgba(26, 105, 133, 0.3)';"
                   onmouseout="this.style.backgroundColor='#1a6985'; this.style.boxShadow='0 3px 10px rgba(26, 105, 133, 0.2)';"
+                  target="_blank"
+                  rel="noopener"
                 >
-                  <i class="fas fa-download" style="margin-right: 5px"></i>
-                  Download PDF
+                  <i
+                    class="fas fa-external-link-alt"
+                    style="margin-right: 5px"
+                  ></i>
+                  Purchase Book
                 </a>
                 <a
                   href="#"
@@ -907,7 +1139,7 @@
 
         <div style="text-align: center; margin-top: 3rem">
           <a
-            href="#"
+            href="https://attra.ncat.org/publication-library/"
             class="view-more-btn"
             style="
               display: inline-block;
@@ -922,6 +1154,8 @@
             "
             onmouseover="this.style.backgroundColor='#1a6985'; this.style.color='white';"
             onmouseout="this.style.backgroundColor='transparent'; this.style.color='#1a6985';"
+            target="_blank"
+            rel="noopener"
           >
             View All Books
             <i class="fas fa-arrow-right" style="margin-left: 5px"></i>
@@ -957,7 +1191,12 @@
                 <span><i class="fas fa-file-pdf"></i> PDF (3.2 MB)</span>
                 <span><i class="fas fa-tags"></i> Soil Health</span>
               </div>
-              <a href="#" class="btn btn-secondary">Download PDF</a>
+              <a
+                href="documents/soil-fertility-guide.pdf"
+                class="btn btn-secondary"
+                download="Soil Fertility Guide.pdf"
+                >Download PDF</a
+              >
             </div>
           </div>
 
@@ -977,7 +1216,12 @@
                 <span><i class="fas fa-file-pdf"></i> PDF (4.5 MB)</span>
                 <span><i class="fas fa-tags"></i> Pest Control</span>
               </div>
-              <a href="#" class="btn btn-secondary">Download PDF</a>
+              <a
+                href="documents/pest-control-guide.pdf"
+                class="btn btn-secondary"
+                download="Pest Control Guide.pdf"
+                >Download PDF</a
+              >
             </div>
           </div>
 
@@ -1000,7 +1244,12 @@
                   Management</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Download PDF</a>
+              <a
+                href="documents/water-management-guide.pdf"
+                class="btn btn-secondary"
+                download="Water Management Guide.pdf"
+                >Download PDF</a
+              >
             </div>
           </div>
 
@@ -1023,12 +1272,24 @@
                   Practices</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Download PDF</a>
+              <a
+                href="documents/crop-rotation-guide.pdf"
+                class="btn btn-secondary"
+                download="Crop Rotation Guide.pdf"
+                >Download PDF</a
+              >
             </div>
           </div>
         </div>
         <div class="view-all">
-          <a href="#" class="btn btn-primary">View All PDFs</a>
+          <a
+            href="https://attra.ncat.org/publication-library/"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            View All PDFs
+          </a>
         </div>
       </div>
     </section>
@@ -1050,10 +1311,7 @@
         <div class="articles-grid">
           <div class="article-card">
             <div class="article-image">
-              <img
-                src="images/article-irrigation.jpg"
-                alt="Irrigation systems"
-              />
+              <img src="images/wmt.jpg" alt="Irrigation systems" />
             </div>
             <div class="article-content">
               <h3>Best Practices for Irrigation</h3>
@@ -1072,18 +1330,19 @@
                   Technology</span
                 >
               </div>
-              <a href="#" class="read-more"
-                >Read More <i class="fas fa-arrow-right"></i
-              ></a>
+              <a
+                href="documents/best-practices-irrigation.pdf"
+                class="read-more"
+                download="Best Practices for Irrigation.pdf"
+              >
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
 
           <div class="article-card">
             <div class="article-image">
-              <img
-                src="images/article-sustainable.jpg"
-                alt="Sustainable farming"
-              />
+              <img src="images/spsh.jpg" alt="Sustainable farming" />
             </div>
             <div class="article-content">
               <h3>Sustainable Farming Practices</h3>
@@ -1102,15 +1361,19 @@
                   Health</span
                 >
               </div>
-              <a href="#" class="read-more"
-                >Read More <i class="fas fa-arrow-right"></i
-              ></a>
+              <a
+                href="documents/Sustainable Farming Practices.pdf"
+                class="read-more"
+                download="Sustainable Farming Practices.pdf"
+              >
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
 
           <div class="article-card">
             <div class="article-image">
-              <img src="images/article-technology.jpg" alt="Farm technology" />
+              <img src="images/tia.webp" alt="Farm technology" />
             </div>
             <div class="article-content">
               <h3>Technology in African Agriculture</h3>
@@ -1126,18 +1389,19 @@
                 >
                 <span><i class="fas fa-tags"></i> Technology, Innovation</span>
               </div>
-              <a href="#" class="read-more"
-                >Read More <i class="fas fa-arrow-right"></i
-              ></a>
+              <a
+                href="documents/Technology, Innovation.pdf"
+                class="read-more"
+                download="Technology, Innovation.pdf"
+              >
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
 
           <div class="article-card">
             <div class="article-image">
-              <img
-                src="images/article-climate.jpg"
-                alt="Climate resilient farming"
-              />
+              <img src="images/ccsp.webp" alt="Climate resilient farming" />
             </div>
             <div class="article-content">
               <h3>Climate-Resilient Farming Strategies</h3>
@@ -1155,14 +1419,25 @@
                   Practices</span
                 >
               </div>
-              <a href="#" class="read-more"
-                >Read More <i class="fas fa-arrow-right"></i
-              ></a>
+              <a
+                href="documents/Climate Change, Sustainable Practices.pdf"
+                class="read-more"
+                download="Climate Change, Sustainable Practices.pdf"
+              >
+                Read More <i class="fas fa-arrow-right"></i>
+              </a>
             </div>
           </div>
         </div>
         <div class="view-all">
-          <a href="#" class="btn btn-primary">View All Articles</a>
+          <a
+            href="https://attra.ncat.org/publication-library/"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            View All Articles
+          </a>
         </div>
       </div>
     </section>
@@ -1189,100 +1464,129 @@
         <div class="videos-grid">
           <div class="video-card">
             <div class="video-thumbnail">
-              <img
-                src="images/video-first-farm.jpg"
-                alt="Starting your first farm"
-              />
-              <div class="play-button">
-                <i class="fas fa-play"></i>
-              </div>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/heTxEsrPVdQ?si=ggx3cV7AjBXC6pEc"
+                title="Beginner's Guide to Starting a Farm"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
             <div class="video-content">
-              <h3>How to Start Your First Farm</h3>
+              <h3>Beginner's Guide to Starting a Farm</h3>
               <p>
-                A step-by-step guide to getting started in agriculture, covering
-                land selection, initial investments, and first-year planning.
+                A comprehensive webinar series from University of Vermont
+                Extension covering land access, business planning, and
+                first-year crops.
               </p>
               <div class="video-meta">
-                <span><i class="fas fa-clock"></i> 45 minutes</span>
+                <span><i class="fas fa-clock"></i> Webinar Series</span>
                 <span
-                  ><i class="fas fa-tags"></i> Farming Techniques, Business
+                  ><i class="fas fa-tags"></i> Farm Start-Up, Business
                   Planning</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Watch Video</a>
+              <a
+                href="https://youtu.be/heTxEsrPVdQ?si=ggx3cV7AjBXC6pEc"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Watch on YouTube</a
+              >
             </div>
           </div>
 
           <div class="video-card">
             <div class="video-thumbnail">
-              <img
-                src="images/video-organic.jpg"
-                alt="Organic farming basics"
-              />
-              <div class="play-button">
-                <i class="fas fa-play"></i>
-              </div>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/Kf4wF_iCtNk"
+                title="Organic Farming 101"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
             <div class="video-content">
-              <h3>Organic Farming Basics</h3>
+              <h3>Organic Farming 101</h3>
               <p>
-                Learn the fundamentals of organic farming from experts,
-                including soil management, natural pest control, and organic
-                certification.
+                A free introductory course from Rodale Institute covering
+                organic farming principles, soil health, and sustainable
+                practices.
               </p>
               <div class="video-meta">
-                <span><i class="fas fa-clock"></i> 38 minutes</span>
+                <span><i class="fas fa-clock"></i> Online Course</span>
                 <span
                   ><i class="fas fa-tags"></i> Organic Farming, Sustainable
                   Practices</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Watch Video</a>
+              <a
+                href="https://www.youtube.com/watch?v=Kf4wF_iCtNk"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Watch on YouTube</a
+              >
             </div>
           </div>
 
           <div class="video-card">
             <div class="video-thumbnail">
-              <img
-                src="images/video-equipment.jpg"
-                alt="Agricultural equipment"
-              />
-              <div class="play-button">
-                <i class="fas fa-play"></i>
-              </div>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/wi35hbMn6K0"
+                title="Tools for Small Farms"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
             <div class="video-content">
-              <h3>Essential Farm Equipment Guide</h3>
+              <h3>Tools for Small Farms</h3>
               <p>
-                An overview of essential equipment for small and medium-sized
-                farms, with tips on selection, maintenance, and cost-effective
-                alternatives.
+                A comprehensive guide from Penn State Extension covering
+                essential equipment for small-scale farms, including a
+                downloadable checklist.
               </p>
               <div class="video-meta">
-                <span><i class="fas fa-clock"></i> 52 minutes</span>
+                <span><i class="fas fa-clock"></i> Resource Guide</span>
                 <span
                   ><i class="fas fa-tags"></i> Agricultural Equipment, Farm
                   Management</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Watch Video</a>
+              <a
+                href="https://www.youtube.com/watch?v=wi35hbMn6K0"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Watch on YouTube</a
+              >
             </div>
           </div>
 
           <div class="video-card">
             <div class="video-thumbnail">
-              <img src="images/video-expert.jpg" alt="Expert interview" />
-              <div class="play-button">
-                <i class="fas fa-play"></i>
-              </div>
+              <iframe
+                width="100%"
+                height="315"
+                src="https://www.youtube.com/embed/y4dNOuVVzfM"
+                title="Future of African Agriculture"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
             </div>
             <div class="video-content">
-              <h3>Expert Interview: Future of African Agriculture</h3>
+              <h3>Future of African Agriculture</h3>
               <p>
-                An in-depth interview with Dr. Kwame Nkrumah, agricultural
-                economist, discussing trends, challenges, and opportunities in
-                African agriculture.
+                A panel discussion with Dr. Agnes Kalibata, former AGRA
+                president, discussing the future of agriculture in Africa.
               </p>
               <div class="video-meta">
                 <span><i class="fas fa-clock"></i> 65 minutes</span>
@@ -1291,12 +1595,25 @@
                   Policy</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Watch Video</a>
+              <a
+                href="https://www.youtube.com/watch?v=y4dNOuVVzfM"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Watch on YouTube</a
+              >
             </div>
           </div>
         </div>
         <div class="view-all">
-          <a href="#" class="btn btn-primary">View All Videos</a>
+          <a
+            href="https://youtu.be/heTxEsrPVdQ?si=ggx3cV7AjBXC6pEc"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+          >
+            View All Videos
+          </a>
         </div>
       </div>
     </section>
@@ -1328,7 +1645,13 @@
                   Innovation</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Listen Now</a>
+              <a
+                href="https://www.wri.org/podcasts/adaptation-african-agriculture?utm_source"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Listen Now</a
+              >
             </div>
           </div>
 
@@ -1346,7 +1669,13 @@
                 <span><i class="fas fa-calendar"></i> September 15, 2023</span>
                 <span><i class="fas fa-clock"></i> 2:00 PM GMT</span>
               </div>
-              <a href="#" class="btn btn-secondary">Register Now</a>
+              <a
+                href="https://faraafrica.org/2025/02/20/strengthening-collaboration-on-soil-carbon-a-global-dialogue-for-africas-sustainable-future/?utm_source"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Register Now</a
+              >
             </div>
           </div>
 
@@ -1366,7 +1695,13 @@
                   ><i class="fas fa-tags"></i> Crop Management, Planning</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Download</a>
+              <a
+                href="https://www.fao.org/giews/countrybrief/country.jsp?code=GHA"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >View Calendar</a
+              >
             </div>
           </div>
 
@@ -1389,12 +1724,24 @@
                   Management</span
                 >
               </div>
-              <a href="#" class="btn btn-secondary">Download Toolkit</a>
+              <a
+                href="https://www.fao.org/farm-management-tools/en/"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Access Tools</a
+              >
             </div>
           </div>
         </div>
         <div class="view-all">
-          <a href="#" class="btn btn-primary">View All Materials</a>
+          <a
+            href="https://www.fao.org/farm-management-tools/en/"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener"
+            >View All Materials</a
+          >
         </div>
       </div>
     </section>
@@ -1409,7 +1756,34 @@
         <div class="guides-grid">
           <div class="guide-card">
             <div class="guide-image">
-              <img src="images/maize-farming.jpg" alt="Maize farming" />
+              <img src="images/New OG BOOK.avif" alt="Organic farming" />
+            </div>
+            <div class="guide-content">
+              <h3>The New Organic Grower</h3>
+              <p>
+                A comprehensive guide to organic farming practices, covering
+                soil management, crop rotation, pest control, and sustainable
+                farming techniques.
+              </p>
+              <div class="guide-meta">
+                <span
+                  ><i class="fas fa-calendar"></i> Updated: January 2024</span
+                >
+                <span><i class="fas fa-file-pdf"></i> PDF</span>
+              </div>
+              <a
+                href="https://www.chelseagreen.com/product/the-new-organic-grower-3rd-edition/"
+                class="btn btn-secondary"
+                target="_blank"
+                rel="noopener"
+                >Purchase Book</a
+              >
+            </div>
+          </div>
+
+          <div class="guide-card">
+            <div class="guide-image">
+              <img src="images/1B.jpg" alt="Maize farming" />
             </div>
             <div class="guide-content">
               <h3>Maize Cultivation Guide</h3>
@@ -1428,7 +1802,10 @@
 
           <div class="guide-card">
             <div class="guide-image">
-              <img src="images/cassava-farming.jpg" alt="Cassava farming" />
+              <img
+                src="images/marketplace/Bitter Cassava.jpg"
+                alt="Cassava farming"
+              />
             </div>
             <div class="guide-content">
               <h3>Cassava Production Manual</h3>
@@ -1447,7 +1824,10 @@
 
           <div class="guide-card">
             <div class="guide-image">
-              <img src="images/rice-farming.jpg" alt="Rice farming" />
+              <img
+                src="images/marketplace/Basmati Rice.webp"
+                alt="Rice farming"
+              />
             </div>
             <div class="guide-content">
               <h3>Rice Farming Handbook</h3>
@@ -1466,7 +1846,10 @@
 
           <div class="guide-card">
             <div class="guide-image">
-              <img src="images/vegetable-farming.jpg" alt="Vegetable farming" />
+              <img
+                src="images/marketplace/French Shallot.jpg"
+                alt="Vegetable farming"
+              />
             </div>
             <div class="guide-content">
               <h3>Vegetable Growing Guide</h3>
@@ -1742,7 +2125,7 @@
 
           <div class="news-card">
             <div class="news-image">
-              <img src="images/news-3.jpg" alt="Agricultural news" />
+              <img src="images/news-1.jpg" alt="Agricultural news" />
               <div class="news-date">
                 <span class="day">25</span>
                 <span class="month">Jul</span>
@@ -1764,7 +2147,7 @@
 
           <div class="news-card">
             <div class="news-image">
-              <img src="images/news-4.jpg" alt="Agricultural news" />
+              <img src="images/news-2.jpg" alt="Agricultural news" />
               <div class="news-date">
                 <span class="day">18</span>
                 <span class="month">Jul</span>

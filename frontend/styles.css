@@ -1,0 +1,90 @@
+/* css/styles.css */
+
+/* Base Styles */
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  /* Header Styles */
+  header {
+    background-color: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 10px;
+    color: #1e4d8c;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #1e4d8c;
+  }
+  
+  .nav-links li a:hover {
+    color: #2c7744;
+  }
+  
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #1e4d8c;
+    transition: all 0.3s ease;
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .hamburger {
+      display: flex; /* Show hamburger on mobile */
+    }
+  
+    .nav-links {
+      display: none; /* Hide nav links by default on mobile */
+      flex-direction: column;
+      position: absolute;
+      top: 70px;
+      left: 0; /* Changed from right: 0 to left: 0 for full-width */
+      background-color: #fff;
+      width: 100%;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 10; /* Ensures it appears above other content */
+    }
+  
+    .nav-links.active {
+      display: flex; /* Show when hamburger is clicked */
+    }
+  
+    .nav-links li {
+      margin: 10px 0;
+    }
+  }

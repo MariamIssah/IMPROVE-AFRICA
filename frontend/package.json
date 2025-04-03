@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "@ljharb/tsconfig": "^0.3.2",
-    "braces": "^3.0.3"
+    "braces": "^3.0.3",
+    "cookie": "^0.7.0"
   },
   "scripts": {
     "start": "echo 'Static site - no start script needed'"

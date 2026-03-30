@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IMPROVE AFRICA - Complete Product Catalog</title>
+    <title>RISERURAL CONNECT - Complete Product Catalog</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -215,7 +215,7 @@
               }</p>
               <div class="flex justify-between items-end">
                 <p class="font-bold text-green-600">$${product.price.toFixed(
-                  2
+                  2,
                 )}/${product.unit}</p>
                 <p class="text-xs text-gray-500">${
                   product.quantity
@@ -266,7 +266,7 @@
             <section id="${category}" class="category-section mb-12">
               <div class="flex items-center mb-4">
                 <h2 class="text-2xl font-bold text-gray-800">${formatCategoryName(
-                  category
+                  category,
                 )}</h2>
                 <span class="ml-4 bg-gray-100 px-3 py-1 rounded-full text-sm text-gray-600">${
                   categories[category].length

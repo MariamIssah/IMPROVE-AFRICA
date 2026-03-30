@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IMPROVE AFRICA - Marketplace</title>
+    <title>RISERURAL CONNECT - Marketplace</title>
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js"></script>
     <link
@@ -18,8 +18,13 @@
       }
 
       body {
-        font-family: "Circular", -apple-system, BlinkMacSystemFont, Roboto,
-          Helvetica Neue, sans-serif;
+        font-family:
+          "Circular",
+          -apple-system,
+          BlinkMacSystemFont,
+          Roboto,
+          Helvetica Neue,
+          sans-serif;
         line-height: 1.43;
         background-color: #fff;
         color: #222;
@@ -117,7 +122,9 @@
         border-radius: 12px;
         overflow: hidden;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
         background-color: #fff;
         height: 100%;
         display: flex;
@@ -1067,7 +1074,7 @@
         try {
           // Fetch all products from our API endpoint
           const response = await fetch(
-            "https://improve-africa.onrender.com/api/products"
+            "https://improve-africa.onrender.com/api/products",
           );
           if (!response.ok) {
             throw new Error("Failed to fetch products");
@@ -1081,9 +1088,8 @@
           // Update the total count display
           document.getElementById("total-count").textContent =
             allProductsData.length;
-          document.getElementById(
-            "total-products-header"
-          ).textContent = `${allProductsData.length} Premium Agricultural Products`;
+          document.getElementById("total-products-header").textContent =
+            `${allProductsData.length} Premium Agricultural Products`;
 
           return allProductsData;
         } catch (error) {
@@ -1129,8 +1135,8 @@
                 <i class="far fa-heart"></i>
               </button>
               <img src="${imageSrc}" alt="${
-            product.name
-          }" class="product-image">
+                product.name
+              }" class="product-image">
               <div class="image-dots">
                 <span class="dot active"></span>
                 ${
@@ -1153,12 +1159,12 @@
                 }</span>
               </div>
               <div class="product-category">${product.category} · ${
-            product.subcategory || "General"
-          }</div>
+                product.subcategory || "General"
+              }</div>
               <h3 class="product-title">${product.name}</h3>
               <p class="product-price">₵${cedisPrice.toFixed(2)} <span>/ ${
-            product.unit || "kg"
-          }</span>
+                product.unit || "kg"
+              }</span>
                 ${
                   product.isOrganic
                     ? '<span class="organic-badge">Organic</span>'
@@ -1166,8 +1172,8 @@
                 }
               </p>
               <p class="quantity-info">Available: ${product.quantity} ${
-            product.unit || "kg"
-          }</p>
+                product.unit || "kg"
+              }</p>
               <button class="add-to-cart-btn" data-product-id="${product.name}">
                 <i class="fas fa-cart-plus"></i> Add to Cart
               </button>
@@ -1211,7 +1217,7 @@
 
         // Check if product is already in cart
         const existingItem = cart.find(
-          (item) => item.product.name === productName
+          (item) => item.product.name === productName,
         );
 
         if (existingItem) {
@@ -1221,7 +1227,7 @@
             alert(`Added another ${product.name} to your cart!`);
           } else {
             alert(
-              `Sorry, only ${product.quantity} units of ${product.name} available.`
+              `Sorry, only ${product.quantity} units of ${product.name} available.`,
             );
             return;
           }
@@ -1259,7 +1265,7 @@
 
         if (newQuantity > item.product.quantity) {
           alert(
-            `Sorry, only ${item.product.quantity} units of ${item.product.name} available.`
+            `Sorry, only ${item.product.quantity} units of ${item.product.name} available.`,
           );
           return;
         }
@@ -1285,7 +1291,7 @@
         // Update cart count
         const totalItems = cart.reduce(
           (total, item) => total + item.quantity,
-          0
+          0,
         );
         cartCountElement.textContent = totalItems;
 
@@ -1316,8 +1322,8 @@
               <div class="cart-item-details">
                 <div class="cart-item-name">${item.product.name}</div>
                 <div class="cart-item-price">₵${cedisPrice.toFixed(2)} / ${
-                item.product.unit || "kg"
-              }</div>
+                  item.product.unit || "kg"
+                }</div>
                 <div class="cart-item-actions">
                   <button class="quantity-btn decrease-quantity" data-product="${
                     item.product.name
@@ -1371,7 +1377,7 @@
       // Update order summary
       function updateOrderSummary() {
         const orderSummaryItemsContainer = document.getElementById(
-          "order-summary-items"
+          "order-summary-items",
         );
         const orderTotalElement = document.getElementById("order-total-amount");
 
@@ -1422,12 +1428,12 @@
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(orderData),
-            }
+            },
           );
 
           if (!response.ok) {
             throw new Error(
-              `Server returned ${response.status}: ${response.statusText}`
+              `Server returned ${response.status}: ${response.statusText}`,
             );
           }
 
@@ -1443,16 +1449,14 @@
               document.getElementById("order-success");
             orderSuccessElement.style.display = "block";
 
-            document.getElementById(
-              "order-id"
-            ).textContent = `Order ID: ${data.orderId}`;
-            document.getElementById(
-              "order-confirmation-message"
-            ).textContent = `Thank you for your order! Your total is ₵${totalInCedis.toFixed(
-              2
-            )}. A confirmation has been sent to ${customerInfo.email} and ${
-              orderData.notificationEmail
-            }.`;
+            document.getElementById("order-id").textContent =
+              `Order ID: ${data.orderId}`;
+            document.getElementById("order-confirmation-message").textContent =
+              `Thank you for your order! Your total is ₵${totalInCedis.toFixed(
+                2,
+              )}. A confirmation has been sent to ${customerInfo.email} and ${
+                orderData.notificationEmail
+              }.`;
 
             // Clear cart
             cart = [];
@@ -1463,7 +1467,7 @@
         } catch (error) {
           console.error("Error placing order:", error);
           alert(
-            "An error occurred while placing your order. Please try again."
+            "An error occurred while placing your order. Please try again.",
           );
         }
       }
@@ -1474,13 +1478,13 @@
 
         if (category !== "all") {
           filteredProducts = filteredProducts.filter(
-            (product) => product.category === category
+            (product) => product.category === category,
           );
         }
 
         if (filterType === "organic") {
           filteredProducts = filteredProducts.filter(
-            (product) => product.isOrganic
+            (product) => product.isOrganic,
           );
         }
 
@@ -1537,7 +1541,7 @@
         // Checkout button
         const checkoutBtn = document.getElementById("checkout-btn");
         const orderFormContainer = document.getElementById(
-          "order-form-container"
+          "order-form-container",
         );
         const closeForm = document.getElementById("close-form");
 

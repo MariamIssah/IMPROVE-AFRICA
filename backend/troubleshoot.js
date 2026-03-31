@@ -1,5 +1,5 @@
 /**
- * Improve Africa - Troubleshooting Script
+ * RISERURAL CONNECT - Troubleshooting Script
  * 
  * This script helps diagnose common issues with the application.
  * Run with: node troubleshoot.js
@@ -24,7 +24,7 @@ const config = {
   ]
 };
 
-console.log('Starting diagnostic checks for Improve Africa...');
+console.log('Starting diagnostic checks for RISERURAL CONNECT...');
 
 // ANSI color codes for better output
 const colors = {
@@ -241,7 +241,7 @@ function checkNodeProcesses() {
 
 // Run all checks
 async function runDiagnostics() {
-  printHeader('IMPROVE AFRICA DIAGNOSTICS');
+  printHeader('RISERURAL CONNECT DIAGNOSTICS');
   print('Running diagnostic checks...', 'blue');
   
   // File system checks

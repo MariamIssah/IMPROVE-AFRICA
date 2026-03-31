@@ -1,5 +1,5 @@
 /**
- * Improve Africa Marketplace - Server Launcher
+ * RISERURAL CONNECT Marketplace - Server Launcher
  * 
  * This script provides a robust way to start the server with proper error handling
  * and automatic fallback to static mode if MongoDB is not available.
@@ -64,7 +64,7 @@ function ensureSampleDataExists() {
 // Start the server
 function startServer() {
   print('\n' + '='.repeat(60), 'bold');
-  print(' IMPROVE AFRICA MARKETPLACE SERVER ', 'bold');
+  print(' RISERURAL CONNECT MARKETPLACE SERVER ', 'bold');
   print('='.repeat(60) + '\n', 'bold');
   
   // Ensure sample data exists for fallback

@@ -26,7 +26,7 @@ async function checkProducts() {
     // Get all categories
     const categories = await Product.distinct('category');
     
-    console.log(`\n=== IMPROVE AFRICA MARKETPLACE PRODUCTS ===\n`);
+    console.log(`\n=== RISERURAL CONNECT MARKETPLACE PRODUCTS ===\n`);
     console.log(`Found ${categories.length} product categories\n`);
     
     // For each category, list the products

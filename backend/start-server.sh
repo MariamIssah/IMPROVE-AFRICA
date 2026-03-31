@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "IMPROVE AFRICA Marketplace Server Launcher"
+echo "RISERURAL CONNECT Marketplace Server Launcher"
 echo "========================================="
 echo
 

@@ -1,5 +1,5 @@
 /**
- * IMPROVE AFRICA Marketplace Server
+ * RISERURAL CONNECT Marketplace Server
  *
  * This server loads product data from the category files in scripts/products.
  */
@@ -214,7 +214,7 @@ app.post("/api/order", async (req, res) => {
         <p><strong>Order Date:</strong> ${new Date(
           order.orderDate
         ).toLocaleString()}</p>
-        <p>We will contact you soon regarding delivery. Thank you for shopping with IMPROVE AFRICA!</p>
+        <p>We will contact you soon regarding delivery. Thank you for shopping with RISERURAL CONNECT!</p>
       `,
     };
 
@@ -395,13 +395,13 @@ app.get("/admin", (req, res) => {
     <!DOCTYPE html>
     <html>
     <head>
-      <title>IMPROVE AFRICA - Admin</title>
+      <title>RISERURAL CONNECT - Admin</title>
       <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     </head>
     <body class="bg-gray-100">
       <header class="bg-green-600 text-white p-6">
         <div class="max-w-6xl mx-auto">
-          <h1 class="text-3xl font-bold">IMPROVE AFRICA Marketplace</h1>
+          <h1 class="text-3xl font-bold">RISERURAL CONNECT Marketplace</h1>
           <p class="mt-2">Premium agricultural products from across Africa</p>
         </div>
       </header>
@@ -566,7 +566,7 @@ app.get("/admin", (req, res) => {
         <div class="max-w-6xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 class="text-lg font-semibold mb-4">IMPROVE AFRICA Marketplace</h3>
+              <h3 class="text-lg font-semibold mb-4">RISERURAL CONNECT Marketplace</h3>
               <p class="text-gray-400">Premium agricultural products from Ghana and across Africa.</p>
             </div>
             <div>
@@ -589,7 +589,7 @@ app.get("/admin", (req, res) => {
             </div>
           </div>
           <div class="mt-8 pt-6 border-t border-gray-700 text-gray-400">
-            <p>&copy; 2023 IMPROVE AFRICA. All rights reserved.</p>
+            <p>&copy; 2023 RISERURAL CONNECT. All rights reserved.</p>
           </div>
         </div>
       </footer>
@@ -819,7 +819,7 @@ app.get("/test-email", async (req, res) => {
       from: "improveafrica01@gmail.com",
       to: "improveafrica01@gmail.com",
       subject: "Test Email",
-      text: "This is a test email from IMPROVE AFRICA server",
+      text: "This is a test email from RISERURAL CONNECT server",
     });
     console.log("Test email sent successfully");
     res.send("Test email sent");

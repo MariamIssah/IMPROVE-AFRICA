@@ -1,6 +1,6 @@
-# IMPROVE Africa Marketplace Payment Integration
+# RISERURAL CONNECT Marketplace Payment Integration
 
-This document provides an overview of the payment options implemented in the IMPROVE Africa Marketplace platform.
+This document provides an overview of the payment options implemented in the RISERURAL CONNECT Marketplace platform.
 
 ## Payment Methods
 

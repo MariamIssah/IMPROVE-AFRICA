@@ -1,5 +1,5 @@
 /**
- * IMPROVE AFRICA Marketplace - Product Seed Script
+ * RISERURAL CONNECT Marketplace - Product Seed Script
  *
  * This script populates the database with a comprehensive list of agricultural products
  * from various categories including grains, legumes, oilseeds, roots & tubers, fruits,

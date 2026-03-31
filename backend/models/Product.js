@@ -1,5 +1,5 @@
 /**
- * IMPROVE AFRICA Marketplace - Product Model
+ * RISERURAL CONNECT Marketplace - Product Model
  * 
  * This defines the schema for agricultural products in the marketplace
  */
